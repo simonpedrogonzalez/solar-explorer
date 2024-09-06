@@ -16,9 +16,13 @@ Astronomy Visualization
 - email: u1528314@utah.edu
 - uid: u1528314
 
+## Resources
+
 Project Ideas: https://docs.google.com/document/d/1pG8MIJ63O_l-x5lxE9TWMq5bsQBWVphontCbd75LPDg/edit?usp=sharing
 
-Directives: https://www.dataviscourse.net/2024/project/#project-proposal
+Next assignment: https://www.dataviscourse.net/2024/project/#project-proposal
+
+Link for data review: https://planet4589.org/space/gcat/index.html
 
 
 ## Background and Motivation [Simón]
