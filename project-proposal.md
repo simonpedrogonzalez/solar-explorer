@@ -16,6 +16,8 @@ Astronomy Visualization
 - email: u1528314@utah.edu
 - uid: u1528314
 
+Project Ideas: https://docs.google.com/document/d/1pG8MIJ63O_l-x5lxE9TWMq5bsQBWVphontCbd75LPDg/edit?usp=sharing
+
 Directives: https://www.dataviscourse.net/2024/project/#project-proposal
 
 
