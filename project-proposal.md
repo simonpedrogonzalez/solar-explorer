@@ -23,7 +23,7 @@
 * [Project proposal assignment (Due next Friday Sept 13)](https://www.dataviscourse.net/2024/project/#project-proposal)
 * [Link for data review](https://planet4589.org/space/gcat/index.html): use this to get an idea of what data is available to design the visualizations.
 
-## Background and Motivation [Simón][Work in progress]
+## Background and Motivation [Simón][Work in progress][Subtitles are just for organizing, it will be a continuous text]
 
 
 We aim to provide visualizations for individuals interested in space exploration, offering more depth than typical surface-level representations. Our target audience includes the general public curious about space who seek deeper insights into space exploration missions. We hope the visualizations produced could serve to inspire greater interest in the subject. This choice of topic aligns with personal and current public interest in space exploration and leverages the opportunities for applying different visualization techniques, aided by the broad availability of relevant data.
