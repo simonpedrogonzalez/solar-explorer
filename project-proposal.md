@@ -5,7 +5,7 @@
 ## Team Members
 
 - Matthew Whitaker
-	- email: u1251812@utah.edu
+	- email: matthew.whitaker@utah.edu
 	- UID: 1251812
 
 - Sarah Khan
@@ -79,9 +79,41 @@ We aim to portray data related to the history, technical aspects, cost and value
 
 ### Learning / Accomplishment goals / benefits
 
-## Data [Matthew]
+## Data
 
-## Data Processing [Matthew]
+The primary data source for this project is the [General Catalog of Artificial Space Objects](https://planet4589.org/space/gcat/) (GCAT), published and maintained by Jonathan C. McDowell, an astrophysicist at the Harvard-Smithsonian Center for Astrophysics.
+The data is stored in a set of ~20 relational-database-style tables available for download at the link above (the full catalog is only ~10 MB).
+
+The data is updated regularly (a couple times a week). Data is compiled from a variety of archives, government sources, observations by astronomers, and launch/orbital information provided by private companies.
+
+For this project, we'll primarily use the following tables:
+
+ - [Organizations Database](https://planet4589.org/space/gcat/web/orgs/index.html) (A list of government, educational, and private organizations involved in space flight)
+ - [Launch Vehicles](https://planet4589.org/space/gcat/web/lvs/index.html) (A list of vehicles used for spaceflight)
+ - [Launch Lists](https://planet4589.org/space/gcat/web/launch/index.html) (A table of launches)
+ - [Worlds in the Solar System](https://planet4589.org/space/gcat/web/worlds/index.html) (A collection of information about planetary bodies and their major natural satellites in the Solar System)
+ - [Object Catalogs](https://planet4589.org/space/gcat/web/cat/index.html) (A collection of several subtables)
+
+Since the GCAT's scope is primarily artificial objects, the "Worlds in the Solar System" table is incomplete, containing only basic information about major Solar System bodies. We'll supplement the data with data from [NASA JPL's Horizons data system](https://ssd.jpl.nasa.gov/horizons/), which has a [public REST API](https://ssd-api.jpl.nasa.gov/doc/horizons.html) and their [tables of information about Planetary Satellites](https://ssd.jpl.nasa.gov/sats/).
+
+## Data Processing
+
+### Data Cleaning
+
+Data cleaning will be relatively straightforward, since the data is already in a well-defined format. We will need to write custom code to parse Jonathan McDowell's "Vague Date" format. The primary way we process the data will be through database-style table joins, filters, and aggregations to show only the relevant relationships.
+
+### Derived Data
+
+There are a few quantities that we are interested in that aren't stored explicitly in the data:
+
+- **Space Junk:** Our data doesn't include details about which objects have been left in space as junk. Using some basic heuristics (e.g. time since last state change, object type) we can define which objects are space junk to get interesting insights into the generation of space junk over time.
+- **Trajectories:** Our data is primarily a list of objects and then a list of state-changes for those objects. For example, a Lunar Lander might be the primary object. It is installed on a rocket, launched from a launch site, detached from the lunar orbiter, landed on the moon, re-launched from the moon, etc. Each change the object goes through is stored as a row in the event table.
+We will need to convert these lists of events (which contain timing and orbital data) into trajectories or locations that might be plotted on a map. This will also allow us to calculate distances between objects, for example.
+
+
+### Implementation
+
+Since each table has a text-based ID, the data processing described above can be implemented in JavaScript by converting the TSV tables to maps of IDs to JSON objects containing the data attributes for each row. We can then write functions to derive the data described above.
 
 ## Visualization Design
 
@@ -90,6 +122,16 @@ We aim to portray data related to the history, technical aspects, cost and value
 #### Sketch 1 [Sarah]
 
 #### Sketch 2 [Matthew]
+
+<img alt="Home Page" src="sketch-matthew/homepage.PNG" width="200" />
+
+<img alt="Map Settings" src="sketch-matthew/mapsettings.PNG" width="200" />
+
+<img alt="Time Plot" src="sketch-matthew/timeplot.PNG" width="200" />
+
+<img alt="Side-by-Side Comparison" src="sketch-matthew/sidebyside.PNG" width="200" />
+
+<img alt="Data Viewer" src="sketch-matthew/dataviewer.PNG" width="200" />
 
 #### Sketch 3 [Simón]
 
