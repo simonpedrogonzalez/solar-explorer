@@ -39,7 +39,7 @@ Aside from selecting space exploration data for its current relevance and public
 
 Also, astronomy data is vast and highly accessible, offering us the flexibility to choose from a wide range of attributes for our visualizations. This will allow us to apply different concepts we learn in our data visualization course.
 
-We believe there is potential to improve how this kind of information is presented. Typically, visualizations focus on timelines, target planets, orbit representations, written milestones and distances from Earth (images). While this data is useful, it often omits interesting information that could provide a more comprehensive understanding of the missions. For example, the phases involved in traveling to different targets, spacecraft weights and speeds, mission failures and crash landings, the investment required, debris generated, and objects used for gravity assists. Also, to emphasize the value of space exploration, we believe that including measurements of the missions' scientific value, such as the number of pictures captured or the scientific objectives achieved, would be highly insightful.
+We believe there is potential to improve how this kind of information is presented. Typically, visualizations focus on timelines, target planets, orbit representations, written milestones and distances from Earth (images). While this data is useful, it often omits interesting information that could provide a more comprehensive understanding of the missions. For example, the phases involved in traveling to different targets, spacecraft weights and speeds, mission failures and crash landings, **the investment required**, debris generated, and objects used for gravity assists. **Also, to emphasize the value of space exploration, we believe that including measurements of the missions' scientific value, such as the number of pictures captured or the scientific objectives achieved, would be highly insightful**.
 
 ## Project Objectives [Simón]
 
@@ -49,7 +49,7 @@ We believe there is potential to improve how this kind of information is present
 
 We will answer questions related to the celestial bodies in the Solar System with an emphasis in lesser-known objects and under-explored parts of our solar system. 
 - What is the orbit location of solar system objects, including planets, dwarf planets, moons, asteroids, and belts?
-- Which planets, moons, asteroids, or regions have been the least explored in terms of missions, measurements, or images?
+- **Which planets, moons, asteroids, or regions have been the least explored in terms of missions, measurements, or images?**
 - What is the date of discovery for these objects, and what are the most recently discovered celestial bodies?
 - How has the number of discovered moons around each planet changed over time?
  - How many registered asteroids are currently orbiting or residing within the solar system, and what is their location? What is the probability of impact with Earth for any of these asteroids? 
@@ -66,10 +66,10 @@ We aim to portray data related to the history, technical aspects, cost and value
     - How many shuttles, artificial satellites, and probes are currently in operation within the solar system, and how has this number changed over time?
 - What is the scientific value of space exploration?
     - **What are the most and least prolific missions in terms of scientific papers published?**
-    - Which space missions have been the most prolific in terms of measurements, images, and data produced from celestial objects in the solar system?
+    - **Which space missions have been the most prolific in terms of measurements, images, and data produced from celestial objects in the solar system?**
 - What is the cost of space exploration?
-    - How much investment has been made in space missions, and how does this relate to the target object, distance, duration, and the country responsible for the mission?
-    - Which missions were the most and least costly?
+    - **How much investment has been made in space missions, and how does this relate to the target object, distance, duration, and the country responsible for the mission?**
+    - **Which missions were the most and least costly?**
 - Mission technical details:
     - What speeds have been achieved by different space missions?
     - What are the times and locations of different mission phases?
