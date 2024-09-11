@@ -144,7 +144,7 @@ Since each table has a text-based ID, the data processing described above can be
 
 ### Justification of visual encodings [Matthew]
 
-## Must-Have Features [Get together and discuss]
+## Must-Have Features
 
 - Map of solar system, including:
   - Logarithmic Scale
@@ -161,7 +161,7 @@ Since each table has a text-based ID, the data processing described above can be
 - Ability to plot many quantities from our data on a 2d scatter plot
   - User can select data and scale for each axis
 
-## Optional Features [Get together and discuss]
+## Optional Features
 
 - Time slider to show progression of positions and data over time
 - Tilt in more than one 3d axis
