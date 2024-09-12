@@ -121,6 +121,15 @@ Since each table has a text-based ID, the data processing described above can be
 
 #### Sketch 1 [Sarah]
 
+
+<img alt="Page 1" src="sketch-sarah/page1.jpg" height="200" />
+
+<img alt="Page 2" src="sketch-sarah/page2.jpg" height="200" />
+
+<img alt="Page 3" src="sketch-sarah/page3.jpg" height="200" />
+
+<img alt="Page 4" src="sketch-sarah/page4.jpg" height="200" />
+
 #### Sketch 2 [Matthew]
 
 <img alt="Home Page" src="sketch-matthew/homepage.PNG" width="200" />
@@ -142,7 +151,27 @@ Since each table has a text-based ID, the data processing described above can be
 <img alt="Page 1" src="sketch-final/Page1.jpg" />
 <img alt="Page 2" src="sketch-final/Page2.jpg" />
 
-### Justification of visual encodings [Matthew]
+### Justification of visual encodings
+
+#### Home page
+ - **Object position at current epoch**: encoded with a filled circle located spatially with logarithmic position (x and y) relative to central object. The logarithmic scale allows us to display more data in a smaller space, since the solar system is very spread out.
+ - **Object orbit**: encoded spatially with ellipse with radius following logarithmic distance scale relative to central object.
+ - **Object information (name, description)**: encoded with text visible when hovering over object. This allows us to show more information than can be shown on the screen at one time.
+ - **Mission data**: encoded with curved path representing actual trajectory of mission.
+ - **Mission information (name, description)**: encoded with text visible when hovering over mission path.
+ - **Mission important events**: encoded with points located at the location of the event. When hovering over these points, a box will open up with the event name and description.
+ - **Number of missions to each object**: When multiple mission paths overlap, only one line will be shown, with an increased width. This allows us to show a lot of missions in a limited space.
+ - **Object average color**: Encoded as the color of the object's circle. This allows us to visually compare the color of planets and moons. If time, we may replace color with an actual image of the object.
+ - **Object radius**: Encoded logarithmically as the radius of the object's circle. This allows us to show the relative size of objects in the solar system.
+ - **Object type**: Encoded as an outline around the object's circle: dashed for moons, solid for planets, and dotted for asteroids. This allows us to quickly see the type of object (and adds contrast against the background).
+ - **Distance scale**: Represented with a logarithmic axis from the center of the view to the right and left. This visually encodes the current zoom level and allows a quick reference of how far away an object is from the central object.
+
+#### Data Viewer Page
+
+ - **Data selection**: Encoded with dropdowns for each axis. This allows the user to select the data they want to see on each axis.
+ - **Data scale**: Encoded with a checkbox for each axis. This allows the user to switch between a linear and logarithmic scale.
+ - **Data points**: Encoded as points on the scatter plot. This allows the user to see the data points and compare them to each other.
+ - **Data point information**: Encoded as a box that appears when hovering over a data point. This allows the user to see the name of the data point and its value.
 
 ## Must-Have Features
 
