@@ -190,4 +190,102 @@ This section will show a scatter plot to easily visualize relationships, for exa
 
 ## Project Schedule [Sarah]
 
+Here is a detailed task schedule with a focus on the justification of visual encodings:
+
+---
+
+### **Week 1-4: Project Initialization and Planning**
+#### **Task 1: Project Team Formation & Initial Brainstorming**
+- **Objective:** Define goals for visualizing the solar system and space missions.
+- **Justification for Visual Encodings:**
+  - Discuss and decide why logarithmic scales will be used to show distances and object sizes.
+  - Identify specific needs for visualizing object types (planets, moons, asteroids) using different outlines.
+  
+#### **Task 2: Project Proposal Development**
+- **Objective:** Develop a proposal that outlines the project’s visualization goals.
+- **Justification for Visual Encodings:**
+  - Finalize choices for encoding information through colors, shapes, lines (e.g., mission paths using varying opacity/width).
+  - Explain why text on hover will be used for object information and mission data.
+  
+#### **Task 3: Assignment of Tasks**
+- Assign roles for data acquisition, visual design, and interactive features.
+  
+---
+
+### **Week 5-6: Project Review & Data Exploration**
+#### **Task 1: Data Exploration**
+- **Objective:** Identify the datasets to visualize (e.g., positions of objects, mission data).
+- **Justification for Visual Encodings:**
+  - Explore how the chosen data will affect visual encodings like object size, trajectory lines, and hoverable text.
+  - Decide on the logarithmic distance scaling implementation.
+  
+#### **Task 2: Project Review Meeting**
+- **Objective:** Review visual encodings and discuss any needed changes.
+- **Deliverable:** Clear explanation of why each encoding (e.g., color, size, orbit) was chosen.
+
+---
+
+### **Week 4-7: Data Acquisition and Visualization Prototype**
+#### **Task 1: Data Collection and Cleaning**
+- Gather data on solar system objects, missions, and their paths.
+  
+#### **Task 2: Data Structure Implementation**
+- Define how data will be structured to support visual encodings (logarithmic scale, orbit paths, object color, etc.).
+
+#### **Task 3: Prototype Development**
+- Develop a working visualization of the solar system map, showing initial visual encodings.
+- **Justification for Visual Encodings:**
+  - Begin testing interactive elements like hover states for information and zooming with logarithmic scaling.
+  
+---
+
+### **Week 8: Milestone Submission**
+#### **Task 1: Prepare Code and Documentation**
+- Submit the working visualization with initial visual encodings.
+
+#### **Task 2: Milestone Release on GitHub**
+- Ensure documentation explains each visual encoding, especially the use of the logarithmic scale, hover states, and path representation.
+
+---
+
+### **Week 9: Peer Feedback**
+#### **Task 1: Provide Feedback**
+- Focus on how clear the visual encodings are in peer projects.
+  
+#### **Task 2: Review Peer Feedback**
+- Incorporate feedback on your visual encodings to improve clarity and accuracy.
+
+---
+
+### **Week 10-11: Finalization and Refinement**
+#### **Task 1: Complete Website Development**
+- Finalize the website, ensuring all interactive features (hover text, zoom, etc.) work as intended.
+
+#### **Task 2: Finalize Visual Encodings**
+- Ensure each visual element (size, orbit, mission paths, text on hover) clearly communicates the necessary information.
+- **Justification for Visual Encodings:**
+  - Final justification for using size, color, and logarithmic distance scales for clear representation.
+
+#### **Task 3: Process Book and README**
+- Document visual encoding decisions in the process book and README.
+
+#### **Task 4: Record Screencast**
+- Create a screencast video, explaining how visual encodings enhance the user experience and visualization effectiveness.
+
+---
+
+### **Week 12: Final Submission & Presentation**
+#### **Task 1: Final GitHub Release**
+- Ensure all code, justifications for visual encodings, and documentation are complete.
+
+#### **Task 2: Host Website**
+- Ensure the hosted website clearly demonstrates the visual encodings and interactive features.
+
+#### **Task 3: Embed Screencast Video**
+- Explain how visual encodings enhance user understanding of the data in the video.
+
+#### **Task 4: Submit Group Feedback**
+- Provide feedback on group collaboration, including discussion on visual encoding choices.
+
+
 
