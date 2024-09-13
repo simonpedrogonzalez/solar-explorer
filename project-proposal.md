@@ -191,21 +191,23 @@ This section will show a scatter plot to easily visualize relationships, for exa
 ## Project Schedule [Sarah]
 
 Here is a detailed task schedule with a focus on the justification of visual encodings:
-
+The task list is divided week-wise, which includes week 1-4 timeline.
+Additionally, there are some week overlaps to account for continuous work.
 ---
 
 ### **Week 1-4: Project Initialization and Planning**
 #### **Task 1: Project Team Formation & Initial Brainstorming**
 - **Objective:** Define goals for visualizing the solar system and space missions.
-- **Justification for Visual Encodings:**
+- **Visual Encodings:**
   - Discuss and decide why logarithmic scales will be used to show distances and object sizes.
   - Identify specific needs for visualizing object types (planets, moons, asteroids) using different outlines.
   
 #### **Task 2: Project Proposal Development**
 - **Objective:** Develop a proposal that outlines the project’s visualization goals.
-- **Justification for Visual Encodings:**
+- **Visual Encodings:**
+  - Draft sketches of the visual design and how data will be represented. Three sketches as prototype from each team member and one final draft design. 
   - Finalize choices for encoding information through colors, shapes, lines (e.g., mission paths using varying opacity/width).
-  - Explain why text on hover will be used for object information and mission data.
+  - Explain what text on hover will be used for object information and mission data.
   
 #### **Task 3: Assignment of Tasks**
 - Assign roles for data acquisition, visual design, and interactive features.
@@ -215,7 +217,7 @@ Here is a detailed task schedule with a focus on the justification of visual enc
 ### **Week 5-6: Project Review & Data Exploration**
 #### **Task 1: Data Exploration**
 - **Objective:** Identify the datasets to visualize (e.g., positions of objects, mission data).
-- **Justification for Visual Encodings:**
+- **Visual Encodings:**
   - Explore how the chosen data will affect visual encodings like object size, trajectory lines, and hoverable text.
   - Decide on the logarithmic distance scaling implementation.
   
@@ -234,7 +236,7 @@ Here is a detailed task schedule with a focus on the justification of visual enc
 
 #### **Task 3: Prototype Development**
 - Develop a working visualization of the solar system map, showing initial visual encodings.
-- **Justification for Visual Encodings:**
+- **Visual Encodings:**
   - Begin testing interactive elements like hover states for information and zooming with logarithmic scaling.
   
 ---
@@ -263,8 +265,8 @@ Here is a detailed task schedule with a focus on the justification of visual enc
 
 #### **Task 2: Finalize Visual Encodings**
 - Ensure each visual element (size, orbit, mission paths, text on hover) clearly communicates the necessary information.
-- **Justification for Visual Encodings:**
-  - Final justification for using size, color, and logarithmic distance scales for clear representation.
+- **Visual Encodings:**
+  - Final the size, color, and logarithmic distance scales for clear representation.
 
 #### **Task 3: Process Book and README**
 - Document visual encoding decisions in the process book and README.
@@ -286,6 +288,10 @@ Here is a detailed task schedule with a focus on the justification of visual enc
 
 #### **Task 4: Submit Group Feedback**
 - Provide feedback on group collaboration, including discussion on visual encoding choices.
+
+---
+
+
 
 
 
