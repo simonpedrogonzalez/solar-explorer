@@ -16,68 +16,46 @@
 	- email: u1528314@utah.edu
 	- UID: 1528314
 
-## Resources
+## Background and Motivation
 
+We aim to build a solar system exploration viewer focused on space missions data. Our target audience includes space enthusiasts and the general public, and we hope to provide deeper insights while inspiring greater interest in the subject. This choice of project reflects our personal interest and we believe it would also present an exciting technical challenge in visualization.
 
-* [Project Ideas Document](https://docs.google.com/document/d/1pG8MIJ63O_l-x5lxE9TWMq5bsQBWVphontCbd75LPDg/edit?usp=sharing) contains the initial questions and design ideas. 
-* [Project proposal assignment (Due next Friday Sept 13)](https://www.dataviscourse.net/2024/project/#project-proposal)
-* [Link for data review](https://planet4589.org/space/gcat/index.html): use this to get an idea of what data is available to design the visualizations.
+Public enthsiasm in space exploration has grown significantly in recent years, driven by scientific research, high-profile space missions and public engagement. This trend is reflected in the expanding body of academic research on the solar system and space vehicles, particularly after 2012 according to the [Hardvard Astrophysics Database System, 2024](https://ui.adsabs.harvard.edu/search/filter_keyword_facet_fq_keyword_facet=AND&filter_keyword_facet_fq_keyword_facet=keyword_facet%3A%22solar%20system%20general%22&filter_property_fq_property=AND&filter_property_fq_property=property%3A%22refereed%22&fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq=%7B!type%3Daqp%20v%3D%24fq_keyword_facet%7D&fq=%7B!type%3Daqp%20v%3D%24fq_property%7D&fq_database=(database%3Aastronomy%20OR%20database%3Aphysics)&fq_keyword_facet=(keyword_facet%3A%22solar%20system%20general%22)&fq_property=(property%3A%22refereed%22)&p_=0&q=space%20exploration&sort=date%20desc%2C%20bibcode%20desc).
+At the same time, some citizen science initiatives, such as NASA’s ["Backyard Worlds: Planet 9" project](https://www.nasa.gov/get-involved/backyard-worlds-planet-9/), have been intensely promoting public engagement and encouraging active involvement in space exploration.
+We have to admit, we have been caught up in this wave of excitement ourselves, which isn’t surprising considering our background. Our group includes a Ph.D. student in astrophysics, a computer science graduate student developing software for astronomy research, and an electrical engineer who enjoys learning about spacecrafts and space exploration.
 
-## Background and Motivation [Simón][Work in progress][Subtitles are just for organizing, it will be a continuous text]
+Also, with this project, we believe there is potential to improve how this kind of information is presented. Typically, visualizations focus on timelines and written milestones, omitting interesting information that could provide a more comprehensive understanding of the missions. For example, the paths, orbits and gravity assists commonly used, the different phases involved, spacecraft speeds, and the story of mission failures and crash landings.
 
-
-We aim to provide visualizations for individuals interested in space exploration, offering more depth than typical surface-level representations. Our target audience includes the general public curious about space who seek deeper insights into space exploration missions. We hope the visualizations produced could serve to inspire greater interest in the subject. This choice of topic aligns with personal and current public interest in space exploration and leverages the opportunities for applying different visualization techniques, aided by the broad availability of relevant data.
-
-#### Part 1: Public & Personal interest
-
-Public interest in space exploration has grown significantly in recent years, driven by scientific research, high-profile space missions and increasing public engagement. This trend is reflected in the expanding body of academic research on the solar system and space vehicles, particularly after 2012, with a notable increase in publications after 2019 (cite ADS).
-At the same time, some citizen science initiatives, such as NASA’s "Backyard Worlds: Planet 9" project (cite), have been intensely promoting public engagement and encouraging active participation and involvement in space exploration.
-Furthermore, the projected economic growth of the space industry, estimated to reach $1.8 trillion by 2035 (cite), highlights the significance of space exploration as space technologies like satellite communications and climate monitoring continue to impact daily life.
-Aside from selecting space exploration data for its current relevance and public interest, our team has a strong connection to astronomy and space science. We include a Ph.D. student in astrophysics, a computer science graduate student involved in supporting astronomy research through software development, and an electrical engineer with a keen interest in the design and engineering of instruments and spacecraft.
-
-#### Part 2: Data Availability & Opportunities
-
-Also, astronomy data is vast and highly accessible, offering us the flexibility to choose from a wide range of attributes for our visualizations. This will allow us to apply different concepts we learn in our data visualization course.
-
-We believe there is potential to improve how this kind of information is presented. Typically, visualizations focus on timelines, target planets, orbit representations, written milestones and distances from Earth (images). While this data is useful, it often omits interesting information that could provide a more comprehensive understanding of the missions. For example, the phases involved in traveling to different targets, spacecraft weights and speeds, mission failures and crash landings, **the investment required**, debris generated, and objects used for gravity assists. **Also, to emphasize the value of space exploration, we believe that including measurements of the missions' scientific value, such as the number of pictures captured or the scientific objectives achieved, would be highly insightful**.
-
-## Project Objectives [Simón]
+## Project Objectives
 
 ### Primary questions to answer with the visualizations
 
-#### Part 1: The exploration frontier in the Solar System
+#### The exploration frontier in the Solar System
 
-We will answer questions related to the celestial bodies in the Solar System with an emphasis in lesser-known objects and under-explored parts of our solar system. 
+We will answer questions related to the celestial bodies in the Solar System, making sure to include lesser-known objects and under-explored parts of our solar system: 
 - What is the orbit location of solar system objects, including planets, dwarf planets, moons, asteroids, and belts?
-- **Which planets, moons, asteroids, or regions have been the least explored in terms of missions, measurements, or images?**
 - What is the date of discovery for these objects, and what are the most recently discovered celestial bodies?
 - How has the number of discovered moons around each planet changed over time?
- - **How many registered asteroids are currently orbiting or residing within the solar system, and what is their location? What is the probability of impact with Earth for any of these asteroids?**
-- **What are the proposed locations of hypothetical (debunked or otherwise) celestial objects within the solar system?**
 
-#### Part 2: The History and Impact of Space Exploration Missions
-We aim to portray data related to the history, technical aspects, cost and value value of space missions.
+#### The History and Impact of Space Exploration Missions
+Also, we aim to portray data related to the history and technical aspects of space missions.
 
-- What is the history of space exploration missions and launches?
-    - Number of missions by target (planet, moon, etc.), distance traveled, duration, and the country of origin.
-    - What is the success and failure ratio of missions sent to specific objects?
-    - **What are the most common causes of failure for these missions?**
-- Current artificial space objects:
-    - How many shuttles, artificial satellites, and probes are currently in operation within the solar system, and how has this number changed over time?
-- What is the scientific value of space exploration?
-    - **What are the most and least prolific missions in terms of scientific papers published?**
-    - **Which space missions have been the most prolific in terms of measurements, images, and data produced from celestial objects in the solar system?**
-- What is the cost of space exploration?
-    - **How much investment has been made in space missions, and how does this relate to the target object, distance, duration, and the country responsible for the mission?**
-    - **Which missions were the most and least costly?**
-- Mission technical details:
-    - **What speeds have been achieved by different space missions?**
-    - What are the times and locations of different mission phases?
-    - **How much space junk has been generated by these missions, and where is it located?**
-    - What are some regular paths traversed by the different missions in the solar system?
-    - **What objects are commonly used for gravity assists during space missions?**
+- What are the most common targets for space missions in terms of planets, moons, or other celestial bodies?
+- What is the success and failure ratio of missions sent to specific objects?
+- How many shuttles, artificial satellites, and probes are currently in operation, and how that number has changed over time?
+- What are the times and locations of different mission phases?
+- What are some regular paths traversed by the different missions in the solar system?
+- Which celestial objects are commonly used for gravity assists and orbiting?
 
-### Learning / Accomplishment goals / benefits
+### Benefits
+
+Some benefits of this project include:
+
+- This project provides the opportunity to work with real-world space mission data, which we have not previously explored despite our backgrounds. This will help us **deepen our understanding of planetary science and mission dynamics**.
+
+- Space exploration data is more complex than typical astronomical data due to the involvement of human activity. We think this makes space exploration data well-suited for **practicing visual storytelling and tackling technical visualization challenges**.
+
+- By making space mission data more accessible, this project could help **broaden interest in space exploration among the general public** and enthusiasts.
 
 ## Data
 
@@ -110,7 +88,6 @@ There are a few quantities that we are interested in that aren't stored explicit
 - **Trajectories:** Our data is primarily a list of objects and then a list of state-changes for those objects. For example, a Lunar Lander might be the primary object. It is installed on a rocket, launched from a launch site, detached from the lunar orbiter, landed on the moon, re-launched from the moon, etc. Each change the object goes through is stored as a row in the event table.
 We will need to convert these lists of events (which contain timing and orbital data) into trajectories or locations that might be plotted on a map. This will also allow us to calculate distances between objects, for example.
 
-
 ### Implementation
 
 Since each table has a text-based ID, the data processing described above can be implemented in JavaScript by converting the TSV tables to maps of IDs to JSON objects containing the data attributes for each row. We can then write functions to derive the data described above.
@@ -119,7 +96,7 @@ Since each table has a text-based ID, the data processing described above can be
 
 ### Sketches
 
-#### Sketch 1 [Sarah]
+#### Sketch 1: Sarah's sketches
 
 
 <img alt="Page 1" src="sketch-sarah/page1.jpg" height="200" />
@@ -130,7 +107,7 @@ Since each table has a text-based ID, the data processing described above can be
 
 <img alt="Page 4" src="sketch-sarah/page4.jpg" height="200" />
 
-#### Sketch 2 [Matthew]
+#### Sketch 2: Matthew's sketches
 
 <img alt="Home Page" src="sketch-matthew/homepage.PNG" width="200" />
 
@@ -142,7 +119,7 @@ Since each table has a text-based ID, the data processing described above can be
 
 <img alt="Data Viewer" src="sketch-matthew/dataviewer.PNG" width="200" />
 
-#### Sketch 3 [Simón]
+#### Sketch 3: Simón's sketches
 
 ![Sketch 3](sketch-simon.png)
 
@@ -154,19 +131,24 @@ Since each table has a text-based ID, the data processing described above can be
 ### Justification of visual encodings
 
 #### Home page
+
+This section will show a map of the solar system, and will be the main visualization for the project. Its main goal is to show the location and orbits of objects in the solar system and the paths of space missions. The visual encodings used in this page are:
+
  - **Object position at current epoch**: encoded with a filled circle located spatially with logarithmic position (x and y) relative to central object. The logarithmic scale allows us to display more data in a smaller space, since the solar system is very spread out.
  - **Object orbit**: encoded spatially with ellipse with radius following logarithmic distance scale relative to central object.
  - **Object information (name, description)**: encoded with text visible when hovering over object. This allows us to show more information than can be shown on the screen at one time.
- - **Mission data**: encoded with curved path representing actual trajectory of mission.
+ - **Mission data**: encoded with curved path representing the actual trajectory of mission.
  - **Mission information (name, description)**: encoded with text visible when hovering over mission path.
- - **Mission important events**: encoded with points located at the location of the event. When hovering over these points, a box will open up with the event name and description.
- - **Number of missions to each object**: When multiple mission paths overlap, only one line will be shown, with an increased width. This allows us to show a lot of missions in a limited space.
- - **Object average color**: Encoded as the color of the object's circle. This allows us to visually compare the color of planets and moons. If time, we may replace color with an actual image of the object.
+ - **Mission important events (e.g. phase changes)**: encoded with points located at the site of the event. When hovering over these points, a box will open up with the event name and description.
+ - **Number of missions to each object**: When multiple mission paths overlap, only one line will be shown, with an increased width or opacity. This allows us to show a lot of missions in a limited space and encode the most comon routes.
+ - **Object average color**: We will encode the objects with an appropriately colored circle, allowing us to compare and distinguish the planets and moons visually. If time, we may replace color with an actual image of the object.
  - **Object radius**: Encoded logarithmically as the radius of the object's circle. This allows us to show the relative size of objects in the solar system.
  - **Object type**: Encoded as an outline around the object's circle: dashed for moons, solid for planets, and dotted for asteroids. This allows us to quickly see the type of object (and adds contrast against the background).
  - **Distance scale**: Represented with a logarithmic axis from the center of the view to the right and left. This visually encodes the current zoom level and allows a quick reference of how far away an object is from the central object.
 
 #### Data Viewer Page
+
+This section will show a scatter plot to easily visualize relationships, for example, the distance achieved by missions over time. The visual encodings used in this page are:
 
  - **Data selection**: Encoded with dropdowns for each axis. This allows the user to select the data they want to see on each axis.
  - **Data scale**: Encoded with a checkbox for each axis. This allows the user to switch between a linear and logarithmic scale.
@@ -176,35 +158,35 @@ Since each table has a text-based ID, the data processing described above can be
 ## Must-Have Features
 
 - Map of solar system, including:
-  - Logarithmic Scale
-  - Ability to zoom in and out
-  - Ability to tilt in 3d (at least on one axis)
-  - Location of Solar System objects
-  - Orbits of Solar System Objects
-  - Information box that appears when hovering over data point
+  - Logarithmic Scale.
+  - Ability to zoom in and out.
+  - Ability to tilt in 3d (at least on one axis).
+  - Location of Solar System objects.
+  - Orbits of Solar System Objects.
+  - Information box that appears when hovering over data point with:
     - Name
     - Description
-- Visualization of deep-space (to the Moon or farther) missions over time throughout the Solar System
+- Visualization of deep-space (to the Moon or farther) missions over time throughout the Solar System.
   - Number of missions encoded in width or transparency of line
-  - Important points in mission notated
-- Ability to plot many quantities from our data on a 2d scatter plot
-  - User can select data and scale for each axis
+  - Important points in mission notated.
+- Ability to plot many quantities from our data on a second scatter plot
+  - User can select data and scale for each axis.
 
 ## Optional Features
 
-- Time slider to show progression of positions and data over time
-- Tilt in more than one 3d axis
-- Images of planets
-- More details about planets:
+- Time slider to show progression of positions and data over time.
+- Tilt in more than one 3d axis.
+- Images of planets instead of filled figures.
+- More details about planets in the information box:
     - Kind: planet / moon
     - Temperature
     - Distance from Earth
-- Ranking chart to compare data for different missions and objects
-- Side-by-side comparison of different solar system objects
-- Show additional data for missions (costs, images taken, countries)
-- Additional information for asteroids
-- Space Junk generated by each mission
-- Near-earth space missions (e.g. missions to/from ISS, Starlink satellites in orbit)
+- Ranking chart to compare data for different missions and objects as shown in the third sketch.
+- Side-by-side comparison of different solar system objects as shown in the second sketch.
+- Show additional data for missions (costs, images taken, countries). Some of this information is publicly available but only for selected missions.
+- Additional information for asteroids such as probability of collision with Earth.
+- Location or quantity of space Junk generated by each mission.
+- Near-earth space missions (e.g. missions to/from ISS, Starlink satellites in orbit).
 
 ## Project Schedule [Sarah]
 
