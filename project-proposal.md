@@ -190,9 +190,9 @@ This section will show a scatter plot to easily visualize relationships, for exa
 
 ## Project Schedule [Sarah]
 
-Here is a detailed task schedule with a focus on the justification of visual encodings:
-The task list is divided week-wise, which includes week 1-4 timeline.
-Additionally, there are some week overlaps to account for continuous work.
+Following are the  detailed task schedule.
+Note: The task list is divided week-wise, which includes week 1-4 timeline. Additionally, there are some week overlaps to account for continuous work.
+
 ---
 
 ### **Week 1-4: Project Initialization and Planning**
