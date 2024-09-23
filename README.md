@@ -10,3 +10,6 @@ group-project-astronomy-visualization-2
 
 - Simón González u1528314@utah.edu
 
+## Backlog
+
+- [https://github.com/orgs/dataviscourse2024/projects/3/views/1](https://github.com/orgs/dataviscourse2024/projects/3/views/1)
