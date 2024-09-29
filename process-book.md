@@ -20,6 +20,7 @@ In general:
 - [Nasa Solar System Viewer](https://science.nasa.gov/solar-system/kuiper-belt/) for inspiration.
 - [Earth orbit artificial objects viewer](https://whatsin.space/) for inspiration.
 - [Solar System Viewer](https://www.solarsystemscope.com/) for inspiration.
+- [How to choose colors for the visualizations?](https://blog.datawrapper.de/which-color-scale-to-use-in-data-vis/)
 
 ## Resources for development
 - [Render millions of datapoints with D3](https://blog.scottlogic.com/2020/05/01/rendering-one-million-points-with-d3.html)
