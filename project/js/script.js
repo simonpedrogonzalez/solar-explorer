@@ -28,4 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('Solar system map drawn');
         });
     });
+
+    // scatterPlot.setup('#dashboard2').then(() => {
+    //     scatterPlot.draw();
+    // });
 });
