@@ -11,6 +11,11 @@ export const getPlanetsData = async () => {
     return data;
 }
 
+export const getMissionsData = async () => {
+    let data = await readJSON("./data/missions.json");
+    return data;
+}
+
 /**
  * Apply JSON.parse to all fields in d3 data objects
  * @param {Array<Object>} data
