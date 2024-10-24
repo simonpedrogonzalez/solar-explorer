@@ -1,4 +1,4 @@
-import { getPlanetsData } from "../data/datasets.js";
+import { oldPlanetsData } from "../data/datasets.js";
 
 let svg, g;
 // Arbitrary
@@ -6,6 +6,12 @@ let width = 800, height=800;
 let systemCenter = { x: width / 2, y: height / 2 };
 let data;
 let planetRadiusScale, planetDistanceScale;
+
+const CHART_WIDTH = 500;
+const CHART_HEIGHT = 250;
+const MARGIN = { left: 50, bottom: 20, top: 20, right: 20 };
+const ANIMATION_DURATION = 300;
+
 
 /**
  * Create log scale for the radius of the planets
@@ -43,7 +49,9 @@ const getPlanetDistanceScale = (data) => {
  * */
 export const setup = async (containerId) => {
     // Load the data
-    data = await getPlanetsData();
+    data = await oldPlanetsData();
+    // exclude sun
+    data = data.filter(d => d.name !== 'Sun');
     // Create the scales
     planetRadiusScale = getPlanetRadiusScale(data);
     planetDistanceScale = getPlanetDistanceScale(data);
@@ -53,8 +61,8 @@ export const setup = async (containerId) => {
         .attr('width', width)
         .attr('height', height);
     // Create a group for the solar system, this is the 'plot' object
-    g = svg.append('g')
-        .attr('transform', `translate(${systemCenter.x}, ${systemCenter.y})`);
+    g = svg.append('g');
+        // .attr('transform', `translate(${systemCenter.x}, ${systemCenter.y})`);
 }
 
 /**
@@ -62,38 +70,49 @@ export const setup = async (containerId) => {
  * */
 export const draw = () => {
 
-    drawOrbits();
-    drawPlanets();
+    drawScatterPlot();
 }
 
-const drawOrbits = () => {
-    g.selectAll('.orbit')
-        .data(data)
-        .enter()
-        .append('circle')
-        .attr('class', 'orbit')
-        .attr('r', d => {
-            const distance = planetDistanceScale(d.distance);
-            return isNaN(distance) ? 0 : distance; // Sun will have Nan, fallback to 0
-        })
-        .attr('fill', 'none')
-        .attr('stroke', '#ccc')
-        .attr('stroke-dasharray', '2,2');
+const drawScatterPlot = () => {
+
+    let xScale = planetDistanceScale;
+    let yScale = planetRadiusScale;
+
+    let circle = g
+    .selectAll('circle')
+    .data(data);
+  
+    circle.exit()
+    .attr('r', 0)
+    .remove();
+  
+    const enterCircle = circle
+    .enter()
+    .append('circle')
+    .attr('r', 0)
+    .attr('cx', d => function(d) {
+        console.log(d.distance);
+        return planetDistanceScale(d.distance) + MARGIN.left
+    })
+    .attr('cy', d => planetRadiusScale(d.radius) + MARGIN.top)
+    .attr('r', 5);
+  
+  
+    circle = circle.merge(enterCircle)
+    .attr('cx', d => xScale(d.cases) + MARGIN.left)
+    .attr('cy', d => yScale(d.deaths) + MARGIN.top)
+    .attr('r', 5)
+  
+    const xAxis = d3.axisBottom(xScale);
+    const yAxis = d3.axisLeft(yScale);
+  
+    g
+    .select('.x-axis')
+    .call(xAxis);
+  
+    g
+    .select('.y-axis')
+    .call(yAxis);
+
 }
 
-const drawPlanets = () => {
-    g.selectAll('.planet')
-        .data(data)
-        .enter()
-        .append('circle')
-        .attr('class', 'planet')
-        .attr('r', d => planetRadiusScale(d.radius))
-        .attr('cx', d => {
-            const cx = planetDistanceScale(d.distance);
-            return isNaN(cx) ? 0 : cx;  // Sun has NaN, fallback to 0
-        })
-        .attr('cy', 0)  // All planets are in the same y
-        .attr('fill', d => d.color)
-        .append('title')
-        .text(d => d.name);
-}

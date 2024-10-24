@@ -1,4 +1,5 @@
 import * as solarSystemMap from './solarSystemMap.js';
+import * as scatterPlot from './scatterPlot.js';
 
 document.addEventListener('DOMContentLoaded', function () {
     const switchButton = document.getElementById('switchButton');
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // scatterPlot.setup('#dashboard2').then(() => {
-    //     scatterPlot.draw();
-    // });
+    scatterPlot.setup('#dashboard2').then(() => {
+        scatterPlot.draw();
+    });
 });

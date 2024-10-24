@@ -16,6 +16,18 @@ export const getMissionsData = async () => {
     return data;
 }
 
+
+export const oldPlanetsData = async () => {
+    let data = await readCsv('./data/planets.csv');
+    data = jsonParseD3Data(data);
+    // Color format transformation
+    data = data.map(({ color, ...rest }) => ({
+         ...rest,
+         color: `rgb(${color.map(c => c * 255).join(',')})`
+        }));
+    return data;
+}
+
 /**
  * Apply JSON.parse to all fields in d3 data objects
  * @param {Array<Object>} data
