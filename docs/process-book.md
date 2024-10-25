@@ -92,5 +92,10 @@ My original attempt at writing code to calculate the current position of the pla
 
 After fixing these issues, our code now correctly calculates the positions of the planets at any given time. The code is written in Python and is available in the `calculate_planetary_positions.py` file. The code uses the JPL ephimerides data for the planets in the solar system to calculate the positions of the planets at any given time, as compared to other online planetarium software.
  
+## Prototype with Planetary Positions
+24 Oct 2024
 
+The prototype now displays the planets in their current relative position:
+
+![Prototype 24 October 2024](imageOct24.png)
 
