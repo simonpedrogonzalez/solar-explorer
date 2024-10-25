@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Draw the solar system map in dashboard 1
     solarSystemMap.setup('#dashboard1').then(() => {
-        solarSystemMap.draw();
+        solarSystemMap.draw().then(() => {
+            console.log('Solar system map drawn');
+        });
     });
 });
