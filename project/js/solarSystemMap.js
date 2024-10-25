@@ -1,5 +1,5 @@
 import { getPlanetsData, getMissionsData } from "../data/datasets.js";
-import { calculatePlanetPosition2 } from "./astronomyUtils.js";
+import { calculatePlanetPosition } from "./astronomyUtils.js";
 
 const rad = Math.PI / 180;
 
@@ -143,10 +143,8 @@ const calculatePlanetPosition = (d) => {
 
 
 
-    let eclR = Math.sqrt(Math.pow(orbX, 2) + Math.pow(orbY, 2));
-    let eclTheta = -(Math.atan2(orbY, orbX) + w*rad + Omega*rad);
-
-    const otherResult = calculatePlanetPosition2(d);
+    const eclR = Math.sqrt(Math.pow(orbX, 2) + Math.pow(orbY, 2));
+    const eclTheta = -(Math.atan2(orbY, orbX) + w*rad + Omega*rad);
 
     return {
         id: d.id,

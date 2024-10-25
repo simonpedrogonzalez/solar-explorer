@@ -40,11 +40,7 @@ export const millisToDays = (millis) => {
 }
 
 export const dateToJulianDay = (date) => {
-    // ~ 40 days more precise than using getTime()
-    const y = date.getUTCFullYear();
-    const m = date.getMonth();
-    const d = date.getDate();
-    return 367 * y - (7*(y + ((m + 9) / 12 | 0 )) / 4 | 0) + (275*m / 9 | 0) + d + 1721013.5;
+    return date.getTime() / 86400000 + 2440587.5;
 }
 
 export const dateToJ2000Day = (date) => {

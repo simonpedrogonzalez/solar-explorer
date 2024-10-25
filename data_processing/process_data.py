@@ -11,7 +11,7 @@ import re
 
 
 def fit_lstsq(x, y):
-    x = np.array([(x - 2451545)/100, np.ones(len(x))]).T
+    x = np.array([x, np.ones(len(x))]).T
     y = np.array(y)
     m_b = np.linalg.lstsq(x, y, rcond=None)[0]
     return m_b
@@ -21,41 +21,46 @@ def fit_lstsq(x, y):
 def fetch_planet_data(new_worlds_df):
     print("Fetching Horizons Ephimerides...", end=" ")
     planet_data = pd.DataFrame()
-    planets = ["010", "001", "002", "399", "004", "005", "006", "007", "008"]
+    planets = ["010", "001", "002", "003", "004", "005", "006", "007", "008"]
     epochs = {"start": "1950-01-01", "stop": "2050-01-01", "step": "10d"}
     for planet in planets:
         new_worlds_idx = new_worlds_df["id"] == planet
-        obj = Horizons(id=planet, location="@ssb", epochs=epochs)
+
+        reference_point = "@010" if planet != "010" else "@ssb"
+        obj = Horizons(id=planet, location=reference_point, epochs=epochs)
         obj_df: pd.DataFrame = obj.elements().to_pandas()
-        current_values = obj_df[np.abs(obj_df["datetime_jd"]-2460601.767037) == np.abs(obj_df["datetime_jd"] - 2460601.767037).min()]
-        fit_data = obj_df[["a", "e", "incl", "Tp_jd", "w", "Omega", "P", "n"]].agg(axis="rows", func=lambda y: fit_lstsq(obj_df["datetime_jd"], y))
+        obj_j2000 = Horizons(id=planet, location=reference_point, epochs={"start": "2000-01-01 12:00", "stop": "2000-01-01 12:01", "step": "1d"})
+        obj_j2000_df: pd.DataFrame = obj_j2000.elements().to_pandas()
+
+        t = (obj_df["datetime_jd"] - 2451545) / 36525
+        fit_data = obj_df[["a", "e", "incl", "Tp_jd", "w", "Omega", "P", "n", "M"]].agg(axis="rows", func=lambda y: fit_lstsq(t, np.unwrap(y, period=np.max(y))))
+
         try:
             new_data = {
                 "id": planet,
-                "name": obj_df.iloc[0, 0].split(" ")[0],
+                "name": obj_df.iloc[0, 0].split(" ")[0] if planet != "003" else "Earth",  # Hardcoded value for Earth
                 "radius": new_worlds_df.loc[new_worlds_idx, "radius"].values[0],
                 "rotperiod": new_worlds_df.loc[new_worlds_idx, "rotperiod"].values[0],
                 "mass": new_worlds_df.loc[new_worlds_idx, "mass"].values[0],
                 "primary": new_worlds_df.loc[new_worlds_idx, "primary"].values[0],
-                "a_0": fit_data["a"][1],
+                "a_0": obj_j2000_df["a"].values[0],
                 "a_dot": fit_data["a"][0],
-                "e_0": fit_data["e"][1],
+                "e_0": obj_j2000_df["e"].values[0],
                 "e_dot": fit_data["e"][0],
-                "incl_0": fit_data["incl"][1],
+                "incl_0": obj_j2000_df["incl"].values[0],
                 "incl_dot": fit_data["incl"][0],
-                "Tp_0": fit_data["Tp_jd"][1],
+                "Tp_0": obj_j2000_df["Tp_jd"].values[0],
                 "Tp_dot": fit_data["Tp_jd"][0],
-                "w_0": fit_data["w"][1],
-                "w_dot": fit_data["w"][0],
-                "Omega_0": fit_data["Omega"][1],
-                "Omega_dot": fit_data["Omega"][0],
-                "P_0": fit_data["P"][1],
+                "w_0": obj_j2000_df["w"].values[0] if planet != "003" else 102.93768193,  # Hardcoded value for Earth
+                "w_dot": fit_data["w"][0] if planet != "003" else 0.32327364,
+                "w^_0": obj_j2000_df["w"].values[0] + obj_j2000_df["Omega"].values[0],
+                "w^_dot": fit_data["w"][0] + fit_data["Omega"][0],
+                "Omega_0": obj_j2000_df["Omega"].values[0] if planet != "003" else 0,
+                "Omega_dot": fit_data["Omega"][0] if planet != "003" else 0,
+                "P_0": obj_j2000_df["P"].values[0],
                 "P_dot": fit_data["P"][0],
-                "n_0": fit_data["n"][1] * 36525,
-                "n_dot": fit_data["n"][0] * 36525,
-                "curr_w": current_values["w"].values[0],
-                "curr_Omega": current_values["Omega"].values[0],
-                "curr_M": current_values["M"].values[0],
+                "M_0": obj_j2000_df["M"].values[0],
+                "M_dot": fit_data["M"][0],
             }
             planet_data = pd.concat([planet_data, pd.DataFrame(new_data, index=[0])], ignore_index=True)
             new_worlds_df.drop(new_worlds_df[new_worlds_idx].index, inplace=True)
@@ -65,6 +70,12 @@ def fetch_planet_data(new_worlds_df):
 
     print("Writing planets.json...", end=" ")
     planet_data.to_json("../project/data/planets.json", orient="records")
+    # Reformat json file
+    with open("../project/data/planets.json", "r") as f:
+        data = json.load(f)
+    with open("../project/data/planets.json", "w") as f:
+        json.dump(data, f, indent=4)
+
     print("Done.")
 
     print("Loading Planetary Satellites from JPL...", end=" ")
