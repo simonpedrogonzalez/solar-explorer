@@ -5,7 +5,7 @@ const rad = Math.PI / 180;
 
 let svg, g;
 // Arbitrary
-let width = 800, height=800;
+let width = 1600, height=800;
 let systemCenter = { x: width / 2, y: height / 2 };
 let rawData;
 let data;
@@ -64,6 +64,19 @@ export const setup = async (containerId) => {
     g = svg.append('g')
         .attr('id', 'solar-system-map')
         .attr('transform', `translate(${systemCenter.x}, ${systemCenter.y})`);
+
+    // Define the zoom behavior
+    const zoom = d3.zoom()
+    .scaleExtent([0.5, 5])
+    .on("zoom", (event) => {
+    g.attr("transform", event.transform);
+    });
+    svg.call(zoom);
+    d3.select("#reset-zoom").on("click", () => {
+    svg.transition()
+    .duration(750)
+    .call(zoom.transform, d3.zoomIdentity);
+    });
 }
 
 /**
@@ -71,9 +84,8 @@ export const setup = async (containerId) => {
  * */
 export const draw = async () => {
     drawOrbits();
+    drawMissionPaths(); // this first to be behind the planets
     drawPlanets();
-    drawMissionPaths();
-    // await drawMissionPaths2();
 }
 
 const drawOrbits = () => {
@@ -136,15 +148,6 @@ const calculatePlanetPosition = (d) => {
 
     const otherResult = calculatePlanetPosition2(d);
 
-    // if (d.name == "Earth") {
-    //     console.log("Earth", d, otherResult);
-    // }
-    // eclR = otherResult.eclR;
-    // eclTheta = otherResult.eclTheta;
-
-
-
-
     return {
         id: d.id,
         name: d.name,
@@ -188,116 +191,75 @@ const drawPlanets = () => {
         .text(d => d.name);
 }
 
-// const drawMissionPaths2 = async () => {
-//     const nodes = data.map(d => ({
-//             id: d.name,
-//             name: d.name,
-//             cx: planetDistanceScale(d.eclR) * Math.cos(d.eclTheta),
-//             cy: planetDistanceScale(d.eclR) * Math.sin(d.eclTheta),
-//             width: planetRadiusScale(d.radius*2),
-//             height: planetRadiusScale(d.radius*2),
-//             group: 1,
-//     }));
-//     const links = missionsData.map(d => ({
-//         source: d.origin.name,
-//         target: d.destination.name,
-//         value: d.name,
-//     }));
+const simplifyPath = (path) => {
+    if (path.length === 0) return null;
+    // delete adjacent duplicates
+    let newPath = [];
+    for (let i = 0; i < path.length; i++) {
+        if (i === 0 || path[i] !== path[i-1]) newPath.push(path[i]);
+    }
+    let allObj = data.map(d => d.name);
+    let planets = allObj.filter(name => name !== 'Sun' && name !== 'Earth');
+    let earthSun = ['Sun', 'Earth'];
+    // if path includes any planet
+    if (path.some(p => planets.includes(p))) {
+        // remove any Sun appearances and unknown objects
+        newPath = path.filter(p => p !== 'Sun');
+        newPath = newPath.filter(p => allObj.includes(p));
+        // remove any repeated appearances keeping the first
+        // as not to draw the return trip or similar
+        newPath = newPath.filter((p, i) => newPath.indexOf(p) === i);
+       return newPath;
+    }
+    // if includes any other object than Earth and Sun
+    // I can't draw it because I don't have the data yet
+    if (path.some(p => !earthSun.includes(p))) return null;
+    newPath = newPath.filter((p, i) => newPath.indexOf(p) === i);
+    if (newPath.length === 1) return [newPath[0], newPath[0]]; // Earth to Earth
+    return newPath; // Earth to Sun
+}
 
-//     console.log("nodes", nodes);
+const pathToLinks = (path, d) => {
+    return path.map((planetName, i) => {
+        if (i === 0) return null;
+        let source = data.find(planet => planet.name === path[i-1]);
+        let target = data.find(planet => planet.name === planetName);
+        return {
+            name: d.name,
+            origin: source,
+            destination: target
+        }
+    }).filter(d => d !== null);
+}
 
+const simplifyMissionsData = (d) => {    
+    if (!d.pieces || d.pieces.length === 0) return null;
+    // find the first piece that has an event with parent null and id deepspace (starts with D)
+    let firstDeepSpacePiece = d.pieces.find(piece => {
+        return piece.events.find(event => event.parent === null && event.id.startsWith('D'));
+    });
+    if (!firstDeepSpacePiece) return null;
+    let originObjectName = firstDeepSpacePiece.events[0].primary;
     
-//     const simulation = d3.forceSimulation(nodes)
-//         .force('link', d3.forceLink().id(d => d.id).distance(50)) // Link force configuration
-//         .force('charge', d3.forceManyBody().strength(-100)) // Adjust charge strength as needed
-//         .force('center', d3.forceCenter(systemCenter.x, systemCenter.y)); // Center of the system
+    // type starts with P
+    let payloads = d.pieces.filter(piece => piece.type.startsWith('P'));
+    let payloadPath = payloads.map(
+        payload => payload.events.map(event => event.primary)
+    );
+    // select lengthiest path
+    payloadPath = payloadPath.reduce((acc, path) => path.length > acc.length ? path : acc, []);
+    payloadPath = simplifyPath(payloadPath);
 
-//     // Draw the links
-// const link = g.selectAll('.link')
-// .data(links)
-// .enter().append('path') // Using 'path' instead of 'line'
-// .attr('class', 'link')
-// .attr('fill', 'none')
-// .attr('stroke', 'red') // Set stroke for visibility
-// .attr('stroke-opacity', 0.5)
-// .attr('stroke-width', 0.1)
-// // Add a title for the tooltip
-// // .append('title')
-// // .text(d => d.value);
+    if (!payloadPath) return null;
+    
+    let destinationObjectName = payloadPath[payloadPath.length - 1];
+    console.log("Mission", d.name, originObjectName, destinationObjectName);
+    console.log(payloadPath);
 
-
-// // Update the path data on each tick
-// simulation.on('tick', () => {
-// link.attr('d', function(d) {
-//     // Find the corresponding source and target nodes
-//     const sourceNode = d.source;
-//     const targetNode = d.target;
-
-//     if (sourceNode && targetNode) {
-//         // Calculate the distance and draw the path
-//         const dx = targetNode.cx - sourceNode.cx;
-//         const dy = targetNode.cy - sourceNode.cy;
-//         const dr = Math.sqrt(dx * dx + dy * dy);
-//         return `M${sourceNode.cx},${sourceNode.cy}A${dr},${dr} 0 0,1 ${targetNode.cx},${targetNode.cy}`;
-//     } else {
-//         console.error("Source or target node not found:", d);
-//         return ""; // Return an empty path if the nodes are not found
-//     }
-// });
-
-// // Update the node positions
-// node.attr('transform', d => `translate(${d.cx}, ${d.cy})`);
-// });
-
-
-
-//     // Draw the nodes
-//     const node = g.selectAll('.node')
-//         .data(nodes)
-//         .enter().append('g')
-//         .attr('class', 'node')
-//         .attr('transform', d => `translate(${d.cx}, ${d.cy})`);
-
-//     node.append('circle')
-//         .attr('r', d => d.width)
-//         .attr('fill', 'blue');
-
-//     // Add labels if needed
-//     node.append('text')
-//         .attr('dy', -3)
-//         .attr('dx', 12)
-//         // white text
-//         .attr('fill', 'white')
-//         .text(d => d.name);
-
-    // Update positions on each tick
-    // simulation.on('tick', () => {
-    //     // Update link positions
-    //     link.attr('x1', d => nodes.find(n => n.id === d.source).cx)
-    //         .attr('y1', d => nodes.find(n => n.id === d.source).cy)
-    //         .attr('x2', d => nodes.find(n => n.id === d.target).cx)
-    //         .attr('y2', d => nodes.find(n => n.id === d.target).cy);
-
-    //     // Update node positions
-    //     node.attr('transform', d => `translate(${d.cx}, ${d.cy})`);
-    // });
-
-//     // Start the simulation
-//     simulation.force("link").links(links);
-//     // stop the simulation after 1
-//     await new Promise(resolve => setTimeout(resolve, 1000));
-// }
-
-
-
-const simplifyMissionsData = (d) => {
-    if (!d.events || d.events.length === 0) return null;
-    let originObjectName = d.events[0].primary;
+    // Filter by the ones I can draw
     let originObject = data.find(planet => planet.name === originObjectName);
-    if (!originObject) return null;
-    let destinationObjectName = d.events[d.events.length - 1].primary;
     let destinationObject = data.find(planet => planet.name === destinationObjectName);
-    if (!destinationObject) return null;
+    if (!originObject || !destinationObject) return null;
 
     let origin = {
         name: originObjectName,
@@ -314,11 +276,25 @@ const simplifyMissionsData = (d) => {
     return {
         "name": d.name,
         "origin": origin,
-        "destination": destination
+        "destination": destination,
+        "links": pathToLinks(payloadPath, d)
     }
 }
 
-const drawMissionPaths = () => {
+const drawMissionPaths = (type) => {
+
+    // Flatten all mission paths
+    let allLinks = missionsData.reduce((acc, d) => {
+        acc.push(...d.links);
+        return acc;
+    }, []);
+
+    let linksPerSourceDestPair = allLinks.reduce((acc, d) => {
+        const key = `${d.origin.name}-${d.destination.name}`;
+        if (!acc[key]) acc[key] = [];
+        acc[key].push(d);
+        return acc;
+    }, {});
 
     const missionsPerSourceDestPair = missionsData.reduce((acc, d) => {
         const key = `${d.origin.name}-${d.destination.name}`;
@@ -327,12 +303,14 @@ const drawMissionPaths = () => {
         return acc;
     }, {});
 
-    // remove self missions
-    // missionsData = missionsData.filter(d => d.origin.name !== d.destination.name);
+    if (type === 'sourceDest') {
+        linksPerSourceDestPair = missionsPerSourceDestPair;
+        allLinks = missionsData;
+    }
 
     // draw a line from origin to destination
  g.selectAll('.mission')
-    .data(missionsData)
+    .data(allLinks)
     .enter()
     .append('path') // Use 'path' for curves
     .attr('class', 'mission')
@@ -344,9 +322,22 @@ const drawMissionPaths = () => {
         // The separation between the curves is controller by the number of missions
         // more missions = less separation so that they dont occupy too much space
 
-        const missionCount = missionsPerSourceDestPair[`${d.origin.name}-${d.destination.name}`].length;
+        if (!linksPerSourceDestPair[`${d.origin.name}-${d.destination.name}`]) {
+            console.error("No links for", d.origin.name, d.destination.name);
+            return "";
+        }
+        const pairMissions = linksPerSourceDestPair[`${d.origin.name}-${d.destination.name}`];
+        const missionCount = pairMissions.length;
         const halfMissionCount = Math.floor(missionCount / 2);
-        const indexInMissionsPerSource = missionsPerSourceDestPair[`${d.origin.name}-${d.destination.name}`].indexOf(d.name);
+        
+        // if elements of pairMissions are string, directly search
+        let indexInMissionsPerSource = null;
+        if (pairMissions[0].constructor === String) {
+            indexInMissionsPerSource = pairMissions.indexOf(d.name);
+        } else {
+            indexInMissionsPerSource = pairMissions.findIndex(m => m.name === d.name);
+        }
+        
         const maxWdithForLineGroup = 40;
         const separation = Math.min(maxWdithForLineGroup / halfMissionCount, 5);
         const rightOrLeft = indexInMissionsPerSource % 2 === 0 ? 1 : -1;
@@ -354,11 +345,21 @@ const drawMissionPaths = () => {
 
         // Calculate origin and destination points
         const r1 = planetDistanceScale(d.origin.eclR);
-        const x1 = r1 * Math.cos(d.origin.eclTheta);
-        const y1 = r1 * Math.sin(d.origin.eclTheta);
+        let x1 = r1 * Math.cos(d.origin.eclTheta);
+        let y1 = r1 * Math.sin(d.origin.eclTheta);
         const r2 = planetDistanceScale(d.destination.eclR);
-        const x2 = r2 * Math.cos(d.destination.eclTheta);
-        const y2 = r2 * Math.sin(d.destination.eclTheta);
+        let x2 = r2 * Math.cos(d.destination.eclTheta);
+        let y2 = r2 * Math.sin(d.destination.eclTheta);
+
+        // if any is Sun, set system center as the origin
+        if (d.origin.name === 'Sun') {
+            x1 = 0
+            y1 = 0
+        }
+        if (d.destination.name === 'Sun') {
+            x2 = 0
+            y2 = 0
+        }
 
         if (d.origin.name === d.destination.name) {
             
