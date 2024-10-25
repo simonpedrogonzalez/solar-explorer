@@ -50,6 +50,10 @@ body {
     background-color: #0056b3; /* Darker shade on hover */
 }
 
+input[type="range"] {
+    width: 500px;
+}
+
 /* Responsive styles */
 @media (max-width: 600px) {
     .switch-button {

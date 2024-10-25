@@ -73,3 +73,33 @@ export const updateOrbitalParameter = (x0, xDot, time, isAngular=false) => {
     }
     return x0 + xDot * time;
 }
+
+/**
+ * Get a Date from a fractional year
+ * @param {number} fractionalYear
+ * @returns {Date}
+ */
+export const fractionalYearToDate = (fractionalYear) => {
+    const year = Math.floor(fractionalYear);
+    const startOfYear = new Date(year, 0, 1);
+    const endOfYear = new Date(year + 1, 0, 1);
+    const millisecondsInYear = endOfYear - startOfYear;
+    const millisecondsElapsed = (fractionalYear-year) * millisecondsInYear;
+
+    return new Date(startOfYear.getTime() + millisecondsElapsed);
+}
+
+
+/**
+ * Get the fractional year of a given date
+ * @param {Date} date
+ * @returns {number}
+ */
+export const dateToFractionalYear = (date) => {
+    const startOfYear = new Date(date.getFullYear(), 0, 1);
+    const endOfYear = new Date(date.getFullYear() + 1, 0, 1);
+    const millisecondsInYear = endOfYear - startOfYear;
+    const millisecondsElapsed = date - startOfYear;
+
+    return date.getFullYear() + (millisecondsElapsed / millisecondsInYear);
+}

@@ -2,9 +2,8 @@ import { updateOrbitalParameter, daysToCenturies, dateToJ2000Day, shiftEpoch, da
 
 const RAD = Math.PI / 180.0;
 
-export const calculatePlanetPosition = (d) => {
-    const rawTime = new Date();
-    const time = dateToJ2000Centuries(rawTime);
+export const calculatePlanetPosition = (d, date) => {
+    const time = dateToJ2000Centuries(date);
 
     const a = updateOrbitalParameter(d.a_0, d.a_dot, time); // Semi-major axis
     const e = 0; // Eccentricity ignored for now (doesn't play well with log scale)

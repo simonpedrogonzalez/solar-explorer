@@ -52,7 +52,7 @@ A barebones version of the project was created with pure HTML, CSS and JS. The m
 ![alt text](image.png)
 
 ## Data Collection
-01 Oct 2024
+12 Oct 2024
 
 Author: Mathew Whitaker
 
@@ -139,3 +139,10 @@ Some failed implementation attempts:
 - Using d3 force simulation but forcing fixed node positions. This was tried in order to avoid curve overlapping without having to calculate the control points of the curves manually. However, it interfered with the other elements of the plot in a way that was hard to control.
 
 - Using cytoscape to draw the paths. With a similar idea than above (having a more organized set of edges with additional functionality), cytoscape was tried. However, the same problem as above was found, and the library was discarded for the moment.
+
+## Prototype with Time Slider
+25 October 2024
+
+By adding an HTML range input, we add an interactive component to the solar system dashboard, allowing users to change the current date, which updates the planetary positions. The design is a bit clunky, but it does work.
+
+![Prototype 25 October 2024](imageOct25.png)

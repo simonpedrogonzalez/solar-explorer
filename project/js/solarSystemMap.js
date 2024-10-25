@@ -1,16 +1,18 @@
 import { getPlanetsData, getMissionsData } from "../data/datasets.js";
 import { calculatePlanetPosition } from "./astronomyUtils.js";
+import { dateToFractionalYear, fractionalYearToDate } from "./timeUtils.js";
 
 const rad = Math.PI / 180;
 
 let svg, g;
 // Arbitrary
-let width = 1600, height=800;
+let width = window.innerWidth, height=window.innerHeight - 200;
 let systemCenter = { x: width / 2, y: height / 2 };
 let rawData;
 let data;
 let missionsData;
 let planetRadiusScale, planetDistanceScale;
+let date = new Date();
 
 /**
  * Create log scale for the radius of the planets
@@ -49,9 +51,9 @@ const getPlanetDistanceScale = (data) => {
 export const setup = async (containerId) => {
     // Load the data
     rawData = await getPlanetsData();
-    data = rawData.map(calculatePlanetPosition);
-    missionsData = await getMissionsData();
-    missionsData = missionsData.map(simplifyMissionsData).filter(d => d !== null);
+    data = rawData.map(x => calculatePlanetPosition(x, date));
+    let missionsDataRaw = await getMissionsData();
+    missionsData = missionsDataRaw.map(simplifyMissionsData).filter(d => d !== null);
     // Create the scales
     planetRadiusScale = getPlanetRadiusScale(data);
     planetDistanceScale = getPlanetDistanceScale(data);
@@ -77,6 +79,18 @@ export const setup = async (containerId) => {
     .duration(750)
     .call(zoom.transform, d3.zoomIdentity);
     });
+
+    d3.select("#timeslider-text").text(date.toDateString());
+    d3.select("#timeslider input")
+        .attr("value", dateToFractionalYear(date))
+        .on("input", (event) => {
+            date = fractionalYearToDate(event.target.value);
+            d3.select("#timeslider-text").text(date.toDateString());
+            data = rawData.map(x => calculatePlanetPosition(x, date));
+            missionsData = missionsDataRaw.map(simplifyMissionsData).filter(d => d !== null);
+            draw();
+        });
+
 }
 
 /**
@@ -89,6 +103,10 @@ export const draw = async () => {
 }
 
 const drawOrbits = () => {
+    g.selectAll('.orbit')
+        .data(data)
+        .attr('transform', d => `rotate(${(d.Omega + d.w) % 360})`)
+
     g.selectAll('.orbit')
         .data(data)
         .enter()
@@ -112,8 +130,7 @@ const drawOrbits = () => {
 const drawPlanets = () => {
     g.selectAll('.planet')
         .data(data)
-        .enter()
-        .append('circle')
+        .join("circle")
         .attr('class', 'planet')
         .attr('r', d => planetRadiusScale(d.radius))
         .attr('cx', d => {
@@ -248,13 +265,7 @@ const drawMissionPaths = (type) => {
         allLinks = missionsData;
     }
 
-    // draw a line from origin to destination
- g.selectAll('.mission')
-    .data(allLinks)
-    .enter()
-    .append('path') // Use 'path' for curves
-    .attr('class', 'mission')
-    .attr('d', (d, i) => {
+    const generatePathData = (d, i) => {
         // The idea is to create bezier curves from origin to destination, making
         // the curve more pronounced with increasing mission count with the same
         // origin and destination. For the same origin and destination, there are
@@ -269,7 +280,7 @@ const drawMissionPaths = (type) => {
         const pairMissions = linksPerSourceDestPair[`${d.origin.name}-${d.destination.name}`];
         const missionCount = pairMissions.length;
         const halfMissionCount = Math.floor(missionCount / 2);
-        
+
         // if elements of pairMissions are string, directly search
         let indexInMissionsPerSource = null;
         if (pairMissions[0].constructor === String) {
@@ -277,9 +288,9 @@ const drawMissionPaths = (type) => {
         } else {
             indexInMissionsPerSource = pairMissions.findIndex(m => m.name === d.name);
         }
-        
-        const maxWdithForLineGroup = 40;
-        const separation = Math.min(maxWdithForLineGroup / halfMissionCount, 5);
+
+        const maxWidthForLineGroup = 40;
+        const separation = Math.min(maxWidthForLineGroup / halfMissionCount, 5);
         const rightOrLeft = indexInMissionsPerSource % 2 === 0 ? 1 : -1;
         const indexInMissionsPerSourceHalf = Math.abs(indexInMissionsPerSource - halfMissionCount);
 
@@ -302,21 +313,21 @@ const drawMissionPaths = (type) => {
         }
 
         if (d.origin.name === d.destination.name) {
-            
+
             // Define starting offsets for control points
             const radiusOfSource = planetRadiusScale(data.find(planet => planet.name === d.origin.name).radius);
             const startingOffset = radiusOfSource + 2; // Starting offset for the control points
 
             // Calculate the control points based on the index
             const offset = (startingOffset + indexInMissionsPerSourceHalf * separation) * rightOrLeft;
-        
+
             // Control points
             const upperControlX = x1 + offset; // Right side control point for upper triangle vertex
             const upperControlY = y1 - offset; // Go higher for upper vertex
-        
+
             const lowerControlX = x1 + offset; // Right side control point for lower triangle vertex
             const lowerControlY = y1 + offset; // Go lower for lower vertex
-        
+
             // Create a quadratic Bezier curve with two control points
             return `M${x1},${y1} C${upperControlX},${upperControlY}
                     ${lowerControlX},${lowerControlY} ${x2},${y2}`;
@@ -340,10 +351,23 @@ const drawMissionPaths = (type) => {
         const offsetY = perpDy * offsetMagnitude;
         const cx = (x1 + x2) / 2 + offsetX;
         const cy = (y1 + y2) / 2 + offsetY;
-        
+
         // Create the curve
-        return `M${x1},${y1} Q${cx},${cy} ${x2},${y2}`;        
-    })
+        return `M${x1},${y1} Q${cx},${cy} ${x2},${y2}`;
+    }
+
+    g.selectAll('path.mission')
+        .data(allLinks)
+        .attr('d', generatePathData);
+
+
+    // draw a line from origin to destination
+ g.selectAll('.mission')
+    .data(allLinks)
+    .enter()
+    .append('path') // Use 'path' for curves
+    .attr('class', 'mission')
+    .attr('d', generatePathData)
     .attr('fill', 'none')
     .attr('stroke', 'red')
     .attr('stroke-opacity', 0.5)
