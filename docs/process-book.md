@@ -149,3 +149,19 @@ Author: Matthew Whitaker
 By adding an HTML range input, we add an interactive component to the solar system dashboard, allowing users to change the current date, which updates the planetary positions. The design is a bit clunky, but it does work.
 
 ![Prototype 25 October 2024](imageOct25.png)
+
+
+## Dashboard 2: Scatterplot Visualization
+Oct 25, 2024 Author: Sarah Khan
+
+The primary goal of Dashboard 2 is to visualize the relationship between a planet's distance from the Sun and its radius. This helps in understanding if there's a correlation between these two properties.
+
+Scatterplot Prototype:
+
+I chose a scatterplot as it is well-suited for visualizing the relationship between two numerical variables. Each planet is will represent as a point on the graph, with its distance from the Sun on the x-axis and its radius on the y-axis.
+Scales: Since both distance and radius values have a wide range, I used logarithmic scales for both axes. This helps in effectively visualizing the data without extreme values dominating the chart.
+Labels and Axes: I ensured clear axis labels ("Distance from Sun (AU)" and "Radius") and a title for the chart to provide context for the viewer.
+
+Background Image:
+
+Source: The background image, sourced from "url('https://www.solarsystemscope.com/images/background_stars_grid.jpg", provides a visually appealing space theme that complements the project theme.
