@@ -1,4 +1,6 @@
-# Process Book
+# Astronomy Visualization
+
+<!-- # Process Book
 
 [What to write in the process book?](https://www.dataviscourse.net/2024/project/)
 In general:
@@ -7,7 +9,7 @@ In general:
 - Description on how we did the data scaping, cleanup, etc, and initial visualizations on the data to explore it before starting to code, and how that affected some design decisions.
 - Design evolution, options considered, decisions taken, justifications.
 - Intent and functionality of the different design and interaction elements once implemented.
-- Evaluation: What did we learn about the data? How did you answer your questions and worked in general? What can be improved?
+- Evaluation: What did we learn about the data? How did you answer your questions and worked in general? What can be improved? -->
 
 ## Resources used for the project proposal
 
@@ -142,6 +144,7 @@ Some failed implementation attempts:
 
 ## Prototype with Time Slider
 25 October 2024
+Author: Matthew Whitaker
 
 By adding an HTML range input, we add an interactive component to the solar system dashboard, allowing users to change the current date, which updates the planetary positions. The design is a bit clunky, but it does work.
 
