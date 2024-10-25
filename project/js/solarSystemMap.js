@@ -109,64 +109,6 @@ const drawOrbits = () => {
         .attr('stroke-dasharray', '2,2');
 }
 
-const calculatePlanetPosition = (d) => {
-    // Get UNIX time, convert to Julian date, and then subtract J2000 (2451545.0) and convert to centuries
-    const time = (new Date().getTime()/86400000 + 2440587.5 - 2451545.0)/100.0;
-    const a = d.a_0 + d.a_dot * time; // Semi-major axis
-    const e = 0; //d.e_0 + d.e_dot * time; // Eccentricity
-    const b = a*Math.sqrt(1 - Math.pow(e, 2)); // Semiminor axis
-    const incl = 0; //d.incl_0 + d.incl_dot * time; // Inclination
-    let Omega =  (d.Omega_0 + d.Omega_dot * time) % 360.0; // Longitude of the ascending node
-    // const
-    console.log("Ω", d.name, Omega, d.curr_Omega);
-    Omega = d.curr_Omega;
-    let w = d.w_0 + d.w_dot * time; // Argument of perihelion
-    // const
-    console.log("ω", d.name, w, d.curr_w);
-    w = d.curr_w;
-    const Tp = ((d.Tp_0 + d.Tp_dot * time) - 2451545.0) / 100.0; // Time of perihelion passage
-    const P = (d.P_0 + d.P_dot * time) / 36525.0; // Orbital period (centuries)
-    const n = (d.n_0 + d.n_dot * time); // Mean motion
-    // let M = (((((time - Tp)%P) * n) % 360.0 + 360.0) % 360.0 * Math.PI / 180); // Mean anomaly 0 to 2π
-    let M = d.curr_M * rad;
-    if (M > Math.PI) M -= 2*Math.PI; // Mean anomaly -π to π
-
-    let E = M + e * Math.sin(M);
-    let delE = 1;
-    while (Math.abs(delE) > 1e-6) {
-        let delM = M - (E - e * Math.sin(E));
-        delE = delM / (1 - e * Math.cos(E));
-        E = E + delE;
-    }
-    const orbX = a * (Math.cos(E) - e);
-    const orbY = b * Math.sin(E);
-
-
-
-    const eclR = Math.sqrt(Math.pow(orbX, 2) + Math.pow(orbY, 2));
-    const eclTheta = -(Math.atan2(orbY, orbX) + w*rad + Omega*rad);
-
-    return {
-        id: d.id,
-        name: d.name,
-        color: d.color,
-        radius: d.radius,
-        rotperiod: d.rotperiod,
-        mass: d.mass,
-        primary: d.primary,
-        a: a,
-        b: b,
-        e: e,
-        incl: incl,
-        Omega: Omega,
-        w: w,
-        Tp: Tp,
-        P: P,
-        eclR: eclR,
-        eclTheta: eclTheta,
-    }
-}
-
 const drawPlanets = () => {
     g.selectAll('.planet')
         .data(data)
