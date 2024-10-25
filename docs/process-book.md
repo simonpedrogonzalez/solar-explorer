@@ -33,6 +33,8 @@ In general:
 - Think of the feature usefulness to the intended target audience before adding it.
 
 ## Technology exploration
+Oct 5, 2024
+Author: Simon Gonzalez
 
 We explored different options for the project, weighting the pros and cons of adding extra layers of complexity:
 - Node.js could be used if we want to have a server to store the data and do some kind of processing. However, at this stage, it seems that we can get away with just using static data files.
@@ -42,6 +44,8 @@ We explored different options for the project, weighting the pros and cons of ad
 For the moment, we chose the last option and try to maintain a clean code base. If needed, we can add a framework in the future. As we will use d3 with any alternative, we will decouple the d3 code from the rest as much as possible so switching to a framework isn't that problematic.
 
 ## First prototype
+Oct 11, 2024
+Author: Simon Gonzalez
 
 A barebones version of the project was created with pure HTML, CSS and JS. The main goal was to be able to visualize our data and start working on the d3 code. The first version only has a map of the solar system with log scales and colored planets with names in tooltips in a dark background. With this as a base, we can start adding other elements and trying design ideas.
 
@@ -49,6 +53,8 @@ A barebones version of the project was created with pure HTML, CSS and JS. The m
 
 ## Data Collection
 01 Oct 2024
+
+Author: Mathew Whitaker
 
 Data was collected from a catalog by Jonathan McDowell, an astronomer at the Harvard-Smithsonian Center for Astrophysics. The catalog contains information about all known artificial objects both in orbit around the Earth and on eep space missions, current and historical. The data was collected from the [General Catalog of Artificial Space Objects](https://planet4589.org/space/gcat/index.html). The data is in a CSV format and contains information about the object's name, launch date, launch site, and orbits, as well as a lot of supplementary data including details about planets, moons, comets, and asteroids.
 
@@ -72,6 +78,7 @@ The data is downloaded using a python file `process_data.py` that will also perf
 
 ## Data Cleaning
 17 Oct 2024
+Author: Mathew Whitaker
 
 The GCAT data uses several unique standards for dates, numerical values, and IDs, so the majority of the data cleaning involved reading in the values and parsing the format according to McDowell's specifications. The data was then saved in a JSON format for easier access from JavaScript.
 
@@ -83,6 +90,7 @@ Specifically, the data cleaning involved:
 
 ## Calculating Planetary Positions
 24 Oct 2024
+Author: Mathew Whitaker
 
 My original attempt at writing code to calculate the current position of the planets was not successful. After revisiting the code, I noticed the following issues, which each compounded to give drastically incorrect results:
  - The code was inconsistent in its use of time units (years vs. days), which made converting from one to the other ambiguous.
@@ -94,8 +102,40 @@ After fixing these issues, our code now correctly calculates the positions of th
  
 ## Prototype with Planetary Positions
 24 Oct 2024
+Author: Mathew Whitaker
 
 The prototype now displays the planets in their current relative position:
 
 ![Prototype 24 October 2024](imageOct24.png)
 
+## Prototype with Mission paths
+24 Oct 2024
+Author: Simon Gonzalez
+
+With the new planetary positions, we drew the paths of our missions dataset. The paths are non trivial since missions entail several phases and pieces (e.g. rocket parts, payload, rover, etc). As the first prototype of the mission paths, I only drew the paths of the missions destined to certain planets. We do have the data for other bodies, but we still need to place them in the map.
+
+I tried two options:
+- A path from the launch to the intended destination
+
+![alt text](missionPathOption2Oct24.png)
+
+
+- Several curves following all the planet orbits visited. For example, Voyager 2 visited Jupiter, Saturn, Uranus and Neptune.
+
+![alt text](missionPathOption1Oct24.png)
+
+We estimate that the first option could result in less clutter, but it looses some interesting information. For example, Voyager visited several planets on its way to the outer solar system, and that path would be lost in the first option.
+
+Some implementation details are:
+
+- The curves were drawn with two or three control point bezier curves, spaced evenly.
+
+- Both the mission paths and the planets display their corresponding name on hover.
+
+- Zooming in and out was added to the map.
+
+Some failed implementation attempts:
+
+- Using d3 force simulation but forcing fixed node positions. This was tried in order to avoid curve overlapping without having to calculate the control points of the curves manually. However, it interfered with the other elements of the plot in a way that was hard to control.
+
+- Using cytoscape to draw the paths. With a similar idea than above (having a more organized set of edges with additional functionality), cytoscape was tried. However, the same problem as above was found, and the library was discarded for the moment.
