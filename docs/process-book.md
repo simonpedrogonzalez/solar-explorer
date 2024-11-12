@@ -165,3 +165,41 @@ Labels and Axes: I ensured clear axis labels ("Distance from Sun (AU)" and "Radi
 Background Image:
 
 Source: The background image, sourced from "url('https://www.solarsystemscope.com/images/background_stars_grid.jpg", provides a visually appealing space theme that complements the project theme.
+
+
+## Design review
+
+Nov 8, 2024. Author: Simon Gonzalez
+
+Review of the design of the project taking into account more recent lectures and the peers feedback.
+
+### Domain:
+General public / space exploration enthusiasts.
+
+### Space missions map
+#### Tasks
+- Discover:
+	- outliers (missions to distant and/or unexplored objects)
+	- trends (most explored objects and most navigated paths)
+- Search:
+	- Explore (location unknown, target unknown) the solar system map with all its objects and missions.
+	- Locate (target known, location unknown) find the positions of different objects in the solar system at some point in time.
+- Enjoy (hopefully)
+
+### Interactions
+
+- Animated Transitions: across time, what was the position of the solar system objects and the missions to them.
+- Selection / highlighting: selecting a celestial object or mission to get a tooltip with additional information.
+- Navigation:
+	- translation and geometric zooming for exploring the map.
+	- Semantic zooming for exploring the location of the mission pieces (NTH)
+
+### Encodings
+
+- Orbits: 1d lines, vertical and horizontal position channels.
+- Objects: 0d Points, vertical and horizontal position channels, hue / texture channel for encoding the object.
+- Missions: 1d lines, vertical and horizontal position channels.
+
+### Chart junk
+
+- Some background stars.
