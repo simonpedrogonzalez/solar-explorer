@@ -1,4 +1,4 @@
-import { updateOrbitalParameter, daysToCenturies, dateToJ2000Day, shiftEpoch, dateToJulianDay, dateToJ2000Centuries } from "./timeUtils.js"
+import { updateOrbitalParameter, dateToJ2000Centuries } from "./time.js"
 
 const RAD = Math.PI / 180.0;
 
@@ -52,20 +52,20 @@ export const calculatePlanetPosition = (d, date) => {
     };
 }
 
-export const calculatePlanet2DOrbit = (d) => {
-    const dd = new Date();
-    const semiMajAxis = updateOrbitalParameter(d.a_0, d.a_dot, dd); // Semi-major axis
-    const ecc = updateOrbitalParameter(d.e_0, d.e_dot, dd); // Eccentricity
-    const semiMinAxis_ = semiMinAxis(semiMajAxis, ecc); // Semi-minor axis
-    const longAscNode = updateOrbitalParameter(d.Omega_0, d.Omega_dot, dd, true); // Longitude of the ascending node
-    const perihelion = updateOrbitalParameter(d.w_0, d.w_dot, dd, true); // Argument of perihelion
-    const orbitRotation = (longAscNode + perihelion) % 360.0; // Orbit rotation
-    return {
-        semiMajAxis,
-        semiMinAxis_,
-        orbitRotation
-    }
-}
+// export const calculatePlanet2DOrbit = (d) => {
+//     const dd = new Date();
+//     const semiMajAxis = updateOrbitalParameter(d.a_0, d.a_dot, dd); // Semi-major axis
+//     const ecc = updateOrbitalParameter(d.e_0, d.e_dot, dd); // Eccentricity
+//     const semiMinAxis_ = semiMinAxis(semiMajAxis, ecc); // Semi-minor axis
+//     const longAscNode = updateOrbitalParameter(d.Omega_0, d.Omega_dot, dd, true); // Longitude of the ascending node
+//     const perihelion = updateOrbitalParameter(d.w_0, d.w_dot, dd, true); // Argument of perihelion
+//     const orbitRotation = (longAscNode + perihelion) % 360.0; // Orbit rotation
+//     return {
+//         semiMajAxis,
+//         semiMinAxis_,
+//         orbitRotation
+//     }
+// }
 
 
 /**

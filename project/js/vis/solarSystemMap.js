@@ -1,62 +1,28 @@
-import { getPlanetsData, getMissionsData } from "../data/datasets.js";
-import { calculatePlanetPosition } from "./astronomyUtils.js";
-import { dateToFractionalYear, fractionalYearToDate } from "./timeUtils.js";
-
-const rad = Math.PI / 180;
+import { getPlanetsData, getMissionsData, getMissionSimplePathData } from "../data/datasets.js";
+import { calculatePlanetPosition } from "./utils/astro.js";
+import { dateToFractionalYear, fractionalYearToDate } from "./utils/time.js";
 
 let svg, g;
-// Arbitrary
 let width = window.innerWidth, height=window.innerHeight - 200;
 let systemCenter = { x: width / 2, y: height / 2 };
-let rawData;
-let data;
+let bodiesDataCurrentPositions;
+let bodiesData;
 let missionsData;
 let planetRadiusScale, planetDistanceScale;
 let date = new Date();
 
 /**
- * Create log scale for the radius of the planets
- * @param {Array<Object>} data
- * @return {d3.ScaleLogarithmic<number, number>}
- * */
-const getPlanetRadiusScale = (data) => {
-    // Arbitrary
-    const maxRadiusInPixels = Math.min(width, height) / 30;
-    // Arbitrary
-    const minRadiusInPixels = maxRadiusInPixels / 10;
-    return d3.scaleLog()
-        .domain(d3.extent(data, d => d.radius === 0? 1: d.radius))
-        .range([minRadiusInPixels, maxRadiusInPixels]);
-}
-
-/**
- * Create log scale for the distance of the planets from the Sun
- * @param {Array<Object>} data
- * @return {d3.ScaleLogarithmic<number, number>}
- * */
-const getPlanetDistanceScale = (data) => {
-    // Arbitrary
-    const planetsWithoutSun = data.filter(d => d.name !== 'Sun');
-    const maxDistanceInPixels = Math.min(width, height) / 2 * 0.9;
-    const minDistanceInPixels = 50;
-    return d3.scaleLog()
-        .domain(d3.extent(planetsWithoutSun, d => d.a))
-        .range([minDistanceInPixels, maxDistanceInPixels]);
-}
-
-/**
- * Initialize module values
+ * Initialize module
  * @param {string} containerId
  * */
 export const setup = async (containerId) => {
     // Load the data
-    rawData = await getPlanetsData();
-    data = rawData.map(x => calculatePlanetPosition(x, date));
-    let missionsDataRaw = await getMissionsData();
-    missionsData = missionsDataRaw.map(simplifyMissionsData).filter(d => d !== null);
+    bodiesDataCurrentPositions = await getPlanetsData();
+    bodiesData = bodiesDataCurrentPositions.map(x => calculatePlanetPosition(x, date));
+    missionsData = await getMissionSimplePathData();
     // Create the scales
-    planetRadiusScale = getPlanetRadiusScale(data);
-    planetDistanceScale = getPlanetDistanceScale(data);
+    planetRadiusScale = getPlanetRadiusScale(bodiesData);
+    planetDistanceScale = getPlanetDistanceScale(bodiesData);
     // Create the SVG container
     svg = d3.select(containerId)
         .append('svg')
@@ -80,29 +46,31 @@ export const setup = async (containerId) => {
     .call(zoom.transform, d3.zoomIdentity);
     });
 
+    // Create the time slider
     d3.select("#timeslider-text").text(date.toDateString());
     d3.select("#timeslider input")
         .attr("value", dateToFractionalYear(date))
         .on("input", (event) => {
             date = fractionalYearToDate(event.target.value);
             d3.select("#timeslider-text").text(date.toDateString());
-            data = rawData.map(x => calculatePlanetPosition(x, date));
-            missionsData = missionsDataRaw.map(simplifyMissionsData).filter(d => d !== null);
-            draw();
+            bodiesData = bodiesDataCurrentPositions.map(x => calculatePlanetPosition(x, date));
+            const filteredMissionsData = missionsData.filter(d => d.launch_date <= date);
+            draw(bodiesData, filteredMissionsData);
         });
 
+    draw(bodiesData, missionsData);
 }
 
 /**
  * Draw the solar system map
  * */
-export const draw = async () => {
-    drawOrbits();
-    drawMissionPaths(); // this first to be behind the planets
-    drawPlanets();
+export const draw = async (bodiesData, missionsData) => {
+    drawOrbits(bodiesData);
+    drawMissionPaths(missionsData, bodiesData, "fullPath"); // this first to be behind the planets
+    drawPlanets(bodiesData);
 }
 
-const drawOrbits = () => {
+const drawOrbits = (data) => {
     g.selectAll('.orbit')
         .data(data)
         .attr('transform', d => `rotate(${(d.Omega + d.w) % 360})`)
@@ -127,7 +95,7 @@ const drawOrbits = () => {
         .attr('stroke-dasharray', '2,2');
 }
 
-const drawPlanets = () => {
+const drawPlanets = (data) => {
     g.selectAll('.planet')
         .data(data)
         .join("circle")
@@ -148,103 +116,32 @@ const drawPlanets = () => {
         .text(d => d.name);
 }
 
-const simplifyPath = (path) => {
-    if (path.length === 0) return null;
-    // delete adjacent duplicates
-    let newPath = [];
-    for (let i = 0; i < path.length; i++) {
-        if (i === 0 || path[i] !== path[i-1]) newPath.push(path[i]);
-    }
-    let allObj = data.map(d => d.name);
-    let planets = allObj.filter(name => name !== 'Sun' && name !== 'Earth');
-    let earthSun = ['Sun', 'Earth'];
-    // if path includes any planet
-    if (path.some(p => planets.includes(p))) {
-        // remove any Sun appearances and unknown objects
-        newPath = path.filter(p => p !== 'Sun');
-        newPath = newPath.filter(p => allObj.includes(p));
-        // remove any repeated appearances keeping the first
-        // as not to draw the return trip or similar
-        newPath = newPath.filter((p, i) => newPath.indexOf(p) === i);
-       return newPath;
-    }
-    // if includes any other object than Earth and Sun
-    // I can't draw it because I don't have the data yet
-    if (path.some(p => !earthSun.includes(p))) return null;
-    newPath = newPath.filter((p, i) => newPath.indexOf(p) === i);
-    if (newPath.length === 1) return [newPath[0], newPath[0]]; // Earth to Earth
-    return newPath; // Earth to Sun
-}
-
-const pathToLinks = (path, d) => {
-    return path.map((planetName, i) => {
-        if (i === 0) return null;
-        let source = data.find(planet => planet.name === path[i-1]);
-        let target = data.find(planet => planet.name === planetName);
-        return {
-            name: d.name,
-            origin: source,
-            destination: target
-        }
-    }).filter(d => d !== null);
-}
-
-const simplifyMissionsData = (d) => {    
-    if (!d.pieces || d.pieces.length === 0) return null;
-    // find the first piece that has an event with parent null and id deepspace (starts with D)
-    let firstDeepSpacePiece = d.pieces.find(piece => {
-        return piece.events.find(event => event.parent === null && event.id.startsWith('D'));
-    });
-    if (!firstDeepSpacePiece) return null;
-    let originObjectName = firstDeepSpacePiece.events[0].primary;
-    
-    // type starts with P
-    let payloads = d.pieces.filter(piece => piece.type.startsWith('P'));
-    let payloadPath = payloads.map(
-        payload => payload.events.map(event => event.primary)
-    );
-    // select lengthiest path
-    payloadPath = payloadPath.reduce((acc, path) => path.length > acc.length ? path : acc, []);
-    payloadPath = simplifyPath(payloadPath);
-
-    if (!payloadPath) return null;
-    
-    let destinationObjectName = payloadPath[payloadPath.length - 1];
-    console.log("Mission", d.name, originObjectName, destinationObjectName);
-    console.log(payloadPath);
-
-    // Filter by the ones I can draw
-    let originObject = data.find(planet => planet.name === originObjectName);
-    let destinationObject = data.find(planet => planet.name === destinationObjectName);
-    if (!originObject || !destinationObject) return null;
-
-    let origin = {
-        name: originObjectName,
-        eclR: originObject.eclR,
-        eclTheta: originObject.eclTheta
-    }
-
-    let destination = {
-        name: destinationObjectName,
-        eclR: destinationObject.eclR,
-        eclTheta: destinationObject.eclTheta
-    }
-
-    return {
-        "name": d.name,
-        "origin": origin,
-        "destination": destination,
-        "links": pathToLinks(payloadPath, d)
-    }
-}
-
-const drawMissionPaths = (type) => {
+const drawMissionPaths = (missionsData, bodiesData, type) => {
 
     // Flatten all mission paths
     let allLinks = missionsData.reduce((acc, d) => {
         acc.push(...d.links);
         return acc;
     }, []);
+
+    // Update the origin and destination eclR and eclTheta based on bodiesData
+    allLinks = allLinks.map(d => {
+        const origin = bodiesData.find(planet => planet.name === d.origin.name);
+        const destination = bodiesData.find(planet => planet.name === d.destination.name);
+        return {
+            ...d,
+            origin: {
+                ...d.origin,
+                eclR: origin.eclR,
+                eclTheta: origin.eclTheta
+            },
+            destination: {
+                ...d.destination,
+                eclR: destination.eclR,
+                eclTheta: destination.eclTheta
+            }
+        }
+    });
 
     let linksPerSourceDestPair = allLinks.reduce((acc, d) => {
         const key = `${d.origin.name}-${d.destination.name}`;
@@ -315,7 +212,7 @@ const drawMissionPaths = (type) => {
         if (d.origin.name === d.destination.name) {
 
             // Define starting offsets for control points
-            const radiusOfSource = planetRadiusScale(data.find(planet => planet.name === d.origin.name).radius);
+            const radiusOfSource = planetRadiusScale(bodiesData.find(planet => planet.name === d.origin.name).radius);
             const startingOffset = radiusOfSource + 2; // Starting offset for the control points
 
             // Calculate the control points based on the index
@@ -360,19 +257,60 @@ const drawMissionPaths = (type) => {
         .data(allLinks)
         .attr('d', generatePathData);
 
-
     // draw a line from origin to destination
- g.selectAll('.mission')
-    .data(allLinks)
-    .enter()
-    .append('path') // Use 'path' for curves
-    .attr('class', 'mission')
-    .attr('d', generatePathData)
-    .attr('fill', 'none')
-    .attr('stroke', 'red')
-    .attr('stroke-opacity', 0.5)
-    .attr('stroke-width', 1)
-    .append('title')
-    .text(d => d.name);
+//  g.selectAll('.mission')
+//     .data(allLinks)
+//     .enter()
+//     .append('path')
+//     .attr('class', 'mission')
+//     .attr('d', generatePathData)
+//     .attr('fill', 'none')
+//     .attr('stroke', 'red')
+//     .attr('stroke-opacity', 0.5)
+//     .attr('stroke-width', 1)
+//     .append('title')
+//     .text(d => d.name);
+g.selectAll('.mission')
+  .data(allLinks, d => d.name) // Use a key function if items have unique identifiers
+  .join(
+    enter => enter.append('path')
+                  .attr('class', 'mission')
+                  .attr('d', generatePathData)
+                  .attr('fill', 'none')
+                  .attr('stroke', 'red')
+                  .attr('stroke-opacity', 0.5)
+                  .attr('stroke-width', 1)
+                  .append('title')
+                  .text(d => d.name),
+    update => update, // keep the existing paths if needed
+    exit => exit.remove() // remove paths that are no longer in the data
+  );
 }
 
+/**
+ * Create log scale for the radius of the planets
+ * @param {Array<Object>} data
+ * @return {d3.ScaleLogarithmic<number, number>}
+ * */
+const getPlanetRadiusScale = (data) => {
+    const maxRadiusInPixels = Math.min(width, height) / 30;
+    const minRadiusInPixels = maxRadiusInPixels / 10;
+    return d3.scaleLog()
+        .domain(d3.extent(data, d => d.radius === 0? 1: d.radius))
+        .range([minRadiusInPixels, maxRadiusInPixels]);
+}
+
+/**
+ * Create log scale for the distance of the planets from the Sun
+ * @param {Array<Object>} data
+ * @return {d3.ScaleLogarithmic<number, number>}
+ * */
+const getPlanetDistanceScale = (data) => {
+    // Arbitrary
+    const planetsWithoutSun = data.filter(d => d.name !== 'Sun');
+    const maxDistanceInPixels = Math.min(width, height) / 2 * 0.9;
+    const minDistanceInPixels = 50;
+    return d3.scaleLog()
+        .domain(d3.extent(planetsWithoutSun, d => d.a))
+        .range([minDistanceInPixels, maxDistanceInPixels]);
+}

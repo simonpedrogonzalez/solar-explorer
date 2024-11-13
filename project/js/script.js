@@ -1,5 +1,5 @@
-import * as solarSystemMap from './solarSystemMap.js';
-import * as scatterPlot from './scatterPlot.js';
+import * as solarSystemMap from './vis/solarSystemMap.js';
+import * as scatterPlot from './vis/scatterPlot.js';
 
 document.addEventListener('DOMContentLoaded', function () {
     const switchButton = document.getElementById('switchButton');
@@ -32,10 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    solarSystemMap.setup('#dashboard1').then(() => {
-        solarSystemMap.draw().then(() => {
-            console.log('Solar system map drawn');
-        });
-    });
+    solarSystemMap.setup('#dashboard1');
 
 });
