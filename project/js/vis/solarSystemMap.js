@@ -162,7 +162,7 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
         allLinks = missionsData;
     }
 
-    const generatePathData = (d, i) => {
+    const drawBezierCurves = (d, i) => {
         // The idea is to create bezier curves from origin to destination, making
         // the curve more pronounced with increasing mission count with the same
         // origin and destination. For the same origin and destination, there are
@@ -255,36 +255,23 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
 
     g.selectAll('path.mission')
         .data(allLinks)
-        .attr('d', generatePathData);
+        .attr('d', drawBezierCurves);
 
-    // draw a line from origin to destination
-//  g.selectAll('.mission')
-//     .data(allLinks)
-//     .enter()
-//     .append('path')
-//     .attr('class', 'mission')
-//     .attr('d', generatePathData)
-//     .attr('fill', 'none')
-//     .attr('stroke', 'red')
-//     .attr('stroke-opacity', 0.5)
-//     .attr('stroke-width', 1)
-//     .append('title')
-//     .text(d => d.name);
-g.selectAll('.mission')
-  .data(allLinks, d => d.name) // Use a key function if items have unique identifiers
-  .join(
-    enter => enter.append('path')
-                  .attr('class', 'mission')
-                  .attr('d', generatePathData)
-                  .attr('fill', 'none')
-                  .attr('stroke', 'red')
-                  .attr('stroke-opacity', 0.5)
-                  .attr('stroke-width', 1)
-                  .append('title')
-                  .text(d => d.name),
-    update => update, // keep the existing paths if needed
-    exit => exit.remove() // remove paths that are no longer in the data
-  );
+    g.selectAll('.mission')
+    .data(allLinks, d => d.name) // Use a "key function" for unique identifiers
+    .join(
+        enter => enter.append('path')
+                    .attr('class', 'mission')
+                    .attr('d', drawBezierCurves)
+                    .attr('fill', 'none')
+                    .attr('stroke', 'red')
+                    .attr('stroke-opacity', 0.5)
+                    .attr('stroke-width', 1)
+                    .append('title')
+                    .text(d => d.name),
+        update => update,
+        exit => exit.remove()
+    );
 }
 
 /**
