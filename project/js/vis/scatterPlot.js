@@ -1,4 +1,4 @@
-import { oldPlanetsData } from "../data/datasets.js";
+import { getOldPlanetsData } from "../data/datasets.js";
 
 let svg, g;
 // Arbitrary
@@ -48,7 +48,7 @@ const getPlanetDistanceScale = (data) => {
  * */
 export const setup = async (containerId) => {
     // Load the data
-    data = await oldPlanetsData();
+    data = await getOldPlanetsData();
     // exclude sun
     data = data.filter(d => d.name !== 'Sun');
     // Create the scales
