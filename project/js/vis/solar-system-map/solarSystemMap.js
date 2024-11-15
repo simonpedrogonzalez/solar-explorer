@@ -1,6 +1,6 @@
-import { getPlanetsData, getMissionsData, getMissionSimplePathData } from "../data/datasets.js";
-import { calculatePlanetPosition } from "./utils/astro.js";
-import { dateToFractionalYear, fractionalYearToDate } from "./utils/time.js";
+import { getPlanetsData, getMissionsData, getMissionSimplePathData, getSatellitesData } from "../../data/datasets.js";
+import { calculatePlanetPosition } from "../utils/astro.js";
+import { dateToFractionalYear, fractionalYearToDate } from "../utils/time.js";
 
 let svg, g;
 let width = window.innerWidth, height=window.innerHeight - 200;

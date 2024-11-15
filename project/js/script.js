@@ -1,4 +1,4 @@
-import * as solarSystemMap from './vis/solarSystemMap.js';
+import * as solarSystemMap from './vis/solar-system-map/solarSystemMap.js';
 import * as scatterPlot from './vis/scatterPlot.js';
 
 document.addEventListener('DOMContentLoaded', function () {
