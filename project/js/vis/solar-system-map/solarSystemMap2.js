@@ -1,11 +1,11 @@
-import { getPlanetsData, getMissionsData, getMissionSimplePathData, getSatellitesData } from "../../data/datasets.js";
-import { calculatePlanetPosition } from "../utils/astro.js";
+import { getBodiesData, getMissionSimplePathData, getMissionsData, getPlanetsData } from "../../data/datasets.js";
+import { calculatePlanetPosition2 } from "../utils/astro.js";
 import { dateToFractionalYear, fractionalYearToDate } from "../utils/time.js";
+import { updateBodiesVisData } from "./bodies.js";
 
 let svg, g;
 let width = window.innerWidth, height=window.innerHeight - 200;
 let systemCenter = { x: width / 2, y: height / 2 };
-let bodiesDataCurrentPositions;
 let bodiesData;
 let missionsData;
 let planetRadiusScale, planetDistanceScale;
@@ -17,8 +17,12 @@ let date = new Date();
  * */
 export const setup = async (containerId) => {
     // Load the data
-    bodiesDataCurrentPositions = await getPlanetsData();
-    bodiesData = bodiesDataCurrentPositions.map(x => calculatePlanetPosition(x, date));
+    bodiesData = await getBodiesData();
+    
+    // TODO: remove this line when Pluto data is available
+    bodiesData = bodiesData.filter(d => d.primary !== 'Pluto');
+
+    bodiesData = updatePlanetPositions(bodiesData, date);
     missionsData = await getMissionSimplePathData();
     // Create the scales
     planetRadiusScale = getPlanetRadiusScale(bodiesData);
@@ -53,7 +57,7 @@ export const setup = async (containerId) => {
         .on("input", (event) => {
             date = fractionalYearToDate(event.target.value);
             d3.select("#timeslider-text").text(date.toDateString());
-            bodiesData = bodiesDataCurrentPositions.map(x => calculatePlanetPosition(x, date));
+            bodiesData = updatePlanetPositions(bodiesData, date);
             const filteredMissionsData = missionsData.filter(d => d.launch_date <= date);
             draw(bodiesData, filteredMissionsData);
         });
@@ -65,55 +69,43 @@ export const setup = async (containerId) => {
  * Draw the solar system map
  * */
 export const draw = async (bodiesData, missionsData) => {
-    drawOrbits(bodiesData);
-    drawMissionPaths(missionsData, bodiesData, "fullPath"); // this first to be behind the planets
-    drawPlanets(bodiesData);
+    bodiesData = updateBodiesVisData(bodiesData, planetDistanceScale, planetRadiusScale);
+    drawBodiesOrbits(bodiesData.filter(d => d.type !== 'satellite'));
+    // drawMissionPaths(missionsData, bodiesData, "fullPath"); // this first to be behind the planets
+    drawBodies(bodiesData.filter(d => d.type !== 'satellite'));
 }
 
-const drawOrbits = (data) => {
+const drawBodiesOrbits = (data) => {
     g.selectAll('.orbit')
-        .data(data)
-        .attr('transform', d => `rotate(${(d.Omega + d.w) % 360})`)
-
-    g.selectAll('.orbit')
-        .data(data)
+        .data(data.filter(d => d.name !== 'Sun'))
         .enter()
         .append('g')
-        .attr('transform', d => `rotate(${(d.Omega + d.w) % 360})`)
+        .attr('transform', d => {
+            console.log(d.name, d.vis);
+            return d.vis.orbit.rotation
+        })
         .append('ellipse')
         .attr('class', 'orbit')
-        .attr('rx', d => {
-            const distance = planetDistanceScale(d.b);
-            return (isNaN(distance) || distance < 0) ? 0 : distance; // Sun will have Nan, fallback to 0
-        })
-        .attr('ry', d => {
-            const distance = planetDistanceScale(d.a);
-            return (isNaN(distance) || distance < 0) ? 0 : distance; // Sun will have Nan, fallback to 0
-        })
+        .attr('rx', d => d.vis.orbit.rx)
+        .attr('ry', d => d.vis.orbit.ry)
         .attr('fill', 'none')
         .attr('stroke', '#ccc')
         .attr('stroke-dasharray', '2,2');
 }
 
-const drawPlanets = (data) => {
-    g.selectAll('.planet')
+const drawBodies = (data) => {
+    g.selectAll('.body')
         .data(data)
         .join("circle")
-        .attr('class', 'planet')
-        .attr('r', d => planetRadiusScale(d.radius))
-        .attr('cx', d => {
-            const r = planetDistanceScale(d.eclR);
-            if (d.name == "Neptune") {
-                console.log("Neptune",d.eclR, d.eclTheta, r);
+        .attr('class', 'body')
+        .attr('r', d => d.vis.body.r)
+        .attr('cx', (d) => {
+            if (d.name === 'Neptune') {
+                console.log(d.name, d.radial_distance_from_primary, d.angular_position_in_ecliptic, d.vis.body.cx);
             }
-            if (isNaN(r) || r < 0) return 0;  // Sun has NaN, fallback to 0
-            return r * Math.cos(d.eclTheta);
+            return d.vis.body.cx;
         })
-        .attr('cy', d => {
-            const r = planetDistanceScale(d.eclR);
-            if (isNaN(r) || r < 0) return 0;  // Sun has NaN, fallback to 0
-            return r * Math.sin(d.eclTheta);
-        })
+        .attr('cy', d => d.vis.body.cy)
         .attr('fill', d => d.color)
         .append('title')
         .text(d => d.name);
@@ -285,6 +277,7 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
 const getPlanetRadiusScale = (data) => {
     const maxRadiusInPixels = Math.min(width, height) / 30;
     const minRadiusInPixels = maxRadiusInPixels / 10;
+    data = data.filter(d => d.type === 'planet' || d.type === 'star');
     return d3.scaleLog()
         .domain(d3.extent(data, d => d.radius === 0? 1: d.radius))
         .range([minRadiusInPixels, maxRadiusInPixels]);
@@ -297,10 +290,19 @@ const getPlanetRadiusScale = (data) => {
  * */
 const getPlanetDistanceScale = (data) => {
     // Arbitrary
-    const planetsWithoutSun = data.filter(d => d.name !== 'Sun');
+    const planetsWithoutSun = data.filter(d => d.type === 'planet');
     const maxDistanceInPixels = Math.min(width, height) / 2 * 0.9;
-    const minDistanceInPixels = 50;
+    const minDistanceInPixels = 40;
     return d3.scaleLog()
-        .domain(d3.extent(planetsWithoutSun, d => d.a))
+        .domain(d3.extent(planetsWithoutSun, d => d.semi_major_axis))
         .range([minDistanceInPixels, maxDistanceInPixels]);
+}
+
+
+const updatePlanetPositions = (data, date) => {
+    data.filter(d => d.type == 'planet' || d.type == 'star').forEach(d => {
+        const newOrbitalParameters = calculatePlanetPosition2(d, date);
+        Object.assign(d, newOrbitalParameters);
+    });
+    return data;
 }

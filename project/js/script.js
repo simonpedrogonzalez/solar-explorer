@@ -1,4 +1,5 @@
 import * as solarSystemMap from './vis/solar-system-map/solarSystemMap.js';
+import * as solarSystemMap2 from './vis/solar-system-map/solarSystemMap2.js';
 import * as scatterPlot from './vis/scatterPlot.js';
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -19,12 +20,13 @@ document.addEventListener('DOMContentLoaded', function () {
             currentDashboard = 2;
 
              // *** Add the background image setting here ***
-             dashboard2.style.backgroundImage = "url('https://www.solarsystemscope.com/images/background_stars_grid.jpg')"; 
+            //  dashboard2.style.backgroundImage = "url('https://www.solarsystemscope.com/images/background_stars_grid.jpg')"; 
 
             
-            scatterPlot.setup('#dashboard2').then(() => { // Call setup when shown
-                scatterPlot.draw();
-            });
+            // scatterPlot.setup('#dashboard2').then(() => { // Call setup when shown
+            //     scatterPlot.draw();
+            // });
+            solarSystemMap.setup('#dashboard2');
         } else {
             dashboard2.style.display = 'none';
             dashboard1.style.display = 'block';
@@ -32,6 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    solarSystemMap.setup('#dashboard1');
+    solarSystemMap2.setup('#dashboard1');
 
 });

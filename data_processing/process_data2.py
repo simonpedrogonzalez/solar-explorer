@@ -16,7 +16,7 @@ def process_planet(planet):
     return {
         "id": planet.get("id"),
         "name": planet.get("name"),
-        "type": "planet",
+        "type": "star" if planet.get("name") == "Sun" else "planet",
         "primary": planet.get("primary"),       # Central body it orbits
         "radius": planet.get("radius"),        # Planet radius
         "mass": planet.get("mass"),            # Planet mass
@@ -38,6 +38,7 @@ def process_planet(planet):
     }
 
 def process_satellite(satellite):
+    KM_TO_AU = 149597870.7  # Conversion factor from kilometers to AU
     return {
         "id": satellite.get("Code"),           # Unique identifier for the satellite
         "name": satellite.get("Satellite"),    # Name of the satellite
@@ -46,9 +47,9 @@ def process_satellite(satellite):
         "right_ascension": satellite.get("R.A. (deg)"),  # Right ascension in degrees
         "declination": satellite.get("Dec. (deg)"),      # Declination in degrees
         "tilt": satellite.get("Tilt (deg)"),             # Orbital tilt in degrees
+        "eccentricity": satellite.get("e"),               # Orbital eccentricity
         # "reference": satellite.get("Ref."),              # Reference or source ID
-        "semi_major_axis": satellite.get("a (km)"),  # Semi-major axis in kilometers
-        "eccentricity": satellite.get("e"),          # Orbital eccentricity
+        "semi_major_axis": satellite.get("a (km)") / KM_TO_AU if satellite.get("a (km)") else None,  # Convert to AU        "eccentricity": satellite.get("e"),          # Orbital eccentricity
         "inclination": satellite.get("i (deg)"),     # Orbital inclination in degrees
         "longitude_of_ascending_node": satellite.get("node (deg)"),  # Longitude of ascending node
         "argument_of_periapsis": satellite.get("ω (deg)"),  # Argument of periapsis
@@ -64,7 +65,7 @@ def check_satellite_primaries(satellites, planets):
 
     # Find satellites whose primary does not match any planet name
     invalid_satellites = [
-        satellite for satellite in satellites
+        (satellite.get('primary'), satellite.get('name')) for satellite in satellites
         if satellite.get('primary') not in planet_names
     ]
 
@@ -97,7 +98,8 @@ def unify_bodies(planets_path, satellites_path, output_path):
         new_satellites.append(process_satellite(satellite))
 
     # Check primaries
-    check_satellite_primaries(new_satellites, new_planets)
+    res = check_satellite_primaries(new_satellites, new_planets)
+    print(res)
     
     # Combine planets and satellites
     bodies = new_planets + new_satellites
