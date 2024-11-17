@@ -5,18 +5,16 @@ const RAD = Math.PI / 180.0;
 export const calculatePlanetPosition2 = (d, date) => {
     const time = dateToJ2000Centuries(date);
 
-    let a_0 = d.semi_major_axis;
+    let a_0 = d.semi_major_axis_0;
     let a_dot = d.semi_major_axis_rate;
-    let Omega_0 = d.longitude_of_ascending_node;
+    let Omega_0 = d.longitude_of_ascending_node_0;
     let Omega_dot = d.longitude_of_ascending_node_rate;
-    let w_0 = d.argument_of_periapsis;
+    let w_0 = d.argument_of_periapsis_0;
     let w_dot = d.argument_of_periapsis_rate;
-    let P_0 = d.orbital_period;
+    let P_0 = d.orbital_period_0;
     let P_dot = d.orbital_period_rate;
-    let M_0 = d.mean_anomaly;
+    let M_0 = d.mean_anomaly_0;
     let M_dot = d.mean_anomaly_rate;
-
-
 
     const a = updateOrbitalParameter(a_0, a_dot, time); // Semi-major axis
     const e = 0; // Eccentricity ignored for now (doesn't play well with log scale)

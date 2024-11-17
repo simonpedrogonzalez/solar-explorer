@@ -21,19 +21,19 @@ def process_planet(planet):
         "radius": planet.get("radius"),        # Planet radius
         "mass": planet.get("mass"),            # Planet mass
         "rotation_period": planet.get("rotperiod"),  # Rotation period
-        "semi_major_axis": planet.get("a_0"),       # Initial semi-major axis
+        "semi_major_axis_0": planet.get("a_0"),       # Initial semi-major axis
         "semi_major_axis_rate": planet.get("a_dot"),  # Rate of change of semi-major axis
-        "eccentricity": planet.get("e_0"),          # Initial eccentricity
+        "eccentricity_0": planet.get("e_0"),          # Initial eccentricity
         "eccentricity_rate": planet.get("e_dot"),   # Rate of change of eccentricity
-        "inclination": planet.get("incl_0"),        # Initial inclination
+        "inclination_0": planet.get("incl_0"),        # Initial inclination
         "inclination_rate": planet.get("incl_dot"), # Rate of change of inclination
-        "longitude_of_ascending_node": planet.get("Omega_0"),  # Initial longitude of ascending node
+        "longitude_of_ascending_node_0": planet.get("Omega_0"),  # Initial longitude of ascending node
         "longitude_of_ascending_node_rate": planet.get("Omega_dot"),  # Rate of change of longitude
-        "argument_of_periapsis": planet.get("w_0"),   # Initial argument of periapsis
+        "argument_of_periapsis_0": planet.get("w_0"),   # Initial argument of periapsis
         "argument_of_periapsis_rate": planet.get("w_dot"),  # Rate of change of argument of periapsis
-        "mean_anomaly": planet.get("M_0"),           # Initial mean anomaly
+        "mean_anomaly_0": planet.get("M_0"),           # Initial mean anomaly
         "mean_anomaly_rate": planet.get("M_dot"),    # Rate of change of mean anomaly
-        "orbital_period": planet.get("P_0"),         # Initial orbital period
+        "orbital_period_0": planet.get("P_0"),         # Initial orbital period
         "orbital_period_rate": planet.get("P_dot"),  # Rate of change of orbital period
     }
 

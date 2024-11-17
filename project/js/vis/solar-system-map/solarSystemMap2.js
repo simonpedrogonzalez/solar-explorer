@@ -1,5 +1,5 @@
 import { getBodiesData, getMissionSimplePathData, getMissionsData, getPlanetsData } from "../../data/datasets.js";
-import { calculatePlanetPosition2 } from "../utils/astro.js";
+import { calculatePlanetPosition2, calculatePlanetPosition } from "../utils/astro.js";
 import { dateToFractionalYear, fractionalYearToDate } from "../utils/time.js";
 import { updateBodiesVisData } from "./bodies.js";
 
@@ -7,6 +7,7 @@ let svg, g;
 let width = window.innerWidth, height=window.innerHeight - 200;
 let systemCenter = { x: width / 2, y: height / 2 };
 let bodiesData;
+let planetsData;
 let missionsData;
 let planetRadiusScale, planetDistanceScale;
 let date = new Date();
@@ -21,6 +22,8 @@ export const setup = async (containerId) => {
     
     // TODO: remove this line when Pluto data is available
     bodiesData = bodiesData.filter(d => d.primary !== 'Pluto');
+
+    planetsData = await getPlanetsData();
 
     bodiesData = updatePlanetPositions(bodiesData, date);
     missionsData = await getMissionSimplePathData();
@@ -300,9 +303,43 @@ const getPlanetDistanceScale = (data) => {
 
 
 const updatePlanetPositions = (data, date) => {
-    data.filter(d => d.type == 'planet' || d.type == 'star').forEach(d => {
+    data.filter(d => d.type == 'planet' || d.type == 'star').forEach((d, i) => {
         const newOrbitalParameters = calculatePlanetPosition2(d, date);
+        // console.log(planetsData[i].name, d.name);
+        // const newOrbitalParametersOld = calculatePlanetPosition(planetsData[i], date);
+        // compareOrbitalParameters(newOrbitalParametersOld, newOrbitalParameters);
+        // Object.assign(planetsData[i], newOrbitalParametersOld);
         Object.assign(d, newOrbitalParameters);
     });
     return data;
 }
+
+// const compareOrbitalParameters = (d1, d2) => {
+//     if (d1.a !== d2.semi_major_axis) {
+//         console.error("Semi-major axis mismatch", d1.a, d2.semi_major_axis);
+//     }
+//     if (d1.b !== d2.semi_minor_axis) {
+//         console.error("Semi-minor axis mismatch", d1.b, d2.semi_minor_axis);
+//     }
+//     if (d1.e !== d2.eccentricity) {
+//         console.error("Eccentricity mismatch", d1.e, d2.eccentricity);
+//     }
+//     if (d1.incl !== d2.inclination) {
+//         console.error("Inclination mismatch", d1.incl, d2.inclination);
+//     }
+//     if (d1.Omega !== d2.longitude_of_ascending_node) {
+//         console.error("Longitude of ascending node mismatch", d1.Omega, d2.longitude_of_ascending_node);
+//     }
+//     if (d1.w !== d2.argument_of_periapsis) {
+//         console.error("Argument of periapsis mismatch", d1.w, d2.argument_of_periapsis);
+//     }
+//     if (d1.P !== d2.orbital_period) {
+//         console.error("Orbital period mismatch", d1.P, d2.orbital_period);
+//     }
+//     if (d1.eclR !== d2.radial_distance_from_primary) {
+//         console.error("Radial distance mismatch", d1.eclR, d2.radial_distance_from_primary);
+//     }
+//     if (d1.eclTheta !== d2.angular_position_in_ecliptic) {
+//         console.error("Angular position mismatch", d1.eclTheta, d2.angular_position_in_ecliptic);
+//     }
+// }
