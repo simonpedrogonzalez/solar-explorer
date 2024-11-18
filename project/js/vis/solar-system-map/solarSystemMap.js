@@ -103,9 +103,6 @@ const drawPlanets = (data) => {
         .attr('r', d => planetRadiusScale(d.radius))
         .attr('cx', d => {
             const r = planetDistanceScale(d.eclR);
-            if (d.name == "Neptune") {
-                console.log("Neptune",d.eclR, d.eclTheta, r);
-            }
             if (isNaN(r) || r < 0) return 0;  // Sun has NaN, fallback to 0
             return r * Math.cos(d.eclTheta);
         })

@@ -4,12 +4,13 @@ import { dateToFractionalYear, fractionalYearToDate } from "../utils/time.js";
 import { updateBodiesVisData } from "./bodies.js";
 
 let svg, g;
-let width = window.innerWidth, height=window.innerHeight - 200;
+let width = window.innerWidth, height=window.innerHeight; // - 200;
 let systemCenter = { x: width / 2, y: height / 2 };
 let bodiesData;
 let planetsData;
 let missionsData;
 let planetRadiusScale, planetDistanceScale;
+let satelliteDistanceScale;
 let date = new Date();
 
 /**
@@ -30,6 +31,8 @@ export const setup = async (containerId) => {
     // Create the scales
     planetRadiusScale = getPlanetRadiusScale(bodiesData);
     planetDistanceScale = getPlanetDistanceScale(bodiesData);
+    // satelliteDistanceScale = getSatelliteDistanceScale(bodiesData);
+
     // Create the SVG container
     svg = d3.select(containerId)
         .append('svg')
@@ -72,28 +75,56 @@ export const setup = async (containerId) => {
  * Draw the solar system map
  * */
 export const draw = async (bodiesData, missionsData) => {
-    bodiesData = updateBodiesVisData(bodiesData, planetDistanceScale, planetRadiusScale);
-    drawBodiesOrbits(bodiesData.filter(d => d.type !== 'satellite'));
+    bodiesData = updateBodiesVisData(
+        { width, height },
+        bodiesData,
+        planetDistanceScale,
+        planetRadiusScale,
+        // satelliteDistanceScale,
+    );
+    // bodiesData = bodiesData.filter(d => d.type !== 'satellite' || d.name === 'Moon');
+    // console.log(bodiesData.find(d => d.name === 'Moon').vis.orbit.transform);
+    // console.log(bodiesData.find(d => d.name === 'Earth').vis.body);
+    drawBodies(bodiesData);
+
+    drawBodiesOrbits(bodiesData);
     // drawMissionPaths(missionsData, bodiesData, "fullPath"); // this first to be behind the planets
-    drawBodies(bodiesData.filter(d => d.type !== 'satellite'));
 }
 
 const drawBodiesOrbits = (data) => {
-    g.selectAll('.orbit')
-        .data(data.filter(d => d.name !== 'Sun'))
-        .enter()
+    const orbits = g.selectAll('.orbit') // Select the group for each orbit
+    .data(data.filter(d => d.name !== 'Sun'), d => d.name); // Key by name to match data to elements
+
+    // ENTER: Create new groups for orbits
+    const orbitsEnter = orbits.enter()
         .append('g')
+        .attr('class', 'orbit') // Add a unique class for the orbit groups
         .attr('transform', d => {
-            console.log(d.name, d.vis);
-            return d.vis.orbit.rotation
-        })
-        .append('ellipse')
-        .attr('class', 'orbit')
+            if (d.name === "Moon") {
+                console.log("Moon ENTER transform:", d.vis.orbit.transform);
+            }
+            return d.vis.orbit.transform; // Initial transform for new elements
+        });
+
+    orbitsEnter.append('ellipse') // Add the orbit ellipse inside the group
         .attr('rx', d => d.vis.orbit.rx)
         .attr('ry', d => d.vis.orbit.ry)
         .attr('fill', 'none')
-        .attr('stroke', '#ccc')
-        .attr('stroke-dasharray', '2,2');
+        .attr('stroke', d => d.color)
+        // width depending on type, if satellite is smaller
+        .attr('stroke-width', d => d.type === 'satellite' ? 0.1 : 0.3)
+        // .attr('stroke-dasharray', '2,2');
+
+    // UPDATE: Update existing groups with new transform values
+    orbits.attr('transform', d => {
+        if (d.name === "Moon") {
+            console.log("Moon UPDATE transform:", d.vis.orbit.transform);
+        }
+        return d.vis.orbit.transform;
+    });
+
+    // EXIT: Remove groups that are no longer in the data
+    orbits.exit().remove();
 }
 
 const drawBodies = (data) => {
@@ -102,12 +133,7 @@ const drawBodies = (data) => {
         .join("circle")
         .attr('class', 'body')
         .attr('r', d => d.vis.body.r)
-        .attr('cx', (d) => {
-            if (d.name === 'Neptune') {
-                console.log(d.name, d.radial_distance_from_primary, d.angular_position_in_ecliptic, d.vis.body.cx);
-            }
-            return d.vis.body.cx;
-        })
+        .attr('cx', d => d.vis.body.cx)
         .attr('cy', d => d.vis.body.cy)
         .attr('fill', d => d.color)
         .append('title')
@@ -300,6 +326,15 @@ const getPlanetDistanceScale = (data) => {
         .domain(d3.extent(planetsWithoutSun, d => d.semi_major_axis))
         .range([minDistanceInPixels, maxDistanceInPixels]);
 }
+
+// const getSatelliteDistanceScale = (data, planetRadiusScale) => {
+//     const satelliteData = data.filter(d => d.type === 'satellite');
+//     const minDistanceInPixels = planetRadiusScale.range()[1] * 1.25;
+//     const maxDistanceInPixels = planetRadiusScale.range()[1] * 1.25;
+//     return d3.scaleLog()
+//         .domain(d3.extent(satelliteData, d => d.semi_major_axis))
+//         .range([minDistanceInPixels, maxDistanceInPixels]);
+// }
 
 
 const updatePlanetPositions = (data, date) => {
