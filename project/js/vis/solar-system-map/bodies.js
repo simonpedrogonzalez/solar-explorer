@@ -1,5 +1,5 @@
 import { getBodiesData, getPlanetsData, getMissionsData, getMissionSimplePathData, getSatellitesData } from "../../data/datasets.js";
-import { calculatePlanetPosition2, semiMinAxis } from "../utils/astro.js";
+import { calculatePlanetPosition, semiMinAxis } from "../utils/astro.js";
 
 // Default canvas radius for bodies that don't have a radius
 // value, like small satellites and asteroids

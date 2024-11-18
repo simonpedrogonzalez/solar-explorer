@@ -1,14 +1,17 @@
-import { getPlanetsData, getMissionsData, getMissionSimplePathData, getSatellitesData } from "../../data/datasets.js";
+import { getBodiesData, getMissionSimplePathData, getMissionsData, getPlanetsData } from "../../data/datasets.js";
 import { calculatePlanetPosition } from "../utils/astro.js";
 import { dateToFractionalYear, fractionalYearToDate } from "../utils/time.js";
+import { updateBodiesVisData } from "./bodies.js";
+import zoom from "./zoom.js";
 
 let svg, g;
-let width = window.innerWidth, height=window.innerHeight - 200;
+let width = window.innerWidth, height=window.innerHeight; // - 200;
 let systemCenter = { x: width / 2, y: height / 2 };
-let bodiesDataCurrentPositions;
 let bodiesData;
+let planetsData;
 let missionsData;
 let planetRadiusScale, planetDistanceScale;
+let satelliteDistanceScale;
 let date = new Date();
 
 /**
@@ -17,12 +20,20 @@ let date = new Date();
  * */
 export const setup = async (containerId) => {
     // Load the data
-    bodiesDataCurrentPositions = await getPlanetsData();
-    bodiesData = bodiesDataCurrentPositions.map(x => calculatePlanetPosition(x, date));
+    bodiesData = await getBodiesData();
+    
+    // TODO: remove this line when Pluto data is available
+    bodiesData = bodiesData.filter(d => d.primary !== 'Pluto');
+
+    planetsData = await getPlanetsData();
+
+    bodiesData = updatePlanetPositions(bodiesData, date);
     missionsData = await getMissionSimplePathData();
     // Create the scales
     planetRadiusScale = getPlanetRadiusScale(bodiesData);
     planetDistanceScale = getPlanetDistanceScale(bodiesData);
+    // satelliteDistanceScale = getSatelliteDistanceScale(bodiesData);
+
     // Create the SVG container
     svg = d3.select(containerId)
         .append('svg')
@@ -33,30 +44,20 @@ export const setup = async (containerId) => {
         .attr('id', 'solar-system-map')
         .attr('transform', `translate(${systemCenter.x}, ${systemCenter.y})`);
 
-    // Define the zoom behavior
-    const zoom = d3.zoom()
-    .scaleExtent([0.5, 5])
-    .on("zoom", (event) => {
-    g.attr("transform", event.transform);
-    });
-    svg.call(zoom);
-    d3.select("#reset-zoom").on("click", () => {
-    svg.transition()
-    .duration(750)
-    .call(zoom.transform, d3.zoomIdentity);
-    });
+    // Setup zoom behavior
+    zoom(svg, g, systemCenter);
 
     // Create the time slider
     d3.select("#timeslider-text").text(date.toDateString());
-    d3.select("#timeslider input")
-        .attr("value", dateToFractionalYear(date))
-        .on("input", (event) => {
-            date = fractionalYearToDate(event.target.value);
-            d3.select("#timeslider-text").text(date.toDateString());
-            bodiesData = bodiesDataCurrentPositions.map(x => calculatePlanetPosition(x, date));
-            const filteredMissionsData = missionsData.filter(d => d.launch_date <= date);
-            draw(bodiesData, filteredMissionsData);
-        });
+    d3.select("#slider")
+    .property("value", dateToFractionalYear(date)) // Set initial slider value
+    .on("input", (event) => {
+        const newDate = fractionalYearToDate(event.target.value);
+        d3.select("#timeslider-text").text(newDate.toDateString());
+        bodiesData = updatePlanetPositions(bodiesData, newDate);
+        const filteredMissionsData = missionsData.filter(d => d.launch_date <= newDate);
+        draw(bodiesData, filteredMissionsData);
+    });
 
     draw(bodiesData, missionsData);
 }
@@ -65,52 +66,61 @@ export const setup = async (containerId) => {
  * Draw the solar system map
  * */
 export const draw = async (bodiesData, missionsData) => {
-    drawOrbits(bodiesData);
+    bodiesData = updateBodiesVisData(
+        { width, height },
+        bodiesData,
+        planetDistanceScale,
+        planetRadiusScale,
+    );
     drawMissionPaths(missionsData, bodiesData, "fullPath"); // this first to be behind the planets
-    drawPlanets(bodiesData);
+    drawBodies(bodiesData);
+    drawBodiesOrbits(bodiesData);
 }
 
-const drawOrbits = (data) => {
-    g.selectAll('.orbit')
-        .data(data)
-        .attr('transform', d => `rotate(${(d.Omega + d.w) % 360})`)
+const drawBodiesOrbits = (data) => {
+    const orbits = g.selectAll('.orbit') // Select the group for each orbit
+    .data(data.filter(d => d.name !== 'Sun'), d => d.name); // Key by name to match data to elements
 
-    g.selectAll('.orbit')
-        .data(data)
-        .enter()
+    // ENTER: Create new groups for orbits
+    const orbitsEnter = orbits.enter()
         .append('g')
-        .attr('transform', d => `rotate(${(d.Omega + d.w) % 360})`)
-        .append('ellipse')
-        .attr('class', 'orbit')
-        .attr('rx', d => {
-            const distance = planetDistanceScale(d.b);
-            return (isNaN(distance) || distance < 0) ? 0 : distance; // Sun will have Nan, fallback to 0
-        })
-        .attr('ry', d => {
-            const distance = planetDistanceScale(d.a);
-            return (isNaN(distance) || distance < 0) ? 0 : distance; // Sun will have Nan, fallback to 0
-        })
+        .attr('class', 'orbit') // Add a unique class for the orbit groups
+        .attr('transform', d => {
+            if (d.name === "Moon") {
+                console.log("Moon ENTER transform:", d.vis.orbit.transform);
+            }
+            return d.vis.orbit.transform; // Initial transform for new elements
+        });
+
+    orbitsEnter.append('ellipse') // Add the orbit ellipse inside the group
+        .attr('rx', d => d.vis.orbit.rx)
+        .attr('ry', d => d.vis.orbit.ry)
         .attr('fill', 'none')
-        .attr('stroke', '#ccc')
-        .attr('stroke-dasharray', '2,2');
+        .attr('stroke', d => d.color)
+        // width depending on type, if satellite is smaller
+        .attr('stroke-width', d => d.type === 'satellite' ? 0.1 : 0.3)
+        // .attr('stroke-dasharray', '2,2');
+
+    // UPDATE: Update existing groups with new transform values
+    orbits.attr('transform', d => {
+        if (d.name === "Moon") {
+            console.log("Moon UPDATE transform:", d.vis.orbit.transform);
+        }
+        return d.vis.orbit.transform;
+    });
+
+    // EXIT: Remove groups that are no longer in the data
+    orbits.exit().remove();
 }
 
-const drawPlanets = (data) => {
-    g.selectAll('.planet')
+const drawBodies = (data) => {
+    g.selectAll('.body')
         .data(data)
         .join("circle")
-        .attr('class', 'planet')
-        .attr('r', d => planetRadiusScale(d.radius))
-        .attr('cx', d => {
-            const r = planetDistanceScale(d.eclR);
-            if (isNaN(r) || r < 0) return 0;  // Sun has NaN, fallback to 0
-            return r * Math.cos(d.eclTheta);
-        })
-        .attr('cy', d => {
-            const r = planetDistanceScale(d.eclR);
-            if (isNaN(r) || r < 0) return 0;  // Sun has NaN, fallback to 0
-            return r * Math.sin(d.eclTheta);
-        })
+        .attr('class', 'body')
+        .attr('r', d => d.vis.body.r)
+        .attr('cx', d => d.vis.body.cx)
+        .attr('cy', d => d.vis.body.cy)
         .attr('fill', d => d.color)
         .append('title')
         .text(d => d.name);
@@ -124,21 +134,16 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
         return acc;
     }, []);
 
-    // Update the origin and destination eclR and eclTheta based on bodiesData
     allLinks = allLinks.map(d => {
         const origin = bodiesData.find(planet => planet.name === d.origin.name);
         const destination = bodiesData.find(planet => planet.name === d.destination.name);
         return {
             ...d,
             origin: {
-                ...d.origin,
-                eclR: origin.eclR,
-                eclTheta: origin.eclTheta
+                ...d.origin
             },
             destination: {
-                ...d.destination,
-                eclR: destination.eclR,
-                eclTheta: destination.eclTheta
+                ...d.destination
             }
         }
     });
@@ -191,13 +196,10 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
         const rightOrLeft = indexInMissionsPerSource % 2 === 0 ? 1 : -1;
         const indexInMissionsPerSourceHalf = Math.abs(indexInMissionsPerSource - halfMissionCount);
 
-        // Calculate origin and destination points
-        const r1 = planetDistanceScale(d.origin.eclR);
-        let x1 = r1 * Math.cos(d.origin.eclTheta);
-        let y1 = r1 * Math.sin(d.origin.eclTheta);
-        const r2 = planetDistanceScale(d.destination.eclR);
-        let x2 = r2 * Math.cos(d.destination.eclTheta);
-        let y2 = r2 * Math.sin(d.destination.eclTheta);
+        let x1 = d.origin.vis.body.cx;
+        let y1 = d.origin.vis.body.cy;
+        let x2 = d.destination.vis.body.cx;
+        let y2 = d.destination.vis.body.cy;
 
         // if any is Sun, set system center as the origin
         if (d.origin.name === 'Sun') {
@@ -258,7 +260,7 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
         .attr('d', drawBezierCurves);
 
     g.selectAll('.mission')
-    .data(allLinks, d => d.name) // Use a "key function" for unique identifiers
+    .data(allLinks, d => d.name)
     .join(
         enter => enter.append('path')
                     .attr('class', 'mission')
@@ -266,7 +268,7 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
                     .attr('fill', 'none')
                     .attr('stroke', 'red')
                     .attr('stroke-opacity', 0.5)
-                    .attr('stroke-width', 1)
+                    .attr('stroke-width', 0.2)
                     .append('title')
                     .text(d => d.name),
         update => update,
@@ -282,6 +284,7 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
 const getPlanetRadiusScale = (data) => {
     const maxRadiusInPixels = Math.min(width, height) / 30;
     const minRadiusInPixels = maxRadiusInPixels / 10;
+    data = data.filter(d => d.type === 'planet' || d.type === 'star');
     return d3.scaleLog()
         .domain(d3.extent(data, d => d.radius === 0? 1: d.radius))
         .range([minRadiusInPixels, maxRadiusInPixels]);
@@ -293,11 +296,19 @@ const getPlanetRadiusScale = (data) => {
  * @return {d3.ScaleLogarithmic<number, number>}
  * */
 const getPlanetDistanceScale = (data) => {
-    // Arbitrary
-    const planetsWithoutSun = data.filter(d => d.name !== 'Sun');
+    const planetsWithoutSun = data.filter(d => d.type === 'planet');
     const maxDistanceInPixels = Math.min(width, height) / 2 * 0.9;
-    const minDistanceInPixels = 50;
+    const minDistanceInPixels = 40;
     return d3.scaleLog()
-        .domain(d3.extent(planetsWithoutSun, d => d.a))
+        .domain(d3.extent(planetsWithoutSun, d => d.semi_major_axis))
         .range([minDistanceInPixels, maxDistanceInPixels]);
+}
+
+
+const updatePlanetPositions = (data, date) => {
+    data.filter(d => d.type == 'planet' || d.type == 'star').forEach((d, i) => {
+        const newOrbitalParameters = calculatePlanetPosition(d, date);
+        Object.assign(d, newOrbitalParameters);
+    });
+    return data;
 }

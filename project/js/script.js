@@ -1,5 +1,4 @@
 import * as solarSystemMap from './vis/solar-system-map/solarSystemMap.js';
-import * as solarSystemMap2 from './vis/solar-system-map/solarSystemMap2.js';
 
 document.addEventListener('DOMContentLoaded', function () {
     const switchButton = document.getElementById('switchButton');
@@ -29,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Clear the previous visualization
             mapContainer.innerHTML = '';
-            solarSystemMap2.setup('#dashboard2');
+            solarSystemMap.setup('#dashboard2');
         } else {
             dashboard2.style.display = 'none';
             dashboard1.style.display = 'block';
@@ -37,10 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Clear the previous visualization
             mapContainer.innerHTML = '';
-            solarSystemMap2.setup('#map-container');
+            solarSystemMap.setup('#map-container');
         }
     });
 
     // Setup visualization for the first dashboard
-    solarSystemMap2.setup('#map-container');
+    solarSystemMap.setup('#map-container');
 });
