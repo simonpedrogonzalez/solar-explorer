@@ -1,5 +1,5 @@
 import { readJSON } from "./utils.js";
-import { getPlanetsData } from "./planets.js";
+import { getBodiesData } from "./bodies.js";
 
 let missionsData = null;
 let simlifiedMissionsData = null;
@@ -37,7 +37,7 @@ const preprocessMissionsData = (data) => {
 export const getMissionSimplePathData = async () => {
     if (simlifiedMissionsData) return simlifiedMissionsData;
     let data = await getMissionsData();
-    objectData = await getPlanetsData();
+    objectData = await getBodiesData();
     simlifiedMissionsData = data.map(simplifyMissionsData).filter(d => d !== null);
     return simlifiedMissionsData;
 }

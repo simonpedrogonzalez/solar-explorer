@@ -100,7 +100,7 @@ const getBodyCircle = (d, primary, radiusScale, distanceScale) => {
         // For satellites we don't have the accurate angular position
         // or radial distance, so we place it in an approximate circular
         // orbit
-        const theta = 0;
+        const theta = Math.random() * 2 * Math.PI;
         cx = primaryX + distanceScale(semi_major_axis) * Math.cos(theta);
         cy = primaryY + distanceScale(semi_major_axis) * Math.sin(theta);
     }
@@ -124,15 +124,15 @@ const getBodyCircle = (d, primary, radiusScale, distanceScale) => {
     }
 }
 
-const getChildrenDistanceScale = (primary, data, maxVisDistance) => {
-    const children = data.filter(d => d.primary === primary.name && d.primary !== d.name);
-    const distances = children.map(d => d.semi_major_axis);
-    const primaryVisRadius = primary.vis.body.r;
-    const minVisDistance = 1.1 * primaryVisRadius;
-    return d3.scaleLog()
-        .domain(d3.extent(distances))
-        .range([minVisDistance, maxVisDistance]);
-}
+// const getChildrenDistanceScale = (primary, data, maxVisDistance) => {
+//     const children = data.filter(d => d.primary === primary.name && d.primary !== d.name);
+//     const distances = children.map(d => d.semi_major_axis);
+//     const primaryVisRadius = primary.vis.body.r;
+//     const minVisDistance = 1.1 * primaryVisRadius;
+//     return d3.scaleLog()
+//         .domain(d3.extent(distances))
+//         .range([minVisDistance, maxVisDistance]);
+// }
 
 export const updateBodiesVisData = (
     canvas,
@@ -143,7 +143,7 @@ export const updateBodiesVisData = (
 
     // Create vis elements for the sun which is the main primary
     let sun = data.find(d => d.name === 'Sun');
-    sun.vis = getSunVis(data, planetRadiusScale, canvas);
+    sun.vis = getSunVis(data, planetRadiusScale);
     
 
     // Create vis elements for the sun orbiting bodies
@@ -178,7 +178,7 @@ export const updateBodiesVisData = (
     return data;
 }
 
-const getSunVis = (data, radiusScale, canvas) => {
+const getSunVis = (data, radiusScale) => {
     const sun = data.find(d => d.name === 'Sun');
     return {
         body: {

@@ -80,15 +80,10 @@ export const draw = async (bodiesData, missionsData) => {
         bodiesData,
         planetDistanceScale,
         planetRadiusScale,
-        // satelliteDistanceScale,
     );
-    // bodiesData = bodiesData.filter(d => d.type !== 'satellite' || d.name === 'Moon');
-    // console.log(bodiesData.find(d => d.name === 'Moon').vis.orbit.transform);
-    // console.log(bodiesData.find(d => d.name === 'Earth').vis.body);
+    drawMissionPaths(missionsData, bodiesData, "fullPath"); // this first to be behind the planets
     drawBodies(bodiesData);
-
     drawBodiesOrbits(bodiesData);
-    // drawMissionPaths(missionsData, bodiesData, "fullPath"); // this first to be behind the planets
 }
 
 const drawBodiesOrbits = (data) => {
@@ -148,21 +143,16 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
         return acc;
     }, []);
 
-    // Update the origin and destination eclR and eclTheta based on bodiesData
     allLinks = allLinks.map(d => {
         const origin = bodiesData.find(planet => planet.name === d.origin.name);
         const destination = bodiesData.find(planet => planet.name === d.destination.name);
         return {
             ...d,
             origin: {
-                ...d.origin,
-                eclR: origin.eclR,
-                eclTheta: origin.eclTheta
+                ...d.origin
             },
             destination: {
-                ...d.destination,
-                eclR: destination.eclR,
-                eclTheta: destination.eclTheta
+                ...d.destination
             }
         }
     });
@@ -215,13 +205,10 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
         const rightOrLeft = indexInMissionsPerSource % 2 === 0 ? 1 : -1;
         const indexInMissionsPerSourceHalf = Math.abs(indexInMissionsPerSource - halfMissionCount);
 
-        // Calculate origin and destination points
-        const r1 = planetDistanceScale(d.origin.eclR);
-        let x1 = r1 * Math.cos(d.origin.eclTheta);
-        let y1 = r1 * Math.sin(d.origin.eclTheta);
-        const r2 = planetDistanceScale(d.destination.eclR);
-        let x2 = r2 * Math.cos(d.destination.eclTheta);
-        let y2 = r2 * Math.sin(d.destination.eclTheta);
+        let x1 = d.origin.vis.body.cx;
+        let y1 = d.origin.vis.body.cy;
+        let x2 = d.destination.vis.body.cx;
+        let y2 = d.destination.vis.body.cy;
 
         // if any is Sun, set system center as the origin
         if (d.origin.name === 'Sun') {
@@ -290,7 +277,7 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
                     .attr('fill', 'none')
                     .attr('stroke', 'red')
                     .attr('stroke-opacity', 0.5)
-                    .attr('stroke-width', 1)
+                    .attr('stroke-width', 0.2)
                     .append('title')
                     .text(d => d.name),
         update => update,
@@ -318,7 +305,6 @@ const getPlanetRadiusScale = (data) => {
  * @return {d3.ScaleLogarithmic<number, number>}
  * */
 const getPlanetDistanceScale = (data) => {
-    // Arbitrary
     const planetsWithoutSun = data.filter(d => d.type === 'planet');
     const maxDistanceInPixels = Math.min(width, height) / 2 * 0.9;
     const minDistanceInPixels = 40;
@@ -327,54 +313,11 @@ const getPlanetDistanceScale = (data) => {
         .range([minDistanceInPixels, maxDistanceInPixels]);
 }
 
-// const getSatelliteDistanceScale = (data, planetRadiusScale) => {
-//     const satelliteData = data.filter(d => d.type === 'satellite');
-//     const minDistanceInPixels = planetRadiusScale.range()[1] * 1.25;
-//     const maxDistanceInPixels = planetRadiusScale.range()[1] * 1.25;
-//     return d3.scaleLog()
-//         .domain(d3.extent(satelliteData, d => d.semi_major_axis))
-//         .range([minDistanceInPixels, maxDistanceInPixels]);
-// }
-
 
 const updatePlanetPositions = (data, date) => {
     data.filter(d => d.type == 'planet' || d.type == 'star').forEach((d, i) => {
         const newOrbitalParameters = calculatePlanetPosition2(d, date);
-        // console.log(planetsData[i].name, d.name);
-        // const newOrbitalParametersOld = calculatePlanetPosition(planetsData[i], date);
-        // compareOrbitalParameters(newOrbitalParametersOld, newOrbitalParameters);
-        // Object.assign(planetsData[i], newOrbitalParametersOld);
         Object.assign(d, newOrbitalParameters);
     });
     return data;
 }
-
-// const compareOrbitalParameters = (d1, d2) => {
-//     if (d1.a !== d2.semi_major_axis) {
-//         console.error("Semi-major axis mismatch", d1.a, d2.semi_major_axis);
-//     }
-//     if (d1.b !== d2.semi_minor_axis) {
-//         console.error("Semi-minor axis mismatch", d1.b, d2.semi_minor_axis);
-//     }
-//     if (d1.e !== d2.eccentricity) {
-//         console.error("Eccentricity mismatch", d1.e, d2.eccentricity);
-//     }
-//     if (d1.incl !== d2.inclination) {
-//         console.error("Inclination mismatch", d1.incl, d2.inclination);
-//     }
-//     if (d1.Omega !== d2.longitude_of_ascending_node) {
-//         console.error("Longitude of ascending node mismatch", d1.Omega, d2.longitude_of_ascending_node);
-//     }
-//     if (d1.w !== d2.argument_of_periapsis) {
-//         console.error("Argument of periapsis mismatch", d1.w, d2.argument_of_periapsis);
-//     }
-//     if (d1.P !== d2.orbital_period) {
-//         console.error("Orbital period mismatch", d1.P, d2.orbital_period);
-//     }
-//     if (d1.eclR !== d2.radial_distance_from_primary) {
-//         console.error("Radial distance mismatch", d1.eclR, d2.radial_distance_from_primary);
-//     }
-//     if (d1.eclTheta !== d2.angular_position_in_ecliptic) {
-//         console.error("Angular position mismatch", d1.eclTheta, d2.angular_position_in_ecliptic);
-//     }
-// }
