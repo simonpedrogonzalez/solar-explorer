@@ -78,30 +78,23 @@ export const draw = async (bodiesData, missionsData) => {
 }
 
 const drawBodiesOrbits = (data) => {
-    const orbits = g.selectAll('.orbit') // Select the group for each orbit
-    .data(data.filter(d => d.name !== 'Sun'), d => d.name); // Key by name to match data to elements
+    const orbits = g.selectAll('.orbit')
+    .data(data.filter(d => d.name !== 'Sun'), d => d.name);
 
-    // ENTER: Create new groups for orbits
+    // Enter
     const orbitsEnter = orbits.enter()
         .append('g')
-        .attr('class', 'orbit') // Add a unique class for the orbit groups
-        .attr('transform', d => {
-            if (d.name === "Moon") {
-                console.log("Moon ENTER transform:", d.vis.orbit.transform);
-            }
-            return d.vis.orbit.transform; // Initial transform for new elements
-        });
+        .attr('class', 'orbit')
+        .attr('transform', d => d.vis.orbit.transform);
 
-    orbitsEnter.append('ellipse') // Add the orbit ellipse inside the group
+    orbitsEnter.append('ellipse')
         .attr('rx', d => d.vis.orbit.rx)
         .attr('ry', d => d.vis.orbit.ry)
         .attr('fill', 'none')
         .attr('stroke', d => d.color)
-        // width depending on type, if satellite is smaller
         .attr('stroke-width', d => d.type === 'satellite' ? 0.1 : 0.3)
-        // .attr('stroke-dasharray', '2,2');
-
-    // UPDATE: Update existing groups with new transform values
+        
+    // Update
     orbits.attr('transform', d => {
         if (d.name === "Moon") {
             console.log("Moon UPDATE transform:", d.vis.orbit.transform);
@@ -109,7 +102,7 @@ const drawBodiesOrbits = (data) => {
         return d.vis.orbit.transform;
     });
 
-    // EXIT: Remove groups that are no longer in the data
+    // Exit
     orbits.exit().remove();
 }
 
@@ -276,11 +269,7 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
     );
 }
 
-/**
- * Create log scale for the radius of the planets
- * @param {Array<Object>} data
- * @return {d3.ScaleLogarithmic<number, number>}
- * */
+
 const getPlanetRadiusScale = (data) => {
     const maxRadiusInPixels = Math.min(width, height) / 30;
     const minRadiusInPixels = maxRadiusInPixels / 10;
@@ -290,11 +279,6 @@ const getPlanetRadiusScale = (data) => {
         .range([minRadiusInPixels, maxRadiusInPixels]);
 }
 
-/**
- * Create log scale for the distance of the planets from the Sun
- * @param {Array<Object>} data
- * @return {d3.ScaleLogarithmic<number, number>}
- * */
 const getPlanetDistanceScale = (data) => {
     const planetsWithoutSun = data.filter(d => d.type === 'planet');
     const maxDistanceInPixels = Math.min(width, height) / 2 * 0.9;
@@ -304,9 +288,8 @@ const getPlanetDistanceScale = (data) => {
         .range([minDistanceInPixels, maxDistanceInPixels]);
 }
 
-
 const updatePlanetPositions = (data, date) => {
-    data.filter(d => d.type == 'planet' || d.type == 'star').forEach((d, i) => {
+    data.filter(d => d.type == 'planet' || d.type == 'star').forEach(d => {
         const newOrbitalParameters = calculatePlanetPosition(d, date);
         Object.assign(d, newOrbitalParameters);
     });
