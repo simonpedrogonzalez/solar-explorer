@@ -45,28 +45,65 @@ export const setup = async (containerId) => {
 
     // Define the zoom behavior
     const zoom = d3.zoom()
-    .scaleExtent([0.5, 5])
+    .scaleExtent([0.5, 5]) // Min and max zoom levels
     .on("zoom", (event) => {
-    g.attr("transform", event.transform);
+        g.attr("transform", event.transform); // Update transform on zoom
     });
-    svg.call(zoom);
-    d3.select("#reset-zoom").on("click", () => {
+
+// Apply the zoom behavior to the SVG
+svg.call(zoom);
+
+// Set the initial zoom transform to center the visualization
+const initialTransform = d3.zoomIdentity.translate(systemCenter.x, systemCenter.y);
+svg.call(zoom.transform, initialTransform);
+
+// Reset zoom button behavior
+d3.select("#reset-zoom").on("click", () => {
     svg.transition()
-    .duration(750)
-    .call(zoom.transform, d3.zoomIdentity);
-    });
+        .duration(750)
+        .call(zoom.transform, initialTransform); // Reset to initial transform
+});
+
+// Define zoom step for the buttons
+const zoomStep = 1.2; // Scale factor for each step (1.2 for zoom in, 1/1.2 for zoom out)
+
+// Add functionality to the "+" button (zoom in)
+d3.select("#zoom-in").on("click", () => {
+    svg.transition()
+        .duration(500) // Smooth transition
+        .call(zoom.scaleBy, zoomStep); // Zoom in by a factor of 1.2
+});
+
+// Add functionality to the "-" button (zoom out)
+d3.select("#zoom-out").on("click", () => {
+    svg.transition()
+        .duration(500) // Smooth transition
+        .call(zoom.scaleBy, 1 / zoomStep); // Zoom out by a factor of 1/1.2
+});
+
+// Add functionality to the "Reset" button
+d3.select("#reset-zoom").on("click", () => {
+    svg.transition()
+        .duration(750) // Smooth transition
+        .call(zoom.transform, initialTransform); // Reset to initial transform
+});
 
     // Create the time slider
     d3.select("#timeslider-text").text(date.toDateString());
-    d3.select("#timeslider input")
-        .attr("value", dateToFractionalYear(date))
-        .on("input", (event) => {
-            date = fractionalYearToDate(event.target.value);
-            d3.select("#timeslider-text").text(date.toDateString());
-            bodiesData = updatePlanetPositions(bodiesData, date);
-            const filteredMissionsData = missionsData.filter(d => d.launch_date <= date);
-            draw(bodiesData, filteredMissionsData);
-        });
+    d3.select("#slider")
+    .property("value", dateToFractionalYear(date)) // Set initial slider value
+    .on("input", (event) => {
+        // Convert the fractional year back to a date
+        const newDate = fractionalYearToDate(event.target.value);
+        // Update the displayed date
+        d3.select("#timeslider-text").text(newDate.toDateString());
+        // Update planetary positions
+        bodiesData = updatePlanetPositions(bodiesData, newDate);
+        // Filter missions data based on the current date
+        const filteredMissionsData = missionsData.filter(d => d.launch_date <= newDate);
+        // Redraw the visualization with updated data
+        draw(bodiesData, filteredMissionsData);
+    });
 
     draw(bodiesData, missionsData);
 }

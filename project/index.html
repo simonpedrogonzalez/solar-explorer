@@ -3,19 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>The Solar System Dashboard</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="dashboard-container">
+        <!-- Dashboard 1 -->
         <div class="dashboard" id="dashboard1">
-            <h1>The Solar System</h1>
-            <div id="timeslider"><label for="slider">Date: </label><input id="slider" type="range" min="1950" max="2050" step="0.0000001" value="2050"/><span id="timeslider-text"></span></div>
+            <h1 class="dashboard-title">The Solar System</h1>
+            <div id="control-pane">
+                <!-- Time Slider -->
+                <div class="control-section">
+                    <label for="slider" class="vertical-label">Date:</label>
+                    <input id="slider" type="range" min="1950" max="2050" step="0.1" value="2000" orient="vertical" />
+                    <span id="timeslider-text">2000</span>
+                </div>
+                <!-- Zoom Controls -->
+                <div id="zoom-controls" class="control-section">
+                    <button id="zoom-in">+</button>
+                    <button id="zoom-out">-</button>
+                    <button id="reset-zoom">Reset</button>
+                </div>
+            </div>
+            <div id="map-container"></div>
         </div>
+
+        <!-- Dashboard 2 -->
         <div class="dashboard" id="dashboard2">
-            <h1>Dashboard 2</h1>
+            <h1 class="dashboard-title">Dashboard 2</h1>
             <p>This is the second dashboard.</p>
         </div>
+
+        <!-- Switch Button -->
         <button class="switch-button" id="switchButton">Switch Dashboard</button>
     </div>
     <script src="https://d3js.org/d3.v7.min.js"></script>
