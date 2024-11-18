@@ -32,20 +32,23 @@ export const setup = async (containerId) => {
     // Create the scales
     planetRadiusScale = getPlanetRadiusScale(bodiesData);
     planetDistanceScale = getPlanetDistanceScale(bodiesData);
-    // satelliteDistanceScale = getSatelliteDistanceScale(bodiesData);
 
     // Create the SVG container
     svg = d3.select(containerId)
         .append('svg')
         .attr('width', width)
         .attr('height', height);
-    // Create a group for the solar system, this is the 'plot' object
+
+    // Anchor for the visualization
     g = svg.append('g')
         .attr('id', 'solar-system-map')
         .attr('transform', `translate(${systemCenter.x}, ${systemCenter.y})`);
 
     // Setup zoom behavior
     zoom(svg, g, systemCenter);
+
+    // Draw the planet distance scale
+    drawPlanetDistanceScale(planetDistanceScale);
 
     // Create the time slider
     d3.select("#timeslider-text").text(date.toDateString());
@@ -62,17 +65,67 @@ export const setup = async (containerId) => {
     draw(bodiesData, missionsData);
 }
 
+
+const drawPlanetDistanceScale = (planetDistanceScale) => {
+    const scaleGroup = g.append('g')
+        .attr('id', 'distance-scale')
+        .attr('class', 'scale-group');
+
+    const scaleStartX = 0;
+    const scaleStartY = 0;
+
+    const scaleEndX = planetDistanceScale.range()[1];
+
+    // Horizontal line
+    scaleGroup.append('line')
+        .attr('x1', scaleStartX)
+        .attr('y1', scaleStartY)
+        .attr('x2', scaleEndX)
+        .attr('y2', scaleStartY)
+        .style('stroke', '#ccc')
+        .style('stroke-width', 0.5)
+        .style('pointer-events', 'none'); // Prevent interfering with zoom
+
+    const ticks = planetDistanceScale.ticks(10);
+    ticks.forEach((distance, i) => {
+        const scaledDistance = planetDistanceScale(distance);
+
+        // Ticks
+        scaleGroup.append('line')
+            .attr('x1', scaledDistance)
+            .attr('y1', scaleStartY - 5)
+            .attr('x2', scaledDistance)
+            .attr('y2', scaleStartY + 5)
+            .style('stroke', '#999')
+            .style('stroke-width', 0.5);
+
+        // Labels
+        scaleGroup.append('text')
+            .attr('x', scaledDistance)
+            .attr('y', scaleStartY + 10)
+            .attr('text-anchor', 'middle')
+            // if first and last add AU
+            .text(i === 0 || i === ticks.length - 1 ? `${distance} AU` : distance)
+            .style('fill', '#666')
+            .style('font-size', '5px')
+            .style('pointer-events', 'none'); // Prevent interfering with zoom
+    });
+};
+
+
 /**
  * Draw the solar system map
  * */
 export const draw = async (bodiesData, missionsData) => {
+    // Update the values of the positions on the canvas
+    // of planets, orbits, satellites, etc.
     bodiesData = updateBodiesVisData(
         { width, height },
         bodiesData,
         planetDistanceScale,
         planetRadiusScale,
     );
-    drawMissionPaths(missionsData, bodiesData, "fullPath"); // this first to be behind the planets
+    drawMissionPaths(missionsData, bodiesData, "fullPath");
     drawBodies(bodiesData);
     drawBodiesOrbits(bodiesData);
 }
@@ -126,20 +179,16 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
         acc.push(...d.links);
         return acc;
     }, []);
-
     allLinks = allLinks.map(d => {
         const origin = bodiesData.find(planet => planet.name === d.origin.name);
         const destination = bodiesData.find(planet => planet.name === d.destination.name);
         return {
             ...d,
-            origin: {
-                ...d.origin
-            },
-            destination: {
-                ...d.destination
-            }
-        }
+            origin, // Use the reference directly
+            destination // Use the reference directly
+        };
     });
+    
 
     let linksPerSourceDestPair = allLinks.reduce((acc, d) => {
         const key = `${d.origin.name}-${d.destination.name}`;
@@ -148,17 +197,17 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
         return acc;
     }, {});
 
-    const missionsPerSourceDestPair = missionsData.reduce((acc, d) => {
-        const key = `${d.origin.name}-${d.destination.name}`;
-        if (!acc[key]) acc[key] = [];
-        acc[key].push(d.name);
-        return acc;
-    }, {});
+    // const missionsPerSourceDestPair = missionsData.reduce((acc, d) => {
+    //     const key = `${d.origin.name}-${d.destination.name}`;
+    //     if (!acc[key]) acc[key] = [];
+    //     acc[key].push(d.name);
+    //     return acc;
+    // }, {});
 
-    if (type === 'sourceDest') {
-        linksPerSourceDestPair = missionsPerSourceDestPair;
-        allLinks = missionsData;
-    }
+    // if (type === 'sourceDest') {
+    //     linksPerSourceDestPair = missionsPerSourceDestPair;
+    //     allLinks = missionsData;
+    // }
 
     const drawBezierCurves = (d, i) => {
         // The idea is to create bezier curves from origin to destination, making
@@ -268,7 +317,6 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
         exit => exit.remove()
     );
 }
-
 
 const getPlanetRadiusScale = (data) => {
     const maxRadiusInPixels = Math.min(width, height) / 30;
