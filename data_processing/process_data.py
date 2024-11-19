@@ -21,7 +21,7 @@ def fit_lstsq(x, y):
 def fetch_planet_data(new_worlds_df):
     print("Fetching Horizons Ephimerides...", end=" ")
     planet_data = pd.DataFrame()
-    planets = ["010", "001", "002", "003", "004", "005", "006", "007", "008"]
+    planets = ["010", "001", "002", "003", "004", "005", "006", "007", "008", "009"]
     epochs = {"start": "1950-01-01", "stop": "2050-01-01", "step": "10d"}
     for planet in planets:
         new_worlds_idx = new_worlds_df["id"] == planet
@@ -69,11 +69,11 @@ def fetch_planet_data(new_worlds_df):
     print("Done.")
 
     print("Writing planets.json...", end=" ")
-    planet_data.to_json("../project/data/planets.json", orient="records")
+    planet_data.to_json("../project/files/planets.json", orient="records")
     # Reformat json file
-    with open("../project/data/planets.json", "r") as f:
+    with open("../project/files/planets.json", "r") as f:
         data = json.load(f)
-    with open("../project/data/planets.json", "w") as f:
+    with open("../project/files/planets.json", "w") as f:
         json.dump(data, f, indent=4)
 
     print("Done.")
@@ -102,7 +102,7 @@ def fetch_planet_data(new_worlds_df):
     print("Done.")
 
     print("Writing satellites.json...", end=" ")
-    satellite_data.to_json("../project/data/satellites.json", orient="records")
+    satellite_data.to_json("../project/files/satellites.json", orient="records")
     print("Done.")
 
 
@@ -573,6 +573,6 @@ if __name__ == "__main__":
     print("Done.")
 
     print("Writing missions.json...", end=" ")
-    with open("../project/data/missions.json", "w") as f:
+    with open("../project/files/missions.json", "w") as f:
         json.dump(missions, f, indent=4)
     print("Done.")
