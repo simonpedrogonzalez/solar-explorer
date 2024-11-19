@@ -26,6 +26,7 @@ In general:
 
 ## Resources for development
 - [Render millions of datapoints with D3](https://blog.scottlogic.com/2020/05/01/rendering-one-million-points-with-d3.html)
+- [Check planet position calculations](https://www.fourmilab.ch/cgi-bin/Solar)
 
 ## TA advices
 
