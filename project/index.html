@@ -15,36 +15,28 @@
             <div id="control-pane">
                 <!-- Time Slider -->
                 <div class="slider-controls" style="display: flex; flex-direction: column; align-items: center; width: 200px; gap: 10px;">
-
-                    <!-- Top Section -->
+                    <!-- Top -->
                     <div style="display: flex; width: 100%; justify-content: space-between; align-items: center;">
-                        <div style="width: 50%;"></div> <!-- Empty left part -->
-                        <label for="slider" class="vertical-label" style="width: 50%; text-align: center;">Date:</label>
+                        <label for="slider-svg" class="vertical-label" style="width: 50%; text-align: center;">Missions</label>
+                        <label for="slider" class="vertical-label" style="width: 50%; text-align: center;">Date</label>
                     </div>
-                
+                    <!-- Middle -->
                     <div style="display: flex; width: 100%; align-items: center; position: relative;">
-                        <!-- SVG on the left -->
+                        <!-- svg on the left -->
                         <div style="display: flex; justify-content: center; align-items: center; width: 50%; position: relative; z-index: 2;">
-                            <svg id="slider-svg" width="100" height="300" style="position: absolute; overflow: visible; left: 0;"></svg>
+                            <svg id="slider-svg" width="100" height="400" style="position: absolute; overflow: visible; left: 0;"></svg>
                         </div>
-                    
                         <!-- Slider on the right -->
                         <div style="display: flex; justify-content: center; align-items: center; width: 50%; position: relative; z-index: 1;">
-                            <input id="slider" class="slider" type="range" min="1950" max="2025" step="5" value="2000" style="height: 300px;" />
+                            <input id="slider" class="slider" type="range" min="1950" max="2025" step="0.01" value="2000" style="height: 400px;" />
                         </div>
                     </div>
-                    
-                    
-                
-                    <!-- Bottom Section -->
+                    <!-- Bottom -->
                     <div style="display: flex; width: 100%; justify-content: space-between; align-items: center;">
-                        <div style="width: 50%;"></div> <!-- Empty left part -->
+                        <div style="width: 50%;"></div>
                         <span id="timeslider-text" style="width: 50%; text-align: center;"></span>
                     </div>
                 </div>
-                
-                
-                
                 <!-- Zoom Controls -->
                 <div id="zoom-controls" class="control-section">
                     <label for="zoom-in" class="horizontal-label">Zoom:</label>

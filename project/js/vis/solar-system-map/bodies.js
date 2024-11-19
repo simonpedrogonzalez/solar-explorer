@@ -32,8 +32,7 @@ const getOrbitEllipse = (d, primary, distanceScale) => {
 
     let transform = `translate(${cx}, ${cy})`;
     if (!!d.longitude_of_ascending_node || !!d.argument_of_periapsis) {
-        // transform = `translate(${50}, ${50})`;
-        // console.log(transform);
+        // pass
     } else {
         let rotation = (d.longitude_of_ascending_node + d.argument_of_periapsis) % 360;
         transform = transform + ` rotate(${rotation})`;

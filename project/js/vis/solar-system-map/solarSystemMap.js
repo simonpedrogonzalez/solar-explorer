@@ -46,7 +46,7 @@ export const setup = async (containerId) => {
         .attr('transform', `translate(${systemCenter.x}, ${systemCenter.y})`);
 
     // Setup zoom behavior
-    zoom(svg, g, systemCenter);
+    zoom(svg, g, systemCenter, planetDistanceScale);
 
     // Draw the planet distance scale
     drawPlanetDistanceScale(planetDistanceScale);
@@ -76,7 +76,7 @@ const getTimeSliderText = (date) => {
 }
 
 
-const drawPlanetDistanceScale = (planetDistanceScale) => {
+export const drawPlanetDistanceScale = (planetDistanceScale) => {
     const scaleGroup = g.append('g')
         .attr('id', 'distance-scale')
         .attr('class', 'scale-group');
@@ -93,8 +93,7 @@ const drawPlanetDistanceScale = (planetDistanceScale) => {
         .attr('x2', scaleEndX)
         .attr('y2', scaleStartY)
         .style('stroke', '#ccc')
-        .style('stroke-width', 0.5)
-        .style('pointer-events', 'none'); // Prevent interfering with zoom
+        .style('stroke-width', 0.5);
 
     const ticks = planetDistanceScale.ticks(10);
     ticks.forEach((distance, i) => {
@@ -112,13 +111,21 @@ const drawPlanetDistanceScale = (planetDistanceScale) => {
         // Labels
         scaleGroup.append('text')
             .attr('x', scaledDistance)
-            .attr('y', scaleStartY + 10)
+            .attr('y', scaleStartY + 15)
             .attr('text-anchor', 'middle')
             // if first and last add AU
-            .text(i === 0 || i === ticks.length - 1 ? `${distance} AU` : distance)
+            .text(() => {
+                let t = distance.toString();
+                if (distance < 1) {
+                    // remove the 0
+                    return t.slice(1);
+                }
+                if (i === 0 || i === ticks.length - 1)
+                    t += `${distance} AU`
+                return t;
+            })
             .style('fill', '#666')
-            .style('font-size', '5px')
-            .style('pointer-events', 'none'); // Prevent interfering with zoom
+            .style('font-size', '8px');
     });
 };
 
