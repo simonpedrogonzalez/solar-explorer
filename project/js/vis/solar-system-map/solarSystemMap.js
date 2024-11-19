@@ -173,111 +173,17 @@ const drawBodiesOrbits = (data) => {
 }
 
 const drawBodies = (data) => {
-    const bodies = g.selectAll('.body')
-        .data(data);
-
-    bodies.join(
-        enter => {
-            const group = enter.append('g').attr('class', 'body');
-
-            // Main circle representing the body
-            group.append('circle')
-                .attr('class', 'main-circle')
-                .attr('fill', d => d.color);
-
-            // Outer "selected" circle
-            group.append('circle')
-                .attr('class', 'hover-circle')
-                .attr('fill', 'none')
-                .attr('stroke', 'white')
-                .attr('stroke-width', 0.5)
-                .style('opacity', 0)
-                .style('pointer-events', 'none'); // Ignore pointer events
-
-            // Line at an angle turning horizontal
-            group.append('line')
-                .attr('class', 'angled-line')
-                .attr('stroke', 'white')
-                .attr('stroke-width', 0.5)
-                .style('opacity', 0)
-                .style('pointer-events', 'none'); // Ignore pointer events
-
-            group.append('line')
-                .attr('class', 'horizontal-line')
-                .attr('stroke', 'white')
-                .attr('stroke-width', 0.5)
-                .style('opacity', 0)
-                .style('pointer-events', 'none'); // Ignore pointer events
-
-            // Legend with the name of the body
-            group.append('text')
-                .attr('class', 'legend')
-                .attr('dominant-baseline', 'middle')
-                .attr('fill', 'white')
-                .style('opacity', 0)
-                .style('pointer-events', 'none'); // Ignore pointer events
-
-            return group;
-        },
-        update => update, // Reuse existing elements
-        exit => exit.remove() // Remove elements not in the new data
-    ).each(function (d) {
-        const group = d3.select(this);
-
-        // Update main circle
-        group.select('.main-circle')
-            .attr('r', d.vis.body.r)
-            .attr('cx', d.vis.body.cx)
-            .attr('cy', d.vis.body.cy)
-            .attr('fill', d.color)
-            .on('mouseenter', () => {
-                group.select('.hover-circle').style('opacity', 1);
-                group.select('.angled-line').style('opacity', 1);
-                group.select('.horizontal-line').style('opacity', 1);
-                group.select('.legend').style('opacity', 1);
-            })
-            .on('mouseleave', () => {
-                group.select('.hover-circle').style('opacity', 0);
-                group.select('.angled-line').style('opacity', 0);
-                group.select('.horizontal-line').style('opacity', 0);
-                group.select('.legend').style('opacity', 0);
-            });
-
-        // Update hover circle
-        group.select('.hover-circle')
-            .attr('r', 5)
-            .attr('cx', d.vis.body.cx)
-            .attr('cy', d.vis.body.cy);
-
-        // Update angled and horizontal lines
-        const lineLength = 7;
-        const angleLength = 17;
-        const angleX = d.vis.body.cx + angleLength;
-        const angleY = d.vis.body.cy - angleLength;
-
-        group.select('.angled-line')
-            .attr('x1', d.vis.body.cx)
-            .attr('y1', d.vis.body.cy)
-            .attr('x2', angleX)
-            .attr('y2', angleY);
-
-        group.select('.horizontal-line')
-            .attr('x1', angleX)
-            .attr('y1', angleY)
-            .attr('x2', angleX + lineLength)
-            .attr('y2', angleY);
-
-        // Update legend
-        group.select('.legend')
-            .attr('x', angleX + lineLength + 5)
-            .attr('y', angleY)
-            .text(d.name);
-    });
-};
-
-
-
-
+    g.selectAll('.body')
+        .data(data)
+        .join("circle")
+        .attr('class', 'body')
+        .attr('r', d => d.vis.body.r)
+        .attr('cx', d => d.vis.body.cx)
+        .attr('cy', d => d.vis.body.cy)
+        .attr('fill', d => d.color)
+        .append('title')
+        .text(d => d.name);
+}
 
 const drawMissionPaths = (missionsData, bodiesData, type) => {
 
