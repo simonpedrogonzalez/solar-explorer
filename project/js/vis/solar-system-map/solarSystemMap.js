@@ -22,9 +22,6 @@ let date = new Date();
 export const setup = async (containerId) => {
     // Load the data
     bodiesData = await getBodiesData();
-    
-    // TODO: remove this line when Pluto data is available
-    bodiesData = bodiesData.filter(d => d.primary !== 'Pluto');
 
     planetsData = await getPlanetsData();
 
