@@ -22,9 +22,6 @@ const defaultRadius = 1;
  * @return {Object}
  */
 const getOrbitEllipse = (d, primary, distanceScale) => {
-    if (d.name == "Moon") {
-        console.log("Moon", d, primary);
-    }
     const cx = primary.vis.body.cx;
     const cy = primary.vis.body.cy;
     const rx = distanceScale(d.semi_major_axis);
@@ -36,7 +33,7 @@ const getOrbitEllipse = (d, primary, distanceScale) => {
     let transform = `translate(${cx}, ${cy})`;
     if (!!d.longitude_of_ascending_node || !!d.argument_of_periapsis) {
         // transform = `translate(${50}, ${50})`;
-        console.log(transform);
+        // console.log(transform);
     } else {
         let rotation = (d.longitude_of_ascending_node + d.argument_of_periapsis) % 360;
         transform = transform + ` rotate(${rotation})`;
@@ -48,12 +45,6 @@ const getOrbitEllipse = (d, primary, distanceScale) => {
         console.log("Invalid orbit data", d.name, cx, cy, rx, ry);
         throw new Error("Invalid orbit data");
     }
-
-
-    if (d.name == "Moon") {
-        console.log("Moon", d, primary);
-    }
-    
 
     return {
         cx,
@@ -111,10 +102,6 @@ const getBodyCircle = (d, primary, radiusScale, distanceScale) => {
         isNaN(cx) || isNaN(cy) || isNaN(r)) {
         console.log("Invalid body data", d.name, cx, cy, r);
         throw new Error("Invalid body data");
-    }
-
-    if (d.name == "Moon") {
-        console.log("Moon", d, primary);
     }
 
     return {

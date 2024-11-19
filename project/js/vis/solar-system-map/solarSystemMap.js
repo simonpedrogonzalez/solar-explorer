@@ -3,6 +3,7 @@ import { calculatePlanetPosition } from "../utils/astro.js";
 import { dateToFractionalYear, fractionalYearToDate } from "../utils/time.js";
 import { updateBodiesVisData } from "./bodies.js";
 import zoom from "./zoom.js";
+import timeSliderVisualization from "./timeSliderVisualization.js";
 
 let svg, g;
 let width = window.innerWidth, height=window.innerHeight; // - 200;
@@ -51,18 +52,27 @@ export const setup = async (containerId) => {
     drawPlanetDistanceScale(planetDistanceScale);
 
     // Create the time slider
-    d3.select("#timeslider-text").text(date.toDateString());
+    d3.select("#timeslider-text").text(getTimeSliderText(date));
     d3.select("#slider")
     .property("value", dateToFractionalYear(date)) // Set initial slider value
     .on("input", (event) => {
         const newDate = fractionalYearToDate(event.target.value);
-        d3.select("#timeslider-text").text(newDate.toDateString());
+        const formattedDate = getTimeSliderText(newDate);
+        d3.select("#timeslider-text").text(formattedDate);
+
         bodiesData = updatePlanetPositions(bodiesData, newDate);
         const filteredMissionsData = missionsData.filter(d => d.launch_date <= newDate);
         draw(bodiesData, filteredMissionsData);
     });
 
+    timeSliderVisualization(missionsData);
     draw(bodiesData, missionsData);
+}
+
+const getTimeSliderText = (date) => {
+    return `${date.getDate().toString().padStart(2, '0')}/` +
+              `${(date.getMonth() + 1).toString().padStart(2, '0')}/` +
+                `${date.getFullYear()}`;
 }
 
 
@@ -148,12 +158,7 @@ const drawBodiesOrbits = (data) => {
         .attr('stroke-width', d => d.type === 'satellite' ? 0.1 : 0.3)
         
     // Update
-    orbits.attr('transform', d => {
-        if (d.name === "Moon") {
-            console.log("Moon UPDATE transform:", d.vis.orbit.transform);
-        }
-        return d.vis.orbit.transform;
-    });
+    orbits.attr('transform', d => d.vis.orbit.transform);
 
     // Exit
     orbits.exit().remove();

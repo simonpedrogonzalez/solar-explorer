@@ -76,8 +76,8 @@ const simplifyMissionsData = (d) => {
     if (!payloadPath) return null;
     
     let destinationObjectName = payloadPath[payloadPath.length - 1];
-    console.log("Mission", d.name, originObjectName, destinationObjectName);
-    console.log(payloadPath);
+    // console.log("Mission", d.name, originObjectName, destinationObjectName);
+    // console.log(payloadPath);
 
     // Filter by the ones I can draw
     let originObject = objectData.find(planet => planet.name === originObjectName);
