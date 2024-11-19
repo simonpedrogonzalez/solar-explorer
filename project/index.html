@@ -3,19 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>The Solar System Dashboard</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="dashboard-container">
+        <!-- Dashboard 1 -->
         <div class="dashboard" id="dashboard1">
-            <h1>The Solar System</h1>
-            <div id="timeslider"><label for="slider">Date: </label><input id="slider" type="range" min="1950" max="2050" step="0.0000001" value="2050"/><span id="timeslider-text"></span></div>
+            <h1 class="dashboard-title">The Solar System</h1>
+            <div id="control-pane">
+                <!-- Time Slider -->
+                <div class="slider-controls" style="display: flex; flex-direction: column; align-items: center; width: 200px; gap: 10px;">
+                    <!-- Top -->
+                    <div style="display: flex; width: 100%; justify-content: space-between; align-items: center;">
+                        <label for="slider-svg" class="vertical-label" style="width: 50%; text-align: center;">Missions</label>
+                        <label for="slider" class="vertical-label" style="width: 50%; text-align: center;">Date</label>
+                    </div>
+                    <!-- Middle -->
+                    <div style="display: flex; width: 100%; align-items: center; position: relative;">
+                        <!-- svg on the left -->
+                        <div style="display: flex; justify-content: center; align-items: center; width: 50%; position: relative; z-index: 2;">
+                            <svg id="slider-svg" width="100" height="400" style="position: absolute; overflow: visible; left: 0;"></svg>
+                        </div>
+                        <!-- Slider on the right -->
+                        <div style="display: flex; justify-content: center; align-items: center; width: 50%; position: relative; z-index: 1;">
+                            <input id="slider" class="slider" type="range" min="1950" max="2025" step="0.01" value="2000" style="height: 400px;" />
+                        </div>
+                    </div>
+                    <!-- Bottom -->
+                    <div style="display: flex; width: 100%; justify-content: space-between; align-items: center;">
+                        <div style="width: 50%;"></div>
+                        <span id="timeslider-text" style="width: 50%; text-align: center;"></span>
+                    </div>
+                </div>
+                <!-- Zoom Controls -->
+                <div id="zoom-controls" class="control-section">
+                    <label for="zoom-in" class="horizontal-label">Zoom:</label>
+                    <button id="zoom-in">+</button>
+                    <button id="zoom-out">-</button>
+                    <button id="reset-zoom">Reset</button>
+                </div>
+            </div>
+            <div id="map-container"></div>
         </div>
+
+        <!-- Dashboard 2 -->
         <div class="dashboard" id="dashboard2">
-            <h1>Dashboard 2</h1>
+            <h1 class="dashboard-title">Dashboard 2</h1>
             <p>This is the second dashboard.</p>
         </div>
+
+        <!-- Switch Button -->
         <button class="switch-button" id="switchButton">Switch Dashboard</button>
     </div>
     <script src="https://d3js.org/d3.v7.min.js"></script>
