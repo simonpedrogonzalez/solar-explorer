@@ -203,3 +203,43 @@ General public / space exploration enthusiasts.
 ### Chart junk
 
 - Some background stars.
+
+## Implementation
+
+Nov 15, 2024. Author: Simon Gonzalez
+
+### Satellites
+
+![alt text](satellites-drawn.png)
+
+
+The satellites were added to the map. They are represented as small circles around the planets. This introduced some additional concerns:
+
+- They are maybe too many and only a few seem to be relevant or useful.
+- They require a different distance scale to be displayed correctly, introducing a layer of complexity when interpreting distances in the map.
+
+We are considering:
+
+- Filtering some of them.
+- Displaying them only after some interaction.
+- Clarifying the satellite distance scale around the planets.
+
+### Code refactor
+
+The code was refactored to separate some elements of the map into different files.
+
+### Visualization refinements
+
+The styles of the orbits, the planets and controls were changed. The planet distance scale to the Sun was added to the map.
+
+![alt text](distance-scale-drawn.png)
+
+### Time slider visualization
+
+The time slider was improved with a mission count visualization that would help the user to understand what missions paths are visible at each point in time.
+
+Also, zoom controls were added in case the wheel zooming isn't available or is not intuitive for the user.
+
+![alt text](controls_v2.png)
+
+
