@@ -1,7 +1,7 @@
 
 export default (svg, g, systemCenter) => {
     const minZoom = 1;
-    const maxZoom = 10;
+    const maxZoom = 1000;
     
     const zoom = d3.zoom()
     .scaleExtent([minZoom, maxZoom])

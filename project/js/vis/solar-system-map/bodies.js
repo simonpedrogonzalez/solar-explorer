@@ -3,7 +3,7 @@ import { calculatePlanetPosition, semiMinAxis } from "../utils/astro.js";
 
 // Default canvas radius for bodies that don't have a radius
 // value, like small satellites and asteroids
-const defaultRadius = 1;
+const defaultRadius = 0.1;
 
 /**
  * Calculate the orbit of a body as a ellipse around
@@ -151,14 +151,26 @@ export const updateBodiesVisData = (
         }
         // Update the bodies orbiting this body
         let planetChildren = data.filter(d2 => d2.primary === d.name);
-        // let maxVisDistance = Math.min(canvas.width, canvas.height) / 20;
-        // let distanceScale = getChildrenDistanceScale(d, data, Math.min(canvas.width, canvas.height) / 20);
-        planetChildren.forEach(d2 => {
-            d2.vis = {
-                body: getBodyCircle(d2, d, planetRadiusScale, satelliteDistanceScale),
-                orbit: getOrbitEllipse(d2, d, satelliteDistanceScale)
-            }
-        });
+        if (planetChildren.length !== 0){
+            let radii = planetChildren.map(d2 => d2.radius);
+            radii.push(d.radius);
+            let maxRadiusInPixels = d.vis.body.r;
+            let smallestChild = planetChildren.reduce((acc, d2) => d2.radius < acc.radius ? d2 : acc);
+            let smallestChildInPixels = smallestChild.radius * d.vis.body.r / d.radius;
+            let satelliteRadiusScale = d3.scaleLinear()
+                .domain(d3.extent(radii))
+                .range([smallestChildInPixels, maxRadiusInPixels]);
+
+            // let maxVisDistance = Math.min(canvas.width, canvas.height) / 20;
+            // let distanceScale = getChildrenDistanceScale(d, data, Math.min(canvas.width, canvas.height) / 20);
+            planetChildren.forEach(d2 => {
+                d2.vis = {
+                    body: getBodyCircle(d2, d, satelliteRadiusScale, satelliteDistanceScale),
+                    orbit: getOrbitEllipse(d2, d, satelliteDistanceScale),
+                    radiusScale: satelliteRadiusScale
+                }
+            });
+        }
     });
 
     return data;
