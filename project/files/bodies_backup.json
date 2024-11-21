@@ -20,18 +20,7 @@
         "mean_anomaly_0": 262.8807570972,
         "mean_anomaly_rate": -899.5920118187,
         "orbital_period_0": 4337.9927180923,
-        "orbital_period_rate": -109.5489160205,
-        "mass_value": 1.989,
-        "mass_exponent": 30,
-        "vol_value": 1.412,
-        "vol_exponent": 18,
-        "density": 1.0,
-        "gravity": 0.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "orbital_period_rate": -109.5489160205
     },
     {
         "id": "001",
@@ -54,18 +43,7 @@
         "mean_anomaly_0": 174.795882917,
         "mean_anomaly_rate": 149443.4688800867,
         "orbital_period_0": 87.9690980421,
-        "orbital_period_rate": 3.2046e-06,
-        "mass_value": 3.30114,
-        "mass_exponent": 23,
-        "vol_value": 6.083,
-        "vol_exponent": 10,
-        "density": 5.4291,
-        "gravity": 3.7,
-        "sideral_orbit": 87.969,
-        "sideral_rotation": 1407.6,
-        "discovered_by": "",
-        "discovery_date": null,
-        "avg_temp_kelvin": 440
+        "orbital_period_rate": 3.2046e-06
     },
     {
         "id": "002",
@@ -88,18 +66,7 @@
         "mean_anomaly_0": 50.114771874,
         "mean_anomaly_rate": 58511.4866102131,
         "orbital_period_0": 224.6983300748,
-        "orbital_period_rate": -6.00168e-05,
-        "mass_value": 4.86747,
-        "mass_exponent": 24,
-        "vol_value": 9.2843,
-        "vol_exponent": 11,
-        "density": 5.243,
-        "gravity": 8.87,
-        "sideral_orbit": 224.701,
-        "sideral_rotation": -5832.5,
-        "discovered_by": "",
-        "discovery_date": null,
-        "avg_temp_kelvin": 737
+        "orbital_period_rate": -6.00168e-05
     },
     {
         "id": "003",
@@ -122,18 +89,7 @@
         "mean_anomaly_0": 357.5452038219,
         "mean_anomaly_rate": 35982.6036184154,
         "orbital_period_0": 365.2543856032,
-        "orbital_period_rate": 4.1806e-06,
-        "mass_value": 5.97237,
-        "mass_exponent": 24,
-        "vol_value": 1.08321,
-        "vol_exponent": 12,
-        "density": 5.5136,
-        "gravity": 9.8,
-        "sideral_orbit": 365.256,
-        "sideral_rotation": 23.9345,
-        "discovered_by": "",
-        "discovery_date": null,
-        "avg_temp_kelvin": 288
+        "orbital_period_rate": 4.1806e-06
     },
     {
         "id": "004",
@@ -156,18 +112,7 @@
         "mean_anomaly_0": 19.3564834844,
         "mean_anomaly_rate": 19128.8475571955,
         "orbital_period_0": 686.9712727459,
-        "orbital_period_rate": -8.80256e-05,
-        "mass_value": 6.41712,
-        "mass_exponent": 23,
-        "vol_value": 1.6318,
-        "vol_exponent": 11,
-        "density": 3.9341,
-        "gravity": 3.71,
-        "sideral_orbit": 686.98,
-        "sideral_rotation": 24.6229,
-        "discovered_by": "",
-        "discovery_date": null,
-        "avg_temp_kelvin": 210
+        "orbital_period_rate": -8.80256e-05
     },
     {
         "id": "005",
@@ -190,18 +135,7 @@
         "mean_anomaly_0": 18.8184678934,
         "mean_anomaly_rate": 3032.3721429697,
         "orbital_period_0": 4334.4151276237,
-        "orbital_period_rate": 0.2196129474,
-        "mass_value": 1.89819,
-        "mass_exponent": 27,
-        "vol_value": 1.43128,
-        "vol_exponent": 15,
-        "density": 1.3262,
-        "gravity": 24.79,
-        "sideral_orbit": 4332.589,
-        "sideral_rotation": 9.925,
-        "discovered_by": "",
-        "discovery_date": null,
-        "avg_temp_kelvin": 165
+        "orbital_period_rate": 0.2196129474
     },
     {
         "id": "006",
@@ -224,18 +158,7 @@
         "mean_anomaly_0": 320.3478507552,
         "mean_anomaly_rate": 1221.9982496745,
         "orbital_period_0": 10832.3273012872,
-        "orbital_period_rate": 4.2247348269,
-        "mass_value": 5.68336,
-        "mass_exponent": 26,
-        "vol_value": 8.2713,
-        "vol_exponent": 14,
-        "density": 0.6871,
-        "gravity": 10.44,
-        "sideral_orbit": 10759.22,
-        "sideral_rotation": 10.656,
-        "discovered_by": "",
-        "discovery_date": null,
-        "avg_temp_kelvin": 134
+        "orbital_period_rate": 4.2247348269
     },
     {
         "id": "007",
@@ -258,18 +181,7 @@
         "mean_anomaly_0": 142.9557518353,
         "mean_anomaly_rate": 429.8102962351,
         "orbital_period_0": 30799.1058696708,
-        "orbital_period_rate": -13.6906229987,
-        "mass_value": 8.68127,
-        "mass_exponent": 25,
-        "vol_value": 6.833,
-        "vol_exponent": 13,
-        "density": 1.27,
-        "gravity": 8.87,
-        "sideral_orbit": 30685.4,
-        "sideral_rotation": -17.24,
-        "discovered_by": "William Herschel",
-        "discovery_date": "1781-03-13T00:00:00.000",
-        "avg_temp_kelvin": 76
+        "orbital_period_rate": -13.6906229987
     },
     {
         "id": "008",
@@ -292,18 +204,7 @@
         "mean_anomaly_0": 267.7657251278,
         "mean_anomaly_rate": 221.1261603551,
         "orbital_period_0": 60327.5587293199,
-        "orbital_period_rate": 38.5599096465,
-        "mass_value": 1.02413,
-        "mass_exponent": 26,
-        "vol_value": 6.254,
-        "vol_exponent": 13,
-        "density": 1.638,
-        "gravity": 11.15,
-        "sideral_orbit": 60189.0,
-        "sideral_rotation": 16.11,
-        "discovered_by": "Le Verrier, Adams, Galle",
-        "discovery_date": "1846-09-23T00:00:00.000",
-        "avg_temp_kelvin": 55
+        "orbital_period_rate": 38.5599096465
     },
     {
         "id": "009",
@@ -326,18 +227,7 @@
         "mean_anomaly_0": 15.02326915,
         "mean_anomaly_rate": 144.3734793947,
         "orbital_period_0": 89866.0876657018,
-        "orbital_period_rate": -74.471778292,
-        "mass_value": 1.303,
-        "mass_exponent": 22,
-        "vol_value": 7.15,
-        "vol_exponent": 9,
-        "density": 1.89,
-        "gravity": 0.62,
-        "sideral_orbit": 90465.0,
-        "sideral_rotation": -153.2928,
-        "discovered_by": "Clyde W. Tombaugh",
-        "discovery_date": "1930-02-18T00:00:00.000",
-        "avg_temp_kelvin": 44
+        "orbital_period_rate": -74.471778292
     },
     {
         "id": 301,
@@ -355,19 +245,7 @@
         "mean_anomaly": 135.27,
         "orbital_period": 27.322,
         "apsidal_precession_period": 5.997,
-        "nodal_precession_period": 18.6,
-        "mass_value": 7.346,
-        "mass_exponent": 22,
-        "vol_value": 2.1968,
-        "vol_exponent": 10,
-        "density": 3.344,
-        "gravity": 1.62,
-        "radius": 1737.0,
-        "sideral_orbit": 27.3217,
-        "sideral_rotation": 655.728,
-        "discovered_by": "",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 18.6
     },
     {
         "id": 401,
@@ -385,19 +263,7 @@
         "mean_anomaly": 189.6,
         "orbital_period": 0.319033,
         "apsidal_precession_period": 1.132,
-        "nodal_precession_period": 2.262,
-        "mass_value": 1.06,
-        "mass_exponent": 16,
-        "vol_value": 5.78361,
-        "vol_exponent": 3,
-        "density": 1.9,
-        "gravity": 0.0057,
-        "radius": 11.1,
-        "sideral_orbit": 0.31891,
-        "sideral_rotation": 0.7653,
-        "discovered_by": "Asaph Hall",
-        "discovery_date": "1877-08-12T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 2.262
     },
     {
         "id": 402,
@@ -415,19 +281,7 @@
         "mean_anomaly": 205,
         "orbital_period": 1.262361,
         "apsidal_precession_period": 0,
-        "nodal_precession_period": 54.537,
-        "mass_value": 1.4762,
-        "mass_exponent": 15,
-        "vol_value": 9.9978,
-        "vol_exponent": 3,
-        "density": 1.75,
-        "gravity": 0.003,
-        "radius": 6.2,
-        "sideral_orbit": 1.26244,
-        "sideral_rotation": 30.29856,
-        "discovered_by": "Asaph Hall",
-        "discovery_date": "1877-08-12T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 54.537
     },
     {
         "id": 501,
@@ -445,17 +299,7 @@
         "mean_anomaly": 330.9,
         "orbital_period": 1.762732,
         "apsidal_precession_period": 1.333,
-        "nodal_precession_period": 0,
-        "mass_value": 8.932,
-        "mass_exponent": 22,
-        "density": 3.53,
-        "gravity": 1.79,
-        "radius": 1821.5,
-        "sideral_orbit": 1.76914,
-        "sideral_rotation": 42.4593,
-        "discovered_by": "Galileo Galilei",
-        "discovery_date": "1610-01-07T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 502,
@@ -473,17 +317,7 @@
         "mean_anomaly": 345.4,
         "orbital_period": 3.525463,
         "apsidal_precession_period": 1.394,
-        "nodal_precession_period": 30.202,
-        "mass_value": 4.8,
-        "mass_exponent": 22,
-        "density": 3.01,
-        "gravity": 1.31,
-        "radius": 1560.8,
-        "sideral_orbit": 3.55118,
-        "sideral_rotation": 85.2293,
-        "discovered_by": "Galileo Galilei",
-        "discovery_date": "1610-01-08T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 30.202
     },
     {
         "id": 503,
@@ -501,17 +335,7 @@
         "mean_anomaly": 324.8,
         "orbital_period": 7.155588,
         "apsidal_precession_period": 68.301,
-        "nodal_precession_period": 137.812,
-        "mass_value": 1.4819,
-        "mass_exponent": 23,
-        "density": 1.94,
-        "gravity": 1.428,
-        "radius": 2631.2,
-        "sideral_orbit": 7.15455,
-        "sideral_rotation": 171.7093,
-        "discovered_by": "Galileo Galilei",
-        "discovery_date": "1610-01-11T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 137.812
     },
     {
         "id": 504,
@@ -529,17 +353,7 @@
         "mean_anomaly": 87.4,
         "orbital_period": 16.69044,
         "apsidal_precession_period": 277.921,
-        "nodal_precession_period": 577.264,
-        "mass_value": 1.0759,
-        "mass_exponent": 23,
-        "density": 1.83,
-        "gravity": 1.235,
-        "radius": 2410.3,
-        "sideral_orbit": 16.68902,
-        "sideral_rotation": 400.536,
-        "discovered_by": "Galileo Galilei",
-        "discovery_date": "1610-01-07T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 577.264
     },
     {
         "id": 505,
@@ -557,17 +371,7 @@
         "mean_anomaly": 310.6,
         "orbital_period": 0.499918,
         "apsidal_precession_period": 0.196,
-        "nodal_precession_period": 0.393,
-        "mass_value": 7.5,
-        "mass_exponent": 18,
-        "density": 3.1,
-        "gravity": 0.02,
-        "radius": 84.0,
-        "sideral_orbit": 0.49818,
-        "sideral_rotation": 11.9563,
-        "discovered_by": "E. Barnard",
-        "discovery_date": "1892-09-09T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0.393
     },
     {
         "id": 514,
@@ -585,17 +389,7 @@
         "mean_anomaly": 182.1,
         "orbital_period": 0.676105,
         "apsidal_precession_period": 0.398,
-        "nodal_precession_period": 0.797,
-        "mass_value": 8.0,
-        "mass_exponent": 17,
-        "density": 1.0,
-        "gravity": 0.02,
-        "radius": 49.0,
-        "sideral_orbit": 0.6745,
-        "sideral_rotation": 16.188,
-        "discovered_by": "Stephen P. Synnott et al",
-        "discovery_date": "1979-03-05T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0.797
     },
     {
         "id": 515,
@@ -613,17 +407,7 @@
         "mean_anomaly": 214.5,
         "orbital_period": 0.29826,
         "apsidal_precession_period": 0,
-        "nodal_precession_period": 0,
-        "mass_value": 2.0,
-        "mass_exponent": 15,
-        "density": 1.0,
-        "gravity": 0.002,
-        "radius": 8.0,
-        "sideral_orbit": 0.29826,
-        "sideral_rotation": 0.7158,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "1979-07-08T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 516,
@@ -641,17 +425,7 @@
         "mean_anomaly": 166,
         "orbital_period": 0.294779,
         "apsidal_precession_period": 0,
-        "nodal_precession_period": 0,
-        "mass_value": 1.0,
-        "mass_exponent": 17,
-        "density": 1.0,
-        "gravity": 0.005,
-        "radius": 22.0,
-        "sideral_orbit": 0.29478,
-        "sideral_rotation": 0.7075,
-        "discovered_by": "Stephen P. Synnott et al",
-        "discovery_date": "1979-03-04T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 506,
@@ -669,17 +443,7 @@
         "mean_anomaly": 66.5,
         "orbital_period": 250.56221,
         "apsidal_precession_period": "138.078",
-        "nodal_precession_period": 285.676,
-        "mass_value": 9.5,
-        "mass_exponent": 18,
-        "density": 1.0,
-        "gravity": 0.062,
-        "radius": 85.0,
-        "sideral_orbit": 250.5662,
-        "sideral_rotation": 7.7808,
-        "discovered_by": "C. Perrine",
-        "discovery_date": "1904-12-03T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 285.676
     },
     {
         "id": 507,
@@ -697,17 +461,7 @@
         "mean_anomaly": 330.7,
         "orbital_period": 259.639884,
         "apsidal_precession_period": "127.616",
-        "nodal_precession_period": 261.624,
-        "mass_value": 8.0,
-        "mass_exponent": 17,
-        "density": 1.0,
-        "gravity": 0.031,
-        "radius": 40.0,
-        "sideral_orbit": 259.6528,
-        "sideral_rotation": 0.0,
-        "discovered_by": "C. Perrine",
-        "discovery_date": "1905-01-02T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 261.624
     },
     {
         "id": 508,
@@ -725,17 +479,7 @@
         "mean_anomaly": 277.8,
         "orbital_period": 743.612321,
         "apsidal_precession_period": "81.126",
-        "nodal_precession_period": 80.786,
-        "mass_value": 3.0,
-        "mass_exponent": 17,
-        "density": 1.0,
-        "gravity": 0.022,
-        "radius": 18.0,
-        "sideral_orbit": 743.6,
-        "sideral_rotation": 0.0,
-        "discovered_by": "P. Melotte",
-        "discovery_date": "1908-01-27T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 80.786
     },
     {
         "id": 509,
@@ -753,17 +497,7 @@
         "mean_anomaly": 167.5,
         "orbital_period": 758.849903,
         "apsidal_precession_period": "88.675",
-        "nodal_precession_period": 87.408,
-        "mass_value": 8.0,
-        "mass_exponent": 16,
-        "density": 1.0,
-        "gravity": 0.014,
-        "radius": 14.0,
-        "sideral_orbit": 758.9,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Seth Barnes Nicholson",
-        "discovery_date": "1914-07-21T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 87.408
     },
     {
         "id": 510,
@@ -781,17 +515,7 @@
         "mean_anomaly": 331.5,
         "orbital_period": 259.198081,
         "apsidal_precession_period": "129.737",
-        "nodal_precession_period": 286.328,
-        "mass_value": 8.0,
-        "mass_exponent": 16,
-        "density": 1.0,
-        "gravity": 0.013,
-        "radius": 12.0,
-        "sideral_orbit": 259.22,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Seth Barnes Nicholson",
-        "discovery_date": "1938-07-06T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 286.328
     },
     {
         "id": 511,
@@ -809,17 +533,7 @@
         "mean_anomaly": 234,
         "orbital_period": 734.18528,
         "apsidal_precession_period": "81.289",
-        "nodal_precession_period": 88.54,
-        "mass_value": 1.0,
-        "mass_exponent": 17,
-        "density": 1.0,
-        "gravity": 0.017,
-        "radius": 15.0,
-        "sideral_orbit": 734.2,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Seth Barnes Nicholson",
-        "discovery_date": "1938-07-30T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 88.54
     },
     {
         "id": 512,
@@ -837,17 +551,7 @@
         "mean_anomaly": 259.4,
         "orbital_period": 629.791691,
         "apsidal_precession_period": "142.376",
-        "nodal_precession_period": 110.506,
-        "mass_value": 4.0,
-        "mass_exponent": 16,
-        "density": 1.0,
-        "gravity": 0.01,
-        "radius": 10.0,
-        "sideral_orbit": 629.8,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Seth Barnes Nicholson",
-        "discovery_date": "1951-09-28T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 110.506
     },
     {
         "id": 513,
@@ -865,17 +569,7 @@
         "mean_anomaly": 233.4,
         "orbital_period": 240.926609,
         "apsidal_precession_period": "146.033",
-        "nodal_precession_period": 310.776,
-        "mass_value": 6.0,
-        "mass_exponent": 17,
-        "density": 1.0,
-        "gravity": 0.0073,
-        "radius": 5.0,
-        "sideral_orbit": 240.92,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Charles Kowa",
-        "discovery_date": "1974-09-11T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 310.776
     },
     {
         "id": 517,
@@ -893,17 +587,7 @@
         "mean_anomaly": 107.1,
         "orbital_period": 758.860222,
         "apsidal_precession_period": "119.762",
-        "nodal_precession_period": 89.001,
-        "mass_value": 8.7,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0031,
-        "radius": 4.0,
-        "sideral_orbit": 758.8,
-        "sideral_rotation": 0.0,
-        "discovered_by": "J.V. Scott",
-        "discovery_date": "1999-10-06T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 89.001
     },
     {
         "id": 518,
@@ -921,21 +605,11 @@
         "mean_anomaly": 284.7,
         "orbital_period": 130.028096,
         "apsidal_precession_period": "-",
-        "nodal_precession_period": 420.197,
-        "mass_value": 6.9,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0029,
-        "radius": 4.0,
-        "sideral_orbit": 130.02,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Charles Kowal",
-        "discovery_date": "1975-09-30T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 420.197
     },
     {
         "id": 519,
-        "name": "Megaclite",
+        "name": "Magaclite",
         "type": "satellite",
         "primary": "Jupiter",
         "right_ascension": null,
@@ -949,17 +623,7 @@
         "mean_anomaly": 138.1,
         "orbital_period": 752.861984,
         "apsidal_precession_period": "77.078",
-        "nodal_precession_period": 79.432,
-        "mass_value": 2.1,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 2.7,
-        "sideral_orbit": 752.8,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2000-11-23T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 79.432
     },
     {
         "id": 520,
@@ -977,17 +641,7 @@
         "mean_anomaly": 95.7,
         "orbital_period": 732.451194,
         "apsidal_precession_period": "81.237",
-        "nodal_precession_period": 88.733,
-        "mass_value": 1.6,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 2.5,
-        "sideral_orbit": 732.2,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2000-11-23T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 88.733
     },
     {
         "id": 521,
@@ -1005,17 +659,7 @@
         "mean_anomaly": 266.2,
         "orbital_period": 723.712689,
         "apsidal_precession_period": "81.657",
-        "nodal_precession_period": 89.543,
-        "mass_value": 7.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.9,
-        "sideral_orbit": 723.8,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2000-11-23T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 89.543
     },
     {
         "id": 522,
@@ -1033,17 +677,7 @@
         "mean_anomaly": 219.3,
         "orbital_period": 623.316099,
         "apsidal_precession_period": "145.025",
-        "nodal_precession_period": 111.952,
-        "mass_value": 1.2,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 2.2,
-        "sideral_orbit": 623.3,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2000-11-23T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 111.952
     },
     {
         "id": 523,
@@ -1061,17 +695,7 @@
         "mean_anomaly": 256,
         "orbital_period": 742.015252,
         "apsidal_precession_period": "80.786",
-        "nodal_precession_period": 87.701,
-        "mass_value": 1.9,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 2.6,
-        "sideral_orbit": 743.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2000-11-23T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 87.701
     },
     {
         "id": 524,
@@ -1089,17 +713,7 @@
         "mean_anomaly": 215.5,
         "orbital_period": 631.593822,
         "apsidal_precession_period": "145.877",
-        "nodal_precession_period": 110.871,
-        "mass_value": 1.9,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 2.6,
-        "sideral_orbit": 631.5,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2000-11-23T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 110.871
     },
     {
         "id": 525,
@@ -1117,17 +731,7 @@
         "mean_anomaly": 265.5,
         "orbital_period": 728.482799,
         "apsidal_precession_period": "80.374",
-        "nodal_precession_period": 88.108,
-        "mass_value": 4.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.6,
-        "sideral_orbit": 728.3,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2000-11-23T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 88.108
     },
     {
         "id": 526,
@@ -1145,17 +749,7 @@
         "mean_anomaly": 124.9,
         "orbital_period": 726.273223,
         "apsidal_precession_period": "82.135",
-        "nodal_precession_period": 89.957,
-        "mass_value": 7.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.9,
-        "sideral_orbit": 725.5,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2000-11-23T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 89.957
     },
     {
         "id": 527,
@@ -1173,17 +767,7 @@
         "mean_anomaly": 112.2,
         "orbital_period": 625.389698,
         "apsidal_precession_period": "146.445",
-        "nodal_precession_period": 110.385,
-        "mass_value": 4.3,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.4,
-        "sideral_orbit": 625.3,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2000-11-23T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 110.385
     },
     {
         "id": 528,
@@ -1201,17 +785,7 @@
         "mean_anomaly": 145.7,
         "orbital_period": 761.001946,
         "apsidal_precession_period": "92.519",
-        "nodal_precession_period": 85.278,
-        "mass_value": 9.0,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0015,
-        "radius": 2.0,
-        "sideral_orbit": 715.4,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2001-12-10T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 85.278
     },
     {
         "id": 529,
@@ -1229,17 +803,7 @@
         "mean_anomaly": 244.4,
         "orbital_period": 627.175794,
         "apsidal_precession_period": "146.131",
-        "nodal_precession_period": 111.518,
-        "mass_value": 9.0,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0015,
-        "radius": 2.0,
-        "sideral_orbit": 627.3,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2001-12-11T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 111.518
     },
     {
         "id": 530,
@@ -1257,17 +821,7 @@
         "mean_anomaly": 134.7,
         "orbital_period": 633.904723,
         "apsidal_precession_period": "135.082",
-        "nodal_precession_period": 110.661,
-        "mass_value": 9.0,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0015,
-        "radius": 2.0,
-        "sideral_orbit": 633.9,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2001-12-19T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 110.661
     },
     {
         "id": 531,
@@ -1285,17 +839,7 @@
         "mean_anomaly": 106,
         "orbital_period": 730.10012,
         "apsidal_precession_period": "80.391",
-        "nodal_precession_period": 88.413,
-        "mass_value": 4.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0012,
-        "radius": 1.5,
-        "sideral_orbit": 730.2,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2001-12-19T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 88.413
     },
     {
         "id": 532,
@@ -1313,17 +857,7 @@
         "mean_anomaly": 286.3,
         "orbital_period": 717.308142,
         "apsidal_precession_period": "111.830",
-        "nodal_precession_period": 93.152,
-        "mass_value": 4.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0012,
-        "radius": 1.5,
-        "sideral_orbit": 723.9,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2001-12-19T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 93.152
     },
     {
         "id": 533,
@@ -1341,17 +875,7 @@
         "mean_anomaly": 336.5,
         "orbital_period": 620.437937,
         "apsidal_precession_period": "142.520",
-        "nodal_precession_period": 111.81,
-        "mass_value": 4.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0012,
-        "radius": 1.5,
-        "sideral_orbit": 620.6,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2001-12-11T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 111.81
     },
     {
         "id": 534,
@@ -1369,17 +893,7 @@
         "mean_anomaly": 72.2,
         "orbital_period": 550.686793,
         "apsidal_precession_period": "-",
-        "nodal_precession_period": 138.419,
-        "mass_value": 1.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 553.1,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2001-12-11T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 138.419
     },
     {
         "id": 535,
@@ -1397,17 +911,7 @@
         "mean_anomaly": 200.7,
         "orbital_period": 622.585958,
         "apsidal_precession_period": "143.587",
-        "nodal_precession_period": 106.485,
-        "mass_value": 1.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.00081,
-        "radius": 1.0,
-        "sideral_orbit": 622.6,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2001-12-11T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 106.485
     },
     {
         "id": 536,
@@ -1425,17 +929,7 @@
         "mean_anomaly": 173.8,
         "orbital_period": 748.294484,
         "apsidal_precession_period": "98.176",
-        "nodal_precession_period": 87.481,
-        "mass_value": 1.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.00081,
-        "radius": 1.0,
-        "sideral_orbit": 748.3,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2001-12-19T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 87.481
     },
     {
         "id": 537,
@@ -1453,17 +947,7 @@
         "mean_anomaly": 212.7,
         "orbital_period": 729.64267,
         "apsidal_precession_period": "81.337",
-        "nodal_precession_period": 88.943,
-        "mass_value": 1.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.00081,
-        "radius": 1.0,
-        "sideral_orbit": 729.5,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2001-12-19T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 88.943
     },
     {
         "id": 538,
@@ -1481,17 +965,7 @@
         "mean_anomaly": 216,
         "orbital_period": 719.465077,
         "apsidal_precession_period": "81.009",
-        "nodal_precession_period": 89.472,
-        "mass_value": 1.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.00081,
-        "radius": 1.0,
-        "sideral_orbit": 716.3,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2001-12-11T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 89.472
     },
     {
         "id": 539,
@@ -1509,17 +983,7 @@
         "mean_anomaly": 233.7,
         "orbital_period": 739.80682,
         "apsidal_precession_period": "85.714",
-        "nodal_precession_period": 84.71,
-        "mass_value": 4.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 739.6,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 84.71
     },
     {
         "id": 540,
@@ -1537,17 +1001,7 @@
         "mean_anomaly": 253.7,
         "orbital_period": 620.068159,
         "apsidal_precession_period": "148.789",
-        "nodal_precession_period": 111.345,
-        "mass_value": 1.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 620.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 111.345
     },
     {
         "id": 541,
@@ -1565,17 +1019,7 @@
         "mean_anomaly": 198.8,
         "orbital_period": 761.464554,
         "apsidal_precession_period": "69.343",
-        "nodal_precession_period": 76.914,
-        "mass_value": 9.0,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 761.5,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 76.914
     },
     {
         "id": 542,
@@ -1593,17 +1037,7 @@
         "mean_anomaly": 267.9,
         "orbital_period": 628.025732,
         "apsidal_precession_period": "131.527",
-        "nodal_precession_period": 110.79,
-        "mass_value": 1.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 628.1,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 110.79
     },
     {
         "id": 543,
@@ -1621,17 +1055,7 @@
         "mean_anomaly": 39.8,
         "orbital_period": 731.879533,
         "apsidal_precession_period": "81.361",
-        "nodal_precession_period": 88.615,
-        "mass_value": 4.15,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0012,
-        "radius": 1.5,
-        "sideral_orbit": 762.7,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2002-10-31T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 88.615
     },
     {
         "id": 544,
@@ -1649,17 +1073,7 @@
         "mean_anomaly": 54.2,
         "orbital_period": 728.259347,
         "apsidal_precession_period": "82.013",
-        "nodal_precession_period": 89.444,
-        "mass_value": 1.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 764.7,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 89.444
     },
     {
         "id": 545,
@@ -1677,17 +1091,7 @@
         "mean_anomaly": 44.2,
         "orbital_period": 626.325893,
         "apsidal_precession_period": "128.151",
-        "nodal_precession_period": 115.019,
-        "mass_value": 9.0,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 4.0,
-        "sideral_orbit": 634.8,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 115.019
     },
     {
         "id": 546,
@@ -1705,17 +1109,7 @@
         "mean_anomaly": 339.8,
         "orbital_period": 456.286617,
         "apsidal_precession_period": "-",
-        "nodal_precession_period": 112.238,
-        "mass_value": 4.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 456.1,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 112.238
     },
     {
         "id": 547,
@@ -1733,17 +1127,7 @@
         "mean_anomaly": 203.6,
         "orbital_period": 730.301672,
         "apsidal_precession_period": "79.958",
-        "nodal_precession_period": 87.844,
-        "mass_value": 9.0,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 4.0,
-        "sideral_orbit": 746.4,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 87.844
     },
     {
         "id": 548,
@@ -1761,17 +1145,7 @@
         "mean_anomaly": 121.3,
         "orbital_period": 751.974673,
         "apsidal_precession_period": "80.253",
-        "nodal_precession_period": 79.35,
-        "mass_value": 1.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 737.8,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 79.35
     },
     {
         "id": 549,
@@ -1789,17 +1163,7 @@
         "mean_anomaly": 31.8,
         "orbital_period": 776.763241,
         "apsidal_precession_period": "108.568",
-        "nodal_precession_period": 85.006,
-        "mass_value": 1.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 779.2,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 85.006
     },
     {
         "id": 550,
@@ -1817,17 +1181,7 @@
         "mean_anomaly": 141.2,
         "orbital_period": 734.522343,
         "apsidal_precession_period": "80.841",
-        "nodal_precession_period": 88.139,
-        "mass_value": 1.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 717.3,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 88.139
     },
     {
         "id": 551,
@@ -1845,15 +1199,7 @@
         "mean_anomaly": 161.1,
         "orbital_period": 736.512347,
         "apsidal_precession_period": "81.202",
-        "nodal_precession_period": 88.194,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 723.2,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Jacobson, Brozovic, Gladman, Alexandersen",
-        "discovery_date": "2010-09-07T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 88.194
     },
     {
         "id": 552,
@@ -1871,15 +1217,7 @@
         "mean_anomaly": 306.3,
         "orbital_period": 618.841217,
         "apsidal_precession_period": "148.128",
-        "nodal_precession_period": 111.338,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 0.5,
-        "sideral_orbit": 588.1,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Christian Veillet",
-        "discovery_date": "2010-09-08T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 111.338
     },
     {
         "id": 553,
@@ -1897,17 +1235,7 @@
         "mean_anomaly": 309.6,
         "orbital_period": 278.212821,
         "apsidal_precession_period": "118.591",
-        "nodal_precession_period": 245.34,
-        "mass_value": 9.0,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 287.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2000-12-27T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 245.34
     },
     {
         "id": 554,
@@ -1925,15 +1253,7 @@
         "mean_anomaly": 192.4,
         "orbital_period": 618.491978,
         "apsidal_precession_period": "172.452",
-        "nodal_precession_period": 112.96,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 0.5,
-        "sideral_orbit": 602.7,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2017-06-06T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 112.96
     },
     {
         "id": 555,
@@ -1951,17 +1271,7 @@
         "mean_anomaly": 66.1,
         "orbital_period": 598.121316,
         "apsidal_precession_period": "4.610",
-        "nodal_precession_period": 135.631,
-        "mass_value": 1.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 606.3,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 135.631
     },
     {
         "id": 556,
@@ -1979,15 +1289,7 @@
         "mean_anomaly": 284,
         "orbital_period": 718.316562,
         "apsidal_precession_period": "87.848",
-        "nodal_precession_period": 87.14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 0.5,
-        "sideral_orbit": 726.8,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2012-01-29T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 87.14
     },
     {
         "id": 557,
@@ -2005,17 +1307,7 @@
         "mean_anomaly": 329.7,
         "orbital_period": 729.84767,
         "apsidal_precession_period": "80.984",
-        "nodal_precession_period": 88.844,
-        "mass_value": 9.0,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 759.7,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 88.844
     },
     {
         "id": 558,
@@ -2033,17 +1325,7 @@
         "mean_anomaly": 69.5,
         "orbital_period": 702.535939,
         "apsidal_precession_period": "163.220",
-        "nodal_precession_period": 101.601,
-        "mass_value": 1.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 668.4,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 101.601
     },
     {
         "id": 559,
@@ -2061,15 +1343,7 @@
         "mean_anomaly": 286.5,
         "orbital_period": 756.406342,
         "apsidal_precession_period": "108.088",
-        "nodal_precession_period": 86.595,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 734.2,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2017-06-06T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 86.595
     },
     {
         "id": 560,
@@ -2087,17 +1361,7 @@
         "mean_anomaly": 359.1,
         "orbital_period": 617.726175,
         "apsidal_precession_period": "150.073",
-        "nodal_precession_period": 112.595,
-        "mass_value": 1.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 504.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 112.595
     },
     {
         "id": 561,
@@ -2115,17 +1379,7 @@
         "mean_anomaly": 218.4,
         "orbital_period": 734.778675,
         "apsidal_precession_period": "81.047",
-        "nodal_precession_period": 88.182,
-        "mass_value": 1.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 701.3,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 88.182
     },
     {
         "id": 562,
@@ -2143,15 +1397,7 @@
         "mean_anomaly": 57.6,
         "orbital_period": 527.606246,
         "apsidal_precession_period": "48.686",
-        "nodal_precession_period": 136.971,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 0.5,
-        "sideral_orbit": 533.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2018-07-17T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 136.971
     },
     {
         "id": 563,
@@ -2169,15 +1415,7 @@
         "mean_anomaly": 293.3,
         "orbital_period": 724.709424,
         "apsidal_precession_period": "81.295",
-        "nodal_precession_period": 89.1,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 723.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2018-07-17T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 89.1
     },
     {
         "id": 564,
@@ -2195,15 +1433,7 @@
         "mean_anomaly": 193.3,
         "orbital_period": 625.601566,
         "apsidal_precession_period": "145.650",
-        "nodal_precession_period": 111.667,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 606.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2018-07-17T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 111.667
     },
     {
         "id": 565,
@@ -2221,15 +1451,7 @@
         "mean_anomaly": 153.9,
         "orbital_period": 251.911064,
         "apsidal_precession_period": "140.848",
-        "nodal_precession_period": 291.11,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 252.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2018-07-17T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 291.11
     },
     {
         "id": 566,
@@ -2247,15 +1469,7 @@
         "mean_anomaly": 66.9,
         "orbital_period": 737.284766,
         "apsidal_precession_period": "81.014",
-        "nodal_precession_period": 88.443,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 719.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2018-07-17T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 88.443
     },
     {
         "id": 567,
@@ -2273,15 +1487,7 @@
         "mean_anomaly": 150.2,
         "orbital_period": 733.993348,
         "apsidal_precession_period": "94.238",
-        "nodal_precession_period": 87.113,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 683.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2018-07-17T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 87.113
     },
     {
         "id": 568,
@@ -2299,15 +1505,7 @@
         "mean_anomaly": 359.1,
         "orbital_period": 626.562241,
         "apsidal_precession_period": "146.553",
-        "nodal_precession_period": 111.335,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 603.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2018-07-17T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 111.335
     },
     {
         "id": 569,
@@ -2325,15 +1523,7 @@
         "mean_anomaly": 350.4,
         "orbital_period": 719.760404,
         "apsidal_precession_period": "82.331",
-        "nodal_precession_period": 90.463,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 0.5,
-        "sideral_orbit": 720.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2018-07-17T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 90.463
     },
     {
         "id": 570,
@@ -2351,15 +1541,7 @@
         "mean_anomaly": 261.5,
         "orbital_period": 666.110044,
         "apsidal_precession_period": "110.795",
-        "nodal_precession_period": 103.984,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 639.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2018-07-17T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 103.984
     },
     {
         "id": 571,
@@ -2377,15 +1559,7 @@
         "mean_anomaly": 263.4,
         "orbital_period": 249.228928,
         "apsidal_precession_period": "144.088",
-        "nodal_precession_period": 306.234,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 252.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2018-07-17T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 306.234
     },
     {
         "id": 572,
@@ -2403,15 +1577,7 @@
         "mean_anomaly": 248.4,
         "orbital_period": 733.20626,
         "apsidal_precession_period": "80.182",
-        "nodal_precession_period": 87.657,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 0.5,
-        "sideral_orbit": 580.7,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2012-01-29T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 87.657
     },
     {
         "id": 55501,
@@ -2429,17 +1595,7 @@
         "mean_anomaly": 35.2,
         "orbital_period": 628.78946,
         "apsidal_precession_period": "139.072",
-        "nodal_precession_period": 110.518,
-        "mass_value": 1.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 982.5,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 110.518
     },
     {
         "id": 55502,
@@ -2457,17 +1613,7 @@
         "mean_anomaly": 242.8,
         "orbital_period": 718.095543,
         "apsidal_precession_period": "102.409",
-        "nodal_precession_period": 89.495,
-        "mass_value": 1.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 723.2,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 89.495
     },
     {
         "id": 55503,
@@ -2485,17 +1631,7 @@
         "mean_anomaly": 354.6,
         "orbital_period": 736.861154,
         "apsidal_precession_period": "80.606",
-        "nodal_precession_period": 88.19,
-        "mass_value": 1.5,
-        "mass_exponent": 12,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 0.5,
-        "sideral_orbit": 683.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 88.19
     },
     {
         "id": 55504,
@@ -2513,17 +1649,7 @@
         "mean_anomaly": 286.9,
         "orbital_period": 755.429041,
         "apsidal_precession_period": "79.301",
-        "nodal_precession_period": 85.67,
-        "mass_value": 1.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 767.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 85.67
     },
     {
         "id": 55505,
@@ -2541,17 +1667,7 @@
         "mean_anomaly": 201.3,
         "orbital_period": 627.243242,
         "apsidal_precession_period": "133.246",
-        "nodal_precession_period": 110.154,
-        "mass_value": 1.0,
-        "mass_exponent": 12,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 0.5,
-        "sideral_orbit": 533.3,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 110.154
     },
     {
         "id": 55506,
@@ -2569,17 +1685,7 @@
         "mean_anomaly": 307.4,
         "orbital_period": 622.876561,
         "apsidal_precession_period": "146.583",
-        "nodal_precession_period": 111.039,
-        "mass_value": 1.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 595.4,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 111.039
     },
     {
         "id": 55507,
@@ -2597,17 +1703,7 @@
         "mean_anomaly": 168.5,
         "orbital_period": 760.000608,
         "apsidal_precession_period": "119.441",
-        "nodal_precession_period": 88.919,
-        "mass_value": 1.5,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.00081,
-        "radius": 1.0,
-        "sideral_orbit": 759.7,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 88.919
     },
     {
         "id": 55508,
@@ -2625,15 +1721,7 @@
         "mean_anomaly": 131.8,
         "orbital_period": 721.603536,
         "apsidal_precession_period": "81.634",
-        "nodal_precession_period": 89.706,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 0.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2003-02-05T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 89.706
     },
     {
         "id": 55509,
@@ -2651,15 +1739,7 @@
         "mean_anomaly": 343.2,
         "orbital_period": 259.836323,
         "apsidal_precession_period": "128.367",
-        "nodal_precession_period": 270.725,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 270.725
     },
     {
         "id": 55510,
@@ -2677,15 +1757,7 @@
         "mean_anomaly": 108.3,
         "orbital_period": 249.923847,
         "apsidal_precession_period": "140.030",
-        "nodal_precession_period": 295.761,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 295.761
     },
     {
         "id": 55511,
@@ -2703,15 +1775,7 @@
         "mean_anomaly": 7.6,
         "orbital_period": 747.024566,
         "apsidal_precession_period": "79.156",
-        "nodal_precession_period": 86.38,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 86.38
     },
     {
         "id": 55512,
@@ -2729,15 +1793,7 @@
         "mean_anomaly": 4,
         "orbital_period": 627.143382,
         "apsidal_precession_period": "133.227",
-        "nodal_precession_period": 110.8,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 110.8
     },
     {
         "id": 55513,
@@ -2755,15 +1811,7 @@
         "mean_anomaly": 282.2,
         "orbital_period": 625.13919,
         "apsidal_precession_period": "146.021",
-        "nodal_precession_period": 111.305,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 111.305
     },
     {
         "id": 55514,
@@ -2781,15 +1829,7 @@
         "mean_anomaly": 233,
         "orbital_period": 618.332595,
         "apsidal_precession_period": "147.060",
-        "nodal_precession_period": 112.519,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 112.519
     },
     {
         "id": 55515,
@@ -2807,15 +1847,7 @@
         "mean_anomaly": 4.1,
         "orbital_period": 728.278426,
         "apsidal_precession_period": "80.865",
-        "nodal_precession_period": 88.739,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 88.739
     },
     {
         "id": 55516,
@@ -2833,15 +1865,7 @@
         "mean_anomaly": 290.1,
         "orbital_period": 747.735358,
         "apsidal_precession_period": "79.099",
-        "nodal_precession_period": 86.285,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 86.285
     },
     {
         "id": 55517,
@@ -2859,15 +1883,7 @@
         "mean_anomaly": 33.5,
         "orbital_period": 720.968561,
         "apsidal_precession_period": "80.900",
-        "nodal_precession_period": 89.253,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 89.253
     },
     {
         "id": 55518,
@@ -2885,15 +1901,7 @@
         "mean_anomaly": 350,
         "orbital_period": 713.641308,
         "apsidal_precession_period": "83.067",
-        "nodal_precession_period": 91.194,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 91.194
     },
     {
         "id": 55519,
@@ -2911,15 +1919,7 @@
         "mean_anomaly": 171.3,
         "orbital_period": 727.010204,
         "apsidal_precession_period": "115.542",
-        "nodal_precession_period": 92.013,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 92.013
     },
     {
         "id": 55520,
@@ -2937,15 +1937,7 @@
         "mean_anomaly": 147.7,
         "orbital_period": 427.63107,
         "apsidal_precession_period": "-",
-        "nodal_precession_period": 195.214,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 195.214
     },
     {
         "id": 55521,
@@ -2963,15 +1955,7 @@
         "mean_anomaly": 223,
         "orbital_period": 738.334157,
         "apsidal_precession_period": "45.512",
-        "nodal_precession_period": 49.281,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 49.281
     },
     {
         "id": 55522,
@@ -2989,15 +1973,7 @@
         "mean_anomaly": 343.8,
         "orbital_period": 781.562507,
         "apsidal_precession_period": "40.150",
-        "nodal_precession_period": 89.526,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 89.526
     },
     {
         "id": 55523,
@@ -3015,15 +1991,7 @@
         "mean_anomaly": 186.4,
         "orbital_period": 630.673027,
         "apsidal_precession_period": "142.778",
-        "nodal_precession_period": 109.79,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 109.79
     },
     {
         "id": 601,
@@ -3041,17 +2009,7 @@
         "mean_anomaly": 275.3,
         "orbital_period": 0.942422,
         "apsidal_precession_period": 0.493,
-        "nodal_precession_period": 0.986,
-        "mass_value": 3.79,
-        "mass_exponent": 19,
-        "density": 1.15,
-        "gravity": 0.0,
-        "radius": 396.4,
-        "sideral_orbit": 0.94,
-        "sideral_rotation": 22.56,
-        "discovered_by": "William Herschel",
-        "discovery_date": "1789-09-17T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0.986
     },
     {
         "id": 602,
@@ -3069,17 +2027,7 @@
         "mean_anomaly": 57,
         "orbital_period": 1.370218,
         "apsidal_precession_period": 2.916,
-        "nodal_precession_period": 0,
-        "mass_value": 1.08,
-        "mass_exponent": 20,
-        "density": 1.61,
-        "gravity": 0.0,
-        "radius": 504.2,
-        "sideral_orbit": 1.37,
-        "sideral_rotation": 32.88,
-        "discovered_by": "William Herschel",
-        "discovery_date": "1789-08-28T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 603,
@@ -3097,17 +2045,7 @@
         "mean_anomaly": 0,
         "orbital_period": 1.887802,
         "apsidal_precession_period": 0.005,
-        "nodal_precession_period": 4.982,
-        "mass_value": 6.18,
-        "mass_exponent": 20,
-        "density": 0.985,
-        "gravity": 0.0,
-        "radius": 1066.0,
-        "sideral_orbit": 1.89,
-        "sideral_rotation": 45.312,
-        "discovered_by": "Jean-Dominique Cassini",
-        "discovery_date": "1684-03-21T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 4.982
     },
     {
         "id": 604,
@@ -3125,17 +2063,7 @@
         "mean_anomaly": 212,
         "orbital_period": 2.736916,
         "apsidal_precession_period": 11.698,
-        "nodal_precession_period": 0,
-        "mass_value": 1.095,
-        "mass_exponent": 21,
-        "density": 1.48,
-        "gravity": 0.0,
-        "radius": 1123.4,
-        "sideral_orbit": 2.737,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Jean-Dominique Cassini",
-        "discovery_date": "1684-03-21T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 605,
@@ -3153,17 +2081,7 @@
         "mean_anomaly": 31.5,
         "orbital_period": 4.517503,
         "apsidal_precession_period": 33.939,
-        "nodal_precession_period": 35.775,
-        "mass_value": 2.3,
-        "mass_exponent": 21,
-        "density": 1.24,
-        "gravity": 0.0,
-        "radius": 1528.6,
-        "sideral_orbit": 4.518,
-        "sideral_rotation": 108.432,
-        "discovered_by": "Jean-Dominique Cassini",
-        "discovery_date": "1672-12-23T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 35.775
     },
     {
         "id": 606,
@@ -3181,17 +2099,7 @@
         "mean_anomaly": 11.7,
         "orbital_period": 15.945448,
         "apsidal_precession_period": 346.68,
-        "nodal_precession_period": 687.37,
-        "mass_value": 1.3452,
-        "mass_exponent": 23,
-        "density": 1.88,
-        "gravity": 0.0,
-        "radius": 2575.0,
-        "sideral_orbit": 15.95,
-        "sideral_rotation": 382.8,
-        "discovered_by": "Christian Huygens",
-        "discovery_date": "1655-03-25T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 687.37
     },
     {
         "id": 607,
@@ -3209,17 +2117,7 @@
         "mean_anomaly": 122.9,
         "orbital_period": 21.276658,
         "apsidal_precession_period": 20.843,
-        "nodal_precession_period": 257.625,
-        "mass_value": 5.6,
-        "mass_exponent": 18,
-        "density": 0.55,
-        "gravity": 0.0,
-        "radius": 266.0,
-        "sideral_orbit": 21.28,
-        "sideral_rotation": 0.0,
-        "discovered_by": "W. C. Bond, G. P. Bond",
-        "discovery_date": "1848-09-16T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 257.625
     },
     {
         "id": 608,
@@ -3237,17 +2135,7 @@
         "mean_anomaly": 74.8,
         "orbital_period": 79.331002,
         "apsidal_precession_period": 1662.9,
-        "nodal_precession_period": 3130.302,
-        "mass_value": 1.805,
-        "mass_exponent": 21,
-        "density": 1.09,
-        "gravity": 0.0,
-        "radius": 1471.2,
-        "sideral_orbit": 79.33,
-        "sideral_rotation": 1735.92,
-        "discovered_by": "Jean-Dominique Cassini",
-        "discovery_date": "1671-10-25T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 3130.302
     },
     {
         "id": 609,
@@ -3265,17 +2153,7 @@
         "mean_anomaly": 308,
         "orbital_period": 550.30391,
         "apsidal_precession_period": 468.321,
-        "nodal_precession_period": 741.483,
-        "mass_value": 8.292,
-        "mass_exponent": 18,
-        "density": 1.64,
-        "gravity": 0.0,
-        "radius": 214.4,
-        "sideral_orbit": 548.2,
-        "sideral_rotation": 9.2736,
-        "discovered_by": "William Henry Pickering",
-        "discovery_date": "1899-03-17T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 741.483
     },
     {
         "id": 612,
@@ -3293,15 +2171,7 @@
         "mean_anomaly": -64.5,
         "orbital_period": 2.736916,
         "apsidal_precession_period": 5.825,
-        "nodal_precession_period": 11.707,
-        "density": 1.3,
-        "gravity": 0.0,
-        "radius": 17.6,
-        "sideral_orbit": 2.736,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Reitsema, Hubbard et al",
-        "discovery_date": "1980-03-01T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 11.707
     },
     {
         "id": 613,
@@ -3319,17 +2189,7 @@
         "mean_anomaly": 360,
         "orbital_period": 1.887802,
         "apsidal_precession_period": 0.005,
-        "nodal_precession_period": 4.982,
-        "mass_value": 1.0,
-        "mass_exponent": 16,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 12.4,
-        "sideral_orbit": 1.89,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Bradford A. Smith et al",
-        "discovery_date": "1980-04-08T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 4.982
     },
     {
         "id": 614,
@@ -3347,17 +2207,7 @@
         "mean_anomaly": 0,
         "orbital_period": 1.887803,
         "apsidal_precession_period": 0.005,
-        "nodal_precession_period": 4.983,
-        "mass_value": 6.5,
-        "mass_exponent": 15,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 10.7,
-        "sideral_orbit": 1.89,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Pascu, Seidelmann et al",
-        "discovery_date": "1980-03-13T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 4.983
     },
     {
         "id": 632,
@@ -3375,17 +2225,7 @@
         "mean_anomaly": 0,
         "orbital_period": 1.009549,
         "apsidal_precession_period": 0.003,
-        "nodal_precession_period": 0,
-        "mass_value": 2.0,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.6,
-        "sideral_orbit": 1.01,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Carolyn C. Porco et al",
-        "discovery_date": "2004-06-01T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 634,
@@ -3403,17 +2243,7 @@
         "mean_anomaly": 359,
         "orbital_period": 2.736916,
         "apsidal_precession_period": 5.81,
-        "nodal_precession_period": 11.692,
-        "mass_value": 1.0,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 2.737,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Carolyn C. Porco et al",
-        "discovery_date": "2004-10-21T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 11.692
     },
     {
         "id": 610,
@@ -3431,17 +2261,7 @@
         "mean_anomaly": 111.7,
         "orbital_period": 0.697353,
         "apsidal_precession_period": 0.24,
-        "nodal_precession_period": 0.482,
-        "mass_value": 1.9,
-        "mass_exponent": 18,
-        "density": 0.63,
-        "gravity": 0.0,
-        "radius": 89.5,
-        "sideral_orbit": 0.7,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Audouin Dollfus",
-        "discovery_date": "1966-12-15T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0.482
     },
     {
         "id": 611,
@@ -3459,17 +2279,7 @@
         "mean_anomaly": 197.2,
         "orbital_period": 0.697012,
         "apsidal_precession_period": 0.24,
-        "nodal_precession_period": 0.482,
-        "mass_value": 5.3,
-        "mass_exponent": 17,
-        "density": 0.64,
-        "gravity": 0.0,
-        "radius": 113.4,
-        "sideral_orbit": 0.69,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Richard L. Walker",
-        "discovery_date": "1966-12-18T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0.482
     },
     {
         "id": 615,
@@ -3487,17 +2297,7 @@
         "mean_anomaly": 289.1,
         "orbital_period": 0.604602,
         "apsidal_precession_period": 0.342,
-        "nodal_precession_period": 0,
-        "mass_value": 7.0,
-        "mass_exponent": 15,
-        "density": 0.5,
-        "gravity": 0.0,
-        "radius": 15.1,
-        "sideral_orbit": 0.602,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Richard J. Terrile",
-        "discovery_date": "1980-11-12T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 616,
@@ -3515,17 +2315,7 @@
         "mean_anomaly": 135.4,
         "orbital_period": 0.615878,
         "apsidal_precession_period": 0.357,
-        "nodal_precession_period": 0,
-        "mass_value": 1.6,
-        "mass_exponent": 17,
-        "density": 0.48,
-        "gravity": 0.0,
-        "radius": 43.1,
-        "sideral_orbit": 0.613,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Stewart A. Collins et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 617,
@@ -3543,17 +2333,7 @@
         "mean_anomaly": 123.9,
         "orbital_period": 0.631369,
         "apsidal_precession_period": 0.379,
-        "nodal_precession_period": 0,
-        "mass_value": 1.4,
-        "mass_exponent": 17,
-        "density": 0.49,
-        "gravity": 0.0,
-        "radius": 40.7,
-        "sideral_orbit": 0.629,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Stewart A. Collins et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 618,
@@ -3571,17 +2351,7 @@
         "mean_anomaly": 146.6,
         "orbital_period": 0.575051,
         "apsidal_precession_period": 0,
-        "nodal_precession_period": 0,
-        "mass_value": 4.95,
-        "mass_exponent": 15,
-        "density": 0.42,
-        "gravity": 0.0,
-        "radius": 14.1,
-        "sideral_orbit": 0.575,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Mark R. Showalter et al",
-        "discovery_date": "1981-08-22T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 633,
@@ -3599,17 +2369,7 @@
         "mean_anomaly": 2,
         "orbital_period": 1.156059,
         "apsidal_precession_period": 0.79,
-        "nodal_precession_period": 1.582,
-        "mass_value": 6.0,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 2.5,
-        "sideral_orbit": 1.14,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Carolyn C. Porco et al",
-        "discovery_date": "2004-06-01T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 1.582
     },
     {
         "id": 635,
@@ -3627,17 +2387,7 @@
         "mean_anomaly": 153.6,
         "orbital_period": 0.59408,
         "apsidal_precession_period": 0,
-        "nodal_precession_period": 0,
-        "mass_value": 1.0,
-        "mass_exponent": 14,
-        "density": 0.34,
-        "gravity": 0.0,
-        "radius": 3.8,
-        "sideral_orbit": 0.594,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Carolyn C. Porco et al",
-        "discovery_date": "2009-05-01T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 649,
@@ -3655,17 +2405,7 @@
         "mean_anomaly": 351.4,
         "orbital_period": 1.038898,
         "apsidal_precession_period": 1.19,
-        "nodal_precession_period": 0,
-        "mass_value": 5.0,
-        "mass_exponent": 12,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 1.04,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Carolyn C. Porco et al",
-        "discovery_date": "2007-05-30T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 653,
@@ -3683,17 +2423,7 @@
         "mean_anomaly": 4.4,
         "orbital_period": 0.808115,
         "apsidal_precession_period": 0,
-        "nodal_precession_period": 0,
-        "mass_value": 1.0,
-        "mass_exponent": 11,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 0.5,
-        "sideral_orbit": 0.808,
-        "sideral_rotation": 19.63,
-        "discovered_by": "Carolyn C. Porco et al",
-        "discovery_date": "2008-08-15T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 619,
@@ -3711,17 +2441,7 @@
         "mean_anomaly": 216.3,
         "orbital_period": 1315.07801,
         "apsidal_precession_period": 218.866,
-        "nodal_precession_period": 279.539,
-        "mass_value": 3.97,
-        "mass_exponent": 15,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 9.0,
-        "sideral_orbit": 1315.4,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "2000-08-07T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 279.539
     },
     {
         "id": 620,
@@ -3739,17 +2459,7 @@
         "mean_anomaly": 304.3,
         "orbital_period": 686.937962,
         "apsidal_precession_period": 561.37,
-        "nodal_precession_period": 529.468,
-        "mass_value": 7.25,
-        "mass_exponent": 15,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 10.0,
-        "sideral_orbit": 686.9,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "2000-08-07T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 529.468
     },
     {
         "id": 621,
@@ -3767,17 +2477,7 @@
         "mean_anomaly": 255.7,
         "orbital_period": 926.425784,
         "apsidal_precession_period": 193.907,
-        "nodal_precession_period": 270.095,
-        "mass_value": 2.3,
-        "mass_exponent": 15,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 7.0,
-        "sideral_orbit": 926.2,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "2000-09-23T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 270.095
     },
     {
         "id": 622,
@@ -3795,17 +2495,7 @@
         "mean_anomaly": 27.9,
         "orbital_period": 451.428063,
         "apsidal_precession_period": 15829.584,
-        "nodal_precession_period": 973.424,
-        "mass_value": 1.18,
-        "mass_exponent": 15,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 5.0,
-        "sideral_orbit": 451.4,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "2000-09-23T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 973.424
     },
     {
         "id": 623,
@@ -3823,17 +2513,7 @@
         "mean_anomaly": 317.1,
         "orbital_period": 1016.697887,
         "apsidal_precession_period": 279.741,
-        "nodal_precession_period": 377.519,
-        "mass_value": 2.3,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 1016.7,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "2000-09-23T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 377.519
     },
     {
         "id": 624,
@@ -3851,17 +2531,7 @@
         "mean_anomaly": 168.2,
         "orbital_period": 449.172103,
         "apsidal_precession_period": 4020.341,
-        "nodal_precession_period": 1064.522,
-        "mass_value": 2.79,
-        "mass_exponent": 15,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 7.0,
-        "sideral_orbit": 449.2,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "2000-08-07T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 1064.522
     },
     {
         "id": 625,
@@ -3879,17 +2549,7 @@
         "mean_anomaly": 97.1,
         "orbital_period": 952.858247,
         "apsidal_precession_period": 308.547,
-        "nodal_precession_period": 410.183,
-        "mass_value": 2.3,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 952.6,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "2000-09-23T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 410.183
     },
     {
         "id": 626,
@@ -3907,17 +2567,7 @@
         "mean_anomaly": 17,
         "orbital_period": 783.459219,
         "apsidal_precession_period": 253.199,
-        "nodal_precession_period": 368.494,
-        "mass_value": 2.23,
-        "mass_exponent": 16,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 13.0,
-        "sideral_orbit": 783.5,
-        "sideral_rotation": 13.32,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "2000-11-09T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 368.494
     },
     {
         "id": 627,
@@ -3935,17 +2585,7 @@
         "mean_anomaly": 117.3,
         "orbital_period": 728.088602,
         "apsidal_precession_period": 498.532,
-        "nodal_precession_period": 556.463,
-        "mass_value": 3.5,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 728.2,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "2000-09-23T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 556.463
     },
     {
         "id": 628,
@@ -3963,17 +2603,7 @@
         "mean_anomaly": 306.5,
         "orbital_period": 871.092737,
         "apsidal_precession_period": 219.065,
-        "nodal_precession_period": 321.969,
-        "mass_value": 6.8,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 4.0,
-        "sideral_orbit": 871.2,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "2000-09-23T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 321.969
     },
     {
         "id": 629,
@@ -3991,17 +2621,7 @@
         "mean_anomaly": 190.5,
         "orbital_period": 895.577261,
         "apsidal_precession_period": 480.393,
-        "nodal_precession_period": 450.069,
-        "mass_value": 4.35,
-        "mass_exponent": 16,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 16.0,
-        "sideral_orbit": 895.6,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "2000-09-23T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 450.069
     },
     {
         "id": 630,
@@ -4019,17 +2639,7 @@
         "mean_anomaly": 350.7,
         "orbital_period": 1092.170793,
         "apsidal_precession_period": 219.551,
-        "nodal_precession_period": 292.396,
-        "mass_value": 2.3,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 1094.3,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "2000-09-23T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 292.396
     },
     {
         "id": 631,
@@ -4047,17 +2657,7 @@
         "mean_anomaly": 109.3,
         "orbital_period": 1003.946106,
         "apsidal_precession_period": 335.671,
-        "nodal_precession_period": 342.673,
-        "mass_value": 2.3,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 1003.9,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2003-02-05T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 342.673
     },
     {
         "id": 636,
@@ -4075,17 +2675,7 @@
         "mean_anomaly": 27.5,
         "orbital_period": 1119.336994,
         "apsidal_precession_period": 265.879,
-        "nodal_precession_period": 338.162,
-        "mass_value": 1.5,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 1116.5,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2004-12-12T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 338.162
     },
     {
         "id": 637,
@@ -4103,17 +2693,7 @@
         "mean_anomaly": 167.5,
         "orbital_period": 834.848338,
         "apsidal_precession_period": 235.104,
-        "nodal_precession_period": 338.633,
-        "mass_value": 1.5,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 834.8,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2004-12-12T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 338.633
     },
     {
         "id": 638,
@@ -4131,17 +2711,7 @@
         "mean_anomaly": 258.5,
         "orbital_period": 1005.53083,
         "apsidal_precession_period": 349.157,
-        "nodal_precession_period": 415.372,
-        "mass_value": 1.5,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 1005.9,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2004-12-12T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 415.372
     },
     {
         "id": 639,
@@ -4159,17 +2729,7 @@
         "mean_anomaly": 41.6,
         "orbital_period": 1087.172365,
         "apsidal_precession_period": 287.187,
-        "nodal_precession_period": 304.661,
-        "mass_value": 2.3,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 1083.6,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2004-12-13T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 304.661
     },
     {
         "id": 640,
@@ -4187,17 +2747,7 @@
         "mean_anomaly": 10.4,
         "orbital_period": 1087.261627,
         "apsidal_precession_period": 322.913,
-        "nodal_precession_period": 365.187,
-        "mass_value": 9.0,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 1086.1,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2004-12-12T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 365.187
     },
     {
         "id": 641,
@@ -4215,17 +2765,7 @@
         "mean_anomaly": 41.1,
         "orbital_period": 1260.193443,
         "apsidal_precession_period": 273.373,
-        "nodal_precession_period": 327.671,
-        "mass_value": 5.0,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 1260.3,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2004-12-13T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 327.671
     },
     {
         "id": 642,
@@ -4243,17 +2783,7 @@
         "mean_anomaly": 62.4,
         "orbital_period": 1494.105551,
         "apsidal_precession_period": 223.702,
-        "nodal_precession_period": 267.173,
-        "mass_value": 1.5,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 1490.9,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2004-12-12T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 267.173
     },
     {
         "id": 643,
@@ -4271,17 +2801,7 @@
         "mean_anomaly": 248.2,
         "orbital_period": 1040.051211,
         "apsidal_precession_period": 270.137,
-        "nodal_precession_period": 352.141,
-        "mass_value": 1.5,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 1038.7,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2004-12-12T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 352.141
     },
     {
         "id": 644,
@@ -4299,17 +2819,7 @@
         "mean_anomaly": 202.3,
         "orbital_period": 931.900309,
         "apsidal_precession_period": 378.399,
-        "nodal_precession_period": 407.813,
-        "mass_value": 3.5,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 4.0,
-        "sideral_orbit": 931.8,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2004-12-12T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 407.813
     },
     {
         "id": 645,
@@ -4327,17 +2837,7 @@
         "mean_anomaly": 87.9,
         "orbital_period": 1231.189968,
         "apsidal_precession_period": 228.212,
-        "nodal_precession_period": 269.114,
-        "mass_value": 2.3,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 1233.6,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2004-12-12T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 269.114
     },
     {
         "id": 646,
@@ -4355,17 +2855,7 @@
         "mean_anomaly": 12.5,
         "orbital_period": 1311.79803,
         "apsidal_precession_period": 256.071,
-        "nodal_precession_period": 313.937,
-        "mass_value": 1.5,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 1312.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2004-12-13T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 313.937
     },
     {
         "id": 647,
@@ -4383,17 +2873,7 @@
         "mean_anomaly": 169.3,
         "orbital_period": 878.37584,
         "apsidal_precession_period": 293.173,
-        "nodal_precession_period": 378.762,
-        "mass_value": 1.5,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 878.3,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2004-12-12T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 378.762
     },
     {
         "id": 648,
@@ -4411,17 +2891,7 @@
         "mean_anomaly": 33.8,
         "orbital_period": 1295.595736,
         "apsidal_precession_period": 203.469,
-        "nodal_precession_period": 260.19,
-        "mass_value": 1.5,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 1297.7,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2004-12-12T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 260.19
     },
     {
         "id": 650,
@@ -4439,17 +2909,7 @@
         "mean_anomaly": 156.2,
         "orbital_period": 1006.46334,
         "apsidal_precession_period": 321.517,
-        "nodal_precession_period": 412.079,
-        "mass_value": 1.0,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 964.7,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2006-01-05T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 412.079
     },
     {
         "id": 651,
@@ -4467,17 +2927,7 @@
         "mean_anomaly": 307.2,
         "orbital_period": 937.004967,
         "apsidal_precession_period": 320.27,
-        "nodal_precession_period": 465.613,
-        "mass_value": 1.5,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 921.2,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2006-01-05T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 465.613
     },
     {
         "id": 652,
@@ -4495,17 +2945,7 @@
         "mean_anomaly": 159.2,
         "orbital_period": 884.988724,
         "apsidal_precession_period": 802.977,
-        "nodal_precession_period": 684.009,
-        "mass_value": 2.3,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 887.5,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2006-01-05T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 684.009
     },
     {
         "id": 654,
@@ -4523,15 +2963,7 @@
         "mean_anomaly": 176.3,
         "orbital_period": 1004.748101,
         "apsidal_precession_period": 330.493,
-        "nodal_precession_period": 428.455,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 428.455
     },
     {
         "id": 655,
@@ -4549,15 +2981,7 @@
         "mean_anomaly": 247.4,
         "orbital_period": 1114.059593,
         "apsidal_precession_period": 1162.061,
-        "nodal_precession_period": 9350.057,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 9350.057
     },
     {
         "id": 656,
@@ -4575,15 +2999,7 @@
         "mean_anomaly": 100.5,
         "orbital_period": 1185.102733,
         "apsidal_precession_period": 212.054,
-        "nodal_precession_period": 279.136,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 279.136
     },
     {
         "id": 657,
@@ -4601,15 +3017,7 @@
         "mean_anomaly": 103.8,
         "orbital_period": 1142.966402,
         "apsidal_precession_period": 204.761,
-        "nodal_precession_period": 271.726,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 271.726
     },
     {
         "id": 658,
@@ -4645,15 +3053,7 @@
         "mean_anomaly": 94.3,
         "orbital_period": 1052.323857,
         "apsidal_precession_period": 305.742,
-        "nodal_precession_period": 386.923,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 386.923
     },
     {
         "id": 660,
@@ -4671,15 +3071,7 @@
         "mean_anomaly": 186.4,
         "orbital_period": 837.78045,
         "apsidal_precession_period": 230.329,
-        "nodal_precession_period": 324.664,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 858.77,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 324.664
     },
     {
         "id": 661,
@@ -4697,15 +3089,7 @@
         "mean_anomaly": 203.3,
         "orbital_period": 1121.744245,
         "apsidal_precession_period": 346.496,
-        "nodal_precession_period": 391.803,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 391.803
     },
     {
         "id": 662,
@@ -4723,15 +3107,7 @@
         "mean_anomaly": 293.4,
         "orbital_period": 1157.969293,
         "apsidal_precession_period": 293.119,
-        "nodal_precession_period": 349.338,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 349.338
     },
     {
         "id": 663,
@@ -4749,15 +3125,7 @@
         "mean_anomaly": 350.2,
         "orbital_period": 1366.691228,
         "apsidal_precession_period": 189.941,
-        "nodal_precession_period": 233.511,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 233.511
     },
     {
         "id": 664,
@@ -4775,15 +3143,7 @@
         "mean_anomaly": 165.2,
         "orbital_period": 1420.795938,
         "apsidal_precession_period": 222.965,
-        "nodal_precession_period": 270.644,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 270.644
     },
     {
         "id": 665,
@@ -4801,15 +3161,7 @@
         "mean_anomaly": 64.2,
         "orbital_period": 1232.184588,
         "apsidal_precession_period": 574.844,
-        "nodal_precession_period": 1287.052,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 1287.052
     },
     {
         "id": 666,
@@ -4827,15 +3179,7 @@
         "mean_anomaly": 221.4,
         "orbital_period": 1251.149838,
         "apsidal_precession_period": 205.222,
-        "nodal_precession_period": 252.681,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 252.681
     },
     {
         "id": 65067,
@@ -4853,15 +3197,7 @@
         "mean_anomaly": 254.3,
         "orbital_period": 866.090744,
         "apsidal_precession_period": 84940.33,
-        "nodal_precession_period": 638.105,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 853.8,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 638.105
     },
     {
         "id": 65070,
@@ -4879,15 +3215,7 @@
         "mean_anomaly": 264.9,
         "orbital_period": 1341.344873,
         "apsidal_precession_period": 136.626,
-        "nodal_precession_period": 420.609,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 1317.6,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 420.609
     },
     {
         "id": 65077,
@@ -4905,15 +3233,7 @@
         "mean_anomaly": 196.5,
         "orbital_period": 1220.685137,
         "apsidal_precession_period": 264.002,
-        "nodal_precession_period": 327.868,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 327.868
     },
     {
         "id": 65079,
@@ -4931,15 +3251,7 @@
         "mean_anomaly": 316,
         "orbital_period": 1328.583935,
         "apsidal_precession_period": 241.968,
-        "nodal_precession_period": 269.964,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 269.964
     },
     {
         "id": 65081,
@@ -4957,15 +3269,7 @@
         "mean_anomaly": 74.9,
         "orbital_period": 1349.370782,
         "apsidal_precession_period": 172.405,
-        "nodal_precession_period": 216.361,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 216.361
     },
     {
         "id": 65082,
@@ -4983,15 +3287,7 @@
         "mean_anomaly": 263.6,
         "orbital_period": 755.634901,
         "apsidal_precession_period": 321.277,
-        "nodal_precession_period": 414.809,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 414.809
     },
     {
         "id": 65084,
@@ -5009,15 +3305,7 @@
         "mean_anomaly": 132.7,
         "orbital_period": 1335.882236,
         "apsidal_precession_period": 261.883,
-        "nodal_precession_period": 310.823,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 310.823
     },
     {
         "id": 65085,
@@ -5053,17 +3341,7 @@
         "mean_anomaly": 118.7,
         "orbital_period": 1048.568818,
         "apsidal_precession_period": 277.781,
-        "nodal_precession_period": 360.607,
-        "mass_value": 9.0,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 1048.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2004-12-12T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 360.607
     },
     {
         "id": 65087,
@@ -5081,17 +3359,7 @@
         "mean_anomaly": 352.5,
         "orbital_period": 942.566739,
         "apsidal_precession_period": 289.955,
-        "nodal_precession_period": 387.953,
-        "mass_value": 1.5,
-        "mass_exponent": 14,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 906.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2004-12-12T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 387.953
     },
     {
         "id": 65088,
@@ -5109,17 +3377,7 @@
         "mean_anomaly": 196.4,
         "orbital_period": 1040.857137,
         "apsidal_precession_period": 309.774,
-        "nodal_precession_period": 409.315,
-        "mass_value": 5.0,
-        "mass_exponent": 13,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 986.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2004-12-13T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 409.315
     },
     {
         "id": 65089,
@@ -5299,15 +3557,7 @@
         "mean_anomaly": 199,
         "orbital_period": 764.6038,
         "apsidal_precession_period": 353.448,
-        "nodal_precession_period": 505.592,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 505.592
     },
     {
         "id": 65100,
@@ -5397,15 +3647,7 @@
         "mean_anomaly": 237.9,
         "orbital_period": 914.618048,
         "apsidal_precession_period": 308.302,
-        "nodal_precession_period": 414.058,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 414.058
     },
     {
         "id": 65105,
@@ -5477,15 +3719,7 @@
         "mean_anomaly": 299.1,
         "orbital_period": 925.912112,
         "apsidal_precession_period": 349.565,
-        "nodal_precession_period": 471.927,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 471.927
     },
     {
         "id": 65109,
@@ -5503,15 +3737,7 @@
         "mean_anomaly": 160.4,
         "orbital_period": 983.139254,
         "apsidal_precession_period": 356.372,
-        "nodal_precession_period": 448.753,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 448.753
     },
     {
         "id": 65110,
@@ -5547,15 +3773,7 @@
         "mean_anomaly": 2.3,
         "orbital_period": 980.080472,
         "apsidal_precession_period": 244.73,
-        "nodal_precession_period": 326.955,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 326.955
     },
     {
         "id": 65112,
@@ -5573,15 +3791,7 @@
         "mean_anomaly": 202.6,
         "orbital_period": 1026.158033,
         "apsidal_precession_period": 311.871,
-        "nodal_precession_period": 410.78,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 410.78
     },
     {
         "id": 65113,
@@ -5599,15 +3809,7 @@
         "mean_anomaly": 197.3,
         "orbital_period": 1038.696711,
         "apsidal_precession_period": 232.519,
-        "nodal_precession_period": 288.745,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 288.745
     },
     {
         "id": 65114,
@@ -5625,15 +3827,7 @@
         "mean_anomaly": 235.9,
         "orbital_period": 1042.285109,
         "apsidal_precession_period": 279.519,
-        "nodal_precession_period": 375.886,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 375.886
     },
     {
         "id": 65115,
@@ -5651,15 +3845,7 @@
         "mean_anomaly": 255.7,
         "orbital_period": 1035.055387,
         "apsidal_precession_period": 166.032,
-        "nodal_precession_period": 232.907,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 232.907
     },
     {
         "id": 65116,
@@ -5695,15 +3881,7 @@
         "mean_anomaly": 143.7,
         "orbital_period": 1060.627398,
         "apsidal_precession_period": 285.511,
-        "nodal_precession_period": 360.395,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 360.395
     },
     {
         "id": 65118,
@@ -5775,15 +3953,7 @@
         "mean_anomaly": 345.2,
         "orbital_period": 1107.588858,
         "apsidal_precession_period": 1033.14,
-        "nodal_precession_period": 61505.489,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 61505.489
     },
     {
         "id": 65122,
@@ -5801,15 +3971,7 @@
         "mean_anomaly": 313.3,
         "orbital_period": 1121.990703,
         "apsidal_precession_period": 284.046,
-        "nodal_precession_period": 353.116,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 353.116
     },
     {
         "id": 65123,
@@ -5827,15 +3989,7 @@
         "mean_anomaly": 167.1,
         "orbital_period": 762.493185,
         "apsidal_precession_period": 391.896,
-        "nodal_precession_period": 532.712,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 532.712
     },
     {
         "id": 65124,
@@ -5853,15 +4007,7 @@
         "mean_anomaly": 214,
         "orbital_period": 1114.995357,
         "apsidal_precession_period": 258.865,
-        "nodal_precession_period": 290.582,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 290.582
     },
     {
         "id": 65125,
@@ -5879,15 +4025,7 @@
         "mean_anomaly": 58.1,
         "orbital_period": 1152.673943,
         "apsidal_precession_period": 294.11,
-        "nodal_precession_period": 371.988,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 371.988
     },
     {
         "id": 65126,
@@ -5905,15 +4043,7 @@
         "mean_anomaly": 252.9,
         "orbital_period": 1138.01906,
         "apsidal_precession_period": 221.492,
-        "nodal_precession_period": 287.986,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 287.986
     },
     {
         "id": 65127,
@@ -5949,15 +4079,7 @@
         "mean_anomaly": 263.1,
         "orbital_period": 1144.78626,
         "apsidal_precession_period": 1053.667,
-        "nodal_precession_period": 11696.851,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 11696.851
     },
     {
         "id": 65129,
@@ -6047,15 +4169,7 @@
         "mean_anomaly": 197.1,
         "orbital_period": 893.151832,
         "apsidal_precession_period": 683.122,
-        "nodal_precession_period": 580.671,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 580.671
     },
     {
         "id": 65134,
@@ -6073,15 +4187,7 @@
         "mean_anomaly": 251.7,
         "orbital_period": 1161.596437,
         "apsidal_precession_period": 305.299,
-        "nodal_precession_period": 348.916,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 348.916
     },
     {
         "id": 65135,
@@ -6117,15 +4223,7 @@
         "mean_anomaly": 267.8,
         "orbital_period": 1213.963208,
         "apsidal_precession_period": 310.193,
-        "nodal_precession_period": 361.118,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 361.118
     },
     {
         "id": 65137,
@@ -6143,15 +4241,7 @@
         "mean_anomaly": 86.8,
         "orbital_period": 1207.520293,
         "apsidal_precession_period": 269.498,
-        "nodal_precession_period": 328.291,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 328.291
     },
     {
         "id": 65138,
@@ -6169,15 +4259,7 @@
         "mean_anomaly": 38.2,
         "orbital_period": 1264.512047,
         "apsidal_precession_period": 211.177,
-        "nodal_precession_period": 270.552,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 270.552
     },
     {
         "id": 65139,
@@ -6195,15 +4277,7 @@
         "mean_anomaly": 164.1,
         "orbital_period": 1242.40527,
         "apsidal_precession_period": 235.247,
-        "nodal_precession_period": 288.609,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 288.609
     },
     {
         "id": 65140,
@@ -6239,15 +4313,7 @@
         "mean_anomaly": 309.8,
         "orbital_period": 1264.250853,
         "apsidal_precession_period": 217.111,
-        "nodal_precession_period": 268.849,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 268.849
     },
     {
         "id": 65142,
@@ -6265,15 +4331,7 @@
         "mean_anomaly": 102.5,
         "orbital_period": 1260.442849,
         "apsidal_precession_period": 213.004,
-        "nodal_precession_period": 270.314,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 270.314
     },
     {
         "id": 65143,
@@ -6291,15 +4349,7 @@
         "mean_anomaly": 253.8,
         "orbital_period": 1298.396815,
         "apsidal_precession_period": 258.187,
-        "nodal_precession_period": 320.44,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 320.44
     },
     {
         "id": 65144,
@@ -6317,15 +4367,7 @@
         "mean_anomaly": 304.5,
         "orbital_period": 1340.931763,
         "apsidal_precession_period": 252.333,
-        "nodal_precession_period": 294.856,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 294.856
     },
     {
         "id": 65145,
@@ -6343,15 +4385,7 @@
         "mean_anomaly": 196,
         "orbital_period": 1291.386404,
         "apsidal_precession_period": 194.825,
-        "nodal_precession_period": 239.69,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 239.69
     },
     {
         "id": 65146,
@@ -6369,15 +4403,7 @@
         "mean_anomaly": 259,
         "orbital_period": 1327.060729,
         "apsidal_precession_period": 202.964,
-        "nodal_precession_period": 244.192,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 244.192
     },
     {
         "id": 65147,
@@ -6395,15 +4421,7 @@
         "mean_anomaly": 218.8,
         "orbital_period": 1317.829992,
         "apsidal_precession_period": 225.975,
-        "nodal_precession_period": 258.411,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 258.411
     },
     {
         "id": 65148,
@@ -6421,15 +4439,7 @@
         "mean_anomaly": 294.3,
         "orbital_period": 1375.531571,
         "apsidal_precession_period": 240.222,
-        "nodal_precession_period": 270.891,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 3.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 270.891
     },
     {
         "id": 65149,
@@ -6447,15 +4457,7 @@
         "mean_anomaly": 348.6,
         "orbital_period": 1389.33335,
         "apsidal_precession_period": 186.511,
-        "nodal_precession_period": 240.778,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 240.778
     },
     {
         "id": 65150,
@@ -6473,15 +4475,7 @@
         "mean_anomaly": 212.7,
         "orbital_period": 1519.410709,
         "apsidal_precession_period": 220.599,
-        "nodal_precession_period": 263.107,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 263.107
     },
     {
         "id": 65151,
@@ -6517,15 +4511,7 @@
         "mean_anomaly": 295.6,
         "orbital_period": 1633.866991,
         "apsidal_precession_period": 208.241,
-        "nodal_precession_period": 239.304,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 239.304
     },
     {
         "id": 65153,
@@ -6561,15 +4547,7 @@
         "mean_anomaly": 337.2,
         "orbital_period": 1342.435676,
         "apsidal_precession_period": 252.517,
-        "nodal_precession_period": 295.946,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 295.946
     },
     {
         "id": 65155,
@@ -6587,15 +4565,7 @@
         "mean_anomaly": 57.6,
         "orbital_period": 1527.208982,
         "apsidal_precession_period": 214.571,
-        "nodal_precession_period": 253.704,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 1.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 253.704
     },
     {
         "id": 65156,
@@ -6613,15 +4583,7 @@
         "mean_anomaly": 343,
         "orbital_period": 1636.368262,
         "apsidal_precession_period": 212.644,
-        "nodal_precession_period": 245.536,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.0,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 245.536
     },
     {
         "id": 65157,
@@ -6639,15 +4601,7 @@
         "mean_anomaly": 19.4,
         "orbital_period": 567.265764,
         "apsidal_precession_period": 424.382,
-        "nodal_precession_period": 635.49,
-        "density": 0.0,
-        "gravity": 0.0,
-        "radius": 2.5,
-        "sideral_orbit": 0.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": null,
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 635.49
     },
     {
         "id": 701,
@@ -6665,17 +4619,7 @@
         "mean_anomaly": 119.8,
         "orbital_period": 2.52068,
         "apsidal_precession_period": 57.778,
-        "nodal_precession_period": 0,
-        "mass_value": 12.9,
-        "mass_exponent": 20,
-        "density": 1.59,
-        "gravity": 0.0,
-        "radius": 581.1,
-        "sideral_orbit": 2.52038,
-        "sideral_rotation": 60.4891,
-        "discovered_by": "William Lassell",
-        "discovery_date": "1851-10-24T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 702,
@@ -6693,17 +4637,7 @@
         "mean_anomaly": 258.3,
         "orbital_period": 4.144548,
         "apsidal_precession_period": 65.761,
-        "nodal_precession_period": 136.799,
-        "mass_value": 12.2,
-        "mass_exponent": 20,
-        "density": 1.46,
-        "gravity": 0.0,
-        "radius": 584.7,
-        "sideral_orbit": 4.14418,
-        "sideral_rotation": 99.499,
-        "discovered_by": "William Lassell",
-        "discovery_date": "1851-10-24T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 136.799
     },
     {
         "id": 703,
@@ -6721,17 +4655,7 @@
         "mean_anomaly": 53.2,
         "orbital_period": 8.706444,
         "apsidal_precession_period": 367.905,
-        "nodal_precession_period": 17295.87,
-        "mass_value": 34.2,
-        "mass_exponent": 20,
-        "density": 1.66,
-        "gravity": 0.0,
-        "radius": 788.9,
-        "sideral_orbit": 8.70587,
-        "sideral_rotation": 208.9408,
-        "discovered_by": "William Herschel",
-        "discovery_date": "1787-01-11T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 17295.87
     },
     {
         "id": 704,
@@ -6749,17 +4673,7 @@
         "mean_anomaly": 139.7,
         "orbital_period": 13.463606,
         "apsidal_precession_period": 522.476,
-        "nodal_precession_period": 855.045,
-        "mass_value": 28.8,
-        "mass_exponent": 20,
-        "density": 1.56,
-        "gravity": 0.0,
-        "radius": 761.4,
-        "sideral_orbit": 13.46323,
-        "sideral_rotation": 323.1176,
-        "discovered_by": "William Herschel",
-        "discovery_date": "1787-01-11T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 855.045
     },
     {
         "id": 705,
@@ -6777,17 +4691,7 @@
         "mean_anomaly": 72.4,
         "orbital_period": 1.413784,
         "apsidal_precession_period": 8.936,
-        "nodal_precession_period": 17.78,
-        "mass_value": 6.6,
-        "mass_exponent": 19,
-        "density": 1.2,
-        "gravity": 0.0,
-        "radius": 240.0,
-        "sideral_orbit": 1.41348,
-        "sideral_rotation": 33.9235,
-        "discovered_by": "Gerard Kuiper",
-        "discovery_date": "1948-02-16T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 17.78
     },
     {
         "id": 715,
@@ -6805,17 +4709,7 @@
         "mean_anomaly": 50.1,
         "orbital_period": 0.761476,
         "apsidal_precession_period": 0,
-        "nodal_precession_period": 4.452,
-        "mass_value": 2.9,
-        "mass_exponent": 18,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 81.0,
-        "sideral_orbit": 0.76183,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Stephen P. Synnott et al",
-        "discovery_date": "1985-12-30T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 4.452
     },
     {
         "id": 706,
@@ -6833,17 +4727,7 @@
         "mean_anomaly": 95,
         "orbital_period": 0.334569,
         "apsidal_precession_period": 0,
-        "nodal_precession_period": 0.657,
-        "mass_value": 4.5,
-        "mass_exponent": 16,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 20.0,
-        "sideral_orbit": 0.33503,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Richard J. Terrile",
-        "discovery_date": "1986-01-20T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0.657
     },
     {
         "id": 707,
@@ -6861,17 +4745,7 @@
         "mean_anomaly": 280.5,
         "orbital_period": 0.376855,
         "apsidal_precession_period": 0.431,
-        "nodal_precession_period": 0.862,
-        "mass_value": 5.4,
-        "mass_exponent": 16,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 21.0,
-        "sideral_orbit": 0.3764,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Richard J. Terrile",
-        "discovery_date": "1986-01-20T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0.862
     },
     {
         "id": 708,
@@ -6889,17 +4763,7 @@
         "mean_anomaly": 236.2,
         "orbital_period": 0.435007,
         "apsidal_precession_period": 0.607,
-        "nodal_precession_period": 1.217,
-        "mass_value": 9.2,
-        "mass_exponent": 16,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 27.0,
-        "sideral_orbit": 0.43458,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Bradford A. Smith et al",
-        "discovery_date": "1986-01-23T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 1.217
     },
     {
         "id": 709,
@@ -6917,17 +4781,7 @@
         "mean_anomaly": 332.8,
         "orbital_period": 0.463154,
         "apsidal_precession_period": 0,
-        "nodal_precession_period": 1.415,
-        "mass_value": 3.4,
-        "mass_exponent": 17,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 41.0,
-        "sideral_orbit": 0.46357,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Stephen P. Synnott et al",
-        "discovery_date": "1986-01-09T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 1.415
     },
     {
         "id": 710,
@@ -6945,17 +4799,7 @@
         "mean_anomaly": 160.4,
         "orbital_period": 0.473228,
         "apsidal_precession_period": 0,
-        "nodal_precession_period": 1.454,
-        "mass_value": 1.8,
-        "mass_exponent": 17,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 35.0,
-        "sideral_orbit": 0.47365,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Stephen P. Synnott et al",
-        "discovery_date": "1986-01-13T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 1.454
     },
     {
         "id": 711,
@@ -6973,17 +4817,7 @@
         "mean_anomaly": 124.8,
         "orbital_period": 0.493479,
         "apsidal_precession_period": 1.611,
-        "nodal_precession_period": 0,
-        "mass_value": 5.6,
-        "mass_exponent": 17,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 53.0,
-        "sideral_orbit": 0.49307,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Stephen P. Synnott et al",
-        "discovery_date": "1986-01-03T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 712,
@@ -7001,17 +4835,7 @@
         "mean_anomaly": 343.7,
         "orbital_period": 0.513196,
         "apsidal_precession_period": 0,
-        "nodal_precession_period": 0,
-        "mass_value": 1.7,
-        "mass_exponent": 18,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 70.0,
-        "sideral_orbit": 0.5132,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Stephen P. Synnott et al",
-        "discovery_date": "1986-01-03T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 713,
@@ -7029,17 +4853,7 @@
         "mean_anomaly": 79.4,
         "orbital_period": 0.558459,
         "apsidal_precession_period": 0,
-        "nodal_precession_period": 0,
-        "mass_value": 0.25,
-        "mass_exponent": 17,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 36.0,
-        "sideral_orbit": 0.55846,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Stephen P. Synnott et al",
-        "discovery_date": "1986-01-13T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 714,
@@ -7057,17 +4871,7 @@
         "mean_anomaly": 121.3,
         "orbital_period": 0.623527,
         "apsidal_precession_period": 0,
-        "nodal_precession_period": 0,
-        "mass_value": 4.9,
-        "mass_exponent": 17,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 45.0,
-        "sideral_orbit": 0.62353,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Stephen P. Synnott et al",
-        "discovery_date": "1986-01-13T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 715,
@@ -7085,17 +4889,7 @@
         "mean_anomaly": 174.5,
         "orbital_period": 0.761477,
         "apsidal_precession_period": 0,
-        "nodal_precession_period": 4.457,
-        "mass_value": 2.9,
-        "mass_exponent": 18,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 81.0,
-        "sideral_orbit": 0.76183,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Stephen P. Synnott et al",
-        "discovery_date": "1985-12-30T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 4.457
     },
     {
         "id": 725,
@@ -7113,17 +4907,7 @@
         "mean_anomaly": 32.2,
         "orbital_period": 0.638411,
         "apsidal_precession_period": 2.841,
-        "nodal_precession_period": 0,
-        "mass_value": 1.8,
-        "mass_exponent": 19,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 13.0,
-        "sideral_orbit": 0.638,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Erich Karkoschka",
-        "discovery_date": "1986-01-18T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 726,
@@ -7141,17 +4925,7 @@
         "mean_anomaly": 348,
         "orbital_period": 0.923293,
         "apsidal_precession_period": 3.402,
-        "nodal_precession_period": 6.645,
-        "mass_value": 1.0,
-        "mass_exponent": 16,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 12.0,
-        "sideral_orbit": 0.923,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Mark R. Showalter et al",
-        "discovery_date": "2003-08-25T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 6.645
     },
     {
         "id": 727,
@@ -7169,17 +4943,7 @@
         "mean_anomaly": 160.6,
         "orbital_period": 0.613168,
         "apsidal_precession_period": 1.738,
-        "nodal_precession_period": 4.137,
-        "mass_value": 3.8,
-        "mass_exponent": 15,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 9.0,
-        "sideral_orbit": 0.613,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Mark R. Showalter et al",
-        "discovery_date": "2003-08-25T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 4.137
     },
     {
         "id": 716,
@@ -7197,17 +4961,7 @@
         "mean_anomaly": 241.2,
         "orbital_period": 580,
         "apsidal_precession_period": "8795.",
-        "nodal_precession_period": 6483,
-        "mass_value": 2.5,
-        "mass_exponent": 17,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 36.0,
-        "sideral_orbit": -579.5,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "1997-09-06T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 6483
     },
     {
         "id": 717,
@@ -7225,17 +4979,7 @@
         "mean_anomaly": 332.1,
         "orbital_period": 1286,
         "apsidal_precession_period": "1394.",
-        "nodal_precession_period": 1863,
-        "mass_value": 2.3,
-        "mass_exponent": 18,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 75.0,
-        "sideral_orbit": -1283.4,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "1997-09-06T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 1863
     },
     {
         "id": 718,
@@ -7253,17 +4997,7 @@
         "mean_anomaly": 197.6,
         "orbital_period": 1974,
         "apsidal_precession_period": "1154.",
-        "nodal_precession_period": 1369,
-        "mass_value": 8.5,
-        "mass_exponent": 16,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 25.0,
-        "sideral_orbit": -1977.3,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "1999-07-18T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 1369
     },
     {
         "id": 719,
@@ -7281,17 +5015,7 @@
         "mean_anomaly": 148,
         "orbital_period": 2215,
         "apsidal_precession_period": "48.",
-        "nodal_precession_period": 48,
-        "mass_value": 7.5,
-        "mass_exponent": 16,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 24.0,
-        "sideral_orbit": -2234.8,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "1999-07-18T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 48
     },
     {
         "id": 720,
@@ -7309,17 +5033,7 @@
         "mean_anomaly": 164.4,
         "orbital_period": 677,
         "apsidal_precession_period": "5469.",
-        "nodal_precession_period": 5190,
-        "mass_value": 2.2,
-        "mass_exponent": 16,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 16.0,
-        "sideral_orbit": -676.5,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "1999-07-18T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 5190
     },
     {
         "id": 721,
@@ -7337,17 +5051,7 @@
         "mean_anomaly": 55.6,
         "orbital_period": 749,
         "apsidal_precession_period": "2589.",
-        "nodal_precession_period": 4265,
-        "mass_value": 3.9,
-        "mass_exponent": 15,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 9.0,
-        "sideral_orbit": -758.1,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "2001-08-13T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 4265
     },
     {
         "id": 722,
@@ -7365,17 +5069,7 @@
         "mean_anomaly": 288.4,
         "orbital_period": 267,
         "apsidal_precession_period": "12473.",
-        "nodal_precession_period": 14419,
-        "mass_value": 7.2,
-        "mass_exponent": 15,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 11.0,
-        "sideral_orbit": -266.6,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "2001-08-13T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 14419
     },
     {
         "id": 723,
@@ -7393,17 +5087,7 @@
         "mean_anomaly": 115.9,
         "orbital_period": 1655,
         "apsidal_precession_period": "-",
-        "nodal_precession_period": 1002,
-        "mass_value": 5.4,
-        "mass_exponent": 15,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 10.0,
-        "sideral_orbit": 1694.8,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2003-08-29T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 1002
     },
     {
         "id": 724,
@@ -7421,17 +5105,7 @@
         "mean_anomaly": 172.3,
         "orbital_period": 2788,
         "apsidal_precession_period": "747.",
-        "nodal_precession_period": 1001,
-        "mass_value": 5.4,
-        "mass_exponent": 15,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 10.0,
-        "sideral_orbit": -2823.4,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "2001-08-13T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 1001
     },
     {
         "id": 75051,
@@ -7467,17 +5141,7 @@
         "mean_anomaly": 63,
         "orbital_period": 5.876994,
         "apsidal_precession_period": 0,
-        "nodal_precession_period": 340.379,
-        "mass_value": 2.14,
-        "mass_exponent": 22,
-        "density": 2.05,
-        "gravity": 0.78,
-        "radius": 1353.4,
-        "sideral_orbit": 5.87685,
-        "sideral_rotation": 141.0444,
-        "discovered_by": "William Lassell",
-        "discovery_date": "1846-10-10T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 340.379
     },
     {
         "id": 803,
@@ -7495,17 +5159,7 @@
         "mean_anomaly": 89.7,
         "orbital_period": 0.29398,
         "apsidal_precession_period": 0,
-        "nodal_precession_period": 0.575,
-        "mass_value": 2.0,
-        "mass_exponent": 17,
-        "density": 1.0,
-        "gravity": 0.01,
-        "radius": 33.0,
-        "sideral_orbit": 0.2944,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Richard J. Terrile",
-        "discovery_date": "1989-09-18T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0.575
     },
     {
         "id": 804,
@@ -7523,17 +5177,7 @@
         "mean_anomaly": 165.7,
         "orbital_period": 0.311078,
         "apsidal_precession_period": 0,
-        "nodal_precession_period": 0.654,
-        "mass_value": 4.0,
-        "mass_exponent": 17,
-        "density": 1.0,
-        "gravity": 0.013,
-        "radius": 41.0,
-        "sideral_orbit": 0.31149,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Richard J. Terrile",
-        "discovery_date": "1989-09-18T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0.654
     },
     {
         "id": 805,
@@ -7551,17 +5195,7 @@
         "mean_anomaly": 125.1,
         "orbital_period": 0.334656,
         "apsidal_precession_period": 0,
-        "nodal_precession_period": 0,
-        "mass_value": 2.0,
-        "mass_exponent": 18,
-        "density": 1.0,
-        "gravity": 0.023,
-        "radius": 75.0,
-        "sideral_orbit": 0.33466,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Stephen P. Synnott et al",
-        "discovery_date": "1989-07-28T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 806,
@@ -7579,17 +5213,7 @@
         "mean_anomaly": 86.7,
         "orbital_period": 0.428744,
         "apsidal_precession_period": 0,
-        "nodal_precession_period": 0,
-        "mass_value": 2.0,
-        "mass_exponent": 18,
-        "density": 1.0,
-        "gravity": 0.03,
-        "radius": 88.0,
-        "sideral_orbit": 0.42875,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Stephen P. Synnott et al",
-        "discovery_date": "1989-07-28T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 807,
@@ -7607,17 +5231,7 @@
         "mean_anomaly": 165.5,
         "orbital_period": 0.554989,
         "apsidal_precession_period": 1.257,
-        "nodal_precession_period": 2.514,
-        "mass_value": 5.0,
-        "mass_exponent": 18,
-        "density": 1.0,
-        "gravity": 0.034,
-        "radius": 97.0,
-        "sideral_orbit": 0.55465,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Reitsema, Hubbard et al",
-        "discovery_date": "1981-05-24T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 2.514
     },
     {
         "id": 808,
@@ -7635,17 +5249,7 @@
         "mean_anomaly": 276.8,
         "orbital_period": 1.122315,
         "apsidal_precession_period": 0,
-        "nodal_precession_period": 0,
-        "mass_value": 5.0,
-        "mass_exponent": 19,
-        "density": 1.0,
-        "gravity": 0.075,
-        "radius": 210.0,
-        "sideral_orbit": 1.12232,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Stephen P. Synnott et al",
-        "discovery_date": "1989-06-16T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 0
     },
     {
         "id": 814,
@@ -7663,17 +5267,7 @@
         "mean_anomaly": 286.5,
         "orbital_period": 0.95039,
         "apsidal_precession_period": 8.726,
-        "nodal_precession_period": 661.762,
-        "mass_value": 3.0,
-        "mass_exponent": 16,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 17.0,
-        "sideral_orbit": 0.95,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Mark R. Showalter et al",
-        "discovery_date": "2013-07-01T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 661.762
     },
     {
         "id": 802,
@@ -7691,17 +5285,7 @@
         "mean_anomaly": 318.5,
         "orbital_period": 360.133039,
         "apsidal_precession_period": 7990.433,
-        "nodal_precession_period": 9426.334,
-        "mass_value": 3.0,
-        "mass_exponent": 19,
-        "density": 1.0,
-        "gravity": 0.071,
-        "radius": 170.0,
-        "sideral_orbit": 360.13619,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Gerard Kuiper",
-        "discovery_date": "1949-05-01T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 9426.334
     },
     {
         "id": 809,
@@ -7719,17 +5303,7 @@
         "mean_anomaly": 135.8,
         "orbital_period": 1879,
         "apsidal_precession_period": "5395.",
-        "nodal_precession_period": 5156,
-        "mass_value": 2.0,
-        "mass_exponent": 17,
-        "density": 1.0,
-        "gravity": 0.01,
-        "radius": 30.0,
-        "sideral_orbit": 1879.7,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "2002-08-14T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 5156
     },
     {
         "id": 810,
@@ -7747,17 +5321,7 @@
         "mean_anomaly": 183.2,
         "orbital_period": 9149,
         "apsidal_precession_period": "1484.",
-        "nodal_precession_period": 1333,
-        "mass_value": 2.0,
-        "mass_exponent": 16,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 20.0,
-        "sideral_orbit": 9115.9,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Sheppard, Jewitt et al",
-        "discovery_date": "2003-08-19T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 1333
     },
     {
         "id": 811,
@@ -7775,17 +5339,7 @@
         "mean_anomaly": 178.5,
         "orbital_period": 2919,
         "apsidal_precession_period": "-",
-        "nodal_precession_period": 4454,
-        "mass_value": 1.0,
-        "mass_exponent": 17,
-        "density": 1.0,
-        "gravity": 0.01,
-        "radius": 20.0,
-        "sideral_orbit": 2914.1,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "2002-08-14T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 4454
     },
     {
         "id": 812,
@@ -7803,17 +5357,7 @@
         "mean_anomaly": 248.1,
         "orbital_period": 3168,
         "apsidal_precession_period": "2255.",
-        "nodal_precession_period": 3154,
-        "mass_value": 1.0,
-        "mass_exponent": 17,
-        "density": 1.0,
-        "gravity": 0.01,
-        "radius": 20.0,
-        "sideral_orbit": 3167.9,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "2002-08-13T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 3154
     },
     {
         "id": 813,
@@ -7831,17 +5375,7 @@
         "mean_anomaly": 13.8,
         "orbital_period": 9805,
         "apsidal_precession_period": "-",
-        "nodal_precession_period": 1116,
-        "mass_value": 1.0,
-        "mass_exponent": 17,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 30.0,
-        "sideral_orbit": 9374.0,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Ashton, Gladman, Kavelaars, Holman et al",
-        "discovery_date": "2002-08-14T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": 1116
     },
     {
         "id": 85051,
@@ -7895,19 +5429,7 @@
         "mean_anomaly": 304.1,
         "orbital_period": 6.387222,
         "apsidal_precession_period": "-",
-        "nodal_precession_period": "-",
-        "mass_value": 1.58,
-        "mass_exponent": 21,
-        "vol_value": 9.32,
-        "vol_exponent": 8,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 606.0,
-        "sideral_orbit": 6.387,
-        "sideral_rotation": 0.0,
-        "discovered_by": "James W. Christy",
-        "discovery_date": "1978-04-13T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": "-"
     },
     {
         "id": 905,
@@ -7925,17 +5447,7 @@
         "mean_anomaly": 358.1,
         "orbital_period": 20.16,
         "apsidal_precession_period": "-",
-        "nodal_precession_period": "-",
-        "mass_value": 7.5,
-        "mass_exponent": 15,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 20.0,
-        "sideral_orbit": 20.16,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Hubble Space Telescope Team",
-        "discovery_date": "2012-07-11T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": "-"
     },
     {
         "id": 902,
@@ -7953,17 +5465,7 @@
         "mean_anomaly": 338.2,
         "orbital_period": 24.85,
         "apsidal_precession_period": "-",
-        "nodal_precession_period": "-",
-        "mass_value": 4.5,
-        "mass_exponent": 16,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 44.0,
-        "sideral_orbit": 24.854,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Hubble Space Telescope Team",
-        "discovery_date": "2005-05-15T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": "-"
     },
     {
         "id": 904,
@@ -7981,17 +5483,7 @@
         "mean_anomaly": 276.1,
         "orbital_period": 32.17,
         "apsidal_precession_period": "-",
-        "nodal_precession_period": "9",
-        "mass_value": 1.64,
-        "mass_exponent": 16,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 25.0,
-        "sideral_orbit": 32.167,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Hubble Space Telescope Team",
-        "discovery_date": "2011-07-20T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": "9"
     },
     {
         "id": 903,
@@ -8009,16 +5501,6 @@
         "mean_anomaly": 335,
         "orbital_period": 38.2,
         "apsidal_precession_period": "-",
-        "nodal_precession_period": "14",
-        "mass_value": 4.8,
-        "mass_exponent": 16,
-        "density": 1.0,
-        "gravity": 0.0,
-        "radius": 36.0,
-        "sideral_orbit": 38.2,
-        "sideral_rotation": 0.0,
-        "discovered_by": "Hubble Space Telescope Team",
-        "discovery_date": "2005-05-15T00:00:00.000",
-        "avg_temp_kelvin": 0
+        "nodal_precession_period": "14"
     }
 ]

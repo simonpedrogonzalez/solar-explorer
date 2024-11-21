@@ -139,9 +139,10 @@ export const draw = async (bodiesData, missionsData) => {
         planetDistanceScale,
         planetRadiusScale,
     );
-    drawMissionPaths(missionsData, bodiesData, "fullPath");
     drawBodies(bodiesData);
     drawBodiesOrbits(bodiesData);
+    drawMissionPaths(missionsData, bodiesData, "fullPath");
+
 }
 
 const drawBodiesOrbits = (data) => {
@@ -159,7 +160,8 @@ const drawBodiesOrbits = (data) => {
         .attr('ry', d => d.vis.orbit.ry)
         .attr('fill', 'none')
         .attr('stroke', d => d.color)
-        .attr('stroke-width', d => d.type === 'satellite' ? 0.1 : 0.3)
+        .attr('stroke-width', d => d.type === 'satellite' ? 0.05 : 0.3)
+        .attr('stroke-opacity', d => d.type === 'satellite' ? 0.5 : 0.8);
         
     // Update
     orbits.attr('transform', d => d.vis.orbit.transform);
