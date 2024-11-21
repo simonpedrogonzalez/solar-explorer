@@ -252,9 +252,11 @@ for mission in missions:
     mission["distance_travelled"] = 0
     # TODO
 
-    # Calculate total mission duration
-    mission["duration"] = 0
-    # TODO
+    # Calculate total mission duration in days
+    if len(mission["events"]) > 0:
+        startdate = datetime.strptime(mission["events"][0]["sdate"], "%Y-%m-%dT%H:%M:%S.%f")
+        enddate = datetime.strptime(mission["events"][-1]["ddate"], "%Y-%m-%dT%H:%M:%S.%f") if  mission["events"][-1]["ddate"] is not None else datetime.now()
+        mission["duration"] = (enddate - startdate).days
 
 with open("../project/files/missions.json", "w") as f:
     json.dump(missions, f, indent=4)
