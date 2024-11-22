@@ -26,6 +26,12 @@ In general:
 
 ## Resources for development
 - [Render millions of datapoints with D3](https://blog.scottlogic.com/2020/05/01/rendering-one-million-points-with-d3.html)
+- [Check planet position calculations](https://www.fourmilab.ch/cgi-bin/Solar)
+- [Good loooking images for planets](https://codepen.io/juliangarnier/pen/krNqZO)
+- [More planet images](https://www.solarsystemscope.com/textures/)
+- [Calculations tutorials](https://bits.ashleyblewer.com/blog/2018/05/05/mapping-the-planets/)
+- [More calculations tutorials](https://stjarnhimlen.se/comp/tutorial.html)
+
 
 ## TA advices
 

@@ -50,7 +50,7 @@ const pathToLinks = (path, d) => {
         return {
             name: d.name,
             origin: source,
-            destination: target
+            destination: target,
         }
     }).filter(d => d !== null);
 }
@@ -96,12 +96,16 @@ const simplifyMissionsData = (d) => {
         eclTheta: destinationObject.eclTheta
     }
 
+    // get the rest of the attrs
+    const { ...rest } = d;
+
     return {
-        "name": d.name,
+        // "name": d.name,
         "origin": origin,
         "destination": destination,
         "links": pathToLinks(payloadPath, d),
-        "launch_date": d.launch_date
+        // "launch_date": d.launch_date,
+        ...rest
     }
 }
 
