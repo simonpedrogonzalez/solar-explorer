@@ -1,68 +1,162 @@
-body {
+body, html {
     margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
-    background-color: black; /* Background starts as black */
-    color: white; /* Text color */
-    transition: background-color 3s ease-in-out; /* Smooth transition for the background color */
+    background-color: black;
+    color: white;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
 }
 
+/* Highlights all elements useful for debugging*/
+/* * {
+    outline: 1px solid red; 
+} */
+
+/* Fade-in effect */
 .dashboard-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* Full height of the viewport */
-    opacity: 0; /* Start fully transparent */
-    animation: fadeIn 3s forwards; /* Animation to fade in */
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100vh;
+    animation: fadeIn 3s forwards;
+    opacity: 0;
+    position: relative;
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        background-color: black; /* Start from black */
+        background-color: black;
     }
     to {
         opacity: 1;
-        background-color: black;/*background-color: #282c34; /* Change to a different color after fade in */
+        background-color: black;
     }
+}
+
+/* Dashboard title */
+.dashboard-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2em;
+    margin: 20px 0 10px 20px; /* Top-left positioning */
 }
 
 .dashboard {
-    display: none; /* Hide both dashboards initially */
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    /* font-family: 'Orbitron', sans-serif; */
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 10px;
+    /* margin-bottom: 50px; */
+}
+
+
+/* Control pane styling */
+#control-pane {
+    position: absolute;
+    top: 10%;
+    left: 2%;
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0.6); /* Transparent black */
+    border: 2px solid white;
+    border-radius: 10px;
     padding: 20px;
-    /* border: 1px solid white; */
-    border-radius: 8px;
-    margin-bottom: 20px;
-    background-size: cover;  /* Add this */
-    background-repeat: no-repeat;  /* Add this */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    pointer-events: auto; /* Ensure controls are clickable */
+    z-index: 2;
+}
+
+/* Control sections */
+.control-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Vertical slider styling */
+#slider {
+    writing-mode: bt-lr; /* Vertical slider */
+    -webkit-appearance: slider-vertical;
+    width: 10px;
+    height: 200px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    accent-color: white;
+}
+
+.vertical-label {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Zoom controls horizontal layout */
+#zoom-controls {
+    display: flex;
+    flex-direction: row;
+    gap: 10px; /* Space between buttons */
+}
+
+#zoom-controls button {
+    background: none;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+#zoom-controls button:hover {
+    background: white;
+    color: black;
+}
+
+/* Map container */
+#map-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Behind the control pane */
 }
 
 .switch-button {
+    position: absolute;
+    top: 10px; /* Changed from bottom to top */
+    right: 10px; /* Stays as right for right alignment */
     padding: 10px 20px;
     font-size: 16px;
     color: white;
-    background-color: #007bff; /* Bootstrap primary color */
-    border: none;
-    border-radius: 5px;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 50px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    z-index: 3;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
 }
 
 .switch-button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
 }
 
-input[type="range"] {
-    width: 500px;
-}
-
-/* Responsive styles */
-@media (max-width: 600px) {
-    .switch-button {
-        width: 100%; /* Full width on smaller screens */
-    }
-
-    .dashboard {
-        width: 90%; /* Responsive dashboard width */
-    }
+.switch-button:active {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    transform: scale(0.98);
 }

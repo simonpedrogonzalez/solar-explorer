@@ -3,19 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>The Solar System Dashboard</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="dashboard-container">
+        <!-- Dashboard 1 -->
         <div class="dashboard" id="dashboard1">
-            <h1>The Solar System</h1>
-            <div id="timeslider"><label for="slider">Date: </label><input id="slider" type="range" min="1950" max="2050" step="0.0000001" value="2050"/><span id="timeslider-text"></span></div>
+            <h1 class="dashboard-title">The Solar System</h1>
+            <div id="video-demo" style="position: absolute; top: 75px; left: 50px; z-index: 1000; background: rgba(0, 0, 0, 0.8); color: white; padding: 4px 15px; border: 2px solid #4caf50; border-radius: 8px; font-family: 'Arial', sans-serif; font-size: 12px; text-align: center; box-shadow: 0 0 10px rgba(72, 239, 128, 0.8);">
+                <a href="https://www.youtube.com/watch?v=8MEvtGncpBU" target="_blank" style="color: #4caf50; text-decoration: none; font-weight: bold;">
+                    Watch the Video Demo
+                </a>
+            </div>
+            
+            </div>
+            <div id="control-pane">
+                <!-- Time Slider -->
+                <div class="slider-controls" style="display: flex; flex-direction: column; align-items: center; width: 200px; gap: 10px;">
+                    <!-- Top -->
+                    <div style="display: flex; width: 100%; justify-content: space-between; align-items: center;">
+                        <label for="slider-svg" class="vertical-label" style="width: 50%; text-align: center;">Missions</label>
+                        <label for="slider" class="vertical-label" style="width: 50%; text-align: center;">Date</label>
+                    </div>
+                    <!-- Middle -->
+                    <div style="display: flex; width: 100%; align-items: center; position: relative;">
+                        <!-- svg on the left -->
+                        <div style="display: flex; justify-content: center; align-items: center; width: 50%; position: relative; z-index: 2;">
+                            <svg id="slider-svg" width="100" height="400" style="position: absolute; overflow: visible; left: 0;"></svg>
+                        </div>
+                        <!-- Slider on the right -->
+                        <div style="display: flex; justify-content: center; align-items: center; width: 50%; position: relative; z-index: 1;">
+                            <input id="slider" class="slider" type="range" min="1950" max="2025" step="0.01" value="2000" style="height: 400px;" />
+                        </div>
+                    </div>
+                    <!-- Bottom -->
+                    <div style="display: flex; width: 100%; justify-content: space-between; align-items: center;">
+                        <div style="width: 50%;"></div>
+                        <span id="timeslider-text" style="width: 50%; text-align: center;"></span>
+                    </div>
+                </div>
+                <!-- Accurate Planet Positions Toggle -->
+                <div id="toggle-positions" class="control-section" style="margin-top: 10px; display: flex; align-items: center;">
+                    <label for="accurate-positions" style="margin-right: 10px;">Accurate Planet Positions:</label>
+                    <label style="position: relative; display: inline-block; width: 50px; height: 25px; margin: 0;">
+                        <input type="checkbox" id="accurate-positions" checked style="opacity: 0; width: 0; height: 0;">
+                        <span id="switch-track" style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; border-radius: 25px; transition: 0.4s;"></span>
+                        <span id="switch-knob" style="position: absolute; height: 21px; width: 21px; left: 2px; bottom: 2px; background-color: white; border-radius: 50%; transition: 0.4s;"></span>
+                    </label>    
+                </div>
+                <!-- Zoom Controls -->
+                <div id="zoom-controls" class="control-section">
+                    <label for="zoom-in" class="horizontal-label">Zoom:</label>
+                    <button id="zoom-in">+</button>
+                    <button id="zoom-out">-</button>
+                    <button id="reset-zoom">Reset</button>
+                </div>
+            </div>
+            <div id="map-container"></div>
         </div>
-        <div class="dashboard" id="dashboard2">
-            <h1>Dashboard 2</h1>
-            <p>This is the second dashboard.</p>
+
+        <!-- Dashboard 2 -->
+        <div class="dashboard" id="dashboard2" style="height: 100vh; width: 100vw; background-color: black; color: white; font-family: 'Orbitron', sans-serif; display: flex; flex-direction: column;">
+            <h1 style="text-align: center; font-size: 2em; margin: 10px 0;">Data Explorer</h1>
+            
+            <div style="display: flex; flex: 1; padding: 10px; height: calc(100vh - 80px); box-sizing: border-box;">
+                <!-- left side: Celestial Bodies Data -->
+                <div style="flex: 1; display: flex; flex-direction: column; border-right: 1px solid white; padding: 10px;">
+                    <h2 style="text-align: center; font-size: 1.5em;margin: 4px;">Celestial Bodies Data</h2>
+                    
+                    <!-- Scatterplot -->
+                    <div style="flex: 1; display: flex; flex-direction: column; margin-bottom: 10px;">
+                        <div style="margin-bottom: 5px; display: flex; justify-content: left; align-items: center;">
+                            <label for="bodies-scatter-x-select" style="margin-right: 5px;">X Variable:</label>
+                            <select id="bodies-scatter-x-select" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
+                            </select>
+                            <label for="bodies-scatter-y-select" style="margin-left: 10px; margin-right: 5px;">Y Variable:</label>
+                            <select id="bodies-scatter-y-select" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
+                            </select>
+                        </div>
+                        <div id="bodies-scatter" style="flex: 1; border: 1px solid white;"></div>
+                    </div>
+                    
+                    <!-- Histogram -->
+                    <div style="flex: 1; display: flex; flex-direction: column;">
+                        <div style="margin-bottom: 5px; display: flex; justify-content: left; align-items: center;">
+                            <label for="bodies-hist-var-select" style="margin-right: 5px;">Variable:</label>
+                            <select id="bodies-hist-var-select" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
+                            </select>
+                        </div>
+                        <div id="bodies-hist" style="flex: 1; border: 1px solid white;"></div>
+                    </div>
+                </div>
+                
+                <!-- right side: Missions Data -->
+                <div style="flex: 1; display: flex; flex-direction: column; padding: 10px;">
+                    <h2 style="text-align: center; font-size: 1.5em;margin: 4px;">Missions Data</h2>
+                    
+                    <!-- Scatterplot -->
+                    <div style="flex: 1; display: flex; flex-direction: column; margin-bottom: 10px;">
+                        <div style="margin-bottom: 5px; display: flex; justify-content: left; align-items: center;">
+                            <label for="x-mission" style="margin-right: 5px;">X Variable:</label>
+                            <select id="x-mission" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
+                            </select>
+                            <label for="y-mission" style="margin-left: 10px; margin-right: 5px;">Y Variable:</label>
+                            <select id="y-mission" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
+                            </select>
+                        </div>
+                        <div id="mission-scatter" style="flex: 1; border: 1px solid white;"></div>
+                    </div>
+                    
+                    <!-- Histogram -->
+                    <div style="flex: 1; display: flex; flex-direction: column;">
+                        <div style="margin-bottom: 5px; display: flex; justify-content: left; align-items: center;">
+                            <label for="hist-mission" style="margin-right: 5px;">Variable:</label>
+                            <select id="hist-mission" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
+                            </select>
+                        </div>
+                        <div id="mission-hist" style="flex: 1; border: 1px solid white;"></div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
+
+        <!-- Switch Button -->
         <button class="switch-button" id="switchButton">Switch Dashboard</button>
     </div>
     <script src="https://d3js.org/d3.v7.min.js"></script>

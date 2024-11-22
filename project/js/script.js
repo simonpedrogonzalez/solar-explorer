@@ -1,41 +1,73 @@
-import * as solarSystemMap from './solarSystemMap.js';
-import * as scatterPlot from './scatterPlot.js';
+import * as solarSystemMap from './vis/solar-system-map/solarSystemMap.js';
+import * as dashboard from './vis/scatter-hist-dashboard/dashboard.js';
+
 
 document.addEventListener('DOMContentLoaded', function () {
     const switchButton = document.getElementById('switchButton');
     const dashboard1 = document.getElementById('dashboard1');
     const dashboard2 = document.getElementById('dashboard2');
+    const timeSlider = document.getElementById('slider');
+    const timeSliderText = document.getElementById('timeslider-text');
+    const mapContainer = document.getElementById('map-container');
 
-    let currentDashboard = 1; 
+    let currentDashboard = 1;
 
-    dashboard1.style.display = 'block';
-    dashboard2.style.display = 'none'; // Initially hide dashboard 2
+    let firstTimeDashboard = true;
+    let firstTimeMap = true;
 
-    
+
+
+    // dashboard.setup();
+    // // Setup visualization for the first dashboard
+    // solarSystemMap.setup('#map-container');
+
+
+    if (currentDashboard === 1) {
+        dashboard1.style.display = 'block';
+        dashboard2.style.display = 'none';
+        solarSystemMap.setup('#map-container');
+        firstTimeMap = false;
+    } else {
+        dashboard2.style.display = 'block';
+        dashboard1.style.display = 'none';
+        dashboard.setup();
+        firstTimeDashboard = false;
+    }
+
+    // Time slider event
+    timeSlider.addEventListener('input', () => {
+        timeSliderText.textContent = timeSlider.value;
+    });
+
+    // Switch dashboards
     switchButton.addEventListener('click', function () {
         if (currentDashboard === 1) {
             dashboard1.style.display = 'none';
             dashboard2.style.display = 'block';
             currentDashboard = 2;
+            if (firstTimeDashboard) {
+                dashboard.setup();
+                firstTimeDashboard = false;
+            }
 
-             // *** Add the background image setting here ***
-             dashboard2.style.backgroundImage = "url('https://www.solarsystemscope.com/images/background_stars_grid.jpg')"; 
-
-            
-            scatterPlot.setup('#dashboard2').then(() => { // Call setup when shown
-                scatterPlot.draw();
-            });
+            // // Clear the previous visualization
+            // mapContainer.innerHTML = '';
+            // solarSystemMap.setup('#dashboard2');
+            dashboard.setup();
         } else {
             dashboard2.style.display = 'none';
             dashboard1.style.display = 'block';
             currentDashboard = 1;
+            if (firstTimeMap) {
+                solarSystemMap.setup('#map-container');
+                firstTimeMap = false;
+            }
+
+            // // Clear the previous visualization
+            // mapContainer.innerHTML = '';
+            // solarSystemMap.setup('#map-container');
         }
     });
-
-    solarSystemMap.setup('#dashboard1').then(() => {
-        solarSystemMap.draw().then(() => {
-            console.log('Solar system map drawn');
-        });
-    });
-
 });
+
+
