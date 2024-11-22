@@ -49,10 +49,69 @@
         </div>
 
         <!-- Dashboard 2 -->
-        <div class="dashboard" id="dashboard2">
-            <h1 class="dashboard-title">Dashboard 2</h1>
-            <p>This is the second dashboard.</p>
+        <div class="dashboard" id="dashboard2" style="height: 100vh; width: 100vw; background-color: black; color: white; font-family: 'Orbitron', sans-serif; display: flex; flex-direction: column;">
+            <h1 style="text-align: center; font-size: 2em; margin: 10px 0;">Data Explorer</h1>
+            
+            <div style="display: flex; flex: 1; padding: 10px; height: calc(100vh - 80px); box-sizing: border-box;">
+                <!-- left side: Celestial Bodies Data -->
+                <div style="flex: 1; display: flex; flex-direction: column; border-right: 1px solid white; padding: 10px;">
+                    <h2 style="text-align: center; font-size: 1.5em;margin: 4px;">Celestial Bodies Data</h2>
+                    
+                    <!-- Scatterplot -->
+                    <div style="flex: 1; display: flex; flex-direction: column; margin-bottom: 10px;">
+                        <div style="margin-bottom: 5px; display: flex; justify-content: left; align-items: center;">
+                            <label for="bodies-scatter-x-select" style="margin-right: 5px;">X Variable:</label>
+                            <select id="bodies-scatter-x-select" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
+                            </select>
+                            <label for="bodies-scatter-y-select" style="margin-left: 10px; margin-right: 5px;">Y Variable:</label>
+                            <select id="bodies-scatter-y-select" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
+                            </select>
+                        </div>
+                        <div id="bodies-scatter" style="flex: 1; border: 1px solid white;"></div>
+                    </div>
+                    
+                    <!-- Histogram -->
+                    <div style="flex: 1; display: flex; flex-direction: column;">
+                        <div style="margin-bottom: 5px; display: flex; justify-content: left; align-items: center;">
+                            <label for="bodies-hist-var-select" style="margin-right: 5px;">Variable:</label>
+                            <select id="bodies-hist-var-select" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
+                            </select>
+                        </div>
+                        <div id="bodies-hist" style="flex: 1; border: 1px solid white;"></div>
+                    </div>
+                </div>
+                
+                <!-- right side: Missions Data -->
+                <div style="flex: 1; display: flex; flex-direction: column; padding: 10px;">
+                    <h2 style="text-align: center; font-size: 1.5em;margin: 4px;">Missions Data</h2>
+                    
+                    <!-- Scatterplot -->
+                    <div style="flex: 1; display: flex; flex-direction: column; margin-bottom: 10px;">
+                        <div style="margin-bottom: 5px; display: flex; justify-content: left; align-items: center;">
+                            <label for="x-mission" style="margin-right: 5px;">X Variable:</label>
+                            <select id="x-mission" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
+                            </select>
+                            <label for="y-mission" style="margin-left: 10px; margin-right: 5px;">Y Variable:</label>
+                            <select id="y-mission" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
+                            </select>
+                        </div>
+                        <div id="mission-scatter" style="flex: 1; border: 1px solid white;"></div>
+                    </div>
+                    
+                    <!-- Histogram -->
+                    <div style="flex: 1; display: flex; flex-direction: column;">
+                        <div style="margin-bottom: 5px; display: flex; justify-content: left; align-items: center;">
+                            <label for="hist-mission" style="margin-right: 5px;">Variable:</label>
+                            <select id="hist-mission" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
+                            </select>
+                        </div>
+                        <div id="mission-hist" style="flex: 1; border: 1px solid white;"></div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
 
         <!-- Switch Button -->
         <button class="switch-button" id="switchButton">Switch Dashboard</button>

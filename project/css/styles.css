@@ -10,6 +10,11 @@ body, html {
     box-sizing: border-box;
 }
 
+/* Highlights all elements useful for debugging*/
+/* * {
+    outline: 1px solid red; 
+} */
+
 /* Fade-in effect */
 .dashboard-container {
     display: flex;
@@ -39,6 +44,20 @@ body, html {
     font-size: 2em;
     margin: 20px 0 10px 20px; /* Top-left positioning */
 }
+
+.dashboard {
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    /* font-family: 'Orbitron', sans-serif; */
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 10px;
+    /* margin-bottom: 50px; */
+}
+
 
 /* Control pane styling */
 #control-pane {
@@ -114,22 +133,30 @@ body, html {
     z-index: 1; /* Behind the control pane */
 }
 
-/* Switch button */
 .switch-button {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    top: 10px; /* Changed from bottom to top */
+    right: 10px; /* Stays as right for right alignment */
     padding: 10px 20px;
     font-size: 16px;
     color: white;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 50px;
     cursor: pointer;
-    z-index: 3; /* Always on top */
-    transition: background-color 0.3s;
+    z-index: 3;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
 }
 
 .switch-button:hover {
-    background-color: #0056b3;
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.switch-button:active {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    transform: scale(0.98);
 }

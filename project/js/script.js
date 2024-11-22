@@ -1,4 +1,11 @@
 import * as solarSystemMap from './vis/solar-system-map/solarSystemMap.js';
+import * as dashboard from './vis/scatter-hist-dashboard/dashboard.js';
+
+dashboard.setup();
+
+// Setup visualization for the first dashboard
+solarSystemMap.setup('#map-container');
+
 
 document.addEventListener('DOMContentLoaded', function () {
     const switchButton = document.getElementById('switchButton');
@@ -26,20 +33,19 @@ document.addEventListener('DOMContentLoaded', function () {
             dashboard2.style.display = 'block';
             currentDashboard = 2;
 
-            // Clear the previous visualization
-            mapContainer.innerHTML = '';
-            solarSystemMap.setup('#dashboard2');
+            // // Clear the previous visualization
+            // mapContainer.innerHTML = '';
+            // solarSystemMap.setup('#dashboard2');
         } else {
             dashboard2.style.display = 'none';
             dashboard1.style.display = 'block';
             currentDashboard = 1;
 
-            // Clear the previous visualization
-            mapContainer.innerHTML = '';
-            solarSystemMap.setup('#map-container');
+            // // Clear the previous visualization
+            // mapContainer.innerHTML = '';
+            // solarSystemMap.setup('#map-container');
         }
     });
-
-    // Setup visualization for the first dashboard
-    solarSystemMap.setup('#map-container');
 });
+
+
