@@ -60,33 +60,24 @@
                     <!-- Scatterplot -->
                     <div style="flex: 1; display: flex; flex-direction: column; margin-bottom: 10px;">
                         <div style="margin-bottom: 5px; display: flex; justify-content: left; align-items: center;">
-                            <label for="x-celestial" style="margin-right: 5px;">X Variable:</label>
-                            <select id="x-celestial" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
-                                <option value="diameter">Diameter</option>
-                                <option value="mass">Mass</option>
-                                <option value="distance">Distance from Sun</option>
+                            <label for="bodies-scatter-x-select" style="margin-right: 5px;">X Variable:</label>
+                            <select id="bodies-scatter-x-select" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
                             </select>
-                            <label for="y-celestial" style="margin-left: 10px; margin-right: 5px;">Y Variable:</label>
-                            <select id="y-celestial" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
-                                <option value="diameter">Diameter</option>
-                                <option value="mass">Mass</option>
-                                <option value="distance">Distance from Sun</option>
+                            <label for="bodies-scatter-y-select" style="margin-left: 10px; margin-right: 5px;">Y Variable:</label>
+                            <select id="bodies-scatter-y-select" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
                             </select>
                         </div>
-                        <div id="celestial-scatter" style="flex: 1; border: 1px solid white;"></div>
+                        <div id="bodies-scatter" style="flex: 1; border: 1px solid white;"></div>
                     </div>
                     
                     <!-- Histogram -->
                     <div style="flex: 1; display: flex; flex-direction: column;">
                         <div style="margin-bottom: 5px; display: flex; justify-content: left; align-items: center;">
-                            <label for="hist-celestial" style="margin-right: 5px;">Variable:</label>
-                            <select id="hist-celestial" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
-                                <option value="diameter">Diameter</option>
-                                <option value="mass">Mass</option>
-                                <option value="distance">Distance from Sun</option>
+                            <label for="bodies-hist-var-select" style="margin-right: 5px;">Variable:</label>
+                            <select id="bodies-hist-var-select" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
                             </select>
                         </div>
-                        <div id="celestial-hist" style="flex: 1; border: 1px solid white;"></div>
+                        <div id="bodies-hist" style="flex: 1; border: 1px solid white;"></div>
                     </div>
                 </div>
                 
@@ -99,15 +90,9 @@
                         <div style="margin-bottom: 5px; display: flex; justify-content: left; align-items: center;">
                             <label for="x-mission" style="margin-right: 5px;">X Variable:</label>
                             <select id="x-mission" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
-                                <option value="success_rate">Success Rate</option>
-                                <option value="funding">Funding</option>
-                                <option value="duration">Duration</option>
                             </select>
                             <label for="y-mission" style="margin-left: 10px; margin-right: 5px;">Y Variable:</label>
                             <select id="y-mission" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
-                                <option value="success_rate">Success Rate</option>
-                                <option value="funding">Funding</option>
-                                <option value="duration">Duration</option>
                             </select>
                         </div>
                         <div id="mission-scatter" style="flex: 1; border: 1px solid white;"></div>
@@ -118,9 +103,6 @@
                         <div style="margin-bottom: 5px; display: flex; justify-content: left; align-items: center;">
                             <label for="hist-mission" style="margin-right: 5px;">Variable:</label>
                             <select id="hist-mission" style="background-color: black; color: white; border: 1px solid white; border-radius: 8px; padding: 5px;">
-                                <option value="success_rate">Success Rate</option>
-                                <option value="funding">Funding</option>
-                                <option value="duration">Duration</option>
                             </select>
                         </div>
                         <div id="mission-hist" style="flex: 1; border: 1px solid white;"></div>

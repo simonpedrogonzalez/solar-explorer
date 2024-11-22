@@ -1,5 +1,7 @@
 import * as solarSystemMap from './vis/solar-system-map/solarSystemMap.js';
+import * as dashboard from './vis/scatter-hist-dashboard/dashboard.js';
 
+dashboard.setup();
 
 // Setup visualization for the first dashboard
 solarSystemMap.setup('#map-container');
