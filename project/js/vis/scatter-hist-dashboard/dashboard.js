@@ -1,4 +1,4 @@
-import * as bodySection from './bodySection.js';
+import * as bodySection from './bodiesDataSection.js';
 
 export const setup = async () => {
     bodySection.setup();

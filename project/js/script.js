@@ -1,11 +1,6 @@
 import * as solarSystemMap from './vis/solar-system-map/solarSystemMap.js';
 import * as dashboard from './vis/scatter-hist-dashboard/dashboard.js';
 
-dashboard.setup();
-
-// Setup visualization for the first dashboard
-solarSystemMap.setup('#map-container');
-
 
 document.addEventListener('DOMContentLoaded', function () {
     const switchButton = document.getElementById('switchButton');
@@ -15,11 +10,29 @@ document.addEventListener('DOMContentLoaded', function () {
     const timeSliderText = document.getElementById('timeslider-text');
     const mapContainer = document.getElementById('map-container');
 
-    let currentDashboard = 1;
+    let currentDashboard = 2;
 
-    // Initial setup
-    dashboard1.style.display = 'block';
-    dashboard2.style.display = 'none';
+    let firstTimeDashboard = true;
+    let firstTimeMap = true;
+
+
+
+    // dashboard.setup();
+    // // Setup visualization for the first dashboard
+    // solarSystemMap.setup('#map-container');
+
+
+    if (currentDashboard === 1) {
+        dashboard1.style.display = 'block';
+        dashboard2.style.display = 'none';
+        solarSystemMap.setup('#map-container');
+        firstTimeMap = false;
+    } else {
+        dashboard2.style.display = 'block';
+        dashboard1.style.display = 'none';
+        dashboard.setup();
+        firstTimeDashboard = false;
+    }
 
     // Time slider event
     timeSlider.addEventListener('input', () => {
@@ -32,6 +45,10 @@ document.addEventListener('DOMContentLoaded', function () {
             dashboard1.style.display = 'none';
             dashboard2.style.display = 'block';
             currentDashboard = 2;
+            if (firstTimeDashboard) {
+                dashboard.setup();
+                firstTimeDashboard = false;
+            }
 
             // // Clear the previous visualization
             // mapContainer.innerHTML = '';
@@ -40,6 +57,10 @@ document.addEventListener('DOMContentLoaded', function () {
             dashboard2.style.display = 'none';
             dashboard1.style.display = 'block';
             currentDashboard = 1;
+            if (firstTimeMap) {
+                solarSystemMap.setup('#map-container');
+                firstTimeMap = false;
+            }
 
             // // Clear the previous visualization
             // mapContainer.innerHTML = '';
