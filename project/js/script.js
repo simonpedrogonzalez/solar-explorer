@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const timeSliderText = document.getElementById('timeslider-text');
     const mapContainer = document.getElementById('map-container');
 
-    let currentDashboard = 2;
+    let currentDashboard = 1;
 
     let firstTimeDashboard = true;
     let firstTimeMap = true;

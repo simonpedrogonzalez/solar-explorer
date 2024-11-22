@@ -14,6 +14,7 @@ let missionsData;
 let planetRadiusScale, planetDistanceScale;
 let satelliteDistanceScale;
 let date = new Date();
+let movePlanets = true;
 
 /**
  * Initialize module
@@ -57,12 +58,13 @@ export const setup = async (containerId) => {
         const formattedDate = getTimeSliderText(newDate);
         d3.select("#timeslider-text").text(formattedDate);
 
-        bodiesData = updatePlanetPositions(bodiesData, newDate);
+        bodiesData = movePlanets ? updatePlanetPositions(bodiesData, newDate) : bodiesData; // Update the positions of the planets
         const filteredMissionsData = missionsData.filter(d => d.launch_date <= newDate);
         draw(bodiesData, filteredMissionsData);
     });
 
     timeSliderVisualization(missionsData);
+    setupTooglePlanetMovement();
     draw(bodiesData, missionsData);
 }
 
@@ -354,3 +356,43 @@ const updatePlanetPositions = (data, date) => {
     });
     return data;
 }
+
+const setupTooglePlanetMovement = () => {
+    const accuratePositionsToggle = document.getElementById("accurate-positions");
+    const switchTrack = document.getElementById("switch-track");
+    const switchKnob = document.getElementById("switch-knob");
+
+    accuratePositionsToggle.addEventListener("change", (event) => {
+        const isChecked = event.target.checked;
+
+        // Update toggle visuals
+        if (isChecked) {
+            switchTrack.style.backgroundColor = "steelblue";
+            switchKnob.style.transform = "translateX(25px)"; // Move knob to the right
+            enableAccuratePlanetPositions();
+        } else {
+            switchTrack.style.backgroundColor = "#ccc";
+            switchKnob.style.transform = "translateX(0px)"; // Move knob back to the left
+            disableAccuratePlanetPositions();
+        }
+    });
+
+    const enableAccuratePlanetPositions = () => {
+        console.log("Accurate Planet Positions Enabled");
+        movePlanets = true;
+        // Add any additional logic to enable accurate positions
+    };
+
+    const disableAccuratePlanetPositions = () => {
+        console.log("Accurate Planet Positions Disabled");
+        movePlanets = false;
+        // Add any additional logic to disable accurate positions
+    };
+
+    // Initialize the toggle in the "active" state if checked
+    if (accuratePositionsToggle.checked) {
+        switchTrack.style.backgroundColor = "steelblue";
+        switchKnob.style.transform = "translateX(25px)";
+        enableAccuratePlanetPositions();
+    }
+};

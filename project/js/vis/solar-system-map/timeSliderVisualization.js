@@ -13,7 +13,7 @@ export default (missionsData) => {
     const sliderMax = +slider.attr('max');
 
     let svg = d3.select('#slider-svg');
-    svg.attr('width', 150)
+    svg.attr('width', 140)
        .attr('height', sliderHeight) // slider's height
        .style('overflow', 'visible'); // allow overflow so elements can invade the
                                         // slider's space

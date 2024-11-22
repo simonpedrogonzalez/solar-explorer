@@ -90,7 +90,8 @@ const getBodyCircle = (d, primary, radiusScale, distanceScale) => {
         // For satellites we don't have the accurate angular position
         // or radial distance, so we place it in an approximate circular
         // orbit
-        const theta = Math.random() * 2 * Math.PI;
+        // const theta = Math.random() * 2 * Math.PI;
+        const theta = 0;
         cx = primaryX + distanceScale(semi_major_axis) * Math.cos(theta);
         cy = primaryY + distanceScale(semi_major_axis) * Math.sin(theta);
     }
