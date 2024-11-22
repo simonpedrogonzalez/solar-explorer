@@ -2,7 +2,7 @@ import { getBodiesData, getMissionSimplePathData, getMissionsData, getPlanetsDat
 import { calculatePlanetPosition } from "../utils/astro.js";
 import { dateToFractionalYear, fractionalYearToDate } from "../utils/time.js";
 import { updateBodiesVisData } from "./bodies.js";
-import zoom from "./zoom.js";
+import * as zoom from "./zoom.js";
 import timeSliderVisualization from "./timeSliderVisualization.js";
 
 let svg, g;
@@ -44,7 +44,7 @@ export const setup = async (containerId) => {
         .attr('transform', `translate(${systemCenter.x}, ${systemCenter.y})`);
 
     // Setup zoom behavior
-    zoom(svg, g, systemCenter, planetDistanceScale);
+    zoom.setup(svg, g, systemCenter, planetDistanceScale);
 
     // Draw the planet distance scale
     drawPlanetDistanceScale(planetDistanceScale);
@@ -141,9 +141,9 @@ export const draw = async (bodiesData, missionsData) => {
         planetDistanceScale,
         planetRadiusScale,
     );
-    drawBodies(bodiesData);
     drawBodiesOrbits(bodiesData);
     drawMissionPaths(missionsData, bodiesData, "fullPath");
+    drawBodies(bodiesData);
 
 }
 
@@ -173,23 +173,87 @@ const drawBodiesOrbits = (data) => {
 }
 
 const drawBodies = (data) => {
-    g.selectAll('.body')
-        .data(data)
-        .join("circle")
-        .attr('class', 'body')
-        .attr('r', d => d.vis.body.r)
-        .attr('cx', d => d.vis.body.cx)
-        .attr('cy', d => d.vis.body.cy)
-        .attr('fill', d => d.color)
-        .append('title')
-        .text(d => d.name);
-}
+    const tooltip = d3.select("body")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("position", "absolute")
+    .style("background-color", "rgba(0, 0, 0, 0.9)")
+    .style("color", "white")
+    .style("padding", "5px 10px")
+    .style("border-radius", "5px")
+    .style("border", "1px solid white")
+    .style("box-shadow", "0 2px 5px rgba(0, 0, 0, 0.2)")
+    // .style("font-family", "'Orbitron', sans-serif")
+    .style("font-size", "15px")
+    .style("line-height", "1")
+    .style("white-space", "pre-line")
+    .style("pointer-events", "none")
+    .style("opacity", 0);
+
+
+    const bodies = g.selectAll('.body')
+        .data(data);
+
+    const toolTipText = (d) => {
+        let text = `Name: ${d.name}\n`;
+        if (d.radius) text += `<br>Radius: ${d.radius} km\n`;
+        if (d.gravity) text += `<br>Gravity: ${d.gravity} m/s²\n`;
+        if (d.discovery_date) text += `<br>Discovery: ${d.discovery_date.getFullYear()}\n`;
+        if (d.discovered_by) text += `<br>Discovered by: ${d.discovered_by}\n`;
+        if (d.avg_temp_kelvin) text += `<br>Avg. Temp: ${d.avg_temp_kelvin} K\n`;
+        return text;
+    }
+
+    bodies.join(
+        enter => {
+            const group = enter.append('g').attr('class', 'body');
+
+            // Main circle representing the body
+            group.append('circle')
+                .attr('class', 'main-circle')
+                .attr('fill', d => d.color)
+                .attr('r', d => d.vis.body.r)
+                .attr('cx', d => d.vis.body.cx)
+                .attr('cy', d => d.vis.body.cy)
+                .on('mouseenter', (event, d) => {
+                    tooltip.style("opacity", 1)
+                        .html(toolTipText(d));
+                })
+                .on('mousemove', (event) => {
+                    tooltip.style("left", `${event.pageX + 10}px`)
+                        .style("top", `${event.pageY - 10}px`);
+                })
+                .on('mouseleave', () => {
+                    tooltip.style("opacity", 0);
+                });
+
+            return group;
+        },
+        update => {
+            update.select('.main-circle')
+                .attr('r', d => d.vis.body.r)
+                .attr('cx', d => d.vis.body.cx)
+                .attr('cy', d => d.vis.body.cy)
+                .attr('fill', d => d.color);
+
+            return update;
+        },
+        exit => exit.remove()
+    );
+};
+
 
 const drawMissionPaths = (missionsData, bodiesData, type) => {
 
     // Flatten all mission paths
     let allLinks = missionsData.reduce((acc, d) => {
-        acc.push(...d.links);
+        const newLinks = d.links.map(link => {
+            return {
+                ...link,
+                mission: d
+            };
+        });
+        acc.push(...newLinks);
         return acc;
     }, []);
     allLinks = allLinks.map(d => {
@@ -197,8 +261,8 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
         const destination = bodiesData.find(planet => planet.name === d.destination.name);
         return {
             ...d,
-            origin, // Use the reference directly
-            destination // Use the reference directly
+            origin,
+            destination
         };
     });
     
@@ -209,6 +273,45 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
         acc[key].push(d);
         return acc;
     }, {});
+
+    const tooltip = d3.select("body")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("position", "absolute")
+    .style("background-color", "rgba(0, 0, 0, 0.9)")
+    .style("color", "white")
+    .style("padding", "5px 10px")
+    .style("border-radius", "5px")
+    .style("border", "1px solid white")
+    .style("box-shadow", "0 2px 5px rgba(0, 0, 0, 0.2)")
+    // .style("font-family", "'Orbitron', sans-serif")
+    .style("font-size", "15px")
+    .style("line-height", "1")
+    .style("white-space", "pre-line")
+    .style("pointer-events", "none")
+    .style("opacity", 0);
+
+
+    const toolTipText = (d) => {
+        let text = `Name: ${d.name}\n`;
+        // yyyy-mm-dd
+        const launchDate = d.mission.launch_date.toISOString().split('T')[0];
+        if (d.mission.launch_date) text += `<br>Launch Date: ${launchDate}\n`;
+        const edge = `Path: ${d.origin.name} -> ${d.destination.name}`;
+        text += `<br>${edge}\n`;
+        const destination = d.mission.destination;
+        if (destination) text += `<br>Destination: ${destination}\n`;
+        const mass = d.mission.total_mass;
+        if (mass) text += `<br>Total Mass: ${mass} kg\n`;
+        const missionDuration = d.mission.duration;
+        if (missionDuration) text += `<br>Duration: ${missionDuration} days\n`;
+        const pieces = d.mission.num_pieces;
+        if (pieces) text += `<br># Pieces: ${pieces}\n`;
+        const totalDistanceTravelled = d.mission.distance;
+        if (totalDistanceTravelled) text += `<br>Total Distance: ${totalDistanceTravelled} km\n`;
+        // console.log(d);
+        return text;
+    }
 
     // const missionsPerSourceDestPair = missionsData.reduce((acc, d) => {
     //     const key = `${d.origin.name}-${d.destination.name}`;
@@ -324,8 +427,21 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
                     .attr('stroke', 'red')
                     .attr('stroke-opacity', 0.5)
                     .attr('stroke-width', 0.2)
-                    .append('title')
-                    .text(d => d.name),
+                    .on('mouseenter', (event, d) => {
+                        tooltip
+                            .style("opacity", 1)
+                            .html(toolTipText(d))
+                            .style("left", (event.pageX + 10) + "px")
+                            .style("top", (event.pageY + 10) + "px");
+                    })
+                    .on('mousemove', (event) => {
+                        tooltip
+                            .style("left", (event.pageX + 10) + "px")
+                            .style("top", (event.pageY + 10) + "px");
+                    })
+                    .on('mouseleave', () => {
+                        tooltip.style("opacity", 0);
+                    }),
         update => update,
         exit => exit.remove()
     );

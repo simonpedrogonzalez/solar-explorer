@@ -1,11 +1,15 @@
+let currentZoomScale;
 
-export default (svg, g, systemCenter) => {
+export const getCurrentZoomScale = () => currentZoomScale;
+
+export const setup = (svg, g, systemCenter) => {
     const minZoom = 1;
     const maxZoom = 1000;
     
     const zoom = d3.zoom()
     .scaleExtent([minZoom, maxZoom])
     .on("zoom", (event) => {
+        currentZoomScale = event.transform.k;
         g.attr("transform", event.transform);
     });
 
