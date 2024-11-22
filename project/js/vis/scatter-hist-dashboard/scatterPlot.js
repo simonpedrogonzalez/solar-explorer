@@ -4,10 +4,24 @@ const MARKER_SIZE = 2;
 
 let svg;
 
+let width, height;
+
 export const draw = async (containerID, fullData, xSelector, ySelector, xLabel, yLabel, xScale, yScale) => {
     const box = d3.select(containerID).node().getBoundingClientRect();
-    const width = box.width;
-    const height = box.height;
+
+    if (!width) {
+        width = box.width;
+        height = box.height;
+    }
+    
+    if (xScale === "log") {
+        fullData = fullData.filter(d => d[xSelector] > 0);
+    }
+
+    if (yScale === "log") {
+        fullData = fullData.filter(d => d[ySelector] > 0);
+    }
+
 
     let xData = fullData.map(d => d[xSelector]);
     let yData = fullData.map(d => d[ySelector]);

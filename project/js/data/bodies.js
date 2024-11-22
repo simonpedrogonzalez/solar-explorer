@@ -12,6 +12,7 @@ export const getBodiesData = async () => {
     data = data.map(world => ({
         ...world,
         color: worldColorMap(world),
+        discovery_date: Date.parse(world.discovery_date) ? new Date(world.discovery_date) : null
     }));
     bodiesData = data;
     return data;

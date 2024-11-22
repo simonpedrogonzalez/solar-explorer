@@ -35,6 +35,10 @@ export const getScale = (data, scaleType, availablePixels) => {
         return d3.scaleLog()
             .domain(d3.extent(data))
             .range([0, availablePixels]); // Scaled to inner width
+    } else if (scaleType === 'time') {
+        return d3.scaleTime()
+            .domain(d3.extent(data))
+            .range([0, availablePixels]); // Scaled to inner width
     } else if (scaleType === 'sqrt') {
         return d3.scaleSqrt()
             .domain(d3.extent(data))

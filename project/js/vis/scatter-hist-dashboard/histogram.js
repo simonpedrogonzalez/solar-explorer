@@ -17,10 +17,12 @@ export const draw = async (containerID, data, dataLabel, scaleType) => {
         containerHeight = container.clientHeight;
     }
     
-    console.log(containerWidth, containerHeight);
+    // console.log(containerWidth, containerHeight);
 
     width = containerWidth - MARGIN.left - MARGIN.right;
     height = containerHeight - MARGIN.top - MARGIN.bottom;
+
+    // console.log(containerID);
 
     d3.select("#" + containerID).selectAll("*").remove();
 
@@ -51,13 +53,32 @@ export const draw = async (containerID, data, dataLabel, scaleType) => {
         .data(bins)
         .join("rect")
         .attr("x", d => x(d.x0))
-        .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
+        .attr("width", function(d) {
+            if (x(d.x1) - x(d.x0) - 1 < 0) {
+                console.log(d.x0, d.x1);
+                console.log(x(d.x0), x(d.x1));
+                console.log(x(d.x1) - x(d.x0));
+                return 0;
+            }
+            return x(d.x1) - x(d.x0) - 1
+        })
         .attr("y", height)
         .attr("height", 0)
         .transition()
         .duration(ANIMATION_DURATION)
-        .attr("y", d => y(d.length))
-        .attr("height", function(d) { return height - y(d.length); })
+        .attr("y", d => {
+            if (!d.length) {
+                return 0;
+            }
+            return y(d.length)
+        })
+        .attr("height", function(d) {
+            // console.log(d.length, y(d.length));
+            if (!d.length) {
+                return 0;
+            }
+            return height - y(d.length);
+        })
         .attr("fill", "steelblue");
 
     g.append("g")

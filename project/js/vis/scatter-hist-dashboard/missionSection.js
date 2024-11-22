@@ -1,4 +1,4 @@
-import { populateSelect } from "./utils.js";
+import { callHistogram, populateSelect } from "./utils.js";
 import { getMissionsData } from "../../data/missions.js";
 import * as histogram from "./histogram.js";
 import * as scatterPlot from "./scatterPlot.js";
@@ -27,16 +27,17 @@ export const setup = async () => {
     populateSelect(missionScatterSelectors.x, missionVariables);
     populateSelect(missionScatterSelectors.y, missionVariables);
 
+    callHistogram(missionHistogramVariableSelector, missionVariables, missionData, "mission-hist");
     missionHistogramVariableSelector.addEventListener("change", () => {
-        console.log(missionHistogramVariableSelector.value);
-        histogram.draw(histogramContainer, missionData, missionHistogramVariableSelector.value);
+        // console.log(missionHistogramVariableSelector.value);
+        callHistogram(missionHistogramVariableSelector, missionVariables, missionData, "mission-hist");
 
     });
 
     missionHistogramVariableSelector.dispatchEvent(new Event('change'));
 
     missionScatterSelectors.x.addEventListener("change", () => {
-        console.log(missionScatterSelectors.x.value);
+        // console.log(missionScatterSelectors.x.value);
         scatterPlot.draw(
             scatterContainer,
             missionData,
@@ -50,7 +51,7 @@ export const setup = async () => {
     });
 
     missionScatterSelectors.y.addEventListener("change", () => {
-        console.log(missionScatterSelectors.y.value);
+        // console.log(missionScatterSelectors.y.value);
         scatterPlot.draw(
             scatterContainer,
             missionData,
