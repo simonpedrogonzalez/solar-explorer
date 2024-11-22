@@ -24,6 +24,7 @@ export const setup = async () => {
     const scatterContainer = document.getElementById("bodies-scatter");
 
     const bodiesHistogramVariableSelector = document.getElementById("bodies-hist-var-select");
+
     const bodiesScatterSelectors = {
         x: document.getElementById("bodies-scatter-x-select"),
         y: document.getElementById("bodies-scatter-y-select")

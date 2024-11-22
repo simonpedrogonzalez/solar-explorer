@@ -3,6 +3,7 @@ import { getScale, bigNumberToText } from "./utils.js";
 
 const MARGIN = { left: 50, bottom: 50, top: 20, right: 10 };
 const ANIMATION_DURATION = 300;
+let containerWidth, containerHeight;
 
 let width, height;
 let svg, g;
@@ -10,8 +11,12 @@ let svg, g;
 
 export const draw = async (containerID, data, dataLabel, scaleType) => {
     const container = document.getElementById(containerID);
-    const containerWidth = container.offsetWidth;
-    const containerHeight = container.offsetHeight;
+
+    if (!containerWidth) {
+        containerWidth = container.clientWidth;
+        containerHeight = container.clientHeight;
+    }
+    
     console.log(containerWidth, containerHeight);
 
     width = containerWidth - MARGIN.left - MARGIN.right;
