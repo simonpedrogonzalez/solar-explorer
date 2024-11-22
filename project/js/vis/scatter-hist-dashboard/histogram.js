@@ -39,27 +39,25 @@ export const draw = async (containerID, data, dataLabel, scaleType) => {
     const histogram = d3.histogram()
         .value(d => d)
         .domain(x.domain())
-        .thresholds(NUM_BINS);
+        .thresholds(x.ticks(NUM_BINS));
 
     const bins = histogram(data);
 
-    const y = d3.scaleLinear()
-        .domain([0, d3.max(bins, d => d.length)])
+    const y = d3.scaleLog()
+        .domain([0.5, d3.max(bins, d => d.length)])
         .range([height, 0]);
-
-    const barWidth = width / bins.length;
 
     g.selectAll("rect")
         .data(bins)
         .join("rect")
         .attr("x", d => x(d.x0))
+        .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
         .attr("y", height)
-        .attr("width", barWidth - 1)
         .attr("height", 0)
         .transition()
         .duration(ANIMATION_DURATION)
         .attr("y", d => y(d.length))
-        .attr("height", d => height - y(d.length))
+        .attr("height", function(d) { return height - y(d.length); })
         .attr("fill", "steelblue");
 
     g.append("g")
