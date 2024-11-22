@@ -1,72 +1,84 @@
-const MARGIN = { left: 50, bottom: 50, top: 20, right: 50 };
+import { getScale, bigNumberToText } from "./utils.js";
+
+
+const MARGIN = { left: 50, bottom: 50, top: 20, right: 10 };
 const ANIMATION_DURATION = 300;
+let containerWidth, containerHeight;
 
-let svg;
+let width, height;
+let svg, g;
 
-export const draw = async (containerID, data, dataLabel) => {
-    const width = (window.innerWidth - MARGIN.left - MARGIN.right) / 2;
-    const height = (window.innerHeight - MARGIN.top - MARGIN.bottom) / 2;
 
-    // Clear the existing visualization
-    d3.select(containerID).selectAll("*").remove();
+export const draw = async (containerID, data, dataLabel, scaleType) => {
+    const container = document.getElementById(containerID);
 
-    svg = d3.select(containerID)
+    if (!containerWidth) {
+        containerWidth = container.clientWidth;
+        containerHeight = container.clientHeight;
+    }
+    
+    console.log(containerWidth, containerHeight);
+
+    width = containerWidth - MARGIN.left - MARGIN.right;
+    height = containerHeight - MARGIN.top - MARGIN.bottom;
+
+    d3.select("#" + containerID).selectAll("*").remove();
+
+    svg = d3.select("#" + containerID)
         .append("svg")
-        .attr("width", width)
-        .attr("height", height);
+        .attr("width", containerWidth)
+        .attr("height", containerHeight);
+
+    g = svg.append("g")
+        .attr("transform", `translate(${MARGIN.left}, ${MARGIN.top})`);
 
     const NUM_BINS = 15;
 
+    const x = getScale(data, scaleType, width);
+
     const histogram = d3.histogram()
         .value(d => d)
-        .domain(d3.extent(data))
-        .thresholds(NUM_BINS);
+        .domain(x.domain())
+        .thresholds(x.ticks(NUM_BINS));
 
     const bins = histogram(data);
 
-    const x = d3.scaleLinear()
-        .domain([d3.min(data), d3.max(data)])
-        .range([MARGIN.left, width - MARGIN.right]);
+    const y = d3.scaleLog()
+        .domain([0.5, d3.max(bins, d => d.length)])
+        .range([height, 0]);
 
-    const y = d3.scaleLinear()
-        .domain([0, d3.max(bins, d => d.length)])
-        .range([height - MARGIN.bottom, MARGIN.top]);
-
-    const barWidth = (width - MARGIN.left - MARGIN.right) / bins.length;
-
-    svg.selectAll("rect")
+    g.selectAll("rect")
         .data(bins)
         .join("rect")
         .attr("x", d => x(d.x0))
-        .attr("y", y(0))
-        .attr("width", barWidth)
+        .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
+        .attr("y", height)
+        .attr("height", 0)
         .transition()
         .duration(ANIMATION_DURATION)
         .attr("y", d => y(d.length))
-        .attr("height", d => y(0) - y(d.length))
+        .attr("height", function(d) { return height - y(d.length); })
         .attr("fill", "steelblue");
 
-    let xAxis = svg.append("g")
-        .attr("transform", `translate(0, ${height - MARGIN.bottom})`)
+    g.append("g")
+        .attr("transform", `translate(0, ${height})`)
         .call(d3.axisBottom(x));
 
-    // Add the x-axis label
-    svg.append("text")
+    g.append("text")
         .attr("x", width / 2)
-        .attr("y", height)
-        .attr("dy", "-0.75em")
+        .attr("y", height + MARGIN.bottom - 10)
         .style("text-anchor", "middle")
         .style("fill", "white")
         .text(dataLabel);
 
-    svg.append("g")
-        .attr("transform", `translate(${MARGIN.left}, 0)`)
-        .call(d3.axisLeft(y)
-            .tickValues(
-                y.ticks().filter(tick => Number.isInteger(tick))
-            )
-            .tickFormat(d3.format('d'))
-        );
+    g.append("g")
+        .call(d3.axisLeft(y));
 
-    return svg;
-}
+    g.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("x", -height / 2)
+        .attr("y", -MARGIN.left + 15)
+        .style("text-anchor", "middle")
+        .style("fill", "white")
+        .text("Count");
+};
