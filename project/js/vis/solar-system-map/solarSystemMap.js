@@ -493,12 +493,10 @@ const setupTooglePlanetMovement = () => {
     });
 
     const enableAccuratePlanetPositions = () => {
-        console.log("Accurate Planet Positions Enabled");
         movePlanets = true;
     };
 
     const disableAccuratePlanetPositions = () => {
-        console.log("Accurate Planet Positions Disabled");
         movePlanets = false;
     };
 
