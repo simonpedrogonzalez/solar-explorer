@@ -448,7 +448,7 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
 }
 
 const getPlanetRadiusScale = (data) => {
-    const maxRadiusInPixels = Math.min(width, height) / 30;
+    const maxRadiusInPixels = Math.min(width, height) / 40;
     const minRadiusInPixels = maxRadiusInPixels / 10;
     data = data.filter(d => d.type === 'planet' || d.type === 'star');
     return d3.scaleLog()
