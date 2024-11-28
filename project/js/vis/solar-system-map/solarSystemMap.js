@@ -481,14 +481,13 @@ const setupTooglePlanetMovement = () => {
     accuratePositionsToggle.addEventListener("change", (event) => {
         const isChecked = event.target.checked;
 
-        // Update toggle visuals
         if (isChecked) {
             switchTrack.style.backgroundColor = "steelblue";
-            switchKnob.style.transform = "translateX(25px)"; // Move knob to the right
+            switchKnob.style.transform = "translateX(25px)";
             enableAccuratePlanetPositions();
         } else {
             switchTrack.style.backgroundColor = "#ccc";
-            switchKnob.style.transform = "translateX(0px)"; // Move knob back to the left
+            switchKnob.style.transform = "translateX(0px)";
             disableAccuratePlanetPositions();
         }
     });
@@ -496,16 +495,13 @@ const setupTooglePlanetMovement = () => {
     const enableAccuratePlanetPositions = () => {
         console.log("Accurate Planet Positions Enabled");
         movePlanets = true;
-        // Add any additional logic to enable accurate positions
     };
 
     const disableAccuratePlanetPositions = () => {
         console.log("Accurate Planet Positions Disabled");
         movePlanets = false;
-        // Add any additional logic to disable accurate positions
     };
 
-    // Initialize the toggle in the "active" state if checked
     if (accuratePositionsToggle.checked) {
         switchTrack.style.backgroundColor = "steelblue";
         switchKnob.style.transform = "translateX(25px)";
