@@ -43,12 +43,8 @@ export const setup = async () => {
         scatterPlot.draw(
             scatterContainer,
             missionData,
-            missionScatterSelectors.x.value,
-            missionScatterSelectors.y.value,
-            missionVariables.find((v) => v.selector === missionScatterSelectors.x.value).label,
-            missionVariables.find((v) => v.selector === missionScatterSelectors.y.value).label,
-            missionVariables.find((v) => v.selector === missionScatterSelectors.x.value).scaleType.toLowerCase(),
-            missionVariables.find((v) => v.selector === missionScatterSelectors.y.value).scaleType.toLowerCase(),
+            missionVariables.find((v) => v.selector === missionScatterSelectors.x.value),
+            missionVariables.find((v) => v.selector === missionScatterSelectors.y.value),
             tooltip.TEXT_TYPES.MISSION_XY,
             globalState.SELECTION_TYPES.MISSION
         );
@@ -59,12 +55,8 @@ export const setup = async () => {
         scatterPlot.draw(
             scatterContainer,
             missionData,
-            missionScatterSelectors.x.value,
-            missionScatterSelectors.y.value,
-            missionVariables.find((v) => v.selector === missionScatterSelectors.x.value).label,
-            missionVariables.find((v) => v.selector === missionScatterSelectors.y.value).label,
-            missionVariables.find((v) => v.selector === missionScatterSelectors.x.value).scaleType.toLowerCase(),
-            missionVariables.find((v) => v.selector === missionScatterSelectors.y.value).scaleType.toLowerCase(),
+            missionVariables.find((v) => v.selector === missionScatterSelectors.x.value),
+            missionVariables.find((v) => v.selector === missionScatterSelectors.y.value),
             tooltip.TEXT_TYPES.MISSION_XY,
             globalState.SELECTION_TYPES.MISSION
         );

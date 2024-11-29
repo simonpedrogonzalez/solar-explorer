@@ -10,7 +10,7 @@ let svg;
 
 let width, height;
 
-export const draw = async (containerID, fullData, xSelector, ySelector, xLabel, yLabel, xScale, yScale, tooltipTextType, globalStateSelectionType) => {
+export const draw = async (containerID, fullData, xVariable, yVariable, tooltipTextType, globalStateSelectionType) => {
 
     const box = d3.select(containerID).node().getBoundingClientRect();
 
@@ -19,14 +19,18 @@ export const draw = async (containerID, fullData, xSelector, ySelector, xLabel, 
         height = box.height;
     }
 
-    const xVariable = new Variable(xSelector, xLabel, xScale.toUpperCase());
-    const yVariable = new Variable(ySelector, yLabel, yScale.toUpperCase());
+    // const xVariable = new Variable(xSelector, xLabel, xScale.toUpperCase());
+    // const yVariable = new Variable(ySelector, yLabel, yScale.toUpperCase());
     fullData = yVariable.prepareData(xVariable.prepareData(fullData));
     let x = xVariable.getScale(fullData, width);
     x.range([MARGIN.left, width - MARGIN.right]);
     let y = yVariable.getScale(fullData, height);
     y.range([height - MARGIN.bottom, MARGIN.top]);
-    
+    let xSelector = xVariable.selector;
+    let ySelector = yVariable.selector;
+    let xLabel = xVariable.label;
+    let yLabel = yVariable.label;
+
     // if (xScale === "log") {
     //     fullData = fullData.filter(d => d[xSelector] > 0);
     // }
