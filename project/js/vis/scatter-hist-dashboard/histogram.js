@@ -1,4 +1,4 @@
-import { getScale, bigNumberToText } from "./utils.js";
+import { getScale } from "../utils/variable.js";
 
 
 const MARGIN = { left: 50, bottom: 50, top: 20, right: 10 };

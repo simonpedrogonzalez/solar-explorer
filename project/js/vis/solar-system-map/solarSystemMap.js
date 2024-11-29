@@ -4,8 +4,8 @@ import { dateToFractionalYear, fractionalYearToDate } from "../utils/time.js";
 import { updateBodiesVisData } from "./bodies.js";
 import * as zoom from "./zoom.js";
 import timeSliderVisualization from "./timeSliderVisualization.js";
-import { isObjectSelected, updateGlobalStateObjectSelection } from "../utils/globalState.js";
-import { tooltipOnMouseEnter, tooltipOnMouseLeave, tooltipOnMouseMove } from "../utils/toolTips.js";
+import * as globalState from "../utils/globalState.js";
+import * as tooltip from "../utils/tooltip.js";
 
 let svg, g;
 let width = window.innerWidth, height=window.innerHeight; // - 200;
@@ -190,16 +190,17 @@ const drawBodies = (data) => {
                 .attr('cx', d => d.vis.body.cx)
                 .attr('cy', d => d.vis.body.cy)
                 .on('mouseenter', (event, d) => {
-                    tooltipOnMouseEnter(d, 'body');
+                    const content = tooltip.textParser.getTextFromtAllBodyData(d);
+                    tooltip.onMouseEnter(content);
                 })
                 .on('mousemove', (event) => {
-                    tooltipOnMouseMove(event);
+                    tooltip.onMouseMove(event);
                 })
                 .on('mouseleave', () => {
-                    tooltipOnMouseLeave();  
+                    tooltip.onMouseLeave();
                 })
                 .on('click', (event, d) => {
-                    updateGlobalStateObjectSelection(d, 'body');
+                    globalState.updateBodySelection(d);
                     setBodySelectedStyle(d);
                 });
 
@@ -219,7 +220,7 @@ const drawBodies = (data) => {
 };
 
 
-const drawMissionPaths = (missionsData, bodiesData, type) => {
+const drawMissionPaths = (missionsData, bodiesData) => {
 
     // Flatten all mission paths
     let allLinks = missionsData.reduce((acc, d) => {
@@ -267,39 +268,6 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
     .style("pointer-events", "none")
     .style("opacity", 0);
 
-
-    const toolTipText = (d) => {
-        let text = `Name: ${d.name}\n`;
-        // yyyy-mm-dd
-        const launchDate = d.mission.launch_date.toISOString().split('T')[0];
-        if (d.mission.launch_date) text += `<br>Launch Date: ${launchDate}\n`;
-        const edge = `Path: ${d.origin.name} -> ${d.destination.name}`;
-        text += `<br>${edge}\n`;
-        const destination = d.mission.destination;
-        if (destination) text += `<br>Destination: ${destination}\n`;
-        const mass = d.mission.total_mass;
-        if (mass) text += `<br>Total Mass: ${mass} kg\n`;
-        const missionDuration = d.mission.duration;
-        if (missionDuration) text += `<br>Duration: ${missionDuration} days\n`;
-        const pieces = d.mission.num_pieces;
-        if (pieces) text += `<br># Pieces: ${pieces}\n`;
-        const totalDistanceTravelled = d.mission.distance;
-        if (totalDistanceTravelled) text += `<br>Total Distance: ${totalDistanceTravelled} km\n`;
-        // console.log(d);
-        return text;
-    }
-
-    // const missionsPerSourceDestPair = missionsData.reduce((acc, d) => {
-    //     const key = `${d.origin.name}-${d.destination.name}`;
-    //     if (!acc[key]) acc[key] = [];
-    //     acc[key].push(d.name);
-    //     return acc;
-    // }, {});
-
-    // if (type === 'sourceDest') {
-    //     linksPerSourceDestPair = missionsPerSourceDestPair;
-    //     allLinks = missionsData;
-    // }
 
     const drawBezierCurves = (d, i) => {
         // The idea is to create bezier curves from origin to destination, making
@@ -404,13 +372,14 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
                     .attr('stroke-opacity', 0.5)
                     .attr('stroke-width', 0.2)
                     .on('mouseenter', (event, d) => {
-                        tooltipOnMouseEnter(d, 'missionSegment');
+                        const content = tooltip.textParser.getTextFromMissionSegment(d);
+                        tooltip.onMouseEnter(content);
                     })
                     .on('mousemove', (event) => {
-                        tooltipOnMouseMove(event);
+                        tooltip.onMouseMove(event);
                     })
                     .on('mouseleave', () => {
-                        tooltipOnMouseLeave();
+                        tooltip.onMouseLeave();
                     }),
         update => update,
         exit => exit.remove()
@@ -478,18 +447,10 @@ const setupTooglePlanetMovement = () => {
 };
 
 export const setBodySelectedStyle = (d) => {
-    const isSelected = isObjectSelected(d, "body");
+    const isSelected = globalState.isBodySelected(d);
     const target = g.selectAll(`.body[data-name="${d.name}"]`);
     const circle = target.select('g circle.main-circle');
     circle
     .attr('stroke', isSelected ? 'white' : 'none')
     .attr('stroke-width', isSelected ? Math.max(d.vis.body.r / 10, 0.2) : 0)
 };
-
-// const setMissionSelectedStyle = (d) => {
-//     const isSelected = isObjectSelected(d, "mission");
-//     // find mission path
-//     const missionPath = d3.select(`path[data-name="${d.name}"]`);
-//     missionPath.attr('stroke', isSelected ? 'white' : 'red')
-//     .attr('stroke-width', isSelected ? 2 : 0.2);
-// }

@@ -1,6 +1,7 @@
 import { callHistogram, populateSelect } from "./utils.js";
 import { getMissionsData } from "../../data/missions.js";
-import * as histogram from "./histogram.js";
+import * as tooltip from "../utils/tooltip.js";
+import * as globalState from "../utils/globalState.js";
 import * as scatterPlot from "./scatterPlot.js";
 
 export const setup = async () => {
@@ -47,7 +48,8 @@ export const setup = async () => {
             missionVariables.find((v) => v.value === missionScatterSelectors.y.value).text,
             missionVariables.find((v) => v.value === missionScatterSelectors.x.value).scale,
             missionVariables.find((v) => v.value === missionScatterSelectors.y.value).scale,
-            "mission"
+            tooltip.TEXT_TYPES.MISSION_XY,
+            globalState.SELECTION_TYPES.MISSION
         );
     });
 
@@ -62,7 +64,8 @@ export const setup = async () => {
             missionVariables.find((v) => v.value === missionScatterSelectors.y.value).text,
             missionVariables.find((v) => v.value === missionScatterSelectors.x.value).scale,
             missionVariables.find((v) => v.value === missionScatterSelectors.y.value).scale,
-            "mission"
+            tooltip.TEXT_TYPES.MISSION_XY,
+            globalState.SELECTION_TYPES.MISSION
         );
     });
 

@@ -1,27 +1,25 @@
 import { populateSelect, callHistogram } from "./utils.js";
 import { getBodiesData } from "../../data/bodies.js";
 import * as scatterPlot from "./scatterPlot.js";
+import * as tooltip from "../utils/tooltip.js";
+import * as globalState from "../utils/globalState.js";
+import { Variable, SCALE_TYPES } from "../utils/variable.js";
 
 export const setup = async () => {
 
     const bodiesData = await getBodiesData();
     
     const bodiesVariables = [
-        { value: "radius", text: "Radius (km)", scale: "log", filter: d => d.name !== "Sun" },
-        // { value: "mass_value", text: "Mass Value (10^x kg)" },
-        // { value: "mass_exponent", text: "Mass Exponent (kg)" },
-        // { value: "vol_value", text: "Volume Value (10^x km³)" },
-        // { value: "vol_exponent", text: "Volume Exponent (km³)" },
-        { value: "density", text: "Density (g/cm³)", scale: "linear" },
-        { value: "gravity", text: "Gravity (m/s²)", scale: "linear" },
-        { value: "sideral_orbit", text: "Sideral Orbit (days)", scale: "linear" },
-        { value: "sideral_rotation", text: "Sideral Rotation (hours)", scale: "linear" },
-        // { value: "discovered_by", text: "Discovered By", scale: "linear" },
-        { value: "discovery_date", text: "Discovery Date", scale: "time" },
-        { value: "avg_temp_kelvin", text: "Average Temperature (K)", scale: "linear" },
-        { value: "mission_orbit_count", text: "Mission Orbit Count", scale: "linear" },
-        { value: "mission_dest_count", text: "Mission Destination Count", scale: "linear" },
-        { value: "semi_major_axis", text: "Semi Major Axis (AU)", scale: "log" },
+        new Variable("radius", "Radius (km)", SCALE_TYPES.LOG, d => d.name !== "Sun"),
+        new Variable("density", "Density (g/cm³)", SCALE_TYPES.LINEAR),
+        new Variable("gravity", "Gravity (m/s²)", SCALE_TYPES.LINEAR),
+        new Variable("sideral_orbit", "Sideral Orbit (days)", SCALE_TYPES.LINEAR),
+        new Variable("sideral_rotation", "Sideral Rotation (hours)", SCALE_TYPES.LINEAR),
+        new Variable("discovery_date", "Discovery Date", SCALE_TYPES.TIME),
+        new Variable("avg_temp_kelvin", "Average Temperature (K)", SCALE_TYPES.LINEAR),
+        new Variable("mission_orbit_count", "Mission Orbit Count", SCALE_TYPES.LINEAR),
+        new Variable("mission_dest_count", "Mission Destination Count", SCALE_TYPES.LINEAR),
+        new Variable("semi_major_axis", "Semi Major Axis (AU)", SCALE_TYPES.LOG),
     ];
 
     const histogramContainer = document.getElementById("bodies-hist");
@@ -56,11 +54,12 @@ export const setup = async () => {
         bodiesData,
         bodiesScatterSelectors.x.value,
         bodiesScatterSelectors.y.value,
-        bodiesVariables.find((v) => v.value === bodiesScatterSelectors.x.value).text,
-        bodiesVariables.find((v) => v.value === bodiesScatterSelectors.y.value).text,
-        bodiesVariables.find((v) => v.value === bodiesScatterSelectors.x.value).scale,
-        bodiesVariables.find((v) => v.value === bodiesScatterSelectors.y.value).scale,
-        "body"
+        bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value).label,
+        bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value).label,
+        bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value).scaleType.toLowerCase(),
+        bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value).scaleType.toLowerCase(),
+        tooltip.TEXT_TYPES.BODY_XY,
+        globalState.SELECTION_TYPES.BODY
     );
 
     bodiesScatterSelectors.x.addEventListener("change", () => {
@@ -70,11 +69,12 @@ export const setup = async () => {
             bodiesData,
             bodiesScatterSelectors.x.value,
             bodiesScatterSelectors.y.value,
-            bodiesVariables.find((v) => v.value === bodiesScatterSelectors.x.value).text,
-            bodiesVariables.find((v) => v.value === bodiesScatterSelectors.y.value).text,
-            bodiesVariables.find((v) => v.value === bodiesScatterSelectors.x.value).scale,
-            bodiesVariables.find((v) => v.value === bodiesScatterSelectors.y.value).scale,
-            "body"
+            bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value).label,
+            bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value).label,
+            bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value).scale,
+            bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value).scale,
+            tooltip.TEXT_TYPES.BODY_XY,
+            globalState.SELECTION_TYPES.BODY
         );
     });
 
@@ -85,11 +85,12 @@ export const setup = async () => {
             bodiesData,
             bodiesScatterSelectors.x.value,
             bodiesScatterSelectors.y.value,
-            bodiesVariables.find((v) => v.value === bodiesScatterSelectors.x.value).text,
-            bodiesVariables.find((v) => v.value === bodiesScatterSelectors.y.value).text,
-            bodiesVariables.find((v) => v.value === bodiesScatterSelectors.x.value).scale,
-            bodiesVariables.find((v) => v.value === bodiesScatterSelectors.y.value).scale,
-            "body"
+            bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value).label,
+            bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value).label,
+            bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value).scale,
+            bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value).scale,
+            tooltip.TEXT_TYPES.BODY_XY,
+            globalState.SELECTION_TYPES.BODY
         );
     });
 }

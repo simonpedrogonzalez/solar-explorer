@@ -1,5 +1,5 @@
-import { updateGlobalStateObjectSelection, isObjectSelected } from "../utils/globalState.js";
-import { tooltipOnMouseEnter, tooltipOnMouseLeave, tooltipOnMouseMove } from "../utils/toolTips.js";
+import * as globalState from "../utils/globalState.js";
+import * as tooltip from "../utils/tooltip.js";
 
 const MARGIN = { left: 80, bottom: 50, top: 10, right: 10 };
 const ANIMATION_DURATION = 300;
@@ -9,7 +9,9 @@ let svg;
 
 let width, height;
 
-export const draw = async (containerID, fullData, xSelector, ySelector, xLabel, yLabel, xScale, yScale, dataType) => {
+export const draw = async (containerID, fullData, xSelector, ySelector, xLabel, yLabel, xScale, yScale, tooltipTextType, globalStateSelectionType) => {
+    console.log("tooltipTextType", tooltipTextType);
+    console.log("globalStateSelectionType", globalStateSelectionType);
     const box = d3.select(containerID).node().getBoundingClientRect();
 
     if (!width) {
@@ -25,10 +27,6 @@ export const draw = async (containerID, fullData, xSelector, ySelector, xLabel, 
         fullData = fullData.filter(d => d[ySelector] > 0);
     }
 
-
-    let xData = fullData.map(d => d[xSelector]);
-    let yData = fullData.map(d => d[ySelector]);
-
     // Clear the existing visualization
     d3.select(containerID).selectAll("*").remove();
 
@@ -38,47 +36,49 @@ export const draw = async (containerID, fullData, xSelector, ySelector, xLabel, 
         .attr("height", height);
 
     let x;
-    switch(xScale) {
+    switch (xScale) {
         case "linear":
             x = d3.scaleLinear()
-                .domain([d3.min(xData), d3.max(xData)])
+                .domain([d3.min(fullData, d => d[xSelector]), d3.max(fullData, d => d[xSelector])])
                 .range([MARGIN.left, width - MARGIN.right]);
             break;
         case "log":
             x = d3.scaleLog()
-                .domain([d3.min(xData.filter((x) => x > 0)), d3.max(xData)])
+                .domain([d3.min(fullData, d => d[xSelector] > 0 ? d[xSelector] : undefined), d3.max(fullData, d => d[xSelector])])
                 .range([MARGIN.left, width - MARGIN.right]);
             break;
         case "time":
-            xData = xData.map(d => new Date(d));
+            fullData.forEach(d => d[xSelector] = new Date(d[xSelector]));
             x = d3.scaleTime()
-                .domain([d3.min(xData), d3.max(xData)])
+                .domain([d3.min(fullData, d => d[xSelector]), d3.max(fullData, d => d[xSelector])])
                 .range([MARGIN.left, width - MARGIN.right]);
             break;
     }
 
     let y;
-    switch(yScale) {
+    switch (yScale) {
         case "linear":
             y = d3.scaleLinear()
-                .domain([d3.min(yData), d3.max(yData)])
+                .domain([d3.min(fullData, d => d[ySelector]), d3.max(fullData, d => d[ySelector])])
                 .range([height - MARGIN.bottom, MARGIN.top]);
             break;
         case "log":
             y = d3.scaleLog()
-                .domain([d3.min(yData.filter((y) => y > 0)), d3.max(yData)])
+                .domain([d3.min(fullData, d => d[ySelector] > 0 ? d[ySelector] : undefined), d3.max(fullData, d => d[ySelector])])
                 .range([height - MARGIN.bottom, MARGIN.top]);
             break;
         case "time":
-            yData = yData.map(d => new Date(d));
+            fullData.forEach(d => d[ySelector] = new Date(d[ySelector]));
             y = d3.scaleTime()
-                .domain([d3.min(yData), d3.max(yData)])
+                .domain([d3.min(fullData, d => d[ySelector]), d3.max(fullData, d => d[ySelector])])
                 .range([height - MARGIN.bottom, MARGIN.top]);
             break;
     }
 
     const xAxis = d3.axisBottom(x);
     const yAxis = d3.axisLeft(y);
+
+    console.log("xAxis", xAxis);
 
     svg.append("g")
         .attr("transform", `translate(0, ${height - MARGIN.bottom})`)
@@ -105,19 +105,19 @@ export const draw = async (containerID, fullData, xSelector, ySelector, xLabel, 
         .style("fill", "white")
         .text(yLabel);
 
-        console.log(dataType)
-
     svg.selectAll("circle")
-        .data(xData.map((d, i) => ({ x: d, y: yData[i] })))
+        .data(fullData)
         .join("circle")
-        .attr("cx", d => x(d.x))
-        .attr("cy", d => y(d.y))
-    // on hover show data
-        .on("mouseenter", (event, d) => tooltipOnMouseEnter(d, dataType))
-        .on("mousemove", (event, d) => tooltipOnMouseMove(event))
-        .on("mouseleave", tooltipOnMouseLeave)
+        .attr("cx", d => x(d[xSelector]))
+        .attr("cy", d => y(d[ySelector]))
+        .on("mouseenter", (event, d) => {
+            const content = tooltip.textParser.getTextFromType(d, tooltipTextType, xSelector, ySelector);
+            tooltip.onMouseEnter(content);
+        })
+        .on("mousemove", (event) => tooltip.onMouseMove(event))
+        .on("mouseleave", tooltip.onMouseLeave)
         .transition()
         .duration(ANIMATION_DURATION)
         .attr("r", MARKER_SIZE)
-        .attr("fill", d => isObjectSelected(d, dataType) ? "red" : "steelblue");
+        .attr("fill", d => globalState.isObjectSelected(d, globalStateSelectionType) ? "red" : "steelblue");
 }

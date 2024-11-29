@@ -1,59 +1,33 @@
 import * as histogram from "./histogram.js";
+import { Variable } from "../utils/variable.js";
 
+/**
+ * Calculate the semi-minor axis
+ * @param {HTMLElement} selectElement
+ * @param {Array<Variable>} options
+ */
 export const populateSelect = (selectElement, options) => {
     selectElement.innerHTML = '';
     options.forEach(option => {
         const newOption = document.createElement('option');
-        newOption.value = option.value;
-        newOption.textContent = option.text;
+        newOption.value = option.selector;
+        newOption.textContent = option.label;
         selectElement.appendChild(newOption);
     });
 
     selectElement.selectedIndex = 0;
 }
 
+/**
+ * Call histogram
+ * @param {HTMLElement} selectVarElement
+ * @param {Array<Variable>} options
+ * @param {Array} data
+ * @param {HTMLElement} containerID
+ */
 export const callHistogram = (selectVarElement, options, data, containerID) => {
     let option = selectVarElement.options[selectVarElement.selectedIndex];
-    option = options.find(o => o.value === option.value);
-    const { value, text, scale, filter } = option;
-    let filteredData = data.filter(d => d[value] !== null && d[value] !== undefined);
-    if (filter) {
-        filteredData = filteredData.filter(filter);
-    }
-    if (scale === 'log') {
-        filteredData = filteredData.filter(d => d[value] > 0);
-    }
-    histogram.draw(containerID, filteredData.map(d => d[value]), text, scale);
-}
-
-export const getScale = (data, scaleType, availablePixels) => {
-    if (scaleType === 'linear') {
-        return d3.scaleLinear()
-            .domain(d3.extent(data))
-            .range([0, availablePixels]); // Scaled to inner width
-    } else if (scaleType === 'log') {
-        return d3.scaleLog()
-            .domain(d3.extent(data))
-            .range([0, availablePixels]); // Scaled to inner width
-    } else if (scaleType === 'time') {
-        return d3.scaleTime()
-            .domain(d3.extent(data))
-            .range([0, availablePixels]); // Scaled to inner width
-    } else if (scaleType === 'sqrt') {
-        return d3.scaleSqrt()
-            .domain(d3.extent(data))
-            .range([0, availablePixels]); // Scaled to inner width
-    } else {
-        throw new Error("Invalid scale type");
-    }
-}
-
-export const bigNumberToText = (value) => {
-    if (value > 1000000) {
-        return `${value / 1000000}M`;
-    }
-    if (value > 1000) {
-        return `${value / 1000}K`;
-    }
-    return `${value}`;
+    option = options.find(o => o.selector === option.value);
+    option.setScale(data, containerID.clientWidth);
+    histogram.draw(containerID, option.data.map(d => d[option.selector]), option.label, option.scaleType);
 }

@@ -134,5 +134,3 @@ export const semiMinAxis = (a, e) => {
     // Calculate the semi-minor axis
     return a * Math.sqrt(1 - Math.pow(e, 2));
 }
-
-
