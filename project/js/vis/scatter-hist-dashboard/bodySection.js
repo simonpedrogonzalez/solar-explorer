@@ -71,8 +71,8 @@ export const setup = async () => {
             bodiesScatterSelectors.y.value,
             bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value).label,
             bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value).label,
-            bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value).scale,
-            bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value).scale,
+            bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value).scaleType.toLowerCase(),
+            bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value).scaleType.toLowerCase(),
             tooltip.TEXT_TYPES.BODY_XY,
             globalState.SELECTION_TYPES.BODY
         );
@@ -87,8 +87,8 @@ export const setup = async () => {
             bodiesScatterSelectors.y.value,
             bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value).label,
             bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value).label,
-            bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value).scale,
-            bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value).scale,
+            bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value).scaleType.toLowerCase(),
+            bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value).scaleType.toLowerCase(),
             tooltip.TEXT_TYPES.BODY_XY,
             globalState.SELECTION_TYPES.BODY
         );

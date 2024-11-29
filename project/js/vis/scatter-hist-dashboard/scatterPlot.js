@@ -78,7 +78,7 @@ export const draw = async (containerID, fullData, xSelector, ySelector, xLabel, 
     const xAxis = d3.axisBottom(x);
     const yAxis = d3.axisLeft(y);
 
-    console.log("xAxis", xAxis);
+    // console.log("xAxis", xAxis);
 
     svg.append("g")
         .attr("transform", `translate(0, ${height - MARGIN.bottom})`)

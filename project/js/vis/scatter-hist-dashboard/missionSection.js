@@ -3,16 +3,17 @@ import { getMissionsData } from "../../data/missions.js";
 import * as tooltip from "../utils/tooltip.js";
 import * as globalState from "../utils/globalState.js";
 import * as scatterPlot from "./scatterPlot.js";
+import { Variable, SCALE_TYPES } from "../utils/variable.js";
 
 export const setup = async () => {
 
     const missionData = await getMissionsData();
 
     const missionVariables = [
-        { value: "launch_date", text: "Launch Date", scale: "time" },
-        { value: "total_mass", text: "Total Mass (kg)", scale: "log" },
-        { value: "num_pieces", text: "# Spacecraft Pieces", scale: "linear" },
-        { value: "duration", text: "Duration (days)", scale: "log" },
+        new Variable("launch_date", "Launch Date", SCALE_TYPES.TIME),
+        new Variable("total_mass", "Total Mass (kg)", SCALE_TYPES.LOG),
+        new Variable("num_pieces", "# Spacecraft Pieces", SCALE_TYPES.LINEAR),
+        new Variable("duration", "Duration (days)", SCALE_TYPES.LOG),
     ];
 
     const histogramContainer = document.getElementById("mission-hist");
@@ -44,10 +45,10 @@ export const setup = async () => {
             missionData,
             missionScatterSelectors.x.value,
             missionScatterSelectors.y.value,
-            missionVariables.find((v) => v.value === missionScatterSelectors.x.value).text,
-            missionVariables.find((v) => v.value === missionScatterSelectors.y.value).text,
-            missionVariables.find((v) => v.value === missionScatterSelectors.x.value).scale,
-            missionVariables.find((v) => v.value === missionScatterSelectors.y.value).scale,
+            missionVariables.find((v) => v.selector === missionScatterSelectors.x.value).label,
+            missionVariables.find((v) => v.selector === missionScatterSelectors.y.value).label,
+            missionVariables.find((v) => v.selector === missionScatterSelectors.x.value).scaleType.toLowerCase(),
+            missionVariables.find((v) => v.selector === missionScatterSelectors.y.value).scaleType.toLowerCase(),
             tooltip.TEXT_TYPES.MISSION_XY,
             globalState.SELECTION_TYPES.MISSION
         );
@@ -60,10 +61,10 @@ export const setup = async () => {
             missionData,
             missionScatterSelectors.x.value,
             missionScatterSelectors.y.value,
-            missionVariables.find((v) => v.value === missionScatterSelectors.x.value).text,
-            missionVariables.find((v) => v.value === missionScatterSelectors.y.value).text,
-            missionVariables.find((v) => v.value === missionScatterSelectors.x.value).scale,
-            missionVariables.find((v) => v.value === missionScatterSelectors.y.value).scale,
+            missionVariables.find((v) => v.selector === missionScatterSelectors.x.value).label,
+            missionVariables.find((v) => v.selector === missionScatterSelectors.y.value).label,
+            missionVariables.find((v) => v.selector === missionScatterSelectors.x.value).scaleType.toLowerCase(),
+            missionVariables.find((v) => v.selector === missionScatterSelectors.y.value).scaleType.toLowerCase(),
             tooltip.TEXT_TYPES.MISSION_XY,
             globalState.SELECTION_TYPES.MISSION
         );
