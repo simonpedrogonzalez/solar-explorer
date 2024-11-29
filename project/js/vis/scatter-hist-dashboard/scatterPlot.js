@@ -1,5 +1,6 @@
 import * as globalState from "../utils/globalState.js";
 import * as tooltip from "../utils/tooltip.js";
+import { Variable } from "../utils/variable.js";
 
 const MARGIN = { left: 80, bottom: 50, top: 10, right: 10 };
 const ANIMATION_DURATION = 300;
@@ -10,22 +11,29 @@ let svg;
 let width, height;
 
 export const draw = async (containerID, fullData, xSelector, ySelector, xLabel, yLabel, xScale, yScale, tooltipTextType, globalStateSelectionType) => {
-    console.log("tooltipTextType", tooltipTextType);
-    console.log("globalStateSelectionType", globalStateSelectionType);
+
     const box = d3.select(containerID).node().getBoundingClientRect();
 
     if (!width) {
         width = box.width;
         height = box.height;
     }
-    
-    if (xScale === "log") {
-        fullData = fullData.filter(d => d[xSelector] > 0);
-    }
 
-    if (yScale === "log") {
-        fullData = fullData.filter(d => d[ySelector] > 0);
-    }
+    const xVariable = new Variable(xSelector, xLabel, xScale.toUpperCase());
+    const yVariable = new Variable(ySelector, yLabel, yScale.toUpperCase());
+    fullData = yVariable.prepareData(xVariable.prepareData(fullData));
+    let x = xVariable.getScale(fullData, width);
+    x.range([MARGIN.left, width - MARGIN.right]);
+    let y = yVariable.getScale(fullData, height);
+    y.range([height - MARGIN.bottom, MARGIN.top]);
+    
+    // if (xScale === "log") {
+    //     fullData = fullData.filter(d => d[xSelector] > 0);
+    // }
+
+    // if (yScale === "log") {
+    //     fullData = fullData.filter(d => d[ySelector] > 0);
+    // }
 
     // Clear the existing visualization
     d3.select(containerID).selectAll("*").remove();
@@ -35,45 +43,45 @@ export const draw = async (containerID, fullData, xSelector, ySelector, xLabel, 
         .attr("width", width)
         .attr("height", height);
 
-    let x;
-    switch (xScale) {
-        case "linear":
-            x = d3.scaleLinear()
-                .domain([d3.min(fullData, d => d[xSelector]), d3.max(fullData, d => d[xSelector])])
-                .range([MARGIN.left, width - MARGIN.right]);
-            break;
-        case "log":
-            x = d3.scaleLog()
-                .domain([d3.min(fullData, d => d[xSelector] > 0 ? d[xSelector] : undefined), d3.max(fullData, d => d[xSelector])])
-                .range([MARGIN.left, width - MARGIN.right]);
-            break;
-        case "time":
-            fullData.forEach(d => d[xSelector] = new Date(d[xSelector]));
-            x = d3.scaleTime()
-                .domain([d3.min(fullData, d => d[xSelector]), d3.max(fullData, d => d[xSelector])])
-                .range([MARGIN.left, width - MARGIN.right]);
-            break;
-    }
+    // let x;
+    // switch (xScale) {
+    //     case "linear":
+    //         x = d3.scaleLinear()
+    //             .domain([d3.min(fullData, d => d[xSelector]), d3.max(fullData, d => d[xSelector])])
+    //             .range([MARGIN.left, width - MARGIN.right]);
+    //         break;
+    //     case "log":
+    //         x = d3.scaleLog()
+    //             .domain([d3.min(fullData, d => d[xSelector] > 0 ? d[xSelector] : undefined), d3.max(fullData, d => d[xSelector])])
+    //             .range([MARGIN.left, width - MARGIN.right]);
+    //         break;
+    //     case "time":
+    //         fullData.forEach(d => d[xSelector] = new Date(d[xSelector]));
+    //         x = d3.scaleTime()
+    //             .domain([d3.min(fullData, d => d[xSelector]), d3.max(fullData, d => d[xSelector])])
+    //             .range([MARGIN.left, width - MARGIN.right]);
+    //         break;
+    // }
 
-    let y;
-    switch (yScale) {
-        case "linear":
-            y = d3.scaleLinear()
-                .domain([d3.min(fullData, d => d[ySelector]), d3.max(fullData, d => d[ySelector])])
-                .range([height - MARGIN.bottom, MARGIN.top]);
-            break;
-        case "log":
-            y = d3.scaleLog()
-                .domain([d3.min(fullData, d => d[ySelector] > 0 ? d[ySelector] : undefined), d3.max(fullData, d => d[ySelector])])
-                .range([height - MARGIN.bottom, MARGIN.top]);
-            break;
-        case "time":
-            fullData.forEach(d => d[ySelector] = new Date(d[ySelector]));
-            y = d3.scaleTime()
-                .domain([d3.min(fullData, d => d[ySelector]), d3.max(fullData, d => d[ySelector])])
-                .range([height - MARGIN.bottom, MARGIN.top]);
-            break;
-    }
+    // let y;
+    // switch (yScale) {
+    //     case "linear":
+    //         y = d3.scaleLinear()
+    //             .domain([d3.min(fullData, d => d[ySelector]), d3.max(fullData, d => d[ySelector])])
+    //             .range([height - MARGIN.bottom, MARGIN.top]);
+    //         break;
+    //     case "log":
+    //         y = d3.scaleLog()
+    //             .domain([d3.min(fullData, d => d[ySelector] > 0 ? d[ySelector] : undefined), d3.max(fullData, d => d[ySelector])])
+    //             .range([height - MARGIN.bottom, MARGIN.top]);
+    //         break;
+    //     case "time":
+    //         fullData.forEach(d => d[ySelector] = new Date(d[ySelector]));
+    //         y = d3.scaleTime()
+    //             .domain([d3.min(fullData, d => d[ySelector]), d3.max(fullData, d => d[ySelector])])
+    //             .range([height - MARGIN.bottom, MARGIN.top]);
+    //         break;
+    // }
 
     const xAxis = d3.axisBottom(x);
     const yAxis = d3.axisLeft(y);

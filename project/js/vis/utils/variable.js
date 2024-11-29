@@ -34,7 +34,16 @@ export class Variable {
         this.transform = transform;
     }
 
-    setScale(data, availablePixels) {
+    /**
+     * Data must be already prepared
+     * @param {Array<Object>} data 
+     * @param {number} availablePixels 
+     */
+    getScale(data, availablePixels) {
+        return getScale(data.map(d => d[this.selector]), this.scaleType, availablePixels);    
+    }
+
+    prepareData(data) {
         let filteredData = data.filter(d => d[this.selector] !== null && d[this.selector] !== undefined);
         if (this.filter) {
             filteredData = filteredData.filter(this.filter);
@@ -45,8 +54,12 @@ export class Variable {
         if (this.scaleType === SCALE_TYPES.LOG) {
             filteredData = filteredData.filter(d => d[this.selector] > 0);
         }
-        this.scale = getScale(filteredData.map(d => d[this.selector]), this.scaleType, availablePixels);
-        this.data = filteredData;    
+        if (this.scaleType === SCALE_TYPES.TIME) {
+            filteredData.forEach(d => {
+                d[this.selector] = new Date(d[this.selector]);
+            });
+        }
+        return filteredData;
     }
 
     valueToText(value) {
