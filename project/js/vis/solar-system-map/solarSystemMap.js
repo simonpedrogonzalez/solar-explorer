@@ -4,6 +4,8 @@ import { dateToFractionalYear, fractionalYearToDate } from "../utils/time.js";
 import { updateBodiesVisData } from "./bodies.js";
 import * as zoom from "./zoom.js";
 import timeSliderVisualization from "./timeSliderVisualization.js";
+import { isObjectSelected, updateGlobalStateObjectSelection } from "../utils/globalState.js";
+import { tooltipOnMouseEnter, tooltipOnMouseLeave, tooltipOnMouseMove } from "../utils/toolTips.js";
 
 let svg, g;
 let width = window.innerWidth, height=window.innerHeight; // - 200;
@@ -12,7 +14,6 @@ let bodiesData;
 let planetsData;
 let missionsData;
 let planetRadiusScale, planetDistanceScale;
-let satelliteDistanceScale;
 let date = new Date();
 let movePlanets = true;
 
@@ -173,40 +174,13 @@ const drawBodiesOrbits = (data) => {
 }
 
 const drawBodies = (data) => {
-    const tooltip = d3.select("body")
-    .append("div")
-    .attr("class", "tooltip")
-    .style("position", "absolute")
-    .style("background-color", "rgba(0, 0, 0, 0.9)")
-    .style("color", "white")
-    .style("padding", "5px 10px")
-    .style("border-radius", "5px")
-    .style("border", "1px solid white")
-    .style("box-shadow", "0 2px 5px rgba(0, 0, 0, 0.2)")
-    // .style("font-family", "'Orbitron', sans-serif")
-    .style("font-size", "15px")
-    .style("line-height", "1")
-    .style("white-space", "pre-line")
-    .style("pointer-events", "none")
-    .style("opacity", 0);
-
-
     const bodies = g.selectAll('.body')
         .data(data);
-
-    const toolTipText = (d) => {
-        let text = `Name: ${d.name}\n`;
-        if (d.radius) text += `<br>Radius: ${d.radius} km\n`;
-        if (d.gravity) text += `<br>Gravity: ${d.gravity} m/s²\n`;
-        if (d.discovery_date) text += `<br>Discovery: ${d.discovery_date.getFullYear()}\n`;
-        if (d.discovered_by) text += `<br>Discovered by: ${d.discovered_by}\n`;
-        if (d.avg_temp_kelvin) text += `<br>Avg. Temp: ${d.avg_temp_kelvin} K\n`;
-        return text;
-    }
-
     bodies.join(
         enter => {
-            const group = enter.append('g').attr('class', 'body');
+            const group = enter.append('g')
+            .attr('class', 'body')
+            .attr('data-name', d => d.name);
 
             // Main circle representing the body
             group.append('circle')
@@ -216,15 +190,17 @@ const drawBodies = (data) => {
                 .attr('cx', d => d.vis.body.cx)
                 .attr('cy', d => d.vis.body.cy)
                 .on('mouseenter', (event, d) => {
-                    tooltip.style("opacity", 1)
-                        .html(toolTipText(d));
+                    tooltipOnMouseEnter(d, 'body');
                 })
                 .on('mousemove', (event) => {
-                    tooltip.style("left", `${event.pageX + 10}px`)
-                        .style("top", `${event.pageY - 10}px`);
+                    tooltipOnMouseMove(event);
                 })
                 .on('mouseleave', () => {
-                    tooltip.style("opacity", 0);
+                    tooltipOnMouseLeave();  
+                })
+                .on('click', (event, d) => {
+                    updateGlobalStateObjectSelection(d, 'body');
+                    setBodySelectedStyle(d);
                 });
 
             return group;
@@ -428,19 +404,13 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
                     .attr('stroke-opacity', 0.5)
                     .attr('stroke-width', 0.2)
                     .on('mouseenter', (event, d) => {
-                        tooltip
-                            .style("opacity", 1)
-                            .html(toolTipText(d))
-                            .style("left", (event.pageX + 10) + "px")
-                            .style("top", (event.pageY + 10) + "px");
+                        tooltipOnMouseEnter(d, 'missionSegment');
                     })
                     .on('mousemove', (event) => {
-                        tooltip
-                            .style("left", (event.pageX + 10) + "px")
-                            .style("top", (event.pageY + 10) + "px");
+                        tooltipOnMouseMove(event);
                     })
                     .on('mouseleave', () => {
-                        tooltip.style("opacity", 0);
+                        tooltipOnMouseLeave();
                     }),
         update => update,
         exit => exit.remove()
@@ -506,3 +476,20 @@ const setupTooglePlanetMovement = () => {
         enableAccuratePlanetPositions();
     }
 };
+
+export const setBodySelectedStyle = (d) => {
+    const isSelected = isObjectSelected(d, "body");
+    const target = g.selectAll(`.body[data-name="${d.name}"]`);
+    const circle = target.select('g circle.main-circle');
+    circle
+    .attr('stroke', isSelected ? 'white' : 'none')
+    .attr('stroke-width', isSelected ? Math.max(d.vis.body.r / 10, 0.2) : 0)
+};
+
+// const setMissionSelectedStyle = (d) => {
+//     const isSelected = isObjectSelected(d, "mission");
+//     // find mission path
+//     const missionPath = d3.select(`path[data-name="${d.name}"]`);
+//     missionPath.attr('stroke', isSelected ? 'white' : 'red')
+//     .attr('stroke-width', isSelected ? 2 : 0.2);
+// }

@@ -46,7 +46,8 @@ export const setup = async () => {
             missionVariables.find((v) => v.value === missionScatterSelectors.x.value).text,
             missionVariables.find((v) => v.value === missionScatterSelectors.y.value).text,
             missionVariables.find((v) => v.value === missionScatterSelectors.x.value).scale,
-            missionVariables.find((v) => v.value === missionScatterSelectors.y.value).scale
+            missionVariables.find((v) => v.value === missionScatterSelectors.y.value).scale,
+            "mission"
         );
     });
 
@@ -60,7 +61,8 @@ export const setup = async () => {
             missionVariables.find((v) => v.value === missionScatterSelectors.x.value).text,
             missionVariables.find((v) => v.value === missionScatterSelectors.y.value).text,
             missionVariables.find((v) => v.value === missionScatterSelectors.x.value).scale,
-            missionVariables.find((v) => v.value === missionScatterSelectors.y.value).scale
+            missionVariables.find((v) => v.value === missionScatterSelectors.y.value).scale,
+            "mission"
         );
     });
 

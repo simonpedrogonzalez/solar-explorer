@@ -59,7 +59,8 @@ export const setup = async () => {
         bodiesVariables.find((v) => v.value === bodiesScatterSelectors.x.value).text,
         bodiesVariables.find((v) => v.value === bodiesScatterSelectors.y.value).text,
         bodiesVariables.find((v) => v.value === bodiesScatterSelectors.x.value).scale,
-        bodiesVariables.find((v) => v.value === bodiesScatterSelectors.y.value).scale
+        bodiesVariables.find((v) => v.value === bodiesScatterSelectors.y.value).scale,
+        "body"
     );
 
     bodiesScatterSelectors.x.addEventListener("change", () => {
@@ -72,7 +73,8 @@ export const setup = async () => {
             bodiesVariables.find((v) => v.value === bodiesScatterSelectors.x.value).text,
             bodiesVariables.find((v) => v.value === bodiesScatterSelectors.y.value).text,
             bodiesVariables.find((v) => v.value === bodiesScatterSelectors.x.value).scale,
-            bodiesVariables.find((v) => v.value === bodiesScatterSelectors.y.value).scale
+            bodiesVariables.find((v) => v.value === bodiesScatterSelectors.y.value).scale,
+            "body"
         );
     });
 
@@ -86,7 +88,8 @@ export const setup = async () => {
             bodiesVariables.find((v) => v.value === bodiesScatterSelectors.x.value).text,
             bodiesVariables.find((v) => v.value === bodiesScatterSelectors.y.value).text,
             bodiesVariables.find((v) => v.value === bodiesScatterSelectors.x.value).scale,
-            bodiesVariables.find((v) => v.value === bodiesScatterSelectors.y.value).scale
+            bodiesVariables.find((v) => v.value === bodiesScatterSelectors.y.value).scale,
+            "body"
         );
     });
 }

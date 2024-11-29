@@ -1,3 +1,6 @@
+import { updateGlobalStateObjectSelection, isObjectSelected } from "../utils/globalState.js";
+import { tooltipOnMouseEnter, tooltipOnMouseLeave, tooltipOnMouseMove } from "../utils/toolTips.js";
+
 const MARGIN = { left: 80, bottom: 50, top: 10, right: 10 };
 const ANIMATION_DURATION = 300;
 const MARKER_SIZE = 2;
@@ -6,7 +9,7 @@ let svg;
 
 let width, height;
 
-export const draw = async (containerID, fullData, xSelector, ySelector, xLabel, yLabel, xScale, yScale) => {
+export const draw = async (containerID, fullData, xSelector, ySelector, xLabel, yLabel, xScale, yScale, dataType) => {
     const box = d3.select(containerID).node().getBoundingClientRect();
 
     if (!width) {
@@ -102,13 +105,19 @@ export const draw = async (containerID, fullData, xSelector, ySelector, xLabel, 
         .style("fill", "white")
         .text(yLabel);
 
+        console.log(dataType)
+
     svg.selectAll("circle")
         .data(xData.map((d, i) => ({ x: d, y: yData[i] })))
         .join("circle")
         .attr("cx", d => x(d.x))
         .attr("cy", d => y(d.y))
+    // on hover show data
+        .on("mouseenter", (event, d) => tooltipOnMouseEnter(d, dataType))
+        .on("mousemove", (event, d) => tooltipOnMouseMove(event))
+        .on("mouseleave", tooltipOnMouseLeave)
         .transition()
         .duration(ANIMATION_DURATION)
         .attr("r", MARKER_SIZE)
-        .attr("fill", "steelblue");
+        .attr("fill", d => isObjectSelected(d, dataType) ? "red" : "steelblue");
 }
