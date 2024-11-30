@@ -64,7 +64,8 @@ export const setup = async () => {
         bodiesData,
         bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value),
         bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value),
-        globalState.SELECTION_TYPES.BODY
+        globalState.SELECTION_TYPES.BODY,
+        "bodies-scatter-reset-zoom-button"
     );
 
     bodiesScatterSelectors.x.addEventListener("change", () => {
@@ -73,7 +74,8 @@ export const setup = async () => {
             bodiesData,
             bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value),
             bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value),
-            globalState.SELECTION_TYPES.BODY
+            globalState.SELECTION_TYPES.BODY,
+            "bodies-scatter-reset-zoom-button"
         );
     });
 
@@ -83,7 +85,8 @@ export const setup = async () => {
             bodiesData,
             bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value),
             bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value),
-            globalState.SELECTION_TYPES.BODY
+            globalState.SELECTION_TYPES.BODY,
+            "bodies-scatter-reset-zoom-button"
         );
     });
 }

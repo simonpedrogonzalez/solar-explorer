@@ -1,16 +1,16 @@
 import * as globalState from "../utils/globalState.js";
 import * as tooltip from "../utils/tooltip.js";
-import { Variable } from "../utils/variable.js";
+import { addZoom } from "./zoom.js";
 
 const MARGIN = { left: 80, bottom: 50, top: 10, right: 10 };
 const ANIMATION_DURATION = 300;
 const MARKER_SIZE = 3;
 
-let svg;
+let svg, g;
 
 let width, height;
 
-export const draw = async (containerID, fullData, xVariable, yVariable, globalStateSelectionType) => {
+export const draw = async (containerID, fullData, xVariable, yVariable, globalStateSelectionType, resetZoomButtonID) => {
 
     const box = d3.select(containerID).node().getBoundingClientRect();
 
@@ -23,11 +23,11 @@ export const draw = async (containerID, fullData, xVariable, yVariable, globalSt
     fullData = yVariable.prepareData(xVariable.prepareData(fullData));
 
     // Get the scales but accounting for the margins
-    let x = xVariable.getScale(fullData, width);
-    x.range([MARGIN.left, width - MARGIN.right]);
+    let x = xVariable.getScale(fullData, width - MARGIN.left - MARGIN.right);
+    x.range([0, width - MARGIN.left - MARGIN.right]);
 
-    let y = yVariable.getScale(fullData, height);
-    y.range([height - MARGIN.bottom, MARGIN.top]);
+    let y = yVariable.getScale(fullData, height - MARGIN.top - MARGIN.bottom);
+    y.range([height - MARGIN.top - MARGIN.bottom, 0]);
     
     let xSelector = xVariable.selector;
     let ySelector = yVariable.selector;
@@ -42,35 +42,42 @@ export const draw = async (containerID, fullData, xVariable, yVariable, globalSt
         .attr("width", width)
         .attr("height", height);
 
+    g = svg.append("g")
+        .attr("transform", `translate(${MARGIN.left}, ${MARGIN.top})`);
+
+    const zoomCenter = { x: width / 2 - MARGIN.left, y: height / 2 - MARGIN.top };
+    addZoom(svg, g, width, height, zoomCenter, resetZoomButtonID);
+
     const xAxis = d3.axisBottom(x);
     const yAxis = d3.axisLeft(y);
 
-    svg.append("g")
-        .attr("transform", `translate(0, ${height - MARGIN.bottom})`)
+    // Append axes to the <g> container
+    g.append("g")
+        .attr("transform", `translate(0, ${height - MARGIN.top - MARGIN.bottom})`)
         .call(xAxis);
 
-    svg.append("g")
-        .attr("transform", `translate(${MARGIN.left}, 0)`)
+    g.append("g")
         .call(yAxis);
 
-    svg.append("text")
-        .attr("x", (width - MARGIN.left) / 2 + MARGIN.left)
-        .attr("y", height)
-        .attr("dy", "-0.75em")
+    // Add axis labels
+    g.append("text")
+        .attr("x", width / 2) // Centered within the inner plotting area
+        .attr("y", height - MARGIN.bottom + 30) // Below the x-axis
         .style("text-anchor", "middle")
         .style("fill", "white")
         .text(xLabel);
 
-    svg.append("text")
+    g.append("text")
+        .attr("x", -(height-MARGIN.bottom) / 2) // Centered within the inner plotting area
+        .attr("y",  MARGIN.left - 130) // Left of the y-axis
         .attr("transform", "rotate(-90)")
-        .attr("x", -height / 2)
-        .attr("y", 0)
-        .attr("dy", "1.75em")
         .style("text-anchor", "middle")
         .style("fill", "white")
         .text(yLabel);
 
-    svg.selectAll("circle")
+
+    // Plot data points inside the <g> container
+    g.selectAll("circle")
         .data(fullData)
         .join("circle")
         .attr("cx", d => x(d[xSelector]))

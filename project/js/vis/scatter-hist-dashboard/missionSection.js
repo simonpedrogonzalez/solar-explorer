@@ -53,7 +53,8 @@ export const setup = async () => {
             missionData,
             missionVariables.find((v) => v.selector === missionScatterSelectors.x.value),
             missionVariables.find((v) => v.selector === missionScatterSelectors.y.value),
-            globalState.SELECTION_TYPES.MISSION
+            globalState.SELECTION_TYPES.MISSION,
+            "mission-scatter-reset-zoom-button"
         );
     });
 
@@ -63,7 +64,8 @@ export const setup = async () => {
             missionData,
             missionVariables.find((v) => v.selector === missionScatterSelectors.x.value),
             missionVariables.find((v) => v.selector === missionScatterSelectors.y.value),
-            globalState.SELECTION_TYPES.MISSION
+            globalState.SELECTION_TYPES.MISSION,
+            "mission-scatter-reset-zoom-button"
         );
     });
 
