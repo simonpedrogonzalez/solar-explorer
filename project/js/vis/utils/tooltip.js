@@ -1,3 +1,5 @@
+import { Variable } from "./variable.js";
+
 
 const tooltip = d3.select("body")
     .append("div")
@@ -26,16 +28,16 @@ export const textParser = {
         if (d.avg_temp_kelvin) text += `<br>Avg. Temp: ${d.avg_temp_kelvin} K\n`;
         return text;
     },
-    getTextFromBodyXY: (d, xSelector, ySelector) => {
+    /**
+     * @param {Object} d
+     * @param {Variable} xVariable
+     * @param {Variable} yVariable
+     * @return {string}
+     * */
+    getTextFromVariables: (d, xVariable, yVariable) => {
         let text = `Name: ${d.name}\n`;
-        text += `<br>${xSelector}: ${d[xSelector]}\n`;
-        text += `<br>${ySelector}: ${d[ySelector]}\n`;
-        return text;
-    },
-    getTextFromMissionXY: (d, xSelector, ySelector) => {
-        let text = `Name: ${d.name}\n`;
-        text += `<br>${xSelector}: ${d[xSelector]}\n`;
-        text += `<br>${ySelector}: ${d[ySelector]}\n`;
+        text += `<br>${xVariable.valueToText(d[xVariable.selector])}\n`;
+        text += `<br>${yVariable.valueToText(d[yVariable.selector])}\n`;
         return text;
     },
     getTextFromMissionSegment: (d) => {
@@ -62,10 +64,8 @@ export const textParser = {
         switch (type) {
             case TEXT_TYPES.BODY_DATA:
                 return this.getTextFromtAllBodyData(d);
-            case TEXT_TYPES.BODY_XY:
-                return this.getTextFromBodyXY(d, xSelector, ySelector);
-            case TEXT_TYPES.MISSION_XY:
-                return this.getTextFromMissionXY(d, xSelector, ySelector);
+            case TEXT_TYPES.XY:
+                return this.getTextFromVariables(d, xSelector, ySelector);
             case TEXT_TYPES.MISSION_SEGMENT:
                 return this.getTextFromMissionSegment(d);
             default:
@@ -77,8 +77,7 @@ export const textParser = {
 
 export const TEXT_TYPES = {
     BODY_DATA: "BODY_DATA",
-    BODY_XY: "BODY_XY",
-    MISSION_XY: "MISSION_XY",
+    XY: "XY",
     MISSION_SEGMENT: "MISSION_SEGMENT",
 }
 

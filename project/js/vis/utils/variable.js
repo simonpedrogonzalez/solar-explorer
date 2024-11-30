@@ -11,14 +11,17 @@ export const getScale = (data, scaleType, availablePixels) => {
             return d3.scaleLinear()
                 .domain(d3.extent(data))
                 .range([0, availablePixels]);
+                break;
         case SCALE_TYPES.LOG:
             return d3.scaleLog()
                 .domain(d3.extent(data))
                 .range([0, availablePixels]);
+                break;
         case SCALE_TYPES.TIME:
             return d3.scaleTime()
                 .domain(d3.extent(data))
                 .range([0, availablePixels]);
+                break;
         default:
             throw new Error("Invalid scale type: " + scaleType);
     }
@@ -63,13 +66,17 @@ export class Variable {
     }
 
     valueToText(value) {
-        let text = this.label;
+        let text = this.label + ": ";
         switch (this.scaleType) {
             case SCALE_TYPES.TIME:
                 text += timeToText(value);
-            default:
+                break;
+            case SCALE_TYPES.LINEAR:
+            case SCALE_TYPES.LOG:
                 text += numberToText(value);
+                break;
         }
+        console.log(text);
         return text;
     }
 
@@ -78,17 +85,30 @@ export class Variable {
 
 export const numberToText = (value) => {
     if (value > 1000000) {
-        return `${value / 1000000}M`;
+        return `${(value / 1000000).toFixed(2)}M`;
     }
     if (value > 1000) {
-        return `${value / 1000}K`;
+        return `${(value / 1000).toFixed(2)}K`;
     }
     if (value % 1 !== 0) {
-        return value.toFixed(2);
+        const decimalPart = value.toString().split('.')[1];
+        if (decimalPart) {
+            let result = '';
+            let count = 0;
+            for (const char of decimalPart) {
+                result += char;
+                if (char !== '0') count++;
+                if (count === 2) break;
+            }
+            return `${Math.floor(value)}.${result}`;
+        }
     }
     return `${value}`;
-}
+};
+
+
 
 export const timeToText = (value) => {
+    console.log(value.getFullYear());
     return value.getFullYear();
 }

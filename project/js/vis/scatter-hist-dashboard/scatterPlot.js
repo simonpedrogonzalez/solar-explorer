@@ -123,7 +123,7 @@ export const draw = async (containerID, fullData, xVariable, yVariable, tooltipT
         .attr("cx", d => x(d[xSelector]))
         .attr("cy", d => y(d[ySelector]))
         .on("mouseenter", (event, d) => {
-            const content = tooltip.textParser.getTextFromType(d, tooltipTextType, xSelector, ySelector);
+            const content = tooltip.textParser.getTextFromVariables(d, xVariable, yVariable);
             tooltip.onMouseEnter(content);
         })
         .on("mousemove", (event) => tooltip.onMouseMove(event))

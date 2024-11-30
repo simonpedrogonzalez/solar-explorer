@@ -251,24 +251,6 @@ const drawMissionPaths = (missionsData, bodiesData) => {
         return acc;
     }, {});
 
-    const tooltip = d3.select("body")
-    .append("div")
-    .attr("class", "tooltip")
-    .style("position", "absolute")
-    .style("background-color", "rgba(0, 0, 0, 0.9)")
-    .style("color", "white")
-    .style("padding", "5px 10px")
-    .style("border-radius", "5px")
-    .style("border", "1px solid white")
-    .style("box-shadow", "0 2px 5px rgba(0, 0, 0, 0.2)")
-    // .style("font-family", "'Orbitron', sans-serif")
-    .style("font-size", "15px")
-    .style("line-height", "1")
-    .style("white-space", "pre-line")
-    .style("pointer-events", "none")
-    .style("opacity", 0);
-
-
     const drawBezierCurves = (d, i) => {
         // The idea is to create bezier curves from origin to destination, making
         // the curve more pronounced with increasing mission count with the same
