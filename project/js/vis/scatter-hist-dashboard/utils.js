@@ -28,6 +28,5 @@ export const populateSelect = (selectElement, options) => {
 export const callHistogram = (selectVarElement, options, data, containerID) => {
     let option = selectVarElement.options[selectVarElement.selectedIndex];
     option = options.find(o => o.selector === option.value);
-    data = option.prepareData(data);
-    histogram.draw(containerID, data.map(d => d[option.selector]), option.label, option.scaleType);
+    histogram.draw(containerID, data, option);
 }

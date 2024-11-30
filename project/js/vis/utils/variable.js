@@ -43,6 +43,9 @@ export class Variable {
      * @param {number} availablePixels 
      */
     getScale(data, availablePixels) {
+        if (!data[0].hasOwnProperty(this.selector)) {
+            throw new Error(`Data does not have property ${this.selector}`);
+        }
         return getScale(data.map(d => d[this.selector]), this.scaleType, availablePixels);    
     }
 

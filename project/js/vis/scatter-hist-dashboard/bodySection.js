@@ -1,7 +1,7 @@
-import { populateSelect, callHistogram } from "./utils.js";
+import { populateSelect } from "./utils.js";
 import { getBodiesData } from "../../data/bodies.js";
 import * as scatterPlot from "./scatterPlot.js";
-import * as tooltip from "../utils/tooltip.js";
+import * as histogram from "./histogram.js";
 import * as globalState from "../utils/globalState.js";
 import { Variable, SCALE_TYPES } from "../utils/variable.js";
 
@@ -36,9 +36,17 @@ export const setup = async () => {
     populateSelect(bodiesScatterSelectors.x, bodiesVariables);
     populateSelect(bodiesScatterSelectors.y, bodiesVariables);
 
-    callHistogram(bodiesHistogramVariableSelector, bodiesVariables, bodiesData, "bodies-hist");
+    histogram.draw(
+        "bodies-hist",
+        bodiesData,
+        bodiesVariables.find((v) => v.selector === bodiesHistogramVariableSelector.value)
+    );
     bodiesHistogramVariableSelector.addEventListener("change", () => {
-        callHistogram(bodiesHistogramVariableSelector, bodiesVariables, bodiesData, "bodies-hist");
+        histogram.draw(
+            "bodies-hist",
+            bodiesData,
+            bodiesVariables.find((v) => v.selector === bodiesHistogramVariableSelector.value)
+        );
     });
 
     bodiesHistogramVariableSelector.dispatchEvent(new Event('change'));
