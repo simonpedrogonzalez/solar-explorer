@@ -22,6 +22,10 @@ let movePlanets = true;
  * @param {string} containerId
  * */
 export const setup = async (containerId) => {
+
+    // Suscribe to object selection updates
+    globalState.suscribeToObjectSelection(onBodySelection, globalState.SELECTION_TYPES.BODY);
+
     // Load the data
     bodiesData = await getBodiesData();
 
@@ -200,8 +204,7 @@ const drawBodies = (data) => {
                     tooltip.onMouseLeave();
                 })
                 .on('click', (event, d) => {
-                    globalState.updateBodySelection(d);
-                    setBodySelectedStyle(d);
+                    globalState.updateObjectSelection(d, globalState.SELECTION_TYPES.BODY);
                 });
 
             return group;
@@ -428,11 +431,16 @@ const setupTooglePlanetMovement = () => {
     }
 };
 
-export const setBodySelectedStyle = (d) => {
-    const isSelected = globalState.isBodySelected(d);
+/**
+ * Handle object selection change. Is triggered by globalState.updateObjectSelection
+ * Has to respect this function signature
+ * @param {Object} d
+ * @param {boolean} isSelected 
+ */
+export const onBodySelection = (d, isSelected) => {
     const target = g.selectAll(`.body[data-name="${d.name}"]`);
     const circle = target.select('g circle.main-circle');
     circle
-    .attr('stroke', isSelected ? 'white' : 'none')
-    .attr('stroke-width', isSelected ? Math.max(d.vis.body.r / 10, 0.2) : 0)
+        .attr('stroke', isSelected ? 'white' : 'none')
+        .attr('stroke-width', isSelected ? Math.max(d.vis.body.r / 10, 0.2) : 0)
 };

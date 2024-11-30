@@ -5,48 +5,74 @@ let globalState = {
     },
 };
 
+let listeners = [];
+
 export const SELECTION_TYPES = {
     BODY: 'BODY',
     MISSION: 'MISSION',
 }
 
-export const get = () => {
-    return globalState;
-};
-
-export const updateMissionSelection = (d) => {
-    updateObjectSelection(d, 'mission');
+class Listener{
+    constructor(func, selectionType){
+        this.id = Date.now().toString();
+        this.function = func;
+        this.selectionType = selectionType;
+    }
+    notify(d, isSelected){
+        this.function(d, isSelected);
+    }
 }
 
-export const updateBodySelection = (d) => {
-    updateObjectSelection(d, 'body');
+
+const getSelectionByType = (selectionType) => {
+    switch (selectionType) {
+        case SELECTION_TYPES.BODY:
+            return globalState.selected.bodies;
+        case SELECTION_TYPES.MISSION:
+            return globalState.selected.missions;
+        default:
+            throw new Error('Invalid selection type');
+    }
 }
 
-const updateObjectSelection = (d, selectionType) => {
+const getListenerByType = (selectionType) => {
+    return listeners.filter(l => l.selectionType === selectionType);
+}
+
+export const suscribeToObjectSelection = (listener, selectionType) => {
+    listener = new Listener(listener, selectionType);
+    listeners.push(listener);
+    return listener.id;
+}
+
+export const notifyAllToListener = (listenerID) => {
+    const listener = listeners.find(l => l.id === listenerID);
+    if (!listener) throw new Error('Listener not found: ' + listenerID);
+    let selection = getSelectionByType(listener.selectionType);
+    selection.forEach(d => listener.notify(d, true));
+}
+
+export const updateObjectSelection = (d, selectionType) => {
     let arrayOfSelected;
-    if (selectionType === 'body') {
+    if (selectionType === SELECTION_TYPES.BODY) {
         arrayOfSelected = globalState.selected.bodies;
-    } else if (selectionType === 'mission') {
+    } else if (selectionType === SELECTION_TYPES.MISSION) {
         arrayOfSelected = globalState.selected.missions;
     } else {
         throw new Error('Invalid selection type');
     }
 
     const index = arrayOfSelected.indexOf(d);
-    if (index > -1) {
+    const wasSelected = index > -1;
+    const isSelected = !wasSelected;
+    if (wasSelected) {
         arrayOfSelected.splice(index, 1);
     } else {
         arrayOfSelected.push(d);
     }
-    console.log(arrayOfSelected.map(obj => obj.name));
-}
 
-export const isMissionSelected = (d) => {
-    return isObjectSelected(d, SELECTION_TYPES.MISSION);
-}
-
-export const isBodySelected = (d) => {
-    return isObjectSelected(d, SELECTION_TYPES.BODY);
+    let listeners = getListenerByType(selectionType);
+    listeners.forEach(l => l.notify(d, isSelected));
 }
 
 export const clearSelection = () => {
@@ -55,16 +81,6 @@ export const clearSelection = () => {
 }
 
 export const isObjectSelected = (d, selectionType) => {
-    let arrayOfSelected;
-    switch (selectionType) {
-        case SELECTION_TYPES.BODY:
-            arrayOfSelected = globalState.selected.bodies;
-            break;
-        case SELECTION_TYPES.MISSION:
-            arrayOfSelected = globalState.selected.missions;
-            break;
-        default:
-            throw new Error('Global state invalid selection type: ' + selectionType);
-    }
+    let arrayOfSelected = getSelectionByType(selectionType);
     return arrayOfSelected.includes(d);
 }

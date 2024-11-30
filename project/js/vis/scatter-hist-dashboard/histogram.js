@@ -1,6 +1,7 @@
 import { Variable } from "../utils/variable.js";
 import * as tooltip from "../utils/tooltip.js";
 import { addZoom } from "./zoom.js";
+import * as globalState from "../utils/globalState.js";
 
 const MARGIN = { left: 50, bottom: 50, top: 20, right: 10 };
 const ANIMATION_DURATION = 300;

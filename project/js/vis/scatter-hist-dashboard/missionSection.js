@@ -2,7 +2,8 @@ import { populateSelect } from "./utils.js";
 import * as histogram from "./histogram.js";
 import { getMissionsData } from "../../data/missions.js";
 import * as globalState from "../utils/globalState.js";
-import * as scatterPlot from "./scatterPlot.js";
+// import * as scatterPlot from "./scatterPlot.js";
+import { ScatterPlot } from "./scatterPlot.js";
 import { Variable, SCALE_TYPES } from "../utils/variable.js";
 
 export const setup = async () => {
@@ -47,26 +48,41 @@ export const setup = async () => {
 
     missionHistogramVariableSelector.dispatchEvent(new Event('change'));
 
+    const scatterPlot = new ScatterPlot(
+        scatterContainer,
+        "mission-scatter-reset-zoom-button",
+        globalState.SELECTION_TYPES.MISSION,
+        missionData
+    );
+
     missionScatterSelectors.x.addEventListener("change", () => {
+        // scatterPlot.draw(
+        //     scatterContainer,
+        //     missionData,
+        //     missionVariables.find((v) => v.selector === missionScatterSelectors.x.value),
+        //     missionVariables.find((v) => v.selector === missionScatterSelectors.y.value),
+        //     globalState.SELECTION_TYPES.MISSION,
+        //     "mission-scatter-reset-zoom-button"
+        // );
         scatterPlot.draw(
-            scatterContainer,
-            missionData,
             missionVariables.find((v) => v.selector === missionScatterSelectors.x.value),
-            missionVariables.find((v) => v.selector === missionScatterSelectors.y.value),
-            globalState.SELECTION_TYPES.MISSION,
-            "mission-scatter-reset-zoom-button"
-        );
+            missionVariables.find((v) => v.selector === missionScatterSelectors.y.value)
+        )
     });
 
     missionScatterSelectors.y.addEventListener("change", () => {
+        // scatterPlot.draw(
+        //     scatterContainer,
+        //     missionData,
+        //     missionVariables.find((v) => v.selector === missionScatterSelectors.x.value),
+        //     missionVariables.find((v) => v.selector === missionScatterSelectors.y.value),
+        //     globalState.SELECTION_TYPES.MISSION,
+        //     "mission-scatter-reset-zoom-button"
+        // );
         scatterPlot.draw(
-            scatterContainer,
-            missionData,
             missionVariables.find((v) => v.selector === missionScatterSelectors.x.value),
-            missionVariables.find((v) => v.selector === missionScatterSelectors.y.value),
-            globalState.SELECTION_TYPES.MISSION,
-            "mission-scatter-reset-zoom-button"
-        );
+            missionVariables.find((v) => v.selector === missionScatterSelectors.y.value)
+        )
     });
 
     missionScatterSelectors.x.value = "launch_date";

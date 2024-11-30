@@ -1,6 +1,7 @@
 import { populateSelect } from "./utils.js";
 import { getBodiesData } from "../../data/bodies.js";
-import * as scatterPlot from "./scatterPlot.js";
+// import * as scatterPlot from "./scatterPlot.js";
+import { ScatterPlot } from "./scatterPlot.js";
 import * as histogram from "./histogram.js";
 import * as globalState from "../utils/globalState.js";
 import { Variable, SCALE_TYPES } from "../utils/variable.js";
@@ -59,34 +60,55 @@ export const setup = async () => {
     bodiesScatterSelectors.x.value = "discovery_date";
     bodiesScatterSelectors.y.value = "semi_major_axis";
 
-    scatterPlot.draw(
+    
+    const scatterPlot = new ScatterPlot(
         scatterContainer,
-        bodiesData,
-        bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value),
-        bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value),
+        "bodies-scatter-reset-zoom-button",
         globalState.SELECTION_TYPES.BODY,
-        "bodies-scatter-reset-zoom-button"
+        bodiesData
     );
 
+    scatterPlot.draw(
+        bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value),
+        bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value)
+    )
+
+    // scatterPlot.draw(
+    //     scatterContainer,
+    //     bodiesData,
+    //     bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value),
+    //     bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value),
+    //     globalState.SELECTION_TYPES.BODY,
+    //     "bodies-scatter-reset-zoom-button"
+    // );
+
     bodiesScatterSelectors.x.addEventListener("change", () => {
+        // scatterPlot.draw(
+        //     scatterContainer,
+        //     bodiesData,
+        //     bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value),
+        //     bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value),
+        //     globalState.SELECTION_TYPES.BODY,
+        //     "bodies-scatter-reset-zoom-button"
+        // );
         scatterPlot.draw(
-            scatterContainer,
-            bodiesData,
             bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value),
-            bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value),
-            globalState.SELECTION_TYPES.BODY,
-            "bodies-scatter-reset-zoom-button"
-        );
+            bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value)
+        )
     });
 
     bodiesScatterSelectors.y.addEventListener("change", () => {
+        // scatterPlot.draw(
+        //     scatterContainer,
+        //     bodiesData,
+        //     bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value),
+        //     bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value),
+        //     globalState.SELECTION_TYPES.BODY,
+        //     "bodies-scatter-reset-zoom-button"
+        // );
         scatterPlot.draw(
-            scatterContainer,
-            bodiesData,
             bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value),
-            bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value),
-            globalState.SELECTION_TYPES.BODY,
-            "bodies-scatter-reset-zoom-button"
-        );
+            bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value)
+        )
     });
 }
