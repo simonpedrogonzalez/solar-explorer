@@ -51,7 +51,7 @@ export const draw = async (containerID, fullData, xVariable, yVariable, globalSt
     const xAxis = d3.axisBottom(x);
     const yAxis = d3.axisLeft(y);
 
-    // Append axes to the <g> container
+
     g.append("g")
         .attr("transform", `translate(0, ${height - MARGIN.top - MARGIN.bottom})`)
         .call(xAxis);
@@ -61,22 +61,21 @@ export const draw = async (containerID, fullData, xVariable, yVariable, globalSt
 
     // Add axis labels
     g.append("text")
-        .attr("x", width / 2) // Centered within the inner plotting area
-        .attr("y", height - MARGIN.bottom + 30) // Below the x-axis
+        .attr("x", width / 2)
+        .attr("y", height - MARGIN.bottom + 30)
         .style("text-anchor", "middle")
         .style("fill", "white")
         .text(xLabel);
 
     g.append("text")
-        .attr("x", -(height-MARGIN.bottom) / 2) // Centered within the inner plotting area
-        .attr("y",  MARGIN.left - 130) // Left of the y-axis
+        .attr("x", -(height-MARGIN.bottom) / 2)
+        .attr("y",  MARGIN.left - 130)
         .attr("transform", "rotate(-90)")
         .style("text-anchor", "middle")
         .style("fill", "white")
         .text(yLabel);
 
 
-    // Plot data points inside the <g> container
     g.selectAll("circle")
         .data(fullData)
         .join("circle")
