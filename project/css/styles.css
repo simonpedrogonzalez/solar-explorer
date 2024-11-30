@@ -102,13 +102,13 @@ body, html {
 }
 
 /* Zoom controls horizontal layout */
-#zoom-controls {
+.zoom-controls {
     display: flex;
     flex-direction: row;
     gap: 10px; /* Space between buttons */
 }
 
-#zoom-controls button {
+.zoom-controls button {
     background: none;
     color: white;
     border: 2px solid white;
@@ -118,7 +118,7 @@ body, html {
     transition: background 0.3s ease-in-out;
 }
 
-#zoom-controls button:hover {
+.zoom-controls button:hover {
     background: white;
     color: black;
 }

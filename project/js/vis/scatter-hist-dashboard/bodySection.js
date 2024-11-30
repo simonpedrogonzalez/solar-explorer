@@ -41,13 +41,15 @@ export const setup = async () => {
     histogram.draw(
         "bodies-hist",
         bodiesData,
-        bodiesVariables.find((v) => v.selector === bodiesHistogramVariableSelector.value)
+        bodiesVariables.find((v) => v.selector === bodiesHistogramVariableSelector.value),
+        "bodies-hist-reset-zoom-button"
     );
     bodiesHistogramVariableSelector.addEventListener("change", () => {
         histogram.draw(
             "bodies-hist",
             bodiesData,
-            bodiesVariables.find((v) => v.selector === bodiesHistogramVariableSelector.value)
+            bodiesVariables.find((v) => v.selector === bodiesHistogramVariableSelector.value),
+            "bodies-hist-reset-zoom-button"
         );
     });
 

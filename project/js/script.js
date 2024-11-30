@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // // Clear the previous visualization
             // mapContainer.innerHTML = '';
             // solarSystemMap.setup('#dashboard2');
-            dashboard.setup();
+            // dashboard.setup();
         } else {
             dashboard2.style.display = 'none';
             dashboard1.style.display = 'block';

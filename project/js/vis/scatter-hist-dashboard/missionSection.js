@@ -32,13 +32,15 @@ export const setup = async () => {
     histogram.draw(
         "mission-hist",
         missionData,
-        missionVariables.find((v) => v.selector === missionHistogramVariableSelector.value)
+        missionVariables.find((v) => v.selector === missionHistogramVariableSelector.value),
+        "mission-hist-reset-zoom-button"
     );
     missionHistogramVariableSelector.addEventListener("change", () => {
         histogram.draw(
             "mission-hist",
             missionData,
-            missionVariables.find((v) => v.selector === missionHistogramVariableSelector.value)
+            missionVariables.find((v) => v.selector === missionHistogramVariableSelector.value),
+            "mission-hist-reset-zoom-button"
         );
 
     });

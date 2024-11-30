@@ -1,5 +1,6 @@
 import { Variable } from "../utils/variable.js";
 import * as tooltip from "../utils/tooltip.js";
+import { addZoom } from "./zoom.js";
 
 const MARGIN = { left: 50, bottom: 50, top: 20, right: 10 };
 const ANIMATION_DURATION = 300;
@@ -16,7 +17,7 @@ let svg, g;
  * @param {Array<Object>} data
  * @param {Variable} variable
  */
-export const draw = async (containerID, data, variable) => {
+export const draw = async (containerID, data, variable, resetZoomButtonID) => {
     
 
     const container = document.getElementById(containerID);
@@ -43,6 +44,9 @@ export const draw = async (containerID, data, variable) => {
 
     g = svg.append("g")
         .attr("transform", `translate(${MARGIN.left}, ${MARGIN.top})`);
+
+    const zoomCenter = { x: width / 2 - MARGIN.left * 0.5, y: MARGIN.top + height / 2 - MARGIN.top * 0.5 };
+    addZoom(svg, g, containerWidth, containerHeight, zoomCenter, resetZoomButtonID);
 
     const histogram = d3.histogram()
         .value(d => d[variable.selector])
