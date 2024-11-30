@@ -45,7 +45,6 @@ export const setup = async () => {
             missionData,
             missionVariables.find((v) => v.selector === missionScatterSelectors.x.value),
             missionVariables.find((v) => v.selector === missionScatterSelectors.y.value),
-            tooltip.TEXT_TYPES.MISSION_XY,
             globalState.SELECTION_TYPES.MISSION
         );
     });
@@ -57,7 +56,6 @@ export const setup = async () => {
             missionData,
             missionVariables.find((v) => v.selector === missionScatterSelectors.x.value),
             missionVariables.find((v) => v.selector === missionScatterSelectors.y.value),
-            tooltip.TEXT_TYPES.MISSION_XY,
             globalState.SELECTION_TYPES.MISSION
         );
     });

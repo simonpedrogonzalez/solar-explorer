@@ -54,7 +54,6 @@ export const setup = async () => {
         bodiesData,
         bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value),
         bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value),
-        tooltip.TEXT_TYPES.BODY_XY,
         globalState.SELECTION_TYPES.BODY
     );
 
@@ -65,7 +64,6 @@ export const setup = async () => {
             bodiesData,
             bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value),
             bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value),
-            tooltip.TEXT_TYPES.BODY_XY,
             globalState.SELECTION_TYPES.BODY
         );
     });
@@ -77,7 +75,6 @@ export const setup = async () => {
             bodiesData,
             bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value),
             bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value),
-            tooltip.TEXT_TYPES.BODY_XY,
             globalState.SELECTION_TYPES.BODY
         );
     });
