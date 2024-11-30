@@ -4,6 +4,8 @@ import { dateToFractionalYear, fractionalYearToDate } from "../utils/time.js";
 import { updateBodiesVisData } from "./bodies.js";
 import * as zoom from "./zoom.js";
 import timeSliderVisualization from "./timeSliderVisualization.js";
+import * as globalState from "../utils/globalState.js";
+import * as tooltip from "../utils/tooltip.js";
 
 let svg, g;
 let width = window.innerWidth, height=window.innerHeight; // - 200;
@@ -12,7 +14,6 @@ let bodiesData;
 let planetsData;
 let missionsData;
 let planetRadiusScale, planetDistanceScale;
-let satelliteDistanceScale;
 let date = new Date();
 let movePlanets = true;
 
@@ -21,6 +22,10 @@ let movePlanets = true;
  * @param {string} containerId
  * */
 export const setup = async (containerId) => {
+
+    // Suscribe to object selection updates
+    globalState.suscribeToObjectSelection(onBodySelection, globalState.SELECTION_TYPES.BODY);
+
     // Load the data
     bodiesData = await getBodiesData();
 
@@ -173,40 +178,13 @@ const drawBodiesOrbits = (data) => {
 }
 
 const drawBodies = (data) => {
-    const tooltip = d3.select("body")
-    .append("div")
-    .attr("class", "tooltip")
-    .style("position", "absolute")
-    .style("background-color", "rgba(0, 0, 0, 0.9)")
-    .style("color", "white")
-    .style("padding", "5px 10px")
-    .style("border-radius", "5px")
-    .style("border", "1px solid white")
-    .style("box-shadow", "0 2px 5px rgba(0, 0, 0, 0.2)")
-    // .style("font-family", "'Orbitron', sans-serif")
-    .style("font-size", "15px")
-    .style("line-height", "1")
-    .style("white-space", "pre-line")
-    .style("pointer-events", "none")
-    .style("opacity", 0);
-
-
     const bodies = g.selectAll('.body')
         .data(data);
-
-    const toolTipText = (d) => {
-        let text = `Name: ${d.name}\n`;
-        if (d.radius) text += `<br>Radius: ${d.radius} km\n`;
-        if (d.gravity) text += `<br>Gravity: ${d.gravity} m/s²\n`;
-        if (d.discovery_date) text += `<br>Discovery: ${d.discovery_date.getFullYear()}\n`;
-        if (d.discovered_by) text += `<br>Discovered by: ${d.discovered_by}\n`;
-        if (d.avg_temp_kelvin) text += `<br>Avg. Temp: ${d.avg_temp_kelvin} K\n`;
-        return text;
-    }
-
     bodies.join(
         enter => {
-            const group = enter.append('g').attr('class', 'body');
+            const group = enter.append('g')
+            .attr('class', 'body')
+            .attr('data-name', d => d.name);
 
             // Main circle representing the body
             group.append('circle')
@@ -216,15 +194,17 @@ const drawBodies = (data) => {
                 .attr('cx', d => d.vis.body.cx)
                 .attr('cy', d => d.vis.body.cy)
                 .on('mouseenter', (event, d) => {
-                    tooltip.style("opacity", 1)
-                        .html(toolTipText(d));
+                    const content = tooltip.textParser.getTextFromtAllBodyData(d);
+                    tooltip.onMouseEnter(content);
                 })
                 .on('mousemove', (event) => {
-                    tooltip.style("left", `${event.pageX + 10}px`)
-                        .style("top", `${event.pageY - 10}px`);
+                    tooltip.onMouseMove(event);
                 })
                 .on('mouseleave', () => {
-                    tooltip.style("opacity", 0);
+                    tooltip.onMouseLeave();
+                })
+                .on('click', (event, d) => {
+                    globalState.updateObjectSelection(d, globalState.SELECTION_TYPES.BODY);
                 });
 
             return group;
@@ -243,7 +223,7 @@ const drawBodies = (data) => {
 };
 
 
-const drawMissionPaths = (missionsData, bodiesData, type) => {
+const drawMissionPaths = (missionsData, bodiesData) => {
 
     // Flatten all mission paths
     let allLinks = missionsData.reduce((acc, d) => {
@@ -273,57 +253,6 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
         acc[key].push(d);
         return acc;
     }, {});
-
-    const tooltip = d3.select("body")
-    .append("div")
-    .attr("class", "tooltip")
-    .style("position", "absolute")
-    .style("background-color", "rgba(0, 0, 0, 0.9)")
-    .style("color", "white")
-    .style("padding", "5px 10px")
-    .style("border-radius", "5px")
-    .style("border", "1px solid white")
-    .style("box-shadow", "0 2px 5px rgba(0, 0, 0, 0.2)")
-    // .style("font-family", "'Orbitron', sans-serif")
-    .style("font-size", "15px")
-    .style("line-height", "1")
-    .style("white-space", "pre-line")
-    .style("pointer-events", "none")
-    .style("opacity", 0);
-
-
-    const toolTipText = (d) => {
-        let text = `Name: ${d.name}\n`;
-        // yyyy-mm-dd
-        const launchDate = d.mission.launch_date.toISOString().split('T')[0];
-        if (d.mission.launch_date) text += `<br>Launch Date: ${launchDate}\n`;
-        const edge = `Path: ${d.origin.name} -> ${d.destination.name}`;
-        text += `<br>${edge}\n`;
-        const destination = d.mission.destination;
-        if (destination) text += `<br>Destination: ${destination}\n`;
-        const mass = d.mission.total_mass;
-        if (mass) text += `<br>Total Mass: ${mass} kg\n`;
-        const missionDuration = d.mission.duration;
-        if (missionDuration) text += `<br>Duration: ${missionDuration} days\n`;
-        const pieces = d.mission.num_pieces;
-        if (pieces) text += `<br># Pieces: ${pieces}\n`;
-        const totalDistanceTravelled = d.mission.distance;
-        if (totalDistanceTravelled) text += `<br>Total Distance: ${totalDistanceTravelled} km\n`;
-        // console.log(d);
-        return text;
-    }
-
-    // const missionsPerSourceDestPair = missionsData.reduce((acc, d) => {
-    //     const key = `${d.origin.name}-${d.destination.name}`;
-    //     if (!acc[key]) acc[key] = [];
-    //     acc[key].push(d.name);
-    //     return acc;
-    // }, {});
-
-    // if (type === 'sourceDest') {
-    //     linksPerSourceDestPair = missionsPerSourceDestPair;
-    //     allLinks = missionsData;
-    // }
 
     const drawBezierCurves = (d, i) => {
         // The idea is to create bezier curves from origin to destination, making
@@ -428,19 +357,14 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
                     .attr('stroke-opacity', 0.5)
                     .attr('stroke-width', 0.2)
                     .on('mouseenter', (event, d) => {
-                        tooltip
-                            .style("opacity", 1)
-                            .html(toolTipText(d))
-                            .style("left", (event.pageX + 10) + "px")
-                            .style("top", (event.pageY + 10) + "px");
+                        const content = tooltip.textParser.getTextFromMissionSegment(d);
+                        tooltip.onMouseEnter(content);
                     })
                     .on('mousemove', (event) => {
-                        tooltip
-                            .style("left", (event.pageX + 10) + "px")
-                            .style("top", (event.pageY + 10) + "px");
+                        tooltip.onMouseMove(event);
                     })
                     .on('mouseleave', () => {
-                        tooltip.style("opacity", 0);
+                        tooltip.onMouseLeave();
                     }),
         update => update,
         exit => exit.remove()
@@ -448,7 +372,7 @@ const drawMissionPaths = (missionsData, bodiesData, type) => {
 }
 
 const getPlanetRadiusScale = (data) => {
-    const maxRadiusInPixels = Math.min(width, height) / 30;
+    const maxRadiusInPixels = Math.min(width, height) / 40;
     const minRadiusInPixels = maxRadiusInPixels / 10;
     data = data.filter(d => d.type === 'planet' || d.type === 'star');
     return d3.scaleLog()
@@ -481,34 +405,42 @@ const setupTooglePlanetMovement = () => {
     accuratePositionsToggle.addEventListener("change", (event) => {
         const isChecked = event.target.checked;
 
-        // Update toggle visuals
         if (isChecked) {
             switchTrack.style.backgroundColor = "steelblue";
-            switchKnob.style.transform = "translateX(25px)"; // Move knob to the right
+            switchKnob.style.transform = "translateX(25px)";
             enableAccuratePlanetPositions();
         } else {
             switchTrack.style.backgroundColor = "#ccc";
-            switchKnob.style.transform = "translateX(0px)"; // Move knob back to the left
+            switchKnob.style.transform = "translateX(0px)";
             disableAccuratePlanetPositions();
         }
     });
 
     const enableAccuratePlanetPositions = () => {
-        console.log("Accurate Planet Positions Enabled");
         movePlanets = true;
-        // Add any additional logic to enable accurate positions
     };
 
     const disableAccuratePlanetPositions = () => {
-        console.log("Accurate Planet Positions Disabled");
         movePlanets = false;
-        // Add any additional logic to disable accurate positions
     };
 
-    // Initialize the toggle in the "active" state if checked
     if (accuratePositionsToggle.checked) {
         switchTrack.style.backgroundColor = "steelblue";
         switchKnob.style.transform = "translateX(25px)";
         enableAccuratePlanetPositions();
     }
+};
+
+/**
+ * Handle object selection change. Is triggered by globalState.updateObjectSelection
+ * Has to respect this function signature
+ * @param {Object} d
+ * @param {boolean} isSelected 
+ */
+export const onBodySelection = (d, isSelected) => {
+    const target = g.selectAll(`.body[data-name="${d.name}"]`);
+    const circle = target.select('g circle.main-circle');
+    circle
+        .attr('stroke', isSelected ? 'white' : 'none')
+        .attr('stroke-width', isSelected ? Math.max(d.vis.body.r / 10, 0.2) : 0)
 };

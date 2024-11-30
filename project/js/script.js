@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const timeSliderText = document.getElementById('timeslider-text');
     const mapContainer = document.getElementById('map-container');
 
-    let currentDashboard = 1;
+    let currentDashboard = 2;
 
     let firstTimeDashboard = true;
     let firstTimeMap = true;
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // // Clear the previous visualization
             // mapContainer.innerHTML = '';
             // solarSystemMap.setup('#dashboard2');
-            dashboard.setup();
+            // dashboard.setup();
         } else {
             dashboard2.style.display = 'none';
             dashboard1.style.display = 'block';

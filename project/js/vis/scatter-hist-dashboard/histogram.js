@@ -1,15 +1,26 @@
-import { getScale, bigNumberToText } from "./utils.js";
-
+import { Variable } from "../utils/variable.js";
+import * as tooltip from "../utils/tooltip.js";
+import { addZoom } from "./zoom.js";
+import * as globalState from "../utils/globalState.js";
 
 const MARGIN = { left: 50, bottom: 50, top: 20, right: 10 };
 const ANIMATION_DURATION = 300;
+const NUM_BINS = 15;
 let containerWidth, containerHeight;
 
 let width, height;
 let svg, g;
 
 
-export const draw = async (containerID, data, dataLabel, scaleType) => {
+/**
+ * Draw a histogram
+ * @param {string} containerID
+ * @param {Array<Object>} data
+ * @param {Variable} variable
+ */
+export const draw = async (containerID, data, variable, resetZoomButtonID) => {
+    
+
     const container = document.getElementById(containerID);
 
     if (!containerWidth) {
@@ -17,12 +28,13 @@ export const draw = async (containerID, data, dataLabel, scaleType) => {
         containerHeight = container.clientHeight;
     }
     
-    // console.log(containerWidth, containerHeight);
-
     width = containerWidth - MARGIN.left - MARGIN.right;
     height = containerHeight - MARGIN.top - MARGIN.bottom;
 
-    // console.log(containerID);
+    const dataLabel = variable.label;
+    data = variable.prepareData(data);
+    
+    const x = variable.getScale(data, width);
 
     d3.select("#" + containerID).selectAll("*").remove();
 
@@ -34,36 +46,33 @@ export const draw = async (containerID, data, dataLabel, scaleType) => {
     g = svg.append("g")
         .attr("transform", `translate(${MARGIN.left}, ${MARGIN.top})`);
 
-    const NUM_BINS = 15;
-
-    const x = getScale(data, scaleType, width);
+    const zoomCenter = { x: width / 2 - MARGIN.left * 0.5, y: MARGIN.top + height / 2 - MARGIN.top * 0.5 };
+    addZoom(svg, g, containerWidth, containerHeight, zoomCenter, resetZoomButtonID);
 
     const histogram = d3.histogram()
-        .value(d => d)
+        .value(d => d[variable.selector])
         .domain(x.domain())
         .thresholds(x.ticks(NUM_BINS));
 
     const bins = histogram(data);
 
-    const y = d3.scaleLog()
-        .domain([0.5, d3.max(bins, d => d.length)])
-        .range([height, 0]);
+    const y = getCountScale(bins);
 
     g.selectAll("rect")
         .data(bins)
         .join("rect")
         .attr("x", d => x(d.x0))
-        .attr("width", function(d) {
+        .attr("width", (d) => {
             if (x(d.x1) - x(d.x0) - 1 < 0) {
-                console.log(d.x0, d.x1);
-                console.log(x(d.x0), x(d.x1));
-                console.log(x(d.x1) - x(d.x0));
-                return 0;
+                return 3;
             }
             return x(d.x1) - x(d.x0) - 1
         })
         .attr("y", height)
         .attr("height", 0)
+        .on("mouseenter", (event, d) => tooltip.onMouseEnter(tooltip.textParser.getTextFromBin(d, variable)))
+        .on("mousemove", tooltip.onMouseMove)
+        .on("mouseleave", tooltip.onMouseLeave)
         .transition()
         .duration(ANIMATION_DURATION)
         .attr("y", d => {
@@ -73,7 +82,6 @@ export const draw = async (containerID, data, dataLabel, scaleType) => {
             return y(d.length)
         })
         .attr("height", function(d) {
-            // console.log(d.length, y(d.length));
             if (!d.length) {
                 return 0;
             }
@@ -102,4 +110,38 @@ export const draw = async (containerID, data, dataLabel, scaleType) => {
         .style("text-anchor", "middle")
         .style("fill", "white")
         .text("Count");
+};
+
+
+/**
+ * Choose the appropriate scale for the histogram count
+ * depending on how big are the counts
+ * @param {Array<Object>} bins 
+ */
+const getCountScale = (bins) => {
+    let scaleType;
+    const positiveData = bins.filter(d => d.length > 0);
+    if (positiveData.length === 0) {
+        scaleType = "linear";
+    } else {
+        const max = d3.max(positiveData.map(d => d.length));
+        const min = d3.min(positiveData.map(d => d.length));
+        const rangeRatio = max / min;
+        if (rangeRatio > 100) {
+            scaleType = "log";
+        } else {
+            scaleType = "linear";
+        }
+    }
+    if (scaleType === "log") {
+        // console.log("Using log scale");
+        return d3.scaleLog()
+        .domain([0.5, d3.max(bins, d => d.length)])
+        .range([height, 0]);
+    } else {
+        // console.log("Using linear scale");
+        return d3.scaleLinear()
+        .domain([0, d3.max(bins, d => d.length)])
+        .range([height, 0]);
+    }
 };

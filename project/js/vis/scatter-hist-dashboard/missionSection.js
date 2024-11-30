@@ -1,17 +1,19 @@
-import { callHistogram, populateSelect } from "./utils.js";
-import { getMissionsData } from "../../data/missions.js";
+import { populateSelect } from "./utils.js";
 import * as histogram from "./histogram.js";
-import * as scatterPlot from "./scatterPlot.js";
+import { getMissionsData } from "../../data/missions.js";
+import * as globalState from "../utils/globalState.js";
+import { ScatterPlot } from "./scatterPlot.js";
+import { Variable, SCALE_TYPES } from "../utils/variable.js";
 
 export const setup = async () => {
 
     const missionData = await getMissionsData();
 
     const missionVariables = [
-        { value: "launch_date", text: "Launch Date", scale: "time" },
-        { value: "total_mass", text: "Total Mass (kg)", scale: "log" },
-        { value: "num_pieces", text: "# Spacecraft Pieces", scale: "linear" },
-        { value: "duration", text: "Duration (days)", scale: "log" },
+        new Variable("launch_date", "Launch Date", SCALE_TYPES.TIME),
+        new Variable("total_mass", "Total Mass (kg)", SCALE_TYPES.LOG),
+        new Variable("num_pieces", "# Spacecraft Pieces", SCALE_TYPES.LINEAR),
+        new Variable("duration", "Duration (days)", SCALE_TYPES.LOG),
     ];
 
     const histogramContainer = document.getElementById("mission-hist");
@@ -27,41 +29,43 @@ export const setup = async () => {
     populateSelect(missionScatterSelectors.x, missionVariables);
     populateSelect(missionScatterSelectors.y, missionVariables);
 
-    callHistogram(missionHistogramVariableSelector, missionVariables, missionData, "mission-hist");
+    histogram.draw(
+        "mission-hist",
+        missionData,
+        missionVariables.find((v) => v.selector === missionHistogramVariableSelector.value),
+        "mission-hist-reset-zoom-button"
+    );
     missionHistogramVariableSelector.addEventListener("change", () => {
-        // console.log(missionHistogramVariableSelector.value);
-        callHistogram(missionHistogramVariableSelector, missionVariables, missionData, "mission-hist");
+        histogram.draw(
+            "mission-hist",
+            missionData,
+            missionVariables.find((v) => v.selector === missionHistogramVariableSelector.value),
+            "mission-hist-reset-zoom-button"
+        );
 
     });
 
     missionHistogramVariableSelector.dispatchEvent(new Event('change'));
 
+    const scatterPlot = new ScatterPlot(
+        scatterContainer,
+        "mission-scatter-reset-zoom-button",
+        globalState.SELECTION_TYPES.MISSION,
+        missionData
+    );
+
     missionScatterSelectors.x.addEventListener("change", () => {
-        // console.log(missionScatterSelectors.x.value);
         scatterPlot.draw(
-            scatterContainer,
-            missionData,
-            missionScatterSelectors.x.value,
-            missionScatterSelectors.y.value,
-            missionVariables.find((v) => v.value === missionScatterSelectors.x.value).text,
-            missionVariables.find((v) => v.value === missionScatterSelectors.y.value).text,
-            missionVariables.find((v) => v.value === missionScatterSelectors.x.value).scale,
-            missionVariables.find((v) => v.value === missionScatterSelectors.y.value).scale
-        );
+            missionVariables.find((v) => v.selector === missionScatterSelectors.x.value),
+            missionVariables.find((v) => v.selector === missionScatterSelectors.y.value)
+        )
     });
 
     missionScatterSelectors.y.addEventListener("change", () => {
-        // console.log(missionScatterSelectors.y.value);
         scatterPlot.draw(
-            scatterContainer,
-            missionData,
-            missionScatterSelectors.x.value,
-            missionScatterSelectors.y.value,
-            missionVariables.find((v) => v.value === missionScatterSelectors.x.value).text,
-            missionVariables.find((v) => v.value === missionScatterSelectors.y.value).text,
-            missionVariables.find((v) => v.value === missionScatterSelectors.x.value).scale,
-            missionVariables.find((v) => v.value === missionScatterSelectors.y.value).scale
-        );
+            missionVariables.find((v) => v.selector === missionScatterSelectors.x.value),
+            missionVariables.find((v) => v.selector === missionScatterSelectors.y.value)
+        )
     });
 
     missionScatterSelectors.x.value = "launch_date";
