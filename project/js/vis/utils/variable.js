@@ -68,7 +68,7 @@ export class Variable {
         return filteredData;
     }
 
-    valueToText(value) {
+    valueAndLabelToText(value) {
         let text = this.label + ": ";
         switch (this.scaleType) {
             case SCALE_TYPES.TIME:
@@ -82,7 +82,19 @@ export class Variable {
         return text;
     }
 
-
+    valueToText(value) {
+        let text = "";
+        switch (this.scaleType) {
+            case SCALE_TYPES.TIME:
+                text += timeToText(value);
+                break;
+            case SCALE_TYPES.LINEAR:
+            case SCALE_TYPES.LOG:
+                text += numberToText(value);
+                break;
+        }
+        return text;
+    }
 }
 
 export const numberToText = (value) => {

@@ -36,8 +36,8 @@ export const textParser = {
      * */
     getTextFromVariables: (d, xVariable, yVariable) => {
         let text = `Name: ${d.name}\n`;
-        text += `<br>${xVariable.valueToText(d[xVariable.selector])}\n`;
-        text += `<br>${yVariable.valueToText(d[yVariable.selector])}\n`;
+        text += `<br>${xVariable.valueAndLabelToText(d[xVariable.selector])}\n`;
+        text += `<br>${yVariable.valueAndLabelToText(d[yVariable.selector])}\n`;
         return text;
     },
     getTextFromMissionSegment: (d) => {
@@ -60,25 +60,18 @@ export const textParser = {
         // console.log(d);
         return text;
     },
-    getTextFromType(d, type, xSelector=null, ySelector=null) {
-        switch (type) {
-            case TEXT_TYPES.BODY_DATA:
-                return this.getTextFromtAllBodyData(d);
-            case TEXT_TYPES.XY:
-                return this.getTextFromVariables(d, xSelector, ySelector);
-            case TEXT_TYPES.MISSION_SEGMENT:
-                return this.getTextFromMissionSegment(d);
-            default:
-                console.warn("Tooltip text type not found: " + type);
-                return "";
-        }
-    }
+    getTextFromBin: (d, variable) => {
+        let text = `Count: ${d.length}\n`;
+        text += `Range: ${variable.valueAndLabelToText(d.x0)} - ${variable.valueToText(d.x1)}\n`;
+        return text;
+    },
 }
 
 export const TEXT_TYPES = {
     BODY_DATA: "BODY_DATA",
     XY: "XY",
     MISSION_SEGMENT: "MISSION_SEGMENT",
+    BIN: "BIN",
 }
 
 export const onMouseEnter = (tooltipText) => {

@@ -1,5 +1,5 @@
 import { Variable } from "../utils/variable.js";
-
+import * as tooltip from "../utils/tooltip.js";
 
 const MARGIN = { left: 50, bottom: 50, top: 20, right: 10 };
 const ANIMATION_DURATION = 300;
@@ -51,9 +51,7 @@ export const draw = async (containerID, data, variable) => {
 
     const bins = histogram(data);
 
-    const y = d3.scaleLog()
-        .domain([0.5, d3.max(bins, d => d.length)])
-        .range([height, 0]);
+    const y = getCountScale(bins);
 
     g.selectAll("rect")
         .data(bins)
@@ -67,6 +65,9 @@ export const draw = async (containerID, data, variable) => {
         })
         .attr("y", height)
         .attr("height", 0)
+        .on("mouseenter", (event, d) => tooltip.onMouseEnter(tooltip.textParser.getTextFromBin(d, variable)))
+        .on("mousemove", tooltip.onMouseMove)
+        .on("mouseleave", tooltip.onMouseLeave)
         .transition()
         .duration(ANIMATION_DURATION)
         .attr("y", d => {
@@ -104,4 +105,41 @@ export const draw = async (containerID, data, variable) => {
         .style("text-anchor", "middle")
         .style("fill", "white")
         .text("Count");
+};
+
+
+/**
+ * Choose the appropriate scale for the histogram count
+ * depending on how big are the counts
+ * @param {Array<Object>} bins 
+ */
+const getCountScale = (bins) => {
+    let scaleType;
+    const positiveData = bins.filter(d => d.length > 0);
+    if (positiveData.length === 0) {
+        scaleType = "linear";
+    } else {
+        const max = d3.max(positiveData.map(d => d.length));
+        const min = d3.min(positiveData.map(d => d.length));
+        const rangeRatio = max / min;
+        console.log("Range ratio: ", rangeRatio);
+        console.log("Max: ", max);
+        console.log("Min: ", min);
+        if (rangeRatio > 100) {
+            scaleType = "log";
+        } else {
+            scaleType = "linear";
+        }
+    }
+    if (scaleType === "log") {
+        console.log("Using log scale");
+        return d3.scaleLog()
+        .domain([0.5, d3.max(bins, d => d.length)])
+        .range([height, 0]);
+    } else {
+        console.log("Using linear scale");
+        return d3.scaleLinear()
+        .domain([0, d3.max(bins, d => d.length)])
+        .range([height, 0]);
+    }
 };
