@@ -50,7 +50,7 @@ export const draw = async (containerID, data, variable) => {
         .thresholds(x.ticks(NUM_BINS));
 
     const bins = histogram(data);
-    
+
     const y = getCountScale(bins);
 
     g.selectAll("rect")
@@ -59,7 +59,7 @@ export const draw = async (containerID, data, variable) => {
         .attr("x", d => x(d.x0))
         .attr("width", (d) => {
             if (x(d.x1) - x(d.x0) - 1 < 0) {
-                return 0;
+                return 3;
             }
             return x(d.x1) - x(d.x0) - 1
         })
