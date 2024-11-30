@@ -1,6 +1,5 @@
 import { populateSelect } from "./utils.js";
 import { getBodiesData } from "../../data/bodies.js";
-// import * as scatterPlot from "./scatterPlot.js";
 import { ScatterPlot } from "./scatterPlot.js";
 import * as histogram from "./histogram.js";
 import * as globalState from "../utils/globalState.js";
@@ -73,24 +72,7 @@ export const setup = async () => {
         bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value)
     )
 
-    // scatterPlot.draw(
-    //     scatterContainer,
-    //     bodiesData,
-    //     bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value),
-    //     bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value),
-    //     globalState.SELECTION_TYPES.BODY,
-    //     "bodies-scatter-reset-zoom-button"
-    // );
-
     bodiesScatterSelectors.x.addEventListener("change", () => {
-        // scatterPlot.draw(
-        //     scatterContainer,
-        //     bodiesData,
-        //     bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value),
-        //     bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value),
-        //     globalState.SELECTION_TYPES.BODY,
-        //     "bodies-scatter-reset-zoom-button"
-        // );
         scatterPlot.draw(
             bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value),
             bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value)
@@ -98,14 +80,6 @@ export const setup = async () => {
     });
 
     bodiesScatterSelectors.y.addEventListener("change", () => {
-        // scatterPlot.draw(
-        //     scatterContainer,
-        //     bodiesData,
-        //     bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value),
-        //     bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value),
-        //     globalState.SELECTION_TYPES.BODY,
-        //     "bodies-scatter-reset-zoom-button"
-        // );
         scatterPlot.draw(
             bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.x.value),
             bodiesVariables.find((v) => v.selector === bodiesScatterSelectors.y.value)
