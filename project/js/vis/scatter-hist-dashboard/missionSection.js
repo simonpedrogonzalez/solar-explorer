@@ -2,7 +2,6 @@ import { populateSelect } from "./utils.js";
 import * as histogram from "./histogram.js";
 import { getMissionsData } from "../../data/missions.js";
 import * as globalState from "../utils/globalState.js";
-// import * as scatterPlot from "./scatterPlot.js";
 import { ScatterPlot } from "./scatterPlot.js";
 import { Variable, SCALE_TYPES } from "../utils/variable.js";
 
@@ -56,14 +55,6 @@ export const setup = async () => {
     );
 
     missionScatterSelectors.x.addEventListener("change", () => {
-        // scatterPlot.draw(
-        //     scatterContainer,
-        //     missionData,
-        //     missionVariables.find((v) => v.selector === missionScatterSelectors.x.value),
-        //     missionVariables.find((v) => v.selector === missionScatterSelectors.y.value),
-        //     globalState.SELECTION_TYPES.MISSION,
-        //     "mission-scatter-reset-zoom-button"
-        // );
         scatterPlot.draw(
             missionVariables.find((v) => v.selector === missionScatterSelectors.x.value),
             missionVariables.find((v) => v.selector === missionScatterSelectors.y.value)
@@ -71,14 +62,6 @@ export const setup = async () => {
     });
 
     missionScatterSelectors.y.addEventListener("change", () => {
-        // scatterPlot.draw(
-        //     scatterContainer,
-        //     missionData,
-        //     missionVariables.find((v) => v.selector === missionScatterSelectors.x.value),
-        //     missionVariables.find((v) => v.selector === missionScatterSelectors.y.value),
-        //     globalState.SELECTION_TYPES.MISSION,
-        //     "mission-scatter-reset-zoom-button"
-        // );
         scatterPlot.draw(
             missionVariables.find((v) => v.selector === missionScatterSelectors.x.value),
             missionVariables.find((v) => v.selector === missionScatterSelectors.y.value)

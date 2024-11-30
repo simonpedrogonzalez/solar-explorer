@@ -13,11 +13,11 @@ export const setup = async () => {
     const bodiesVariables = [
         new Variable("radius", "Radius (km)", SCALE_TYPES.LOG, d => d.name !== "Sun"),
         new Variable("density", "Density (g/cm³)", SCALE_TYPES.LINEAR),
-        new Variable("gravity", "Gravity (m/s²)", SCALE_TYPES.LINEAR),
+        new Variable("gravity", "Gravity (m/s²)", SCALE_TYPES.LINEAR, d => d.gravity > 0),
         new Variable("sideral_orbit", "Sideral Orbit (days)", SCALE_TYPES.LOG),
         new Variable("sideral_rotation", "Sideral Rotation (hours)", SCALE_TYPES.LOG),
         new Variable("discovery_date", "Discovery Date", SCALE_TYPES.TIME),
-        new Variable("avg_temp_kelvin", "Average Temperature (K)", SCALE_TYPES.LINEAR, d => d.name !== "Sun"),
+        new Variable("avg_temp_kelvin", "Average Temperature (K)", SCALE_TYPES.LINEAR, d => d.name !== "Sun" && d.avg_temp_kelvin > 0),
         new Variable("mission_orbit_count", "Mission Orbit Count", SCALE_TYPES.LINEAR),
         new Variable("mission_dest_count", "Mission Destination Count", SCALE_TYPES.LINEAR),
         new Variable("semi_major_axis", "Semi Major Axis (AU)", SCALE_TYPES.LOG, null, (d) => {

@@ -6,8 +6,6 @@ const MARGIN = { left: 80, bottom: 50, top: 10, right: 10 };
 const ANIMATION_DURATION = 300;
 const MARKER_SIZE = 3;
 
-let svg, g;
-
 let width, height;
 
 export class ScatterPlot {
@@ -40,7 +38,7 @@ export class ScatterPlot {
         this.g = this.svg.append("g")
             .attr("transform", `translate(${MARGIN.left}, ${MARGIN.top})`);
         
-        const zoomCenter = { x: width / 2 - MARGIN.left, y: height / 2 - MARGIN.top };
+        const zoomCenter = { x: this.width / 2 - MARGIN.left, y: this.height / 2 - MARGIN.top };
         addZoom(this.svg, this.g, this.width, this.height, zoomCenter, this.resetZoomButtonID);
     }
 
@@ -118,107 +116,3 @@ export class ScatterPlot {
             .duration(ANIMATION_DURATION);
     }
 }
-
-export const draw = async (containerID, fullData, xVariable, yVariable, globalStateSelectionType, resetZoomButtonID) => {
-
-    const box = d3.select(containerID).node().getBoundingClientRect();
-
-    if (!width) {
-        width = box.width;
-        height = box.height;
-    }
-
-    // Prepare the data by running variable-specific data preparation functions
-    fullData = yVariable.prepareData(xVariable.prepareData(fullData));
-
-    // Get the scales but accounting for the margins
-    let x = xVariable.getScale(fullData, width - MARGIN.left - MARGIN.right);
-    x.range([0, width - MARGIN.left - MARGIN.right]);
-
-    let y = yVariable.getScale(fullData, height - MARGIN.top - MARGIN.bottom);
-    y.range([height - MARGIN.top - MARGIN.bottom, 0]);
-    
-    let xSelector = xVariable.selector;
-    let ySelector = yVariable.selector;
-    let xLabel = xVariable.label;
-    let yLabel = yVariable.label;
-
-    // Clear the existing visualization
-    d3.select(containerID).selectAll("*").remove();
-
-    svg = d3.select(containerID)
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height);
-
-    g = svg.append("g")
-        .attr("transform", `translate(${MARGIN.left}, ${MARGIN.top})`);
-
-    const zoomCenter = { x: width / 2 - MARGIN.left, y: height / 2 - MARGIN.top };
-    addZoom(svg, g, width, height, zoomCenter, resetZoomButtonID);
-
-    const xAxis = d3.axisBottom(x);
-    const yAxis = d3.axisLeft(y);
-
-
-    g.append("g")
-        .attr("transform", `translate(0, ${height - MARGIN.top - MARGIN.bottom})`)
-        .call(xAxis);
-
-    g.append("g")
-        .call(yAxis);
-
-    // Add axis labels
-    g.append("text")
-        .attr("x", width / 2)
-        .attr("y", height - MARGIN.bottom + 30)
-        .style("text-anchor", "middle")
-        .style("fill", "white")
-        .text(xLabel);
-
-    g.append("text")
-        .attr("x", -(height-MARGIN.bottom) / 2)
-        .attr("y",  MARGIN.left - 130)
-        .attr("transform", "rotate(-90)")
-        .style("text-anchor", "middle")
-        .style("fill", "white")
-        .text(yLabel);
-
-
-    g.selectAll("circle")
-        .data(fullData)
-        .join("circle")
-        .attr('data-name', d => d.name)
-        .attr("cx", d => x(d[xSelector]))
-        .attr("cy", d => y(d[ySelector]))
-        .on("mouseenter", (event, d) => {
-            const content = tooltip.textParser.getTextFromVariables(d, xVariable, yVariable);
-            tooltip.onMouseEnter(content);
-        })
-        .on("mousemove", (event) => tooltip.onMouseMove(event))
-        .on("mouseleave", tooltip.onMouseLeave)
-        .transition()
-        .duration(ANIMATION_DURATION)
-        .attr("r", MARKER_SIZE)
-        .attr("fill", "steelblue");
-
-
-    /**
-     * Handle object selection change. Is triggered by globalState.updateObjectSelection
-     * Has to respect this function signature
-     * @param {Object} d
-     * @param {boolean} isSelected 
-     */
-    const onObjectSelection = ((d, isSelected) => {
-        console.log(d.name, isSelected);
-        const target = g.selectAll(`circle[data-name="${d.name}"]`);
-        console.log(g.selectAll(`circle`));
-        // print first circle data-name
-        console.log(g.selectAll(`circle`).data()[0].name);
-        console.log(target.nodes());
-        target.attr("fill", isSelected ? "red" : "steelblue");
-    }).bind(null, containerID);
-
-    // globalState.suscribeToObjectSelection(onObjectSelection, globalStateSelectionType);
-}
-
