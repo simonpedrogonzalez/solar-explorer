@@ -4,7 +4,7 @@ import { Variable } from "../utils/variable.js";
 
 const MARGIN = { left: 80, bottom: 50, top: 10, right: 10 };
 const ANIMATION_DURATION = 300;
-const MARKER_SIZE = 2;
+const MARKER_SIZE = 3;
 
 let svg;
 

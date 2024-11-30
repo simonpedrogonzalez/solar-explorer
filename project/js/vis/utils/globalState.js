@@ -42,11 +42,11 @@ const updateObjectSelection = (d, selectionType) => {
 }
 
 export const isMissionSelected = (d) => {
-    return isObjectSelected(d, 'mission');
+    return isObjectSelected(d, SELECTION_TYPES.MISSION);
 }
 
 export const isBodySelected = (d) => {
-    return isObjectSelected(d, 'body');
+    return isObjectSelected(d, SELECTION_TYPES.BODY);
 }
 
 export const clearSelection = () => {

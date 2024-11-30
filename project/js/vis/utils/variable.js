@@ -76,7 +76,6 @@ export class Variable {
                 text += numberToText(value);
                 break;
         }
-        console.log(text);
         return text;
     }
 
@@ -109,6 +108,5 @@ export const numberToText = (value) => {
 
 
 export const timeToText = (value) => {
-    console.log(value.getFullYear());
     return value.getFullYear();
 }

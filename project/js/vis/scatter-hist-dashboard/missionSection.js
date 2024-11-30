@@ -1,6 +1,5 @@
 import { callHistogram, populateSelect } from "./utils.js";
 import { getMissionsData } from "../../data/missions.js";
-import * as tooltip from "../utils/tooltip.js";
 import * as globalState from "../utils/globalState.js";
 import * as scatterPlot from "./scatterPlot.js";
 import { Variable, SCALE_TYPES } from "../utils/variable.js";
@@ -31,7 +30,6 @@ export const setup = async () => {
 
     callHistogram(missionHistogramVariableSelector, missionVariables, missionData, "mission-hist");
     missionHistogramVariableSelector.addEventListener("change", () => {
-        // console.log(missionHistogramVariableSelector.value);
         callHistogram(missionHistogramVariableSelector, missionVariables, missionData, "mission-hist");
 
     });
@@ -39,7 +37,6 @@ export const setup = async () => {
     missionHistogramVariableSelector.dispatchEvent(new Event('change'));
 
     missionScatterSelectors.x.addEventListener("change", () => {
-        // console.log(missionScatterSelectors.x.value);
         scatterPlot.draw(
             scatterContainer,
             missionData,
@@ -50,7 +47,6 @@ export const setup = async () => {
     });
 
     missionScatterSelectors.y.addEventListener("change", () => {
-        // console.log(missionScatterSelectors.y.value);
         scatterPlot.draw(
             scatterContainer,
             missionData,

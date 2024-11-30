@@ -13,8 +13,8 @@ export const setup = async () => {
         new Variable("radius", "Radius (km)", SCALE_TYPES.LOG, d => d.name !== "Sun"),
         new Variable("density", "Density (g/cm³)", SCALE_TYPES.LINEAR),
         new Variable("gravity", "Gravity (m/s²)", SCALE_TYPES.LINEAR),
-        new Variable("sideral_orbit", "Sideral Orbit (days)", SCALE_TYPES.LINEAR),
-        new Variable("sideral_rotation", "Sideral Rotation (hours)", SCALE_TYPES.LINEAR),
+        new Variable("sideral_orbit", "Sideral Orbit (days)", SCALE_TYPES.LOG),
+        new Variable("sideral_rotation", "Sideral Rotation (hours)", SCALE_TYPES.LOG),
         new Variable("discovery_date", "Discovery Date", SCALE_TYPES.TIME),
         new Variable("avg_temp_kelvin", "Average Temperature (K)", SCALE_TYPES.LINEAR),
         new Variable("mission_orbit_count", "Mission Orbit Count", SCALE_TYPES.LINEAR),
@@ -36,8 +36,6 @@ export const setup = async () => {
     populateSelect(bodiesScatterSelectors.x, bodiesVariables);
     populateSelect(bodiesScatterSelectors.y, bodiesVariables);
 
-    // console.log(bodiesData);
-
     callHistogram(bodiesHistogramVariableSelector, bodiesVariables, bodiesData, "bodies-hist");
     bodiesHistogramVariableSelector.addEventListener("change", () => {
         callHistogram(bodiesHistogramVariableSelector, bodiesVariables, bodiesData, "bodies-hist");
@@ -58,7 +56,6 @@ export const setup = async () => {
     );
 
     bodiesScatterSelectors.x.addEventListener("change", () => {
-        // console.log(bodiesScatterSelectors.x.value);
         scatterPlot.draw(
             scatterContainer,
             bodiesData,
@@ -69,7 +66,6 @@ export const setup = async () => {
     });
 
     bodiesScatterSelectors.y.addEventListener("change", () => {
-        // console.log(bodiesScatterSelectors.y.value);
         scatterPlot.draw(
             scatterContainer,
             bodiesData,
