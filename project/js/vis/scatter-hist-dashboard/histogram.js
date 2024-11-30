@@ -31,8 +31,8 @@ export const draw = async (containerID, data, variable) => {
 
     const dataLabel = variable.label;
     data = variable.prepareData(data);
+    
     const x = variable.getScale(data, width);
-    data = data.map(d => d[variable.selector]);
 
     d3.select("#" + containerID).selectAll("*").remove();
 
@@ -45,19 +45,19 @@ export const draw = async (containerID, data, variable) => {
         .attr("transform", `translate(${MARGIN.left}, ${MARGIN.top})`);
 
     const histogram = d3.histogram()
-        .value(d => d)
+        .value(d => d[variable.selector])
         .domain(x.domain())
         .thresholds(x.ticks(NUM_BINS));
 
     const bins = histogram(data);
-
+    
     const y = getCountScale(bins);
 
     g.selectAll("rect")
         .data(bins)
         .join("rect")
         .attr("x", d => x(d.x0))
-        .attr("width", function(d) {
+        .attr("width", (d) => {
             if (x(d.x1) - x(d.x0) - 1 < 0) {
                 return 0;
             }
@@ -122,9 +122,6 @@ const getCountScale = (bins) => {
         const max = d3.max(positiveData.map(d => d.length));
         const min = d3.min(positiveData.map(d => d.length));
         const rangeRatio = max / min;
-        console.log("Range ratio: ", rangeRatio);
-        console.log("Max: ", max);
-        console.log("Min: ", min);
         if (rangeRatio > 100) {
             scaleType = "log";
         } else {
@@ -132,12 +129,12 @@ const getCountScale = (bins) => {
         }
     }
     if (scaleType === "log") {
-        console.log("Using log scale");
+        // console.log("Using log scale");
         return d3.scaleLog()
         .domain([0.5, d3.max(bins, d => d.length)])
         .range([height, 0]);
     } else {
-        console.log("Using linear scale");
+        // console.log("Using linear scale");
         return d3.scaleLinear()
         .domain([0, d3.max(bins, d => d.length)])
         .range([height, 0]);

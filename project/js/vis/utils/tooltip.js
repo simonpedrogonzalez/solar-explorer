@@ -61,8 +61,25 @@ export const textParser = {
         return text;
     },
     getTextFromBin: (d, variable) => {
+        const limitToDisplay = 5;
+        const perRow = 3;
+        let currentLimit = Math.min(d.length, limitToDisplay);
         let text = `Count: ${d.length}\n`;
-        text += `Range: ${variable.valueAndLabelToText(d.x0)} - ${variable.valueToText(d.x1)}\n`;
+        text += `Range: ${variable.valueToText(d.x0)} - ${variable.valueToText(d.x1)}\n`;
+        text += `<br>`;
+        let i = 0;
+        while (i < currentLimit) {
+            text += `${d[i].name}, `;
+            if ((i + 1) % perRow === 0) {
+                text += '\n';
+            }
+            i++;
+        }
+        if (d.length > limitToDisplay) {
+            text += `and ${d.length - limitToDisplay} more...`;
+        } else {
+            text = text.slice(0, -2);
+        }
         return text;
     },
 }

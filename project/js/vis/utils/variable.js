@@ -50,12 +50,13 @@ export class Variable {
     }
 
     prepareData(data) {
-        let filteredData = data.filter(d => d[this.selector] !== null && d[this.selector] !== undefined);
+        let filteredData = data;
+        if (this.transform) {
+            filteredData.forEach(this.transform);
+        }
+        filteredData = data.filter(d => d[this.selector] !== null && d[this.selector] !== undefined);
         if (this.filter) {
             filteredData = filteredData.filter(this.filter);
-        }
-        if (this.transform) {
-            filteredData = filteredData.map(this.transform);
         }
         if (this.scaleType === SCALE_TYPES.LOG) {
             filteredData = filteredData.filter(d => d[this.selector] > 0);

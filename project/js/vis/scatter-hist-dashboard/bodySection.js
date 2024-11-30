@@ -16,10 +16,12 @@ export const setup = async () => {
         new Variable("sideral_orbit", "Sideral Orbit (days)", SCALE_TYPES.LOG),
         new Variable("sideral_rotation", "Sideral Rotation (hours)", SCALE_TYPES.LOG),
         new Variable("discovery_date", "Discovery Date", SCALE_TYPES.TIME),
-        new Variable("avg_temp_kelvin", "Average Temperature (K)", SCALE_TYPES.LINEAR),
+        new Variable("avg_temp_kelvin", "Average Temperature (K)", SCALE_TYPES.LINEAR, d => d.name !== "Sun"),
         new Variable("mission_orbit_count", "Mission Orbit Count", SCALE_TYPES.LINEAR),
         new Variable("mission_dest_count", "Mission Destination Count", SCALE_TYPES.LINEAR),
-        new Variable("semi_major_axis", "Semi Major Axis (AU)", SCALE_TYPES.LOG),
+        new Variable("semi_major_axis", "Semi Major Axis (AU)", SCALE_TYPES.LOG, null, (d) => {
+            d['semi_major_axis'] = d.semi_major_axis ? d.semi_major_axis : d.semi_major_axis_0;
+        }),
     ];
 
     const histogramContainer = document.getElementById("bodies-hist");
