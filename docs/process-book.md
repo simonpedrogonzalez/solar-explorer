@@ -230,11 +230,13 @@ We are considering:
 - Displaying them only after some interaction.
 - Clarifying the satellite distance scale around the planets.
 
+Solution: finally, we addressed this issue by coloring the most important satellites, adjusting their scale, adding more zoom level, and placing them in an ordered manner in the orbit as to make them easier to find.
+
 ### Code refactor
 
 The code was refactored to separate some elements of the map into different files.
 
-### Visualization refinements
+### Visualization refinements 1
 
 The styles of the orbits, the planets and controls were changed. The planet distance scale to the Sun was added to the map.
 
@@ -248,4 +250,67 @@ Also, zoom controls were added in case the wheel zooming isn't available or is n
 
 ![alt text](controls_v2.png)
 
+## Data explorer Implementation
 
+Author: Simon Gonzalez
+
+We implemented the data explorer dashboard with two scatterplots and two histograms (with their respective variable selectors), to explore the two main datasets: solar system bodies and missions. Here, the user can explore the distribution of different variables as well as the relationship between them. One challenge was to represent distributions for variables with a wide range of values. In this case we used log scales for the histograms, making variable width bars to represent the distribution, which raises some concerns on interpretability, which will be addressed by expressive tooltips.
+
+![alt text](dashboard_1.png)
+
+### Data enrichment
+
+Author: Simon Gonzalez
+
+For the data explorer, some interesting variables were added to the dataset, including bodies gravity, average temperature, discovery date, discoverer and density. These variables were not initially included since there are missing values, but we deemed interesting enough to add them to the dataset.
+
+## Visualization refinements 2
+
+### Data explorer improvements
+
+Author: Simon Gonzalez
+
+- The data explorer was improved with transformations, filtering and scale changes applied depending on the selected variables.
+- A tooltip is displayed when hovering over the data points on the scatterplots or the bars on the histograms, showing relevant data for easy interpretation.
+- Zoom was added individually to all plots for easier exploration.
+- The code was refactored separating the functionalities.
+
+## On selection interactions
+
+Selection interaction was added between the solar system map and the data explorer plots was added, as to highlight the selected objects in both screens. This allows the user to explore the data in the data explorer and see the selected objects in the solar system map.
+
+![alt text](selection_highlight_1.png)
+
+![alt text](selection_highlight_2.png)
+
+
+## On tooltips
+
+Author: Simon Gonzalez
+
+Tooltips were designed to be informative and easy to read. They show the name of the object and several values related to it, depending on the visualization.
+
+Informative:
+- For the solar system map, the tooltips show:
+	- the name of the object and Radius, Discovery Date, Discoverer, Gravity, Average Temperature.
+	- the name of the mission, Launch Date, Destination, the particular Path in between body orbits that is selected, misison duration and the number of pieces in the mission.
+- For the scatterplots, the tooltips show the name of the object and the values of the selected variables.
+- For histograms, the tooltips show the number of objects in the selected bin, its range and up to 5 objects present in the bin. This allows to explore which objects fall into each category, which is particulary useful to understand what kind of objects fall into each bin, for example, "small satellites fall into this range", "gas giants fall into this other range", etc.
+
+Easy to read:
+- The "stylish" font used for visual impact for some parts of the dashboard was discarded in favor of a more readable font.
+- High constrast (black and white) was used for the text and the background of the tooltips.
+
+![alt text](tooltip_hist.png)
+
+## On the use of color.
+
+Author: Simon Gonzalez
+
+This high contrast theme is used also in the charts and the solar system map, adhering to the general idea of using a neutral background and sparingly using color. In the case of the solar system map, the color is used to highlight the objects and the paths of the missions, and in the case of the explorer, the color is used to highlight the selected objects (red) in the scatterplots, making use of pop-out effect.
+
+## Visualization refinements 3
+
+Author: Simon Gonzalez
+
+- The html was improved with a better layout, some interaction bugs were fixed and the link to the video presentation was added in the main screen.
