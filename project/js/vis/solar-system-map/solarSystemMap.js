@@ -195,7 +195,7 @@ const drawBodies = (data) => {
                 .attr('cy', d => d.vis.body.cy)
                 .on('mouseenter', (event, d) => {
                     const content = tooltip.textParser.getTextFromtAllBodyData(d);
-                    tooltip.onMouseEnter(content);
+                    tooltip.onMouseEnter(event, content);
                 })
                 .on('mousemove', (event) => {
                     tooltip.onMouseMove(event);
@@ -358,7 +358,7 @@ const drawMissionPaths = (missionsData, bodiesData) => {
                     .attr('stroke-width', 0.2)
                     .on('mouseenter', (event, d) => {
                         const content = tooltip.textParser.getTextFromMissionSegment(d);
-                        tooltip.onMouseEnter(content);
+                        tooltip.onMouseEnter(event, content);
                     })
                     .on('mousemove', (event) => {
                         tooltip.onMouseMove(event);

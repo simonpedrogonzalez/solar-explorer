@@ -106,7 +106,7 @@ export class ScatterPlot {
             .attr("cy", d => y(d[ySelector]))
             .on("mouseenter", (event, d) => {
                 const content = tooltip.textParser.getTextFromVariables(d, xVariable, yVariable);
-                tooltip.onMouseEnter(content);
+                tooltip.onMouseEnter(event, content);
             })
             .on("mousemove", (event) => tooltip.onMouseMove(event))
             .on("mouseleave", tooltip.onMouseLeave)
