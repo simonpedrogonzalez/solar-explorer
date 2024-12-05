@@ -39,12 +39,6 @@ export const getMissionSimplePathData = async () => {
     let data = await getMissionsData();
     objectData = await getBodiesData();
     simlifiedMissionsData = data.map(simplifyMissionsData).filter(d => d !== null);
-//     simlifiedMissionsData.forEach(d => {
-//         // console.log(d.name);
-//         if (d.name == 'Apollo 13 CSM') {
-//             console.log(d.links);
-//         }
-// });
     return simlifiedMissionsData;
 }
 
@@ -63,11 +57,6 @@ const pathToLinks = (path, d) => {
 
 const simplifyMissionsData = (d) => {    
     if (!d.pieces || d.pieces.length === 0) return null;
-    // find the first piece that has an event with parent null and id deepspace (starts with D)
-            // console.log(d.name);
-    // if (d.name == 'Apollo 13 CSM') {
-    //     console.log(d.links);
-    // }   
 
     let firstDeepSpacePiece = d.pieces.find(piece => {
         return piece.events.find(event => event.parent === null && event.id.startsWith('D'));
@@ -87,9 +76,7 @@ const simplifyMissionsData = (d) => {
     if (!payloadPath) return null;
     
     let destinationObjectName = payloadPath[payloadPath.length - 1];
-    // console.log("Mission", d.name, originObjectName, destinationObjectName);
-    // console.log(payloadPath);
-
+    
     // Filter by the ones I can draw
     let originObject = objectData.find(planet => planet.name === originObjectName);
     let destinationObject = objectData.find(planet => planet.name === destinationObjectName);
@@ -111,11 +98,9 @@ const simplifyMissionsData = (d) => {
     const { ...rest } = d;
 
     return {
-        // "name": d.name,
         "origin": origin,
         "destination": destination,
         "links": pathToLinks(payloadPath, d),
-        // "launch_date": d.launch_date,
         ...rest
     }
 }

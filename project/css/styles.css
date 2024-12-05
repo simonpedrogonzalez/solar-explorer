@@ -150,6 +150,15 @@ body, html {
     letter-spacing: 1px;
 }
 
+.secondary.switch-button {
+    top: 65px;
+    font-size: 12px;
+}
+
+.hidden {
+    display: none;
+}
+
 .switch-button:hover {
     background-color: white;
     color: black;
