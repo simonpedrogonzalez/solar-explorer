@@ -134,12 +134,10 @@ const getCountScale = (bins) => {
         }
     }
     if (scaleType === "log") {
-        // console.log("Using log scale");
         return d3.scaleLog()
         .domain([0.5, d3.max(bins, d => d.length)])
         .range([height, 0]);
     } else {
-        // console.log("Using linear scale");
         return d3.scaleLinear()
         .domain([0, d3.max(bins, d => d.length)])
         .range([height, 0]);

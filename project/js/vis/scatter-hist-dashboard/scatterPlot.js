@@ -43,10 +43,8 @@ export class ScatterPlot {
     }
 
     onObjectSelection = (d, isSelected) => {
-        console.log("ScatterPlot.onObjectSelection", d.name, isSelected);
         const g = this.g;
         const target = g.selectAll(`circle`).filter((d1) => d1.name === d.name);
-        console.log(target.nodes());
         target
         .attr("fill", isSelected ? "red" : "steelblue");
     }
@@ -116,7 +114,6 @@ export class ScatterPlot {
             .on("click", (event, d) => globalState.updateObjectSelection(d, this.globalStateSelectionType))
             .attr("r", MARKER_SIZE)
             .attr("fill", d => {
-                console.log("calling is Object selected")
                 return globalState.isObjectSelected(d, this.globalStateSelectionType) ? "red" : "steelblue"
             })
             .transition()

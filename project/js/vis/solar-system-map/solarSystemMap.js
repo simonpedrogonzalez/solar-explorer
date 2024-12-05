@@ -267,11 +267,6 @@ const drawMissionPaths = (missionsData, bodiesData) => {
             acc[key].push(d);
         }
 
-        // if (!acc[key] && !acc[key2]) acc[key] = [];
-        // if (!acc[key2] && acc[key]) acc[key].push(d);
-        // if (!acc[key] && acc[key2]) acc[key2].push(d);
-        // if (!acc[key]) acc[key] = [];
-        // acc[key].push(d);
         return acc;
     }, {});
 
@@ -289,21 +284,12 @@ const drawMissionPaths = (missionsData, bodiesData) => {
             return "";
         }
         let pairMissions = linksPerSourceDestPair[`${d.origin.name}-${d.destination.name}`];
-        // add iverse pair
-        // if (linksPerSourceDestPair[`${d.destination.name}-${d.origin.name}`]) {
-        //     console.log("inverse pair", d.origin.name, d.destination.name);
-        // }
         const missionCount = pairMissions.length;
-        // const halfMissionCount = Math.floor(missionCount / 2);
         const halfMissionCount = Math.ceil(missionCount / 2);
 
         // if elements of pairMissions are string, directly search
         let indexInMissionsPerSource = null;
-        if (pairMissions[0].constructor === String) {
-            // indexInMissionsPerSource = pairMissions.indexOf(d.name);
-        } else {
-            indexInMissionsPerSource = pairMissions.findIndex(m => m.name === d.name);
-        }
+        indexInMissionsPerSource = pairMissions.findIndex(m => m.name === d.name);
 
         const maxWidthForLineGroup = 40;
         const separation = Math.min(maxWidthForLineGroup / halfMissionCount, 5);
@@ -322,10 +308,6 @@ const drawMissionPaths = (missionsData, bodiesData) => {
                 indexInMissionsPerSourceHalf -= 1;
             }
         }
-        // const rightOrLeft = indexInMissionsPerSource % 2 === 0 ? 1 : -1;
-
-        // const indexInMissionsPerSourceHalf = Math.abs(indexInMissionsPerSource - halfMissionCount);
-        // const indexInMissionsPerSourceHalf 
 
         let x1 = d.origin.vis.body.cx;
         let y1 = d.origin.vis.body.cy;
@@ -381,15 +363,6 @@ const drawMissionPaths = (missionsData, bodiesData) => {
         const offsetY = perpDy * offsetMagnitude;
         const cx = (x1 + x2) / 2 + offsetX;
         const cy = (y1 + y2) / 2 + offsetY;
-
-        // if (d.origin.name === 'Earth' && d.destination.name === 'Jupiter' ||
-        //     d.origin.name === 'Jupiter' && d.destination.name === 'Earth') {
-        //     console.log(d.origin.name, d.destination.name, d.name);
-        //     console.log(d.mission.name, x1, y1, x2, y2, cx, cy);
-        //     console.log("halfMissionCount:", halfMissionCount, " indexInMissionsPerSourceHalf:", indexInMissionsPerSourceHalf, " rightOrLeft:", rightOrLeft, " indexInMissionsPerSource:", indexInMissionsPerSource);
-        //     console.log("link: ", d.mission.links.map(l => `${l.origin.name} -> ${l.destination.name}`));
-        //     // console.log("pairMissions: ", pairMissions.map(l => `${l.name}: ${l.origin.name} -> ${l.destination.name}`));
-        // }
 
         // Create the curve
         return `M${x1},${y1} Q${cx},${cy} ${x2},${y2}`;
@@ -515,12 +488,7 @@ export const onBodySelection = (d, isSelected) => {
  * @param {boolean} isSelected 
  */
 export const onMissionPathSelection = (d, isSelected) => {
-    console.log("Map.onObjectSelection", d.name, isSelected);
-    // const missionPath = g.selectAll(`.mission[data-name='${d.name}']`);
     const missionPath = g.selectAll('.mission').filter(d1 => d1.mission.name === d.name);
-    if (d.name === "Voyager 2") {
-        console.log(missionPath.nodes());
-    }
     missionPath.attr('stroke', isSelected ? 'red' : 'steelblue')
         .attr('stroke-opacity', isSelected ? 1 : 0.5)
         .attr('stroke-width', isSelected ? 0.5 : 0.2);

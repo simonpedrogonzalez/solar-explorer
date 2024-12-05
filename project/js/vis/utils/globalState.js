@@ -89,7 +89,6 @@ export const updateObjectSelection = (d, selectionType) => {
 }
 
 export const clearSelection = () => {
-    console.log(globalState.selected.bodies);
     let arrayOfSelectedBodies = Array.from(getSelectionByType(SELECTION_TYPES.BODY));
     let arrayOfSelectedMissions = Array.from(getSelectionByType(SELECTION_TYPES.MISSION));
     arrayOfSelectedBodies.forEach(d => updateObjectSelection(d, SELECTION_TYPES.BODY));
