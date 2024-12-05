@@ -116,6 +116,8 @@ export class ScatterPlot {
             .attr("fill", d => {
                 return globalState.isObjectSelected(d, this.globalStateSelectionType) ? "red" : "steelblue"
             })
+            .attr("stroke", "#153359")
+            .attr("stroke-width", 0.5)
             .transition()
             .duration(ANIMATION_DURATION);
     }
