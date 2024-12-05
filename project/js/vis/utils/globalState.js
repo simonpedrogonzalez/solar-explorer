@@ -70,6 +70,7 @@ export const updateObjectSelection = (d, selectionType) => {
     } else {
         arrayOfSelected.push(d);
     }
+    console.log(arrayOfSelected.map(d => d.name));
 
     let listeners = getListenerByType(selectionType);
     listeners.forEach(l => l.notify(d, isSelected));
@@ -82,5 +83,8 @@ export const clearSelection = () => {
 
 export const isObjectSelected = (d, selectionType) => {
     let arrayOfSelected = getSelectionByType(selectionType);
+    if (arrayOfSelected.includes(d)) {
+        console.log(d.name + " is selected");
+    }
     return arrayOfSelected.includes(d);
 }
