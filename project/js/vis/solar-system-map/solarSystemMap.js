@@ -25,6 +25,7 @@ export const setup = async (containerId) => {
 
     // Suscribe to object selection updates
     globalState.suscribeToObjectSelection(onBodySelection, globalState.SELECTION_TYPES.BODY);
+    globalState.suscribeToObjectSelection(onMissionPathSelection, globalState.SELECTION_TYPES.MISSION);
 
     // Load the data
     bodiesData = await getBodiesData();
@@ -167,7 +168,7 @@ const drawBodiesOrbits = (data) => {
         .attr('ry', d => d.vis.orbit.ry)
         .attr('fill', 'none')
         .attr('stroke', d => d.color)
-        .attr('stroke-width', d => d.type === 'satellite' ? 0.05 : 0.3)
+        .attr('stroke-width', d => d.type === 'satellite' ? Math.min(0.05, d.vis.body.r) : 0.3)
         .attr('stroke-opacity', d => d.type === 'satellite' ? 0.5 : 0.8);
         
     // Update
@@ -195,7 +196,7 @@ const drawBodies = (data) => {
                 .attr('cy', d => d.vis.body.cy)
                 .on('mouseenter', (event, d) => {
                     const content = tooltip.textParser.getTextFromtAllBodyData(d);
-                    tooltip.onMouseEnter(content);
+                    tooltip.onMouseEnter(event, content);
                 })
                 .on('mousemove', (event) => {
                     tooltip.onMouseMove(event);
@@ -244,15 +245,31 @@ const drawMissionPaths = (missionsData, bodiesData) => {
             origin,
             destination
         };
-    });
+    })
+    allLinks = allLinks.filter((d, i, self) =>
+        i === self.findIndex(t => (
+            t.origin.name === d.origin.name && t.destination.name === d.destination.name && t.mission.name === d.mission.name
+        ))
+    );
     
 
     let linksPerSourceDestPair = allLinks.reduce((acc, d) => {
         const key = `${d.origin.name}-${d.destination.name}`;
-        if (!acc[key]) acc[key] = [];
-        acc[key].push(d);
+        const key2 = `${d.destination.name}-${d.origin.name}`;
+        if (!acc[key]) {
+            if (!acc[key2]) {
+                acc[key] = [];
+                acc[key].push(d);
+            } else {
+                acc[key2].push(d);
+            }
+        } else {
+            acc[key].push(d);
+        }
+
         return acc;
     }, {});
+
 
     const drawBezierCurves = (d, i) => {
         // The idea is to create bezier curves from origin to destination, making
@@ -266,22 +283,31 @@ const drawMissionPaths = (missionsData, bodiesData) => {
             console.error("No links for", d.origin.name, d.destination.name);
             return "";
         }
-        const pairMissions = linksPerSourceDestPair[`${d.origin.name}-${d.destination.name}`];
+        let pairMissions = linksPerSourceDestPair[`${d.origin.name}-${d.destination.name}`];
         const missionCount = pairMissions.length;
-        const halfMissionCount = Math.floor(missionCount / 2);
+        const halfMissionCount = Math.ceil(missionCount / 2);
 
         // if elements of pairMissions are string, directly search
         let indexInMissionsPerSource = null;
-        if (pairMissions[0].constructor === String) {
-            indexInMissionsPerSource = pairMissions.indexOf(d.name);
-        } else {
-            indexInMissionsPerSource = pairMissions.findIndex(m => m.name === d.name);
-        }
+        indexInMissionsPerSource = pairMissions.findIndex(m => m.name === d.name);
 
         const maxWidthForLineGroup = 40;
         const separation = Math.min(maxWidthForLineGroup / halfMissionCount, 5);
-        const rightOrLeft = indexInMissionsPerSource % 2 === 0 ? 1 : -1;
-        const indexInMissionsPerSourceHalf = Math.abs(indexInMissionsPerSource - halfMissionCount);
+
+        let rightOrLeft = indexInMissionsPerSource >= missionCount / 2 ? 1 : -1;
+        let indexInMissionsPerSourceHalf;
+        const isSecondHalf = indexInMissionsPerSource >= halfMissionCount;
+        
+        indexInMissionsPerSourceHalf = isSecondHalf
+            ? indexInMissionsPerSource - halfMissionCount
+            : indexInMissionsPerSource;
+        indexInMissionsPerSourceHalf += 1
+
+        if (missionCount % 2 === 1 && missionCount !== 1) {
+            if (!isSecondHalf) {
+                indexInMissionsPerSourceHalf -= 1;
+            }
+        }
 
         let x1 = d.origin.vis.body.cx;
         let y1 = d.origin.vis.body.cy;
@@ -350,23 +376,33 @@ const drawMissionPaths = (missionsData, bodiesData) => {
     .data(allLinks, d => d.name)
     .join(
         enter => enter.append('path')
+                    .attr('data-name', d => d.mission.name)
                     .attr('class', 'mission')
                     .attr('d', drawBezierCurves)
                     .attr('fill', 'none')
-                    .attr('stroke', 'red')
-                    .attr('stroke-opacity', 0.5)
-                    .attr('stroke-width', 0.2)
+                    .attr('stroke', d => globalState.isObjectSelected(d.mission, globalState.SELECTION_TYPES.MISSION) ? 'red' : 'steelblue')
+                    .attr('stroke-opacity', d => globalState.isObjectSelected(d.mission, globalState.SELECTION_TYPES.MISSION) ? 1 : 0.5)
+                    .attr('stroke-width', d => globalState.isObjectSelected(d.mission, globalState.SELECTION_TYPES.MISSION) ? 0.5 : 0.2)
                     .on('mouseenter', (event, d) => {
                         const content = tooltip.textParser.getTextFromMissionSegment(d);
-                        tooltip.onMouseEnter(content);
+                        tooltip.onMouseEnter(event, content);
                     })
                     .on('mousemove', (event) => {
                         tooltip.onMouseMove(event);
                     })
                     .on('mouseleave', () => {
                         tooltip.onMouseLeave();
+                    })
+                    .on('click', (event, d) => {
+                        globalState.updateObjectSelection(d.mission, globalState.SELECTION_TYPES.MISSION);
                     }),
-        update => update,
+        update => update
+        .attr('data-name', d => d.mission.name)
+        .attr('d', drawBezierCurves)
+        .attr('stroke', d => globalState.isObjectSelected(d.mission, globalState.SELECTION_TYPES.MISSION) ? 'red' : 'steelblue')
+        .attr('stroke-opacity', d => globalState.isObjectSelected(d.mission, globalState.SELECTION_TYPES.MISSION) ? 1 : 0.5)
+        .attr('stroke-width', d => globalState.isObjectSelected(d.mission, globalState.SELECTION_TYPES.MISSION) ? 0.5 : 0.2),
+exit => exit.remove(),
         exit => exit.remove()
     );
 }
@@ -443,4 +479,17 @@ export const onBodySelection = (d, isSelected) => {
     circle
         .attr('stroke', isSelected ? 'white' : 'none')
         .attr('stroke-width', isSelected ? Math.max(d.vis.body.r / 10, 0.2) : 0)
+};
+
+/**
+ * Handle object selection change. Is triggered by globalState.updateObjectSelection
+ * Has to respect this function signature
+ * @param {Object} d
+ * @param {boolean} isSelected 
+ */
+export const onMissionPathSelection = (d, isSelected) => {
+    const missionPath = g.selectAll('.mission').filter(d1 => d1.mission.name === d.name);
+    missionPath.attr('stroke', isSelected ? 'red' : 'steelblue')
+        .attr('stroke-opacity', isSelected ? 1 : 0.5)
+        .attr('stroke-width', isSelected ? 0.5 : 0.2);
 };

@@ -11,7 +11,6 @@ const tooltip = d3.select("body")
     .style("border-radius", "5px")
     .style("border", "1px solid white")
     .style("box-shadow", "0 2px 5px rgba(0, 0, 0, 0.2)")
-    // .style("font-family", "'Orbitron', sans-serif")
     .style("font-size", "17px")
     .style("line-height", "1")
     .style("white-space", "pre-line")
@@ -42,7 +41,6 @@ export const textParser = {
     },
     getTextFromMissionSegment: (d) => {
         let text = `Name: ${d.name}\n`;
-        // yyyy-mm-dd
         const launchDate = d.mission.launch_date.toISOString().split('T')[0];
         if (d.mission.launch_date) text += `<br>Launch Date: ${launchDate}\n`;
         const edge = `Path: ${d.origin.name} -> ${d.destination.name}`;
@@ -54,10 +52,9 @@ export const textParser = {
         const missionDuration = d.mission.duration;
         if (missionDuration) text += `<br>Duration: ${missionDuration} days\n`;
         const pieces = d.mission.num_pieces;
-        if (pieces) text += `<br># Pieces: ${pieces}\n`;
+        if (pieces) text += `<br>Nº of Pieces: ${pieces}\n`;
         const totalDistanceTravelled = d.mission.distance;
         if (totalDistanceTravelled) text += `<br>Total Distance: ${totalDistanceTravelled} km\n`;
-        // console.log(d);
         return text;
     },
     getTextFromBin: (d, variable) => {
@@ -91,8 +88,9 @@ export const TEXT_TYPES = {
     BIN: "BIN",
 }
 
-export const onMouseEnter = (tooltipText) => {
-    tooltip.style("opacity", 1).html(tooltipText);
+export const onMouseEnter = (event, tooltipText) => {
+    tooltip.style("opacity", 1).html(tooltipText)
+    adjustPosition(event);
 }
 
 export const onMouseLeave = () => {
@@ -100,6 +98,28 @@ export const onMouseLeave = () => {
 }
 
 export const onMouseMove = (event) => {
-    tooltip.style("left", `${event.pageX + 10}px`)
-    .style("top", `${event.pageY - 10}px`);
+    adjustPosition(event);
 }
+
+const adjustPosition = (event) => {
+    const offset = 10;
+
+    const tooltipWidth = tooltip.node().offsetWidth;
+    const tooltipHeight = tooltip.node().offsetHeight;
+
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    let left = event.pageX + offset;
+    let top = event.pageY + offset;
+
+    if (left + tooltipWidth > viewportWidth) {
+        left = left - tooltipWidth;
+    }
+    if (top + tooltipHeight > viewportHeight) {
+        top = top - tooltipHeight;
+    }
+    tooltip
+        .style("left", `${left}px`)
+        .style("top", `${top}px`);
+};

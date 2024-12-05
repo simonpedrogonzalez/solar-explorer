@@ -43,12 +43,10 @@ export class ScatterPlot {
     }
 
     onObjectSelection = (d, isSelected) => {
-        console.log(d.name, isSelected);
         const g = this.g;
         const target = g.selectAll(`circle`).filter((d1) => d1.name === d.name);
-        console.log(target.nodes());
         target
-        .attr("fill", isSelected ? "red" : "steelblue")
+        .attr("fill", isSelected ? "red" : "steelblue");
     }
 
     draw(xVariable, yVariable){
@@ -106,12 +104,20 @@ export class ScatterPlot {
             .attr("cy", d => y(d[ySelector]))
             .on("mouseenter", (event, d) => {
                 const content = tooltip.textParser.getTextFromVariables(d, xVariable, yVariable);
-                tooltip.onMouseEnter(content);
+                tooltip.onMouseEnter(event, content);
+            })
+            .on('click', (event, d) => {
+                globalState.updateObjectSelection(d, this.globalStateSelectionType);
             })
             .on("mousemove", (event) => tooltip.onMouseMove(event))
             .on("mouseleave", tooltip.onMouseLeave)
+            .on("click", (event, d) => globalState.updateObjectSelection(d, this.globalStateSelectionType))
             .attr("r", MARKER_SIZE)
-            .attr("fill", d =>  globalState.isObjectSelected(d, this.globalStateSelectionType) ? "red" : "steelblue")
+            .attr("fill", d => {
+                return globalState.isObjectSelected(d, this.globalStateSelectionType) ? "red" : "steelblue"
+            })
+            .attr("stroke", "#153359")
+            .attr("stroke-width", 0.5)
             .transition()
             .duration(ANIMATION_DURATION);
     }

@@ -70,7 +70,7 @@ export const draw = async (containerID, data, variable, resetZoomButtonID) => {
         })
         .attr("y", height)
         .attr("height", 0)
-        .on("mouseenter", (event, d) => tooltip.onMouseEnter(tooltip.textParser.getTextFromBin(d, variable)))
+        .on("mouseenter", (event, d) => tooltip.onMouseEnter(event, tooltip.textParser.getTextFromBin(d, variable)))
         .on("mousemove", tooltip.onMouseMove)
         .on("mouseleave", tooltip.onMouseLeave)
         .transition()
@@ -134,12 +134,10 @@ const getCountScale = (bins) => {
         }
     }
     if (scaleType === "log") {
-        // console.log("Using log scale");
         return d3.scaleLog()
         .domain([0.5, d3.max(bins, d => d.length)])
         .range([height, 0]);
     } else {
-        // console.log("Using linear scale");
         return d3.scaleLinear()
         .domain([0, d3.max(bins, d => d.length)])
         .range([height, 0]);
