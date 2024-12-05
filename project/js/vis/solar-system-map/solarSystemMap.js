@@ -245,23 +245,36 @@ const drawMissionPaths = (missionsData, bodiesData) => {
             origin,
             destination
         };
-    });
-    
-
-    let linksPerSourceDestPair = allLinks.reduce((acc, d) => {
-        const key = `${d.origin.name}-${d.destination.name}`;
-        if (!acc[key]) acc[key] = [];
-        acc[key].push(d);
-        return acc;
-    }, {});
-
-    // remove duplicates with same origin.name, destination.name and mission.name
+    })
     allLinks = allLinks.filter((d, i, self) =>
         i === self.findIndex(t => (
             t.origin.name === d.origin.name && t.destination.name === d.destination.name && t.mission.name === d.mission.name
         ))
     );
     
+
+    let linksPerSourceDestPair = allLinks.reduce((acc, d) => {
+        const key = `${d.origin.name}-${d.destination.name}`;
+        const key2 = `${d.destination.name}-${d.origin.name}`;
+        if (!acc[key]) {
+            if (!acc[key2]) {
+                acc[key] = [];
+                acc[key].push(d);
+            } else {
+                acc[key2].push(d);
+            }
+        } else {
+            acc[key].push(d);
+        }
+
+        // if (!acc[key] && !acc[key2]) acc[key] = [];
+        // if (!acc[key2] && acc[key]) acc[key].push(d);
+        // if (!acc[key] && acc[key2]) acc[key2].push(d);
+        // if (!acc[key]) acc[key] = [];
+        // acc[key].push(d);
+        return acc;
+    }, {});
+
 
     const drawBezierCurves = (d, i) => {
         // The idea is to create bezier curves from origin to destination, making
@@ -275,7 +288,11 @@ const drawMissionPaths = (missionsData, bodiesData) => {
             console.error("No links for", d.origin.name, d.destination.name);
             return "";
         }
-        const pairMissions = linksPerSourceDestPair[`${d.origin.name}-${d.destination.name}`];
+        let pairMissions = linksPerSourceDestPair[`${d.origin.name}-${d.destination.name}`];
+        // add iverse pair
+        // if (linksPerSourceDestPair[`${d.destination.name}-${d.origin.name}`]) {
+        //     console.log("inverse pair", d.origin.name, d.destination.name);
+        // }
         const missionCount = pairMissions.length;
         // const halfMissionCount = Math.floor(missionCount / 2);
         const halfMissionCount = Math.ceil(missionCount / 2);
@@ -300,7 +317,7 @@ const drawMissionPaths = (missionsData, bodiesData) => {
             : indexInMissionsPerSource;
         indexInMissionsPerSourceHalf += 1
 
-        if (missionCount % 2 === 1) {
+        if (missionCount % 2 === 1 && missionCount !== 1) {
             if (!isSecondHalf) {
                 indexInMissionsPerSourceHalf -= 1;
             }
@@ -365,13 +382,14 @@ const drawMissionPaths = (missionsData, bodiesData) => {
         const cx = (x1 + x2) / 2 + offsetX;
         const cy = (y1 + y2) / 2 + offsetY;
 
-        if (d.origin.name === 'Earth' && d.destination.name === 'Venus' ||
-            d.origin.name === 'Venus' && d.destination.name === 'Earth') {
-            console.log(d.origin.name, d.destination.name, d.name);
-            // console.log(d.mission.name, x1, y1, x2, y2, cx, cy);
-            console.log("halfMissionCount:", halfMissionCount, " indexInMissionsPerSourceHalf:", indexInMissionsPerSourceHalf, " rightOrLeft:", rightOrLeft, " indexInMissionsPerSource:", indexInMissionsPerSource);
-            console.log("link: ", d.mission.links.map(l => `${l.origin.name} -> ${l.destination.name}`));
-        }
+        // if (d.origin.name === 'Earth' && d.destination.name === 'Jupiter' ||
+        //     d.origin.name === 'Jupiter' && d.destination.name === 'Earth') {
+        //     console.log(d.origin.name, d.destination.name, d.name);
+        //     console.log(d.mission.name, x1, y1, x2, y2, cx, cy);
+        //     console.log("halfMissionCount:", halfMissionCount, " indexInMissionsPerSourceHalf:", indexInMissionsPerSourceHalf, " rightOrLeft:", rightOrLeft, " indexInMissionsPerSource:", indexInMissionsPerSource);
+        //     console.log("link: ", d.mission.links.map(l => `${l.origin.name} -> ${l.destination.name}`));
+        //     // console.log("pairMissions: ", pairMissions.map(l => `${l.name}: ${l.origin.name} -> ${l.destination.name}`));
+        // }
 
         // Create the curve
         return `M${x1},${y1} Q${cx},${cy} ${x2},${y2}`;
@@ -405,7 +423,13 @@ const drawMissionPaths = (missionsData, bodiesData) => {
                     .on('click', (event, d) => {
                         globalState.updateObjectSelection(d.mission, globalState.SELECTION_TYPES.MISSION);
                     }),
-        update => update,
+        update => update
+        .attr('data-name', d => d.mission.name)
+        .attr('d', drawBezierCurves)
+        .attr('stroke', d => globalState.isObjectSelected(d.mission, globalState.SELECTION_TYPES.MISSION) ? 'red' : 'steelblue')
+        .attr('stroke-opacity', d => globalState.isObjectSelected(d.mission, globalState.SELECTION_TYPES.MISSION) ? 1 : 0.5)
+        .attr('stroke-width', d => globalState.isObjectSelected(d.mission, globalState.SELECTION_TYPES.MISSION) ? 0.5 : 0.2),
+exit => exit.remove(),
         exit => exit.remove()
     );
 }
@@ -493,7 +517,11 @@ export const onBodySelection = (d, isSelected) => {
  */
 export const onMissionPathSelection = (d, isSelected) => {
     console.log("Map.onObjectSelection", d.name, isSelected);
-    const missionPath = g.selectAll(`.mission[data-name='${d.name}']`);
+    // const missionPath = g.selectAll(`.mission[data-name='${d.name}']`);
+    const missionPath = g.selectAll('.mission').filter(d1 => d1.mission.name === d.name);
+    if (d.name === "Voyager 2") {
+        console.log(missionPath.nodes());
+    }
     missionPath.attr('stroke', isSelected ? 'red' : 'steelblue')
         .attr('stroke-opacity', isSelected ? 1 : 0.5)
         .attr('stroke-width', isSelected ? 0.5 : 0.2);
