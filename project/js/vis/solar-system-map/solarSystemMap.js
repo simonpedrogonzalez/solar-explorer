@@ -25,6 +25,7 @@ export const setup = async (containerId) => {
 
     // Suscribe to object selection updates
     globalState.suscribeToObjectSelection(onBodySelection, globalState.SELECTION_TYPES.BODY);
+    globalState.suscribeToObjectSelection(onMissionSelection, globalState.SELECTION_TYPES.MISSION);
 
     // Load the data
     bodiesData = await getBodiesData();
@@ -167,7 +168,7 @@ const drawBodiesOrbits = (data) => {
         .attr('ry', d => d.vis.orbit.ry)
         .attr('fill', 'none')
         .attr('stroke', d => d.color)
-        .attr('stroke-width', d => d.type === 'satellite' ? 0.05 : 0.3)
+        .attr('stroke-width', d => d.type === 'satellite' ? Math.min(0.05, d.vis.body.r) : 0.3)
         .attr('stroke-opacity', d => d.type === 'satellite' ? 0.5 : 0.8);
         
     // Update
@@ -350,6 +351,7 @@ const drawMissionPaths = (missionsData, bodiesData) => {
     .data(allLinks, d => d.name)
     .join(
         enter => enter.append('path')
+                    .attr('data-name', d => d.name)
                     .attr('class', 'mission')
                     .attr('d', drawBezierCurves)
                     .attr('fill', 'none')
@@ -365,6 +367,9 @@ const drawMissionPaths = (missionsData, bodiesData) => {
                     })
                     .on('mouseleave', () => {
                         tooltip.onMouseLeave();
+                    })
+                    .on('click', (event, d) => {
+                        globalState.updateObjectSelection(d, globalState.SELECTION_TYPES.MISSION);
                     }),
         update => update,
         exit => exit.remove()
@@ -444,3 +449,16 @@ export const onBodySelection = (d, isSelected) => {
         .attr('stroke', isSelected ? 'white' : 'none')
         .attr('stroke-width', isSelected ? Math.max(d.vis.body.r / 10, 0.2) : 0)
 };
+
+/**
+ * Handle mission selection change. Is triggered by globalState.updateObjectSelection
+ * Has to respect this function signature
+ * @param {Object} d
+ * @param {boolean} isSelected
+ */
+export const onMissionSelection = (d, isSelected) => {
+    const target = g.selectAll(`.mission[data-name="${d.name}"]`);
+    target
+        .attr('stroke', isSelected ? 'white' : 'red')
+        .attr('stroke-width', isSelected ? 0.5 : 0.2);
+}

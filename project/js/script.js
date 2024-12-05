@@ -1,9 +1,11 @@
 import * as solarSystemMap from './vis/solar-system-map/solarSystemMap.js';
 import * as dashboard from './vis/scatter-hist-dashboard/dashboard.js';
+import * as globalState from './vis/utils/globalState.js';
 
 
 document.addEventListener('DOMContentLoaded', function () {
     const switchButton = document.getElementById('switchButton');
+    const clearSelectionButton = document.getElementById('clearSelection');
     const dashboard1 = document.getElementById('dashboard1');
     const dashboard2 = document.getElementById('dashboard2');
     const timeSlider = document.getElementById('slider');
@@ -67,6 +69,17 @@ document.addEventListener('DOMContentLoaded', function () {
             // mapContainer.innerHTML = '';
             // solarSystemMap.setup('#map-container');
         }
+    });
+
+    globalState.subscribeToAllSelections(function (d, isSelected) {
+        if(globalState.areObjectsSelected()) {
+            clearSelectionButton.classList.remove("hidden");
+        } else {
+            clearSelectionButton.classList.add("hidden");
+        }
+    });
+    clearSelectionButton.addEventListener('click', function () {
+        globalState.clearSelection();
     });
 });
 

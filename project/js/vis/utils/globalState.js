@@ -30,6 +30,8 @@ const getSelectionByType = (selectionType) => {
             return globalState.selected.bodies;
         case SELECTION_TYPES.MISSION:
             return globalState.selected.missions;
+        case null:
+            return globalState.selected.bodies + globalState.selected.missions;
         default:
             throw new Error('Invalid selection type');
     }
@@ -45,11 +47,21 @@ export const suscribeToObjectSelection = (listener, selectionType) => {
     return listener.id;
 }
 
+export const subscribeToAllSelections = (listener) => {
+    suscribeToObjectSelection(listener, SELECTION_TYPES.BODY);
+    suscribeToObjectSelection(listener, SELECTION_TYPES.MISSION);
+}
+
 export const notifyAllToListener = (listenerID) => {
     const listener = listeners.find(l => l.id === listenerID);
     if (!listener) throw new Error('Listener not found: ' + listenerID);
     let selection = getSelectionByType(listener.selectionType);
     selection.forEach(d => listener.notify(d, true));
+}
+
+export const areObjectsSelected = (selectionType = null) => {
+    let arrayOfSelected = getSelectionByType(selectionType);
+    return arrayOfSelected.length > 0;
 }
 
 export const updateObjectSelection = (d, selectionType) => {
@@ -76,8 +88,11 @@ export const updateObjectSelection = (d, selectionType) => {
 }
 
 export const clearSelection = () => {
-    globalState.selected.bodies = [];
-    globalState.selected.missions = [];
+    console.log(globalState.selected.bodies);
+    let arrayOfSelectedBodies = Array.from(getSelectionByType(SELECTION_TYPES.BODY));
+    let arrayOfSelectedMissions = Array.from(getSelectionByType(SELECTION_TYPES.MISSION));
+    arrayOfSelectedBodies.forEach(d => updateObjectSelection(d, SELECTION_TYPES.BODY));
+    arrayOfSelectedMissions.forEach(d => updateObjectSelection(d, SELECTION_TYPES.MISSION));
 }
 
 export const isObjectSelected = (d, selectionType) => {

@@ -108,6 +108,9 @@ export class ScatterPlot {
                 const content = tooltip.textParser.getTextFromVariables(d, xVariable, yVariable);
                 tooltip.onMouseEnter(event, content);
             })
+            .on('click', (event, d) => {
+                globalState.updateObjectSelection(d, this.globalStateSelectionType);
+            })
             .on("mousemove", (event) => tooltip.onMouseMove(event))
             .on("mouseleave", tooltip.onMouseLeave)
             .attr("r", MARKER_SIZE)
