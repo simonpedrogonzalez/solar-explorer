@@ -25,6 +25,7 @@ export const setup = async (containerId) => {
 
     // Suscribe to object selection updates
     globalState.suscribeToObjectSelection(onBodySelection, globalState.SELECTION_TYPES.BODY);
+    globalState.suscribeToObjectSelection(onMissionPathSelection, globalState.SELECTION_TYPES.MISSION);
 
     // Load the data
     bodiesData = await getBodiesData();
@@ -254,6 +255,14 @@ const drawMissionPaths = (missionsData, bodiesData) => {
         return acc;
     }, {});
 
+    // remove duplicates with same origin.name, destination.name and mission.name
+    allLinks = allLinks.filter((d, i, self) =>
+        i === self.findIndex(t => (
+            t.origin.name === d.origin.name && t.destination.name === d.destination.name && t.mission.name === d.mission.name
+        ))
+    );
+    
+
     const drawBezierCurves = (d, i) => {
         // The idea is to create bezier curves from origin to destination, making
         // the curve more pronounced with increasing mission count with the same
@@ -268,20 +277,38 @@ const drawMissionPaths = (missionsData, bodiesData) => {
         }
         const pairMissions = linksPerSourceDestPair[`${d.origin.name}-${d.destination.name}`];
         const missionCount = pairMissions.length;
-        const halfMissionCount = Math.floor(missionCount / 2);
+        // const halfMissionCount = Math.floor(missionCount / 2);
+        const halfMissionCount = Math.ceil(missionCount / 2);
 
         // if elements of pairMissions are string, directly search
         let indexInMissionsPerSource = null;
         if (pairMissions[0].constructor === String) {
-            indexInMissionsPerSource = pairMissions.indexOf(d.name);
+            // indexInMissionsPerSource = pairMissions.indexOf(d.name);
         } else {
             indexInMissionsPerSource = pairMissions.findIndex(m => m.name === d.name);
         }
 
         const maxWidthForLineGroup = 40;
         const separation = Math.min(maxWidthForLineGroup / halfMissionCount, 5);
-        const rightOrLeft = indexInMissionsPerSource % 2 === 0 ? 1 : -1;
-        const indexInMissionsPerSourceHalf = Math.abs(indexInMissionsPerSource - halfMissionCount);
+
+        let rightOrLeft = indexInMissionsPerSource >= missionCount / 2 ? 1 : -1;
+        let indexInMissionsPerSourceHalf;
+        const isSecondHalf = indexInMissionsPerSource >= halfMissionCount;
+        
+        indexInMissionsPerSourceHalf = isSecondHalf
+            ? indexInMissionsPerSource - halfMissionCount
+            : indexInMissionsPerSource;
+        indexInMissionsPerSourceHalf += 1
+
+        if (missionCount % 2 === 1) {
+            if (!isSecondHalf) {
+                indexInMissionsPerSourceHalf -= 1;
+            }
+        }
+        // const rightOrLeft = indexInMissionsPerSource % 2 === 0 ? 1 : -1;
+
+        // const indexInMissionsPerSourceHalf = Math.abs(indexInMissionsPerSource - halfMissionCount);
+        // const indexInMissionsPerSourceHalf 
 
         let x1 = d.origin.vis.body.cx;
         let y1 = d.origin.vis.body.cy;
@@ -338,6 +365,14 @@ const drawMissionPaths = (missionsData, bodiesData) => {
         const cx = (x1 + x2) / 2 + offsetX;
         const cy = (y1 + y2) / 2 + offsetY;
 
+        if (d.origin.name === 'Earth' && d.destination.name === 'Venus' ||
+            d.origin.name === 'Venus' && d.destination.name === 'Earth') {
+            console.log(d.origin.name, d.destination.name, d.name);
+            // console.log(d.mission.name, x1, y1, x2, y2, cx, cy);
+            console.log("halfMissionCount:", halfMissionCount, " indexInMissionsPerSourceHalf:", indexInMissionsPerSourceHalf, " rightOrLeft:", rightOrLeft, " indexInMissionsPerSource:", indexInMissionsPerSource);
+            console.log("link: ", d.mission.links.map(l => `${l.origin.name} -> ${l.destination.name}`));
+        }
+
         // Create the curve
         return `M${x1},${y1} Q${cx},${cy} ${x2},${y2}`;
     }
@@ -350,12 +385,13 @@ const drawMissionPaths = (missionsData, bodiesData) => {
     .data(allLinks, d => d.name)
     .join(
         enter => enter.append('path')
+                    .attr('data-name', d => d.mission.name)
                     .attr('class', 'mission')
                     .attr('d', drawBezierCurves)
                     .attr('fill', 'none')
-                    .attr('stroke', 'red')
-                    .attr('stroke-opacity', 0.5)
-                    .attr('stroke-width', 0.2)
+                    .attr('stroke', d => globalState.isObjectSelected(d.mission, globalState.SELECTION_TYPES.MISSION) ? 'red' : 'steelblue')
+                    .attr('stroke-opacity', d => globalState.isObjectSelected(d.mission, globalState.SELECTION_TYPES.MISSION) ? 1 : 0.5)
+                    .attr('stroke-width', d => globalState.isObjectSelected(d.mission, globalState.SELECTION_TYPES.MISSION) ? 0.5 : 0.2)
                     .on('mouseenter', (event, d) => {
                         const content = tooltip.textParser.getTextFromMissionSegment(d);
                         tooltip.onMouseEnter(event, content);
@@ -365,6 +401,9 @@ const drawMissionPaths = (missionsData, bodiesData) => {
                     })
                     .on('mouseleave', () => {
                         tooltip.onMouseLeave();
+                    })
+                    .on('click', (event, d) => {
+                        globalState.updateObjectSelection(d.mission, globalState.SELECTION_TYPES.MISSION);
                     }),
         update => update,
         exit => exit.remove()
@@ -443,4 +482,19 @@ export const onBodySelection = (d, isSelected) => {
     circle
         .attr('stroke', isSelected ? 'white' : 'none')
         .attr('stroke-width', isSelected ? Math.max(d.vis.body.r / 10, 0.2) : 0)
+};
+
+
+/**
+ * Handle object selection change. Is triggered by globalState.updateObjectSelection
+ * Has to respect this function signature
+ * @param {Object} d
+ * @param {boolean} isSelected 
+ */
+export const onMissionPathSelection = (d, isSelected) => {
+    console.log("Map.onObjectSelection", d.name, isSelected);
+    const missionPath = g.selectAll(`.mission[data-name='${d.name}']`);
+    missionPath.attr('stroke', isSelected ? 'red' : 'steelblue')
+        .attr('stroke-opacity', isSelected ? 1 : 0.5)
+        .attr('stroke-width', isSelected ? 0.5 : 0.2);
 };
