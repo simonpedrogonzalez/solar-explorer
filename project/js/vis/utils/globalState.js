@@ -5,6 +5,10 @@ let globalState = {
     },
 };
 
+export const getGlobalState = () => {
+    return globalState;
+}
+
 let listeners = [];
 
 export const SELECTION_TYPES = {
@@ -97,8 +101,6 @@ export const clearSelection = () => {
 
 export const isObjectSelected = (d, selectionType) => {
     let arrayOfSelected = getSelectionByType(selectionType);
-    if (arrayOfSelected.includes(d)) {
-        console.log(d.name + " is selected");
-    }
-    return arrayOfSelected.includes(d);
+    let isSelected = arrayOfSelected.map(d1 => d1.name).includes(d.name);
+    return isSelected;
 }
