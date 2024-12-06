@@ -39,7 +39,7 @@ This document outlines our initial brainstorming session, capturing the core que
 ### Development Tools and Techniques
 
 *   **D3.js Performance Optimization:** [Render millions of datapoints with D3](https://blog.scottlogic.com/2020/05/01/rendering-one-million-points-with-d3.html) This article guided our approach to efficiently rendering a large number of data points using D3.js.
-*   **Planetary Position Verification:** [Check planet position calculations](https://www.fourmilab.ch/cgi-bin/Solar) We used this resource to verify the accuracy of our planetary position calculations.
+*   **Planetary Position Verification:** [Planet position calculations](https://www.fourmilab.ch/cgi-bin/Solar) We used this resource to verify the accuracy of our planetary position calculations.
 *   **Planet Images:**
     *   [High-Quality Planet Images](https://codepen.io/juliangarnier/pen/krNqZO)
     *   [More planet images](https://www.solarsystemscope.com/textures/)
@@ -51,7 +51,19 @@ These resources collectively played a crucial role in shaping our project's dire
 
 ## Overview and Motivation
 
-This process book chronicles the development of "Solat Explorer," an interactive visualization tool designed to captivate space enthusiasts and the general public with a deeper understanding of space mission data. The project was inspired by the burgeoning public interest in space exploration, fueled by scientific discoveries and high-profile missions. Our goal was to create a visually engaging and informative tool that empowers users to explore our solar system and the missions that have ventured into its enigmatic depths.
+This process book chronicles the development of "Solar Explorer," an interactive visualization tool designed to captivate space enthusiasts and the general public with a deeper understanding of space mission data.  We were driven by a desire to create a more engaging and comprehensive way to explore information about space missions, going beyond traditional timelines and written milestones.
+
+Our motivation stemmed from a few key factors:
+
+*   **Growing Public Interest:** Public enthusiasm for space exploration has surged in recent years, fueled by scientific discoveries, high-profile missions, and initiatives like NASA's "Backyard Worlds: Planet 9" project that promote public engagement.
+*   **Personal Interest:**  Our team's diverse background in astrophysics, computer science, and electrical engineering reflects a shared passion for space exploration.
+*   **Untapped Potential:** We believe there's potential to enhance how space mission information is presented, incorporating details like mission paths, orbits, gravity assists, spacecraft speeds, and even the stories of mission failures.
+
+With "Solar Explorer," we aim to provide a visually compelling and informative tool that empowers users to:
+
+*   Explore the solar system and the missions that have ventured into its depths.
+*   Gain a deeper understanding of mission trajectories, phases, and challenges.
+*   Discover insights into the complexities and wonders of space exploration.
 
 ## Related Work
 
@@ -62,11 +74,11 @@ Existing solar system viewers, such as the NASA Solar System Viewer and the Eart
 
 Our project drew inspiration from several existing solar system viewers, each with its own strengths and weaknesses:
 
-*   **NASA Solar System Viewer:** [Link] This viewer provides a comprehensive overview of the solar system, with accurate planetary positions and detailed information about each celestial body. However, its visual presentation is relatively basic, and it lacks interactive features for exploring space missions.
+*   **NASA Solar System Viewer:** While this viewer offers a wealth of information about the solar system, including accurate planetary positions and detailed data for each celestial body, its comprehensiveness can also lead to cognitive overload. The abundance of data presented may make it challenging for users to navigate effectively and discern meaningful relationships between different elements.
 
-*   **Earth Orbit Artificial Objects Viewer:** [Link] This viewer focuses on visualizing artificial objects in Earth orbit, offering a unique perspective on the density and distribution of satellites. However, it does not include visualizations of deep space missions or detailed information about celestial bodies.
+*   **Earth Orbit Artificial Objects Viewer:** This viewer focuses on visualizing artificial objects in Earth orbit, offering a unique perspective on the density and distribution of satellites. However, it does not include visualizations of deep space missions or detailed information about celestial bodies.
 
-*   **Solar System Scope:** [Link] This viewer offers a more visually appealing and interactive experience, with 3D models of planets and the ability to explore different regions of the solar system. However, its focus on visual aesthetics sometimes comes at the expense of detailed information and scientific accuracy.
+*   **Solar System Scope:** This viewer offers a more visually appealing and interactive experience, with 3D models of planets and the ability to explore different regions of the solar system. However, its focus on visual aesthetics sometimes comes at the expense of detailed information and scientific accuracy.
 
 *   [GCAT: General Catalog of Artificial Space Objects
 Jonathan C. McDowell](https://planet4589.org/space/gcat/)  While this website provides valuable data on space missions, its presentation is not visually engaging. The interface appears cluttered and text-heavy, lacking the visual clarity and intuitive exploration capabilities we aimed to achieve in our project.
@@ -74,47 +86,116 @@ Jonathan C. McDowell](https://planet4589.org/space/gcat/)  While this website pr
 
 ## Questions
 
-Our initial focus was on fundamental questions:
+Our project's evolution was guided by a series of questions that evolved as we delved deeper into the data and design process.
 
-*   How can we effectively convey the scale and intricacy of the solar system?
-*   How can we visualize space mission paths intuitively?
+### Initial Questions
 
-As we progressed, we delved into more specific inquiries:
+We began with fundamental questions about representation and user experience:
 
-*   What are the significant milestones of each mission?
-*   How can we emphasize the unique attributes of different spacecraft?
-*   What are the correlations between mission objectives and their trajectories?
+*   **Scale and Intricacy:** How can we effectively convey the vast scale and intricate structure of the solar system in a way that is both accurate and comprehensible? This question led us to explore logarithmic scaling for distances and the careful placement of celestial bodies and their orbits.
+*   **Intuitive Mission Paths:** How can we visualize the paths of space missions in an intuitive manner that highlights their complexity and key events? This question guided our exploration of different path representations, including direct paths and multi-curve paths, as well as the use of tooltips to provide detailed information on hover.
+
+### Evolving Inquiries
+
+As we progressed, our questions became more specific and data-driven:
+
+*   **Mission Milestones:** What are the significant milestones of each mission, and how can we effectively highlight these events within the visualization? This led us to incorporate interactive elements, such as the time slider, to allow users to explore missions over time and see key events.
+*   **Spacecraft Attributes:** How can we emphasize the unique attributes of different spacecraft and their roles in missions? This prompted us to use color-coding and visual encoding to differentiate spacecraft types and to include detailed information in tooltips.
+*   **Mission Objectives and Trajectories:** What are the correlations between mission objectives and their trajectories, and how can we visualize these relationships? This question guided the development of Dashboard 2 (Data Explorer), where users can explore scatterplots and histograms to analyze mission data and discover patterns.
+
+### New Questions
+
+The process of data analysis and visualization also sparked new questions:
+
+*   **Visual Clutter:** How can we effectively manage visual clutter, especially when dealing with a large number of satellites and mission paths? This led us to explore techniques like color-coding, scaling, and zoom levels to prioritize important elements and maintain visual clarity.
+*   **Interactive Exploration:** How can we design interactions that encourage users to actively explore the data and discover insights on their own? This guided our implementation of features like zooming, panning, selection highlighting, and tooltips.
+*   **Data Enrichment:** What additional data could be incorporated to provide a richer and more nuanced understanding of space missions? This led us to enrich our dataset with variables like gravity, temperature, and discovery information.
+
+By continually asking and refining these questions, we were able to iteratively improve our visualization and create a tool that effectively communicates the complexities and wonders of space exploration.
 
 ## Data
 
 ### Data Sources
 
-Planetary data was acquired from reliable sources [insert links or specific names], and space mission data was compiled from NASA API and JPL Horizons.
+Our project relied on two primary data sources:
+
+*   **General Catalog of Artificial Space Objects (GCAT):** This comprehensive catalog, published and maintained by Jonathan C. McDowell at the Harvard-Smithsonian Center for Astrophysics, provided information on artificial objects in Earth orbit and deep space missions. We specifically used the following tables from GCAT:
+    *   Organizations Database
+    *   Launch Vehicles
+    *   Launch Lists
+    *   Worlds in the Solar System
+    *   Object Catalogs
+
+*   **NASA Jet Propulsion Laboratory (JPL) Horizons Data System:** To supplement the GCAT data and obtain more detailed information about planetary bodies, we utilized NASA JPL's Horizons data system, accessed through their public REST API and tables of information about Planetary Satellites.
 
 ### Data Cleaning and Preprocessing
 
-Data cleaning was essential to ensure compatibility and consistency:
+Data cleaning was essential to ensure compatibility and consistency within our visualization:
 
-*   **Date Standardization:** GCAT's unique date formats were parsed and converted to ISO-8601 for consistency.
-*   **Object Relationships:** Relationships between objects and their parent objects (e.g., rockets, payloads) were mapped.
-*   **Primary Payload Identification:** Logic was implemented to identify the "primary" payload of each mission, prioritizing human payloads, then pressurized payloads, and so on.
+*   **Date Standardization:** GCAT's unique "Vague Date" format required custom code for parsing and conversion to the standard ISO-8601 format.
+*   **Object Relationships:**  We mapped the relationships between objects and their parent objects (e.g., rockets, payloads) to accurately represent the hierarchical structure of space missions.
+*   **Primary Payload Identification:**  Logic was implemented to identify the "primary" payload of each mission, prioritizing human payloads, then pressurized payloads, and so on. This ensured that the most relevant object was highlighted in the visualization.
 
-The cleaned data was stored in JSON format for efficient access within our JavaScript visualization.
+The cleaned data was stored in JSON format for efficient access and manipulation within our JavaScript visualization.
 
 ### Calculating Planetary Positions
 
-Accurately calculating planetary positions presented several challenges:
+Accurately calculating planetary positions for any given time presented several challenges:
 
-*   **Time Unit Inconsistencies:** Addressing inconsistencies in time units (years vs. days) within the data.
-*   **Orbital Element Wrapping:** Handling the wrapping of orbital elements (e.g., from 360 to 0 degrees).
-*   **Mean Anomaly Calculation:** Correcting errors in the initial mean anomaly calculation.
-*   **Earth Ephemerides Artifacts:** Accounting for computational artifacts in Earth's ephemerides data due to the coordinate system's reliance on the autumnal equinox.
+*   **Time Unit Inconsistencies:**  We addressed inconsistencies in time units (years vs. days) within the data to ensure accurate calculations and conversions.
+*   **Orbital Element Wrapping:**  We handled the wrapping of orbital elements (e.g., from 360 to 0 degrees) to maintain accuracy in orbital calculations.
+*   **Mean Anomaly Calculation:**  We corrected errors in the initial mean anomaly calculation to ensure accurate positioning of planets in their orbits.
+*   **Earth Ephemerides Artifacts:**  We accounted for computational artifacts in Earth's ephemerides data due to the coordinate system's reliance on the autumnal equinox.
 
-These issues were resolved, resulting in accurate planetary position calculations. The Python code for this process is available in the `calculate_planetary_positions.py` file.
+These issues were resolved through careful analysis and code modifications, resulting in accurate planetary position calculations. The Python code for this process is available in the `calculate_planetary_positions.py` file.
 
-### Exploratory Data Analysis (EDA)
+### Data Processing and Derived Data
 
-We used Python with Matplotlib and Seaborn for EDA. Histograms of mission launch dates showed a concentration in the late 20th century, while scatter plots of mission duration versus distance traveled revealed the diverse complexities of mission types. These findings guided our inclusion of a timeline slider and color-coded mission types.
+To further enhance our visualization, we performed additional data processing and derived new data points:
+
+*   **Space Junk Identification:** Using heuristics based on time since last state change and object type, we identified space junk to provide insights into its accumulation over time.
+*   **Trajectory Calculation:** We converted lists of events (containing timing and orbital data) into trajectories for plotting on the map, enabling the visualization of mission paths and the calculation of distances between objects.
+
+This data processing was implemented in JavaScript by converting the TSV tables to maps of IDs to JSON objects. We then wrote functions to derive the space junk and trajectory data, enriching the information available for visualization.
+
+## Exploratory Data Analysis (EDA)
+
+Before diving into the design of our visualization, we conducted Exploratory Data Analysis (EDA) to gain a deeper understanding of the space mission data. This involved creating various visualizations to uncover patterns, trends, and relationships within the data.
+
+### Visualizations Used
+
+We utilized a combination of visualization techniques to explore the data:
+
+*   **Histograms:** Histograms were used to visualize the distribution of various variables, such as:
+    *   Mission launch dates: This revealed a concentration of missions in the late 20th century, informing our decision to include a time slider to filter missions by launch date.
+    *   Mission durations: This highlighted the varying complexities of different mission types.
+    *   Orbital parameters: This helped us understand the distribution of orbital characteristics like eccentricity and inclination.
+
+*   **Scatter Plots:** Scatter plots were employed to explore relationships between different variables, such as:
+    *   Mission duration vs. distance traveled: This revealed a positive correlation, indicating that longer missions tend to travel farther distances.
+    *   Spacecraft mass vs. mission objective: This helped us identify trends in spacecraft design based on their intended purpose.
+    *   Orbital parameters vs. mission destination: This allowed us to see how orbital characteristics vary depending on the target planet or celestial body.
+
+### Insights Gained
+
+The EDA provided valuable insights that significantly influenced our design choices:
+
+*   **Temporal Trends:** The concentration of missions in the late 20th century highlighted the importance of incorporating a time dimension into our visualization. This led to the inclusion of the time slider, allowing users to explore how space exploration has evolved over time.
+*   **Mission Diversity:** The wide range of mission durations and distances traveled emphasized the need to effectively represent this diversity. We used color-coding to distinguish different mission types and incorporated tooltips to provide detailed information about each mission.
+*   **Orbital Complexity:** The analysis of orbital parameters revealed the complexity of mission trajectories and the need for clear visual representations. We used Bézier curves with control points to create smooth and accurate mission paths.
+*   **Data Relationships:** The scatter plots helped us identify relationships between variables, informing the design of Dashboard 2 (Data Explorer). This dashboard allows users to interactively explore these relationships through scatterplots and histograms.
+
+### Design Implications
+
+The insights gained from the EDA directly informed our design decisions:
+
+*   **Time Slider:**  The temporal trends observed in the histograms led to the inclusion of the time slider, enabling users to filter missions by launch date and see the evolution of space exploration.
+*   **Color-Coding:** The diversity of missions prompted us to use color-coding to distinguish different mission types, enhancing visual clarity and user understanding.
+*   **Mission Paths:** The analysis of orbital parameters guided our use of Bézier curves to create smooth and accurate mission paths, effectively representing the complexity of mission trajectories.
+*   **Data Explorer:** The relationships identified in the scatter plots informed the design of Dashboard 2, providing users with an interactive tool to explore these relationships further.
+
+By grounding our design choices in the insights derived from the EDA, we ensured that our visualization effectively communicates the key patterns and trends within the space mission data.
+
 
 ## Design Evolution
 
@@ -157,10 +238,10 @@ Our prototyping process involved several key stages:
 
 ### Interactive Elements
 
-Our visualization features several interactive components crucial for user engagement and data exploration:
+Our visualization features several interactive components crucial for user engagement and data exploration as observed in EDA process:
 
 *   **Time Slider:** A vertical slider enables users to filter missions by launch date, dynamically visualizing the evolution of space exploration. 
-[Include a screenshot]
+
 *   **Accurate Planet Positions Toggle:** A toggle switch allows users to control the accuracy of planet positions, illustrating the complexities of orbital mechanics. 
 [Include a screenshot]
 *   **Zoom Controls:** Buttons for zooming in, zooming out, and resetting the zoom provide users with control over the visualization's scale, facilitating the exploration of both the inner and outer solar system. 
@@ -197,9 +278,7 @@ Throughout the development process, we made several refinements to enhance the v
 
 *   **Data Enrichment:** Additional variables (gravity, average temperature, discovery date, discoverer, density) were added to the dataset to provide richer exploration opportunities.
 
-*   **Selection Interactions:** Selection interactions were implemented to link the solar system map and the data explorer, highlighting selected objects in both views. 
-
-![alt text](selection_highlight_1.png) 
+*   **Selection Interactions:** Selection interactions were implemented to link the solar system map and the data explorer, highlighting selected objects in both views. ![alt text](selection_highlight_1.png) 
 ![alt text](selection_highlight_2.png)
 
 *   **Tooltips:** Tooltips were designed to be informative and easy to read, providing relevant details about objects and missions. 
