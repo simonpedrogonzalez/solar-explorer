@@ -2,7 +2,7 @@
 
 # Process Book - Solar Explorer
 
-The "Solar Explorer" project aims to create an engaging and informative interactive visualization of space missions. By blending data from trusted sources like NASA's JPL Horizons and Jonathan C. McDowell's General Catalog of Artificial Space Objects, the tool offers an intuitive interface to explore mission trajectories, spacecraft attributes, and orbital mechanics. Through this process book, we document the design and implementation of the tool, focusing on challenges, decisions, and insights gained.
+The "Solar Explorer" project aims to create an engaging and informative interactive visualization of space missions. By blending data from trusted sources like NASA's JPL Horizons and Jonathan C. McDowell's General Catalog of Artificial Space Objects, our tool offers an intuitive interface to explore mission trajectories, spacecraft attributes, and orbital mechanics. Through this process book, we document the design and implementation of the tool, focusing on challenges, decisions, and insights gained.
 
 ## Team Members
 
@@ -34,8 +34,6 @@ This document outlines our initial brainstorming session, capturing the core que
     * [Solar System Viewer](https://www.solarsystemscope.com/) 
     * [How to choose colors for the visualizations?](https://blog.datawrapper.de/which-color-scale-to-use-in-data-vis/)
 
-*   **Color Scale Guidance:** [Link] This resource provided valuable insights into selecting effective color scales for data visualization.
-
 ### Development Tools and Techniques
 
 *   **D3.js Performance Optimization:** [Render millions of datapoints with D3](https://blog.scottlogic.com/2020/05/01/rendering-one-million-points-with-d3.html) This article guided our approach to efficiently rendering a large number of data points using D3.js.
@@ -51,34 +49,25 @@ These resources collectively played a crucial role in shaping our project's dire
 
 ## Overview and Motivation
 
-This process book chronicles the development of "Solar Explorer," an interactive visualization tool designed to captivate space enthusiasts and the general public with a deeper understanding of space mission data.  We were driven by a desire to create a more engaging and comprehensive way to explore information about space missions, going beyond traditional timelines and written milestones.
+This process book chronicles the development of "Solar Explorer".  Our goal is to create a more engaging and comprehensive way to explore information about space missions, going beyond traditional timelines and written milestones.
 
 Our motivation stemmed from a few key factors:
 
-*   **Growing Public Interest:** Public enthusiasm for space exploration has surged in recent years, fueled by scientific discoveries, high-profile missions, and initiatives like NASA's "Backyard Worlds: Planet 9" project that promote public engagement.
+*   **Growing Public Interest:** Public enthusiasm for space exploration has surged in recent years, fueled by scientific discoveries,space missions, and initiatives like NASA's "Backyard Worlds: Planet 9" project which promotes public engagement.
 *   **Personal Interest:**  Our team's diverse background in astrophysics, computer science, and electrical engineering reflects a shared passion for space exploration.
-*   **Untapped Potential:** We believe there's potential to enhance how space mission information is presented, incorporating details like mission paths, orbits, gravity assists, spacecraft speeds, and even the stories of mission failures.
-
-With "Solar Explorer," we aim to provide a visually compelling and informative tool that empowers users to:
-
-*   Explore the solar system and the missions that have ventured into its depths.
-*   Gain a deeper understanding of mission trajectories, phases, and challenges.
-*   Discover insights into the complexities and wonders of space exploration.
+*   We believe there's potential to enhance how space mission information is presented, incorporating details like mission paths, orbits, gravity assists, spacecraft speeds, and even mission failures.
 
 ## Related Work
-
-Existing solar system viewers, such as the NASA Solar System Viewer and the Earth orbit artificial objects viewer, provided valuable insights into effective representations of celestial bodies, orbits, and spacecraft trajectories.
-
 
 ### Existing Solar System Viewers
 
 Our project drew inspiration from several existing solar system viewers, each with its own strengths and weaknesses:
 
-*   **NASA Solar System Viewer:** While this viewer offers a wealth of information about the solar system, including accurate planetary positions and detailed data for each celestial body, its comprehensiveness can also lead to cognitive overload. The abundance of data presented may make it challenging for users to navigate effectively and discern meaningful relationships between different elements.
+*   **NASA Solar System Viewer:** While this viewer offers a wealth of information about the solar system, including accurate planetary positions and detailed data for each celestial body, its comprehensiveness can lead to cognitive overload. The abundance of data may make it challenging for users to navigate effectively and discern meaningful relationships between different elements.
 
-*   **Earth Orbit Artificial Objects Viewer:** This viewer focuses on visualizing artificial objects in Earth orbit, offering a unique perspective on the density and distribution of satellites. However, it does not include visualizations of deep space missions or detailed information about celestial bodies.
+*   **Earth Orbit Artificial Objects Viewer:** This viewer focuses on visualizing artificial objects in Earth orbit, offering information on the density and distribution of satellites. However, it does not include visualizations of deep space missions or detailed information about celestial bodies.
 
-*   **Solar System Scope:** This viewer offers a more visually appealing and interactive experience, with 3D models of planets and the ability to explore different regions of the solar system. However, its focus on visual aesthetics sometimes comes at the expense of detailed information and scientific accuracy.
+*   **Solar System Scope:** This viewer offers a more visually appealing and interactive experience, with 3D models of planets and the ability to explore different regions of the solar system. However, it differs from the data we present with our project.
 
 *   [GCAT: General Catalog of Artificial Space Objects
 Jonathan C. McDowell](https://planet4589.org/space/gcat/)  While this website provides valuable data on space missions, its presentation is not visually engaging. The interface appears cluttered and text-heavy, lacking the visual clarity and intuitive exploration capabilities we aimed to achieve in our project.
@@ -90,10 +79,12 @@ Our project's evolution was guided by a series of questions that evolved as we d
 
 ### Initial Questions
 
-We began with fundamental questions about representation and user experience:
+We began with fundamental questions about representation and user experience based on our knowldege from the course:
 
-*   **Scale and Intricacy:** How can we effectively convey the vast scale and intricate structure of the solar system in a way that is both accurate and comprehensible? This question led us to explore logarithmic scaling for distances and the careful placement of celestial bodies and their orbits.
-*   **Intuitive Mission Paths:** How can we visualize the paths of space missions in an intuitive manner that highlights their complexity and key events? This question guided our exploration of different path representations, including direct paths and multi-curve paths, as well as the use of tooltips to provide detailed information on hover.
+*   **Scale and Intricacy:** How can we effectively convey the vast scale and intricate structure of the solar system in a way that is both accurate and comprehensible? 
+This question led us to explore logarithmic scaling for distances and the careful placement of celestial bodies and their orbits.
+*   **Intuitive Mission Paths:** How can we visualize the paths of space missions in an intuitive manner that highlights their complexity and key events? 
+This question guided our exploration of different path representations, including direct paths and multi-curve paths, as well as the use of tooltips to provide detailed information on hover.
 
 ### Evolving Inquiries
 
