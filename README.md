@@ -54,3 +54,7 @@ This repository contains the code and documentation for "Space Mission Explorer,
 1.  Clone this repository to your local machine.
 2.  Open the `index.html` file in your web browser.
 
+## Data Sources
+
+*   [General Catalog of Artificial Space Objects (GCAT)](https://planet4589.org/space/gcat/index.html)
+*   [NASA Jet Propulsion Laboratory (JPL) Horizons Data System](https://ssd.jpl.nasa.gov/horizons/)
