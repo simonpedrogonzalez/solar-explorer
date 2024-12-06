@@ -22,7 +22,7 @@ The goal of this visualization is to provide an engaging way to learn about spac
 
 ## Project Website and Screencast
 
-*   **Website:** [Insert website URL]
+*   [Website](https://dataviscourse2024.github.io/group-project-astronomy-visualization-2/)
 *   [Screencast Video](https://www.youtube.com/watch?v=8MEvtGncpBU)
 
 ## Repository Contents
