@@ -1,6 +1,6 @@
 
 
-# Process Book - Space Mission Explorer
+# Process Book - Solar Explorer
 
 The aim of this project is to visualize space missions.
 
@@ -18,37 +18,59 @@ The aim of this project is to visualize space missions.
     - email: u1528314@utah.edu
     - UID: 1528314
 
-## Resources used for the project proposal
+## Resources and Inspiration
 
-* [Project Ideas Document](https://docs.google.com/document/d/1pG8MIJ63O_l-x5lxE9TWMq5bsQBWVphontCbd75LPDg/edit?usp=sharing) contains the initial questions and design ideas. 
-* [Project proposal assignment (Due next Friday Sept 13)](https://www.dataviscourse.net/2024/project/#project-proposal)
-* [Link for data review](https://planet4589.org/space/gcat/index.html): use this to get an idea of what data is available to design the visualizations.
+This project benefited from a variety of resources that guided our design, development, and data analysis.
 
-## Resources for design
+### Project Planning and Design
 
-- [Nasa Solar System Viewer](https://science.nasa.gov/solar-system/kuiper-belt/) for inspiration.
-- [Earth orbit artificial objects viewer](https://whatsin.space/) for inspiration.
-- [Solar System Viewer](https://www.solarsystemscope.com/) for inspiration.
-- [How to choose colors for the visualizations?](https://blog.datawrapper.de/which-color-scale-to-use-in-data-vis/)
+*   [Project Ideas Document](https://docs.google.com/document/d/1pG8MIJ63O_l-x5lxE9TWMq5bsQBWVphontCbd75LPDg/edit?usp=sharing)
+This document outlines our initial brainstorming session, capturing the core questions and design ideas that shaped the project's direction.
+*    [Project Proposal (Due Friday Sept 13)](https://www.dataviscourse.net/2024/project/#project-proposal) The formal project proposal provided a structured framework for defining our goals, data sources, and anticipated challenges.
+*   [Link for data review](https://planet4589.org/space/gcat/index.html) Reviewing the available data from this source helped us understand the scope and possibilities for our visualizations.
+*   **Inspirational Solar System Viewers:**
+    *   [Nasa Solar System Viewer](https://science.nasa.gov/solar-system/kuiper-belt/) 
+    * [Earth orbit artificial objects viewer](https://whatsin.space/) 
+    * [Solar System Viewer](https://www.solarsystemscope.com/) 
+    * [How to choose colors for the visualizations?](https://blog.datawrapper.de/which-color-scale-to-use-in-data-vis/)
 
-## Resources for development
-- [Render millions of datapoints with D3](https://blog.scottlogic.com/2020/05/01/rendering-one-million-points-with-d3.html)
-- [Check planet position calculations](https://www.fourmilab.ch/cgi-bin/Solar)
-- [Good loooking images for planets](https://codepen.io/juliangarnier/pen/krNqZO)
-- [More planet images](https://www.solarsystemscope.com/textures/)
-- [Calculations tutorials](https://bits.ashleyblewer.com/blog/2018/05/05/mapping-the-planets/)
-- [More calculations tutorials](https://stjarnhimlen.se/comp/tutorial.html)
+*   **Color Scale Guidance:** [Link] This resource provided valuable insights into selecting effective color scales for data visualization.
 
+### Development Tools and Techniques
+
+*   **D3.js Performance Optimization:** [Render millions of datapoints with D3](https://blog.scottlogic.com/2020/05/01/rendering-one-million-points-with-d3.html) This article guided our approach to efficiently rendering a large number of data points using D3.js.
+*   **Planetary Position Verification:** [Check planet position calculations](https://www.fourmilab.ch/cgi-bin/Solar) We used this resource to verify the accuracy of our planetary position calculations.
+*   **Planet Images:**
+    *   [High-Quality Planet Images](https://codepen.io/juliangarnier/pen/krNqZO)
+    *   [More planet images](https://www.solarsystemscope.com/textures/)
+*   **Planetary Motion Calculations:**
+    *   [Calculations Tutorial 1](https://bits.ashleyblewer.com/blog/2018/05/05/mapping-the-planets/)
+    *   [Calculations Tutorial 2](https://stjarnhimlen.se/comp/tutorial.html)
+
+These resources collectively played a crucial role in shaping our project's direction, ensuring the accuracy of our data, and guiding our implementation choices.
 
 ## Overview and Motivation
 
-This process book chronicles the development of "Space Mission Explorer," an interactive visualization tool designed to captivate space enthusiasts and the general public with a deeper understanding of space mission data. The project was inspired by the burgeoning public interest in space exploration, fueled by groundbreaking scientific discoveries and high-profile missions. Our goal was to create a visually engaging and informative tool that empowers users to explore our solar system and the missions that have ventured into its enigmatic depths.
+This process book chronicles the development of "Solat Explorer," an interactive visualization tool designed to captivate space enthusiasts and the general public with a deeper understanding of space mission data. The project was inspired by the burgeoning public interest in space exploration, fueled by scientific discoveries and high-profile missions. Our goal was to create a visually engaging and informative tool that empowers users to explore our solar system and the missions that have ventured into its enigmatic depths.
 
 ## Related Work
 
 Existing solar system viewers, such as the NASA Solar System Viewer and the Earth orbit artificial objects viewer, provided valuable insights into effective representations of celestial bodies, orbits, and spacecraft trajectories.
 
-**include screenshots of other webpages**
+
+### Existing Solar System Viewers
+
+Our project drew inspiration from several existing solar system viewers, each with its own strengths and weaknesses:
+
+*   **NASA Solar System Viewer:** [Link] This viewer provides a comprehensive overview of the solar system, with accurate planetary positions and detailed information about each celestial body. However, its visual presentation is relatively basic, and it lacks interactive features for exploring space missions.
+
+*   **Earth Orbit Artificial Objects Viewer:** [Link] This viewer focuses on visualizing artificial objects in Earth orbit, offering a unique perspective on the density and distribution of satellites. However, it does not include visualizations of deep space missions or detailed information about celestial bodies.
+
+*   **Solar System Scope:** [Link] This viewer offers a more visually appealing and interactive experience, with 3D models of planets and the ability to explore different regions of the solar system. However, its focus on visual aesthetics sometimes comes at the expense of detailed information and scientific accuracy.
+
+*   [GCAT: General Catalog of Artificial Space Objects
+Jonathan C. McDowell](https://planet4589.org/space/gcat/)  While this website provides valuable data on space missions, its presentation is not visually engaging. The interface appears cluttered and text-heavy, lacking the visual clarity and intuitive exploration capabilities we aimed to achieve in our project.
+
 
 ## Questions
 
