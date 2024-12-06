@@ -57,7 +57,7 @@ Author: Simon Gonzalez
 
 A barebones version of the project was created with pure HTML, CSS and JS. The main goal was to be able to visualize our data and start working on the d3 code. The first version only has a map of the solar system with log scales and colored planets with names in tooltips in a dark background. With this as a base, we can start adding other elements and trying design ideas.
 
-![alt text](image.png)
+![alt text](../image.png)
 
 ## Data Collection
 12 Oct 2024
@@ -114,7 +114,7 @@ Author: Mathew Whitaker
 
 The prototype now displays the planets in their current relative position:
 
-![Prototype 24 October 2024](imageOct24.png)
+![Prototype 24 October 2024](../imageOct24.png)
 
 ## Prototype with Mission paths
 24 Oct 2024
@@ -125,12 +125,12 @@ With the new planetary positions, we drew the paths of our missions dataset. The
 I tried two options:
 - A path from the launch to the intended destination
 
-![alt text](missionPathOption2Oct24.png)
+![alt text](../missionPathOption2Oct24.png)
 
 
 - Several curves following all the planet orbits visited. For example, Voyager 2 visited Jupiter, Saturn, Uranus and Neptune.
 
-![alt text](missionPathOption1Oct24.png)
+![alt text](../missionPathOption1Oct24.png)
 
 We estimate that the first option could result in less clutter, but it looses some interesting information. For example, Voyager visited several planets on its way to the outer solar system, and that path would be lost in the first option.
 
@@ -154,7 +154,7 @@ Author: Matthew Whitaker
 
 By adding an HTML range input, we add an interactive component to the solar system dashboard, allowing users to change the current date, which updates the planetary positions. The design is a bit clunky, but it does work.
 
-![Prototype 25 October 2024](imageOct25.png)
+![Prototype 25 October 2024](../imageOct25.png)
 
 
 ## Dashboard 2: Scatterplot Visualization
@@ -216,7 +216,7 @@ Nov 15, 2024. Author: Simon Gonzalez
 
 ### Satellites
 
-![alt text](satellites-drawn.png)
+![alt text](../satellites-drawn.png)
 
 
 The satellites were added to the map. They are represented as small circles around the planets. This introduced some additional concerns:
@@ -240,7 +240,7 @@ The code was refactored to separate some elements of the map into different file
 
 The styles of the orbits, the planets and controls were changed. The planet distance scale to the Sun was added to the map.
 
-![alt text](distance-scale-drawn.png)
+![alt text](../distance-scale-drawn.png)
 
 ### Time slider visualization
 
@@ -248,7 +248,7 @@ The time slider was improved with a mission count visualization that would help 
 
 Also, zoom controls were added in case the wheel zooming isn't available or is not intuitive for the user.
 
-![alt text](controls_v2.png)
+![alt text](../controls_v2.png)
 
 ## Data explorer Implementation
 
@@ -256,7 +256,7 @@ Author: Simon Gonzalez
 
 We implemented the data explorer dashboard with two scatterplots and two histograms (with their respective variable selectors), to explore the two main datasets: solar system bodies and missions. Here, the user can explore the distribution of different variables as well as the relationship between them. One challenge was to represent distributions for variables with a wide range of values. In this case we used log scales for the histograms, making variable width bars to represent the distribution, which raises some concerns on interpretability, which will be addressed by expressive tooltips.
 
-![alt text](dashboard_1.png)
+![alt text](../dashboard_1.png)
 
 ### Data enrichment
 
@@ -279,9 +279,9 @@ Author: Simon Gonzalez
 
 Selection interaction was added between the solar system map and the data explorer plots was added, as to highlight the selected objects in both screens. This allows the user to explore the data in the data explorer and see the selected objects in the solar system map.
 
-![alt text](selection_highlight_1.png)
+![alt text](../selection_highlight_1.png)
 
-![alt text](selection_highlight_2.png)
+![alt text](../selection_highlight_2.png)
 
 
 ## On tooltips
@@ -301,7 +301,7 @@ Easy to read:
 - The "stylish" font used for visual impact for some parts of the dashboard was discarded in favor of a more readable font.
 - High constrast (black and white) was used for the text and the background of the tooltips.
 
-![alt text](tooltip_hist.png)
+![alt text](../tooltip_hist.png)
 
 ## On the use of color.
 
