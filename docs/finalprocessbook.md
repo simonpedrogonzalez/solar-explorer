@@ -2,7 +2,7 @@
 
 # Process Book - Solar Explorer
 
-The aim of this project is to visualize space missions.
+The "Solar Explorer" project aims to create an engaging and informative interactive visualization of space missions. By blending data from trusted sources like NASA's JPL Horizons and Jonathan C. McDowell's General Catalog of Artificial Space Objects, the tool offers an intuitive interface to explore mission trajectories, spacecraft attributes, and orbital mechanics. Through this process book, we document the design and implementation of the tool, focusing on challenges, decisions, and insights gained.
 
 ## Team Members
 
