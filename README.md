@@ -1,5 +1,3 @@
-group-project-astronomy-visualization-2
-
 # Solar Explorer
 
 This repository contains the code and documentation for "Space Mission Explorer," an interactive visualization tool that allows users to explore space missions and celestial bodies within our solar system.
