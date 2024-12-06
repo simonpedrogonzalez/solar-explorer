@@ -1,6 +1,6 @@
 # Solar Explorer
 
-This repository contains the code and documentation for "Space Mission Explorer," an interactive visualization tool that allows users to explore space missions and celestial bodies within our solar system.
+This repository contains the code and documentation for project "Solar Explorer". It is an interactive visualization tool that allows users to explore space missions and celestial bodies within our solar system.
 
 ## Team Members
 
@@ -14,7 +14,7 @@ This repository contains the code and documentation for "Space Mission Explorer,
 
 ## Project Overview
 
-"Space Mission Explorer" provides a dynamic and engaging way to learn about space exploration. It features two main dashboards:
+The goal of this visualization is to provide an engaging way to learn about space exploration. It features two main dashboards:
 
 1.  **Solar System Map:** An interactive map of the solar system, displaying planets, moons, and the trajectories of various space missions. Users can zoom, pan, and filter missions by launch date to explore the evolution of space exploration.
 
@@ -23,7 +23,7 @@ This repository contains the code and documentation for "Space Mission Explorer,
 ## Project Website and Screencast
 
 *   **Website:** [Insert website URL]
-*   **Screencast Video:** [Insert screencast video URL]
+*   [Screencast Video](https://www.youtube.com/watch?v=8MEvtGncpBU)
 
 ## Repository Contents
 
