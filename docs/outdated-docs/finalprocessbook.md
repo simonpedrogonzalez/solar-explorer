@@ -260,16 +260,16 @@ While our initial proposal focused on a single, comprehensive view, we later inc
 Our prototyping process involved several key stages:
 
 *   **First Prototype:** A basic visualization of the solar system with planets represented as colored circles on a dark background. 
-![alt text](image.png)
+![alt text](../image.png)
 
 *   **Planetary Positions:**  Incorporating accurate planetary positions into the visualization. 
-![alt text](imageOct24.png)
+![alt text](../imageOct24.png)
 
 *   **Mission Paths:** Visualizing mission paths using Bézier curves with control points. 
-![alt text](missionPathOption2Oct24.png) 
+![alt text](../missionPathOption2Oct24.png) 
 
 *   **Time Slider:** Introducing a time slider to allow users to dynamically change the date and observe the corresponding changes in planetary positions. 
-![alt text](imageOct25.png)
+![alt text](../imageOct25.png)
 
 
 ### Interactive Elements
@@ -279,11 +279,11 @@ Our visualization features several interactive components crucial for user engag
 *   **Time Slider:** A vertical slider enables users to filter missions by launch date, dynamically visualizing the evolution of space exploration. 
 
 *   **Accurate Planet Positions Toggle:** A toggle switch allows users to control the accuracy of planet positions, illustrating the complexities of orbital mechanics. 
-![alt text](accurateplanettoggle.png)
+![alt text](../accurateplanettoggle.png)
 *   **Zoom Controls:** Buttons for zooming in, zooming out, and resetting the zoom provide users with control over the visualization's scale, facilitating the exploration of both the inner and outer solar system. 
-![alt text](zooming.png)
+![alt text](../zooming.png)
 *   **Switch Dashboard:** A prominent button enables users to switch between Dashboard 1 (solar system visualization) and Dashboard 2 (Data Explorer). 
-![alt text](switching.png)
+![alt text](../switching.png)
 
 
 ### Data Explorer
@@ -300,26 +300,26 @@ Dashboard 2 (Data Explorer) provides a dedicated space for users to delve deeper
 
 Throughout the development process, we made several refinements to enhance the visualization:
 
-*   **Satellites:** Satellites were added to the visualization, represented as small circles orbiting planets. Challenges with visual clutter were addressed through color-coding, scale adjustments, zoom levels, and ordered placement.    ![alt text](satellites-drawn.png)
+*   **Satellites:** Satellites were added to the visualization, represented as small circles orbiting planets. Challenges with visual clutter were addressed through color-coding, scale adjustments, zoom levels, and ordered placement.    ![alt text](../satellites-drawn.png)
 
 *   **Code Refactoring:** The codebase was refactored to improve organization and maintainability.
 
 *   **Styling and Distance Scale:** Styles for orbits, planets, and controls were refined, and a distance scale was added to the map. 
-![alt text](distance-scale-drawn.png)
+![alt text](../distance-scale-drawn.png)
 
 *   **Time Slider Enhancement:** The time slider was enhanced with a mission count visualization and zoom controls. 
-![alt text](controls_v2.png)
+![alt text](../controls_v2.png)
 
 *   **Data Explorer Improvements:** Data transformations, filtering, and scale adjustments were implemented based on selected variables. Tooltips were added to scatterplots and histograms for data point details. Individual zoom functionality was added to each plot. 
-![alt text](dashboard_1.png)
+![alt text](../dashboard_1.png)
 
 *   **Data Enrichment:** Additional variables (gravity, average temperature, discovery date, discoverer, density) were added to the dataset to provide richer exploration options.
 
-*   **Selection Interactions:** Selection interactions were implemented to link the solar system map and the data explorer, highlighting selected objects in both views. ![alt text](selection_highlight_1.png) 
-![alt text](selection_highlight_2.png)
+*   **Selection Interactions:** Selection interactions were implemented to link the solar system map and the data explorer, highlighting selected objects in both views. ![alt text](../selection_highlight_1.png) 
+![alt text](../selection_highlight_2.png)
 
 *   **Tooltips:** Tooltips were designed to be informative and easy to read, providing relevant details about objects and missions. 
-![alt text](tooltip_hist.png)
+![alt text](../tooltip_hist.png)
 
 *   **Color Usage:** A high-contrast color scheme was employed throughout the visualization, with color used sparingly to highlight objects, mission paths, and selected elements in the data explorer.
 
