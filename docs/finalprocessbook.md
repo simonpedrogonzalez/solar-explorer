@@ -419,6 +419,17 @@ While our visualization successfully achieves its core objectives, there are sev
 
 By continuing to iterate and incorporate these potential improvements, we can further enhance the visualization's effectiveness and engagement.
 
+### Final Touches
+
+*   **Process Book Link:** Added a link to the process book (`process-book.pdf`) within the main visualization interface. This allows users to easily access the documentation and understand the design process behind the visualization.
+*   **Video Demo Link:** Included a link to the video demo within the main visualization interface, providing users with a guided tour of the visualization's features and functionality.
+*   **Data Source Links:** Added links to the GCAT and JPL Horizons websites within the visualization interface providing proper attribution for the data sources and allowing users to explore the raw data if they wish.
+
+### HTML Improvements
+
+*   Improved the HTML layout for better organization and readability.
+*   Fixed minor interaction bugs to ensure a smooth user experience.
+
 ### Strengths and Weaknesses
 
 The interactive features empower users to explore the data at their own pace and focus on specific areas of interest. However, the current 2D representation might lack the immersive experience of a 3D visualization.
