@@ -1,6 +1,11 @@
 # Solar Explorer
 
-Interactive visualization tool that allows users to explore space missions and celestial bodies within our solar system.
+Interactive visualization tool that allows users to explore space missions and celestial bodies within our solar system!
+
+## Project Website and Screencast
+
+*   [Website](https://dataviscourse2024.github.io/group-project-astronomy-visualization-2/)
+*   [Screencast Video](https://www.youtube.com/watch?v=8MEvtGncpBU)
 
 ## Team Members
 
@@ -18,11 +23,6 @@ The goal of this visualization is to provide an engaging way to learn about spac
 1.  **Solar System Map:** An interactive map of the solar system, displaying planets, moons, and the trajectories of various space missions. Users can zoom, pan, and filter missions by launch date to explore the evolution of space exploration.
 
 2.  **Data Explorer:** A dashboard with scatterplots and histograms that allows users to delve deeper into the quantitative aspects of celestial bodies and missions, exploring relationships between different variables.
-
-## Project Website and Screencast
-
-*   [Website](https://dataviscourse2024.github.io/group-project-astronomy-visualization-2/)
-*   [Screencast Video](https://www.youtube.com/watch?v=8MEvtGncpBU)
 
 ## Repository Contents
 
