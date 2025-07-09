@@ -1,15 +1,14 @@
 # Solar Explorer
 
-This repository contains the code and documentation for project "Solar Explorer". It is an interactive visualization tool that allows users to explore space missions and celestial bodies within our solar system.
+Interactive visualization tool that allows users to explore space missions and celestial bodies within our solar system.
 
 ## Team Members
+
+- Simón González u1528314@utah.edu
 
 - Matthew Whitaker u1251812@utah.edu
 
 - Sarah Khan sarah.khan@utah.edu
-
-- Simón González u1528314@utah.edu
-
 
 
 ## Project Overview
