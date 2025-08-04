@@ -8,17 +8,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link href="favicon.ico" rel="icon" type="image/x-icon">
 </head>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("info-toggle");
+    const box = document.getElementById("info-box");
+
+    toggle.addEventListener("click", () => {
+        const showing = box.style.display === "block";
+        box.style.display = showing ? "none" : "block";
+        toggle.innerText = showing ? "Show Help" : "Hide Help";
+    });
+});
+</script>
 <body>
     <div class="dashboard-container">
         <!-- Dashboard 1 -->
         <div class="dashboard" id="dashboard1">
-            <h1 class="dashboard-title">The Solar System</h1>
-            <div id="process-book" style="width: 175px; position: absolute; bottom: 75px; left: 50px; z-index: 1000; background: rgba(0, 0, 0, 0.8); color: white; padding: 4px 15px; border: 2px solid #4c50af; border-radius: 14px; font-family: 'Orbitron', sans-serif; font-size: 12px; text-align: center; box-shadow: 0 0 10px rgba(72, 128, 239, 0.8);">
+            <h1 class="dashboard-title">Solar Explorer</h1>
+            <!-- <div id="process-book" style="width: 175px; position: absolute; bottom: 75px; left: 50px; z-index: 1000; background: rgba(0, 0, 0, 0.8); color: white; padding: 4px 15px; border: 2px solid #4c50af; border-radius: 14px; font-family: 'Orbitron', sans-serif; font-size: 12px; text-align: center; box-shadow: 0 0 10px rgba(72, 128, 239, 0.8);">
                 <a href="files/process-book.pdf" target="_blank" style="color: #4c50af; text-decoration: none; font-weight: bold;">
                     Process Book
                 </a>
+            </div> -->
+            <!-- Info Box Toggle Button -->
+            <div id="info-toggle" style="width: 175px; position: absolute; bottom: 140px; right: 50px; z-index: 1000; background: rgba(0,0,0,0.8); color: white; padding: 4px 15px; border: 2px solid #4c50af; border-radius: 14px; font-family: 'Orbitron', sans-serif; font-size: 12px; text-align: center; box-shadow: 0 0 10px rgba(72, 128, 239, 0.8); cursor: pointer;">
+                Show Help
             </div>
-            <div id="video-demo" style="width: 175px; position: absolute; bottom: 30px; left: 50px; z-index: 1000; background: rgba(0, 0, 0, 0.8); color: white; padding: 4px 15px; border: 2px solid #4caf50; border-radius: 14px; font-family: 'Orbitron', sans-serif; font-size: 12px; text-align: center; box-shadow: 0 0 10px rgba(72, 239, 128, 0.8);">
+
+            <!-- Hidden Info Box -->
+            <div id="info-box" style="display: none; width: 500px; position: absolute; bottom: 200px; right: 50px; z-index: 1000; background: rgba(0,0,0,0.85); color: white; padding: 10px 15px; border: 2px solid #4c50af; border-radius: 14px; font-family: 'Calibri', sans-serif; font-size: 25px; box-shadow: 0 0 10px rgba(72,128,239,0.8); line-height: 1.4;">
+                <strong>How to Use:</strong><br>
+                • Scroll to zoom in.<br>
+                • Use the <strong><em>slider</em></strong> to explore missions by launch date.<br>
+                • <strong><em>Accurate Planet Positions</em></strong> sets planets positions according to date slider.<br>
+                • Hover over objects and mission paths to reveal info.<br>
+                • Click objects and missions to highlight them in both dashboards; click <strong><em>Clear Selection</em></strong> to reset.<br>
+                • Click <strong><em>Switch Dashboard</em></strong> to switch between the Solar System Map and the Data Explorer.<br>
+            </div>
+
+            <div id="video-demo" style="width: 175px; position: absolute; bottom: 80px; right: 50px; z-index: 1000; background: rgba(0, 0, 0, 0.8); color: white; padding: 4px 15px; border: 2px solid #4caf50; border-radius: 14px; font-family: 'Orbitron', sans-serif; font-size: 12px; text-align: center; box-shadow: 0 0 10px rgba(72, 239, 128, 0.8);">
                 <a href="https://www.youtube.com/watch?v=8MEvtGncpBU" target="_blank" style="color: #4caf50; text-decoration: none; font-weight: bold;">
                     Watch the Video Demo
                 </a>
@@ -42,7 +70,7 @@
                         </div>
                         <!-- Slider on the right -->
                         <div style="display: flex; justify-content: center; align-items: center; width: 50%; position: relative; z-index: 1;">
-                            <input id="slider" class="slider" type="range" min="1950" max="2025" step="0.01" value="2000" style="height: 400px;" />
+                            <input id="slider" class="slider" orient="vertical" type="range" min="1950" max="2025" step="0.01" value="2000" style="height: 400px;" />
                         </div>
                     </div>
                     <!-- Bottom -->
